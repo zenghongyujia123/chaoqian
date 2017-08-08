@@ -91,15 +91,9 @@ module.exports = function () {
   //app.use('/', express.static(path.resolve('../z_web/www')));
   app.use('/platform', express.static(path.resolve('../z_platform')));
 
-  //if (process.env.NODE_ENV === 'development') {
-  //  app.use('/',express.static(path.resolve('../z_web_root')));
-  //}
-  //else {
-  //  app.use('/', express.static(path.resolve('../z_web/www')));
-  //}
 
   app.use('/old_web', express.static(path.resolve('../z_web/www')));
-  app.use('/', express.static(path.resolve('../z_web_root')));
+  app.use('/', express.static(path.resolve('../web')));
 
   app.use(function (req, res, next) {
 
