@@ -10,7 +10,6 @@ var mongoose = require('mongoose'),
   crypto = require('crypto');
 
 module.exports = function (appDb) {
-  console.log('=---=-==')
   var UserSchema = new Schema({
     object: {
       type: String,
