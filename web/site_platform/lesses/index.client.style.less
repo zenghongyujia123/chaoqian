@@ -1,0 +1,203 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+select{
+
+  /*很关键：将默认的select选择框样式清除*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+
+  /*在选择框的最右侧中间显示小箭头图片*/
+//   background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+
+
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 14px;
+}
+
+.c-center-area{
+    margin: auto;
+    overflow: hidden;
+    width: 900px;
+}
+
+.c-top-header-area{
+    padding: 10px 0px;
+    width: 100%;
+    line-height: 20px;
+    border-bottom: 1px solid #e7e7e7;
+    float: left;
+    color: #9b9b9b;
+    .c-signup{
+        float: right;
+        padding:0px 20px;
+    }
+    .c-signin{
+        padding-left: 20px;
+        border-left: 1px solid #9b9b9b;
+        float: right;
+    }
+}
+
+.c-header-area{
+    line-height: 75px;
+    color:#757575;
+    .c-logo{
+        float: left;
+    }
+    .c-title{
+        padding-left:  50px;
+        float: right;
+    }
+}
+
+.c-banner-area{
+    height: 520px;
+    background-color: blue;
+    .c-center-area{
+        position: relative;
+        height: 100%;
+        .c-banner-left{
+            border-radius: 4px;
+            position: absolute;
+            top:70px;
+            left: 0px;
+            bottom: 70px;
+            background-color: white;
+            width: 300px;
+            .c-banner-left-title{
+                overflow: hidden;
+                height: 60px;
+                .c-title-left{
+                    text-align: center;
+                    float: left;
+                    width: 50%;
+                    line-height: 50px;
+                    border-bottom: 4px solid #4886ff;
+                }
+                .c-title-right{
+                    text-align: center;
+                    float: left;
+                    width: 50%;
+                    line-height: 50px;
+                    border-bottom: 4px solid #d7e4ff;
+                }
+            }
+            .c-banner-left-content{
+                padding: 20px;
+                .c-content-title{
+                    line-height: 30px;
+                    font-size: 12px;
+                    padding: 0px 20px;
+                }
+                .c-content-value{
+                    .c-select{
+                        height: 40px;
+                        border: 1px solid #e7e7e7;
+                        border-radius: 4px;
+                        width: 100%;
+                        padding: 0px 15px;
+                    }
+                }
+            }
+            .c-content-btn{
+                margin-top:20px;
+                line-height: 40px;
+                text-align: center;
+                border-radius: 4px;
+                background-color: #4886ff;
+                color: white;
+            }
+        }
+       
+    }
+}
+
+.c-credit-type-area{
+    background-color: #fbfcff;
+    height: 300px;
+    padding-top:100px;
+     .c-center-area{
+        width: 1000px;
+        .c-credit-type-item{
+            float: left;
+            width: 180px;
+            .type-item-photo{
+                margin: auto;
+                width: 100px;
+                height: 100px;
+                border-radius: 90px;
+                background-color: white;
+            }
+            .type-item-text{
+                margin-top: 30px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.c-credit-content-area{
+    text-align: center;
+    padding-top: 50px;
+   .c-credit-content-title{
+        font-size: 30px;
+        line-height: 40px;
+   }
+   .c-credit-content-sub-title{
+    color:#9b9b9b;
+    line-height: 30px;
+   }
+   .c-center-area{
+       .c-credit-content-item-container{
+           float: left;
+           width: 33%;
+           &.center{
+               width: 34%;
+           }
+       }
+       .c-credit-content-item{
+           .content-title{
+
+           }
+           .content-number{
+
+           }
+           .content-descrption{
+
+           }
+           .content-remark{
+
+           }
+           .content-footer{
+               .content-btn{
+                   
+               }
+           }
+       }
+   }
+}
+
+.c-hot-bank-area{
+
+}
+
+.c-hot-credit-card-area{
+
+}
+
+.c-day-advice-area{
+
+}
+
+.c-search-area-area{
+
+}
+
+.c-footer-area{
+
+}
