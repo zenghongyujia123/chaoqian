@@ -1,28 +1,42 @@
 *{
     padding: 0px;
     margin: 0px;
+    button,select{
     border: 0px;
+    }
+    a{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 }
 
 select{
-
-  /*很关键：将默认的select选择框样式清除*/
   appearance:none;
   -moz-appearance:none;
   -webkit-appearance:none;
-
-  /*在选择框的最右侧中间显示小箭头图片*/
-//   background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
-
-
-  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
   padding-right: 14px;
 }
 
 .c-center-area{
+    position: relative;
     margin: auto;
     overflow: hidden;
     width: 900px;
+}
+
+.c-area-title{
+    text-align: center;
+    margin-top:50px;
+    font-size: 30px;
+    line-height: 40px;
+}
+.c-area-sub-title{
+    text-align: center;
+    font-size: 14px;
+    color:#9b9b9b;
+    line-height: 30px;
+    margin-bottom: 50px;
 }
 
 .c-top-header-area{
@@ -57,7 +71,7 @@ select{
 
 .c-banner-area{
     height: 520px;
-    background-color: blue;
+    background-color: #4886ff;
     .c-center-area{
         position: relative;
         height: 100%;
@@ -105,6 +119,7 @@ select{
                 }
             }
             .c-content-btn{
+                display: block;
                 margin-top:20px;
                 line-height: 40px;
                 text-align: center;
@@ -125,7 +140,7 @@ select{
         width: 1000px;
         .c-credit-type-item{
             float: left;
-            width: 180px;
+            width: 200px;
             .type-item-photo{
                 margin: auto;
                 width: 100px;
@@ -142,18 +157,10 @@ select{
 }
 
 .c-credit-content-area{
-    text-align: center;
-    padding-top: 50px;
-   .c-credit-content-title{
-        font-size: 30px;
-        line-height: 40px;
-   }
-   .c-credit-content-sub-title{
-    color:#9b9b9b;
-    line-height: 30px;
-   }
+    padding-bottom: 50px;
    .c-center-area{
        .c-credit-content-item-container{
+           margin-top: 20px;
            float: left;
            width: 33%;
            &.center{
@@ -161,43 +168,228 @@ select{
            }
        }
        .c-credit-content-item{
+           text-align: center;
+           margin:auto;
+           width: 80%;
+           margin-bottom: 20px;
+            -moz-box-shadow:0px 0px 20px #999;
+            box-shadow: 0px 0px 20px #999;
+            color:#4886ff;
            .content-title{
-
+                line-height: 80px;
            }
            .content-number{
-
+                font-size: 40px;
            }
            .content-descrption{
-
+               line-height: 40px;
            }
            .content-remark{
-
+                font-size: 12px;
            }
            .content-footer{
+               margin-top: 40px;
+               border-top: 1px solid #e7e7e7;
+               height: 100px;
+               line-height: 100px;
                .content-btn{
-                   
+                   font-size: 16px;
+                   color:white;
+                   width: 80%;
+                   line-height: 40px;
                }
            }
+            &.origin{
+                .content-footer{
+                    .content-btn{
+                        background-color:#ffb64e;
+                    }
+                }
+            }
+            &.red{
+                .content-footer{
+                    .content-btn{
+                        background-color:#fb5f7e;
+                    }
+                }
+            }
+            &.green{
+                .content-footer{
+                    .content-btn{
+                        background-color:#43d687;
+                    }
+                }
+            }
        }
    }
 }
 
 .c-hot-bank-area{
+    padding-bottom: 50px;
+    overflow: hidden;
+    color:white;
+    background-color: #4886ff;
+    .c-area-title{
 
+    }
+    .c-area-sub-title{
+        color:white;
+    }
+    .hot-bank-container{
+        width: 25%;
+        float: left;
+        text-align: center;
+        .bank-photo{
+            margin: auto;
+            background-color: white;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .bank-text{
+            
+        }
+    }
 }
 
 .c-hot-credit-card-area{
-
+    .c-center-area{
+        padding-bottom: 50px;
+        border-bottom:1px solid  #e7e7e7;
+        .area-left{
+            width: 300px;
+            .area-left-article{
+                display: block;
+                line-height: 30px;
+                font-size: 12px;
+            }
+            .area-left-btn{
+                margin-top:20px;
+                padding: 0px 20px;
+                text-align: center;
+                color:white;
+                line-height: 30px;
+                background-color: #4886ff;
+                border-radius: 4px;
+            }
+        }
+    }
 }
 
 .c-day-advice-area{
-
+    padding-bottom: 50px;
+    .c-center-area{
+        .day-advice-container{
+            margin-bottom: 20px;
+            width: 440px;
+            float: left;
+            overflow: hidden;
+            border: 1px solid #e7e7e7;
+            &.right{
+                float: right
+                // .day-advice-item{
+                // }
+            }
+            .day-advice-item{
+                float: left;
+                position: relative;
+                padding-left: 150px;
+         
+                .advice-item-left{
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    background-color: #4886ff;
+                    width: 150px;
+                    height: 150px;
+                }
+                .advice-item-right{
+                    -moz-box-shadow:0px 0px 20px #cdcdcd;
+                    box-shadow: 0px 0px 20px #cdcdcd;
+                    padding:10px;
+                    .advice-article{
+                        display: block;
+                        font-size: 12px;
+                        line-height: 20px;
+                    }   
+                }
+            }
+        }
+    }
 }
 
-.c-search-area-area{
+.c-search-area{
+    padding: 50px 0px;
+    background-color: #fbfcff;
+    .c-center-area{
+        width: 840px;
+        background-color: white;
+        border: 1px solid #e7e7e7;
+        padding: 0px 30px;
+        padding-bottom: 50px;
+        .c-search-area-header{
+            padding:30px 0px;;
+            .search-input{
+                width:300px;
+                height: 20px;
+                line-height: 30px;
+                border:1px solid #e7e7e7;
+                padding :5px;
 
+            }
+            .search-btn{
+                width: 32px;
+                height: 31px;
+                background-color: white;
+                border:1px solid #e7e7e7;
+                text-align: center;
+            }
+
+        }
+        .c-search-area-body{
+            border-top: 1px solid #e7e7e7;
+            .c-search-area-row{
+                line-height: 40px;
+                padding-left:50px;
+                border-bottom: 1px solid #e7e7e7;
+                position: relative;
+                .search-row-icon{
+                    width: 40px;
+                    height: 40px;
+                    position: absolute;
+                    left: 0px;
+                    top:0px;
+                }
+                .search-row-title{
+                    line-height: 40px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
 }
 
 .c-footer-area{
-
+    background-color: #4886ff;
+    padding: 60px 0px;
+    .c-center-area{
+     .c-footer-container{
+         width: 20%;
+         float: left;
+         .c-footer-item{
+             .footer-title{
+                display: block;
+                line-height: 40px;
+                color:white;
+                font-size: 16px;
+             }
+             .footer-sub-title{
+                color:#d7e7fb;
+                display: block;
+                line-height: 30px;
+                font-size: 12px;
+             }
+         }
+     }   
+    }
 }

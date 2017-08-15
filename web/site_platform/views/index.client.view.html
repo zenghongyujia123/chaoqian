@@ -38,7 +38,7 @@
         <div class="c-banner-left-content">
           <div class="c-content-title">贷款类型</div>
           <div class="c-content-value">
-            <select class="c-select">
+            <select class="c-select" onchange="this.blur()">
           <option value="1">信用贷款</option>
           <option value="2">消费贷款</option>
         </select>
@@ -57,9 +57,9 @@
             <option class="c-select-item"  value="2">消费贷款</option>
           </select>
           </div>
-          <div class="c-content-btn">
+          <a href="/product_list" class="c-content-btn">
             搜索
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -89,49 +89,235 @@
     </div>
   </div>
   <div class="c-credit-content-area">
-    <div class="c-credit-content-title">贷款专区</div>
-    <div class="c-credit-content-sub-title">无抵押、无担保、极速放款、借款方式更灵活</div>
+    <div class="c-area-title">贷款专区</div>
+    <div class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</div>
     <div class="c-center-area">
       <div class="c-credit-content-item-container">
-        <div class="c-credit-content-item">
+        <div class="c-credit-content-item origin">
           <div class="content-title">恒昌-工薪贷</div>
           <div class="content-number">2.38%</div>
           <div class="content-descrption">参考月利率</div>
           <div class="content-remark">无抵押|放贷快|0担保</div>
           <div class="content-footer">
-            <div class="content-btn">查看详情</div>
+            <button class="content-btn">查看详情</button>
           </div>
         </div>
       </div>
       <div class="c-credit-content-item-container center">
-        <div class="c-credit-content-item">
+        <div class="c-credit-content-item red">
           <div class="content-title">恒昌-工薪贷</div>
           <div class="content-number">2.38%</div>
           <div class="content-descrption">参考月利率</div>
           <div class="content-remark">无抵押|放贷快|0担保</div>
           <div class="content-footer">
-            <div class="content-btn">查看详情</div>
+            <button class="content-btn">查看详情</button>
           </div>
         </div>
       </div>
       <div class="c-credit-content-item-container">
-        <div class="c-credit-content-item">
+        <div class="c-credit-content-item green">
           <div class="content-title">恒昌-工薪贷</div>
           <div class="content-number">2.38%</div>
           <div class="content-descrption">参考月利率</div>
           <div class="content-remark">无抵押|放贷快|0担保</div>
           <div class="content-footer">
-            <div class="content-btn">查看详情</div>
+            <button class="content-btn">查看详情</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="c-hot-bank-area"></div>
-  <div class="c-hot-credit-card-area"></div>
-  <div class="c-day-advice-area"></div>
-  <div class="c-search-area-area"></div>
-  <div class="c-footer-area"></div>
+  <div class="c-hot-bank-area">
+    <div class="c-area-title">热门发卡银行</div>
+    <div class="c-area-sub-title">各大银行分发的信用卡，种类繁多到让您眼花缭乱</div>
+    <div class="c-center-area">
+      <div class="hot-bank-container">
+        <div class="bank-photo">
+        </div>
+        <div class="bank-text">
+          120/款
+        </div>
+      </div>
+      <div class="hot-bank-container">
+        <div class="bank-photo">
+        </div>
+        <div class="bank-text">
+          120/款
+        </div>
+      </div>
+      <div class="hot-bank-container">
+        <div class="bank-photo">
+        </div>
+        <div class="bank-text">
+          120/款
+        </div>
+      </div>
+      <div class="hot-bank-container">
+        <div class="bank-photo">
+        </div>
+        <div class="bank-text">
+          120/款
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="c-hot-credit-card-area">
+    <div class="c-area-title">热门信用卡</div>
+    <div class="c-area-sub-title">255家 银行和金融机构授权合作</div>
+    <div class="c-center-area">
+      <div class="area-left">
+        <a class="area-left-article">【交通银行标准信用卡】白金卡刷0笔</a>
+        <a class="area-left-article">【交通银行标准信用卡】白金卡刷0笔</a>
+        <a class="area-left-article">【交通银行标准信用卡】白金卡刷0笔</a>
+        <a class="area-left-article">【交通银行标准信用卡】白金卡刷白金卡刷白金卡刷0笔</a>
+        <a class="area-left-article">【交通银行标准信用卡】白金卡刷0笔</a>
+        <a class="area-left-article">【交通银行标准信用卡】白金卡刷0笔</a>
+        <a class="area-left-article">【交通银行标准信用卡】白金卡刷0笔</a>
+        <a class="area-left-article">【交通银行标准信用卡】白金卡刷0笔</a>
+        <a class="area-left-article">【交通银行标准信用卡】白金卡刷0笔</a>
+        <a class="area-left-article">【交通银行标准信用卡】白金卡刷0笔</a>
+        <button class="area-left-btn">查看更多</button>
+      </div>
+    </div>
+  </div>
+  <div class="c-day-advice-area">
+    <div class="c-area-title">潮钱每天分享一手咨询</div>
+    <div class="c-area-sub-title">这里有罪丰富行业资讯，您想要的都在这里可以找到</div>
+
+    <div class="c-center-area">
+      <div class="day-advice-container">
+        <div class="day-advice-item">
+          <div class="advice-item-left"></div>
+          <div class="advice-item-right">
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+          </div>
+        </div>
+      </div>
+      <div class="day-advice-container right">
+        <div class="day-advice-item">
+          <div class="advice-item-left"></div>
+          <div class="advice-item-right">
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+          </div>
+        </div>
+      </div>
+      <div class="day-advice-container">
+        <div class="day-advice-item">
+          <div class="advice-item-left"></div>
+          <div class="advice-item-right">
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+          </div>
+        </div>
+      </div>
+      <div class="day-advice-container right">
+        <div class="day-advice-item">
+          <div class="advice-item-left"></div>
+          <div class="advice-item-right">
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+            <a class="advice-article">这里有罪丰富行业资讯，您想要的都在这里可以找到</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="c-search-area">
+    <div class="c-center-area">
+      <div class="c-search-area-header">
+        <input class="search-input" placeholder="请输入您想要输入的问题"><button class="search-btn">搜</button>
+      </div>
+      <div class="c-search-area-body">
+        <div class="c-search-area-row">
+          <div class="search-row-icon">问</div>
+          <div class="search-row-title">潮钱app提交了贷款，多久能通过？</div>
+        </div>
+        <div class="c-search-area-row">
+          <div class="search-row-icon">问</div>
+          <div class="search-row-title">潮钱app提交了贷款，多久能通过？</div>
+        </div>
+        <div class="c-search-area-row">
+          <div class="search-row-icon">问</div>
+          <div class="search-row-title">潮钱app提交了贷款，多久能通过？</div>
+        </div>
+        <div class="c-search-area-row">
+          <div class="search-row-icon">问</div>
+          <div class="search-row-title">潮钱app提交了贷款，多久能通过？</div>
+        </div>
+        <div class="c-search-area-row">
+          <div class="search-row-icon">问</div>
+          <div class="search-row-title">潮钱app提交了贷款，多久能通过？</div>
+        </div>
+        <div class="c-search-area-row">
+          <div class="search-row-icon">问</div>
+          <div class="search-row-title">潮钱app提交了贷款，多久能通过？</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="c-footer-area">
+    <div class="c-center-area">
+      
+      <div class="c-footer-container">
+        <div class="c-footer-item">
+          <a class="footer-title">关于我们</a>
+          <a class="footer-sub-title">公司简介</a>
+          <a class="footer-sub-title">诚聘英才</a>
+          <a class="footer-sub-title">企业文化</a>
+        </div>
+      </div>
+       <div class="c-footer-container">
+        <div class="c-footer-item">
+          <a class="footer-title">关于我们</a>
+          <a class="footer-sub-title">公司简介</a>
+          <a class="footer-sub-title">诚聘英才</a>
+          <a class="footer-sub-title">企业文化</a>
+        </div>
+      </div>
+       <div class="c-footer-container">
+        <div class="c-footer-item">
+          <a class="footer-title">关于我们</a>
+          <a class="footer-sub-title">公司简介</a>
+          <a class="footer-sub-title">诚聘英才</a>
+          <a class="footer-sub-title">企业文化</a>
+        </div>
+      </div>
+       <div class="c-footer-container">
+        <div class="c-footer-item">
+          <a class="footer-title">关于我们</a>
+          <a class="footer-sub-title">公司简介</a>
+          <a class="footer-sub-title">诚聘英才</a>
+          <a class="footer-sub-title">企业文化</a>
+        </div>
+      </div>
+       <div class="c-footer-container">
+        <div class="c-footer-item">
+          <a class="footer-title">关于我们</a>
+          <a class="footer-sub-title">公司简介</a>
+          <a class="footer-sub-title">诚聘英才</a>
+          <a class="footer-sub-title">企业文化</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </body>
 
 </html>
