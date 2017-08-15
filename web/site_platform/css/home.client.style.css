@@ -1,7 +1,7 @@
 .c-credit-type-area {
   background-color: #fbfcff;
-  height: 300px;
-  padding-top: 100px;
+  height: 250px;
+  padding-top: 70px;
 }
 .c-credit-type-area .c-center-area {
   width: 1000px;
@@ -9,16 +9,14 @@
 .c-credit-type-area .c-center-area .c-credit-type-item {
   float: left;
   width: 200px;
+  text-align: center;
 }
 .c-credit-type-area .c-center-area .c-credit-type-item .type-item-photo {
-  margin: auto;
   width: 100px;
   height: 100px;
   border-radius: 90px;
-  background-color: white;
 }
 .c-credit-type-area .c-center-area .c-credit-type-item .type-item-text {
-  margin-top: 30px;
   text-align: center;
 }
 .c-credit-content-area {
@@ -89,11 +87,18 @@
   text-align: center;
 }
 .c-hot-bank-area .hot-bank-container .bank-photo {
-  margin: auto;
-  background-color: white;
-  width: 100px;
-  height: 100px;
-  margin-bottom: 20px;
+  height: 60px;
+  margin-bottom: 30px;
+}
+.c-hot-bank-area .hot-bank-container .bank-text .number {
+  font-size: 30px;
+}
+.c-hot-bank-area .hot-bank-container .bank-text .text {
+  font-size: 10px;
+}
+.c-hot-credit-card-area {
+  background: url('../images/home/credit-card-bg.png') no-repeat 65% 70%;
+  background-size: 400px 400px;
 }
 .c-hot-credit-card-area .c-center-area {
   padding-bottom: 50px;
