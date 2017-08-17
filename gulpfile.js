@@ -7,6 +7,8 @@ process.env.NODE_ENV = 'test';
 
 var gulp = require('gulp');
 var less = require('gulp-less');
+var jsconcat = require('gulp-concat');
+
 
 // var serverJsFiles = ['gruntfile.js','models/**/*.js', 'server.js', 'config/**/*.js', 'app/**/*.js', '!app/libraries/**'];
 // var mochaJsFiles = ['app/tests/**/**/**/*.js'];
@@ -21,40 +23,31 @@ var less = require('gulp-less');
 // });
 
 gulp.task('platform-less', function () {
-  gulp.src('web/site_platform/lesses/*.less')
+  gulp.src('web/c_platform/lesses/*.less')
     .pipe(less())
-    .pipe(gulp.dest('web/site_platform/css'));
+    .pipe(gulp.dest('web/c_platform/css'));
   return;
 });
 
-// gulp.task('js-concat', function () {
-//   return gulp.src([
-//     'web/zzqs2/app.js',
-//     'web/zzqs2/config.js',
-//     'web/zzqs2/global.js',
-//     'web/zzqs2/interceptors/**/*.js',
-//     'web/zzqs2/services/**/*.js',
-//     'web/zzqs2/enums/**/*.js',
-//     'web/zzqs2/errors/**/*.js',
-//     'web/zzqs2/event/**/*.js',
-//     'web/zzqs2/filter/**/*.js',
-//     'web/zzqs2/controllers/**/*.js',
-//     'web/zzqs2/directive/**/*.js'
-//   ])
-//     .pipe(jsconcat('zhuzhuqs.js'))
-//     .pipe(gulp.dest('web/zzqs2/dist/js'))
-//     .on('finish',function(){
-//       // gulp.src('web/zzqs2/dist/js/zhuzhuqs.js')
-//       //   .pipe(ngAnnotate())
-//       //   .pipe(uglify({outSourceMap: false}))
-//       //   .pipe(gulp.dest('web/zzqs2/dist/js/min'));
+gulp.task('js-concat', function () {
+  return gulp.src([
+    'web/c_backend/site_admin/app.js',
+    'web/c_backend/site_admin/controllers/**/*.js',
+  ])
+    .pipe(jsconcat('chaoqian.js'))
+    .pipe(gulp.dest('web/c_backend/site_admin/dist/js'))
+    .on('finish', function () {
+      // gulp.src('web/zzqs2/dist/js/zhuzhuqs.js')
+      //   .pipe(ngAnnotate())
+      //   .pipe(uglify({outSourceMap: false}))
+      //   .pipe(gulp.dest('web/zzqs2/dist/js/min'));
 
-//       return gulp.src(['web/api/controllers/api.order_detail.client.controller.js', 'web/wechat/zz_receiver_sender/js/order_detail.template.client.controller.js'])
-//         .pipe(ngAnnotate())
-//         .pipe(uglify({outSourceMap: false}))
-//         .pipe(gulp.dest('web/api/controllers/min'));
-//     });
-// });
+      // return gulp.src(['web/api/controllers/api.order_detail.client.controller.js', 'web/wechat/zz_receiver_sender/js/order_detail.template.client.controller.js'])
+      //   .pipe(ngAnnotate())
+      //   .pipe(uglify({outSourceMap: false}))
+      //   .pipe(gulp.dest('web/api/controllers/min'));
+    });
+});
 
 // gulp.task('server-jshint', function () {
 //   return gulp.src(serverJsFiles)
@@ -82,7 +75,7 @@ gulp.task('platform-less', function () {
 //     });
 // });
 
-gulp.task('web', [ 'platform-less']);
+gulp.task('web', ['platform-less', 'js-concat']);
 
 // gulp.task('test', ['server-jshint', 'server-test']);
 
