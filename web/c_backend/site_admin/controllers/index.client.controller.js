@@ -9,6 +9,11 @@ cSite.controller('IndexController', [
         $scope.toggleLeft = buildToggler('left');
         $scope.toggleRight = buildToggler('right');
 
+        $scope.goNav = function (nav) {
+            $scope.toggleLeft();
+            $state.go(nav);
+        }
+
         function buildToggler(componentId) {
             return function () {
                 $mdSidenav(componentId).toggle();

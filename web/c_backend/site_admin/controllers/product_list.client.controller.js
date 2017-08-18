@@ -3,8 +3,11 @@
  */
 'use strict';
 
-cSite.controller('ProductController', [
+cSite.controller('ProductListController', [
     '$rootScope', '$scope', '$state', '$stateParams',
     function ($rootScope, $scope, $state, $stateParams) {
 
+        $scope.goDetail = function(id){
+            $state.go('product_detail');
+        }
     }]);

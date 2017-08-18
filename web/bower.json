@@ -37,7 +37,8 @@
     "angular-material": "^1.1.1",
     "jquery-qrcode": "lrsjng/jquery-qrcode#~0.12.0",
     "raty": "wbotelhos/raty#^2.7.1",
-    "angular-ui-router": "^1.0.6"
+    "angular-ui-router": "^1.0.6",
+    "qiniu": "^1.0.22"
   },
   "resolutions": {
     "jquery": "~2.1.4",

@@ -16,22 +16,22 @@ cSite.config(function ($mdThemingProvider) {
 
 cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('home', {
-      url: '/home',
-      templateUrl: '/c_backend/site_admin/templates/home.client.view.html',
-      controller: 'HomeController'
-    })
-    .state('product', {
-      url: '/product',
-      templateUrl: '/c_backend/site_admin/templates/product.client.view.html',
-      controller: 'ProductController'
+    // .state('home', {
+    //   url: '/home',
+    //   templateUrl: '/c_backend/site_admin/templates/home.client.view.html',
+    //   controller: 'HomeController'
+    // })
+    .state('product_list', {
+      url: '/product_list',
+      templateUrl: '/c_backend/site_admin/templates/product_list.client.view.html',
+      controller: 'ProductListController'
     })
     .state('product_detail', {
       url: '/product_detail',
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',
       controller: 'ProductDetailController'
-    })
-    ;
-  $urlRouterProvider.otherwise('/home');
+    });
+
+  $urlRouterProvider.otherwise('/product_list');
 }]);
 

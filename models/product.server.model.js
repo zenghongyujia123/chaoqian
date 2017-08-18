@@ -20,7 +20,7 @@ module.exports = function (appDb) {
       require: true,
       index: true
     },
-    log: {
+    logo: {
       type: String,
       require: true
     },
