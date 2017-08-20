@@ -21,12 +21,6 @@ module.exports = function () {
   app.engine('.html', ejs.__express);
   app.set('view engine', 'html');
 
-  // var logService = require('../../z_log/log.server.z_log');
-  // Globbing model files
-  //config.getGlobbedFiles('./models/**/*.js').forEach(function (modelPath) {
-  //  require(path.resolve(modelPath));
-  //});
-
   // Passing the request url to environment locals
   app.use(function (req, res, next) {
     next();
@@ -87,14 +81,13 @@ module.exports = function () {
   });
 
   // Setting the app router and static folder
-  app.use('/manager', express.static(path.resolve('../z_manager_web/www')));
   //app.use('/', express.static(path.resolve('../z_web/www')));
-  app.use('/platform', express.static(path.resolve('../z_platform')));
 
 
   app.use('/old_web', express.static(path.resolve('../z_web/www')));
   app.use('/', express.static(path.resolve('../web')));
-
+  app.use('/page', express.static(path.resolve('../web')));
+  
   app.use(function (req, res, next) {
 
     // Environment dependent middleware

@@ -58,4 +58,4 @@ exports.productDetail = function (productId, callback) {
         }
         return callback(null, product);
     });
-};
+};      
