@@ -4,8 +4,8 @@
 'use strict';
 
 cSite.controller('ProductDetailController', [
-    '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'ProductNetwork',
-    function ($rootScope, $scope, $state, $stateParams, QiniuService, ProductNetwork) {
+    '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'ProductNetwork', 'CommonHelper',
+    function ($rootScope, $scope, $state, $stateParams, QiniuService, ProductNetwork, CommonHelper) {
         var qiniu = QiniuService.createUploader('qiniu-upload-test-button', function (info) {
             $scope.product.logo = QiniuService.getQiniuImageSrc(info.key);
             console.log('upload successs : ---- ', info);
@@ -29,8 +29,15 @@ cSite.controller('ProductDetailController', [
             organization_info: ''
         };
 
-        $scope.updateProduct = function () {
+        $scope.updateProduct = function (event) {
             ProductNetwork.updateProduct($scope, { product_info: $scope.product }).then(function (data) {
+                if (!data.err) {
+                    CommonHelper.showConfirm($scope, null, '操作成功', function () {
+                        $state.go('product_detail', null, {reload: true});
+                    }, null, null, event);
+                }
+
+
                 console.log(data);
             }, function (err) {
                 console.log(err);

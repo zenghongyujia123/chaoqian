@@ -20,7 +20,52 @@ cSite.factory('CommonHelper', ['$rootScope', '$timeout', 'GlobalEvent', 'Address
                 $timeout(function () {
                     return scope.$emit(GlobalEvent.onShowLoading, isShow);
                 }, 0);
-            }
+            },
+            showAlert: function (scope, text, callback, ev, delayTime) {
+                var isFinished = false;
+        
+                var promise = $mdDialog.show(
+                  $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('body')))
+                    .clickOutsideToClose(true)
+                    .title('消息')
+                    .textContent(text)
+                    .ariaLabel('Alert Dialog')
+                    .ok('确定')
+                    .targetEvent(ev)
+                )
+                  .finally(function () {
+                    isFinished = true;
+                    callback && callback();
+                  });
+        
+                if (delayTime) {
+                  $timeout(function () {
+                    if (!isFinished) {
+                      $mdDialog.cancel(promise);
+                    }
+                  }, delayTime);
+                }
+              },
+              showConfirm: function (scope, title, text, sureCallback, cancelCallback, cancelLabel, ev) {
+                $mdDialog.show(
+                  $mdDialog.confirm()
+                    .title(title || '提示')
+                    .textContent(text)
+                    .ariaLabel('Confirm')
+                    .targetEvent(ev)
+                    .ok('确定')
+                    .cancel(cancelLabel ||'取消')
+                ).then(function () {
+                  if (sureCallback) {
+                    sureCallback();
+                  }
+                }, function () {
+                  if (cancelCallback) {
+                    cancelCallback();
+                  }
+                });
+              },
         };
         return commonHelper;
     }]);

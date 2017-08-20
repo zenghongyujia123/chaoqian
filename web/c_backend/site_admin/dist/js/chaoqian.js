@@ -218,7 +218,52 @@ cSite.factory('CommonHelper', ['$rootScope', '$timeout', 'GlobalEvent', 'Address
                 $timeout(function () {
                     return scope.$emit(GlobalEvent.onShowLoading, isShow);
                 }, 0);
-            }
+            },
+            showAlert: function (scope, text, callback, ev, delayTime) {
+                var isFinished = false;
+        
+                var promise = $mdDialog.show(
+                  $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('body')))
+                    .clickOutsideToClose(true)
+                    .title('消息')
+                    .textContent(text)
+                    .ariaLabel('Alert Dialog')
+                    .ok('确定')
+                    .targetEvent(ev)
+                )
+                  .finally(function () {
+                    isFinished = true;
+                    callback && callback();
+                  });
+        
+                if (delayTime) {
+                  $timeout(function () {
+                    if (!isFinished) {
+                      $mdDialog.cancel(promise);
+                    }
+                  }, delayTime);
+                }
+              },
+              showConfirm: function (scope, title, text, sureCallback, cancelCallback, cancelLabel, ev) {
+                $mdDialog.show(
+                  $mdDialog.confirm()
+                    .title(title || '提示')
+                    .textContent(text)
+                    .ariaLabel('Confirm')
+                    .targetEvent(ev)
+                    .ok('确定')
+                    .cancel(cancelLabel ||'取消')
+                ).then(function () {
+                  if (sureCallback) {
+                    sureCallback();
+                  }
+                }, function () {
+                  if (cancelCallback) {
+                    cancelCallback();
+                  }
+                });
+              },
         };
         return commonHelper;
     }]);
@@ -331,6 +376,26 @@ cSite.factory('QiniuService', [
 
     }]);
 
+'use strict';
+
+cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper', function ($rootScope, GlobalEvent, CommonHelper) {
+  return {
+    restrict: 'E',
+    templateUrl: '/c_backend/site_admin/directive/dialog_loading_box/dialog_loading_box.client.view.html',
+    replace: true,
+    scope: {},
+    controller: function ($scope, $element) {
+      $scope.dialogInfo = {
+        isShow: false
+      };
+
+      $rootScope.$on(GlobalEvent.onShowLoading, function (event, isLoading) {
+        $scope.dialogInfo.isShow = isLoading;
+      });
+    }
+  };
+}]);
+
 /**
  * Created by lance on 2016/11/17.
  */
@@ -371,8 +436,8 @@ cSite.controller('IndexController', [
 'use strict';
 
 cSite.controller('ProductDetailController', [
-    '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'ProductNetwork',
-    function ($rootScope, $scope, $state, $stateParams, QiniuService, ProductNetwork) {
+    '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'ProductNetwork', 'CommonHelper',
+    function ($rootScope, $scope, $state, $stateParams, QiniuService, ProductNetwork, CommonHelper) {
         var qiniu = QiniuService.createUploader('qiniu-upload-test-button', function (info) {
             $scope.product.logo = QiniuService.getQiniuImageSrc(info.key);
             console.log('upload successs : ---- ', info);
@@ -396,8 +461,15 @@ cSite.controller('ProductDetailController', [
             organization_info: ''
         };
 
-        $scope.updateProduct = function () {
+        $scope.updateProduct = function (event) {
             ProductNetwork.updateProduct($scope, { product_info: $scope.product }).then(function (data) {
+                if (!data.err) {
+                    CommonHelper.showConfirm($scope, null, '操作成功', function () {
+                        $state.go('product_detail', null, {reload: true});
+                    }, null, null, event);
+                }
+
+
                 console.log(data);
             }, function (err) {
                 console.log(err);
