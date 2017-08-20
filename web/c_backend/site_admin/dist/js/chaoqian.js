@@ -31,6 +31,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       url: '/product_detail/:product_id',
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',
       controller: 'ProductDetailController'
+    })
+    .state('filter_edit', {
+      url: '/filter_edit',
+      templateUrl: '/c_backend/site_admin/templates/filter_edit.client.view.html',
+      controller: 'FilterEditController'
     });
 
   $urlRouterProvider.otherwise('/product_list');
@@ -395,6 +400,17 @@ cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper'
     }
   };
 }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('FilterEditController', [
+    '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'ProductNetwork', 'CommonHelper',
+    function ($rootScope, $scope, $state, $stateParams, QiniuService, ProductNetwork, CommonHelper) {
+       
+    }]);
 
 /**
  * Created by lance on 2016/11/17.

@@ -33,7 +33,7 @@ cSite.controller('ProductDetailController', [
             ProductNetwork.updateProduct($scope, { product_info: $scope.product }).then(function (data) {
                 if (!data.err) {
                     CommonHelper.showConfirm($scope, null, '操作成功', function () {
-                        $state.go('product_detail', null, {reload: true});
+                        $state.go('product_detail', null, { reload: true });
                     }, null, null, event);
                 }
 

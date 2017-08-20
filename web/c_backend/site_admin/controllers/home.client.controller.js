@@ -4,7 +4,7 @@
 'use strict';
 
 cSite.controller('HomeController', [
-    '$rootScope', '$scope', '$state', '$stateParams',
-    function ($rootScope, $scope, $state, $stateParams) {
+  '$rootScope', '$scope', '$state', '$stateParams',
+  function ($rootScope, $scope, $state, $stateParams) {
 
-    }]);
+  }]);

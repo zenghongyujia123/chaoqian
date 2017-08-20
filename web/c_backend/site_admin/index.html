@@ -51,6 +51,11 @@
           <p>产品列表</p>
         </div>
       </md-list-item>
+      <md-list-item class="md-primary md-3-line" ng-click="goNav('filter_edit')">
+        <div class="md-list-item-text md-primary" layout="column">
+          <p>过滤编辑</p>
+        </div>
+      </md-list-item>
       <div id="qiniu-upload-test-container" style="visibility:hidden;">
         <input type="file" />
       </div>
@@ -60,7 +65,7 @@
 
   </ui-view>
   <dialog-loading-box></dialog-loading-box>
-  
+
 </body>
 
 </html>

@@ -31,6 +31,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       url: '/product_detail/:product_id',
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',
       controller: 'ProductDetailController'
+    })
+    .state('filter_edit', {
+      url: '/filter_edit',
+      templateUrl: '/c_backend/site_admin/templates/filter_edit.client.view.html',
+      controller: 'FilterEditController'
     });
 
   $urlRouterProvider.otherwise('/product_list');
