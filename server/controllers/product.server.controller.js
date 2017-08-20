@@ -25,5 +25,6 @@ exports.productList = function (req, res, next) {
 };
 
 exports.productDetail = function (req, res, next) {
-
+    req.data = req.product;
+    return next();
 };

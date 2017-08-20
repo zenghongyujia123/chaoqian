@@ -9,5 +9,8 @@ cSite.factory('ProductNetwork',
         productList: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/product/productList', params);
         },
+        productDetail: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/product/productDetail', params);
+        },
       };
     }]);
