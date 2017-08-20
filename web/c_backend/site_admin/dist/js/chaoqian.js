@@ -288,7 +288,7 @@ cSite.factory('QiniuService', [
                             console.log(btnId);
                             callback(JSON.parse(info.response));
                         }
-                        else{
+                        else {
                             callback('upload error');
                         }
                         // 每个文件上传成功后，处理相关的事情
@@ -323,7 +323,10 @@ cSite.factory('QiniuService', [
 
         }
         return {
-            createUploader: createUploader
+            createUploader: createUploader,
+            getQiniuImageSrc: function (key) {
+                return 'http://ouv4j9a7a.bkt.clouddn.com/' + key;
+            }
         }
 
     }]);
@@ -371,6 +374,7 @@ cSite.controller('ProductDetailController', [
     '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'ProductNetwork',
     function ($rootScope, $scope, $state, $stateParams, QiniuService, ProductNetwork) {
         var qiniu = QiniuService.createUploader('qiniu-upload-test-button', function (info) {
+            $scope.product.logo = QiniuService.getQiniuImageSrc(info.key);
             console.log('upload successs : ---- ', info);
         });
 

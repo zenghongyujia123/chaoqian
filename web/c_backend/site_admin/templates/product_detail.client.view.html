@@ -1,6 +1,9 @@
 <div class="page-body-view">
   <div class="page-operation-view" layout="row" layout-align="space-between center">
-    <p class="title">产品详情</p>
+    <div layout="row">
+      <p class="title">产品详情</p>
+
+    </div>
     <div layout="row">
       <md-button class="md-primary md-raised md-hue-2" id="qiniu-upload-test-button">上传logo</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-click="updateProduct()">保存</md-button>
@@ -10,9 +13,12 @@
   <div class="c-product-detail-view">
     <md-content layout-padding>
       <div layout-gt-sm="row">
+        <span>
+              <img  class="product-detail-logo" ng-src="{{product.logo}}" ></img>
+        </span>
         <md-input-container class="md-block" flex-gt-sm>
           <label>产品名称</label>
-          <input ng-model="product.name"/>
+          <input ng-model="product.name" />
         </md-input-container>
         <md-input-container class="md-block" flex-gt-sm>
           <label>产品描述</label>

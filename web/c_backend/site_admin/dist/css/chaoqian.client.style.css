@@ -43,3 +43,13 @@
   padding: 0px 23px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
+.page-body-view .list-body .list-item .column-item img {
+  width: 40px;
+  height: 40px;
+}
+.page-body-view .product-detail-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  margin-right: 20px;
+}

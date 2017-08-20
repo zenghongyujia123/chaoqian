@@ -7,6 +7,7 @@ cSite.controller('ProductDetailController', [
     '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'ProductNetwork',
     function ($rootScope, $scope, $state, $stateParams, QiniuService, ProductNetwork) {
         var qiniu = QiniuService.createUploader('qiniu-upload-test-button', function (info) {
+            $scope.product.logo = QiniuService.getQiniuImageSrc(info.key);
             console.log('upload successs : ---- ', info);
         });
 

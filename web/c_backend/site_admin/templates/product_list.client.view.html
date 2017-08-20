@@ -6,6 +6,7 @@
 
   <div class="list-header">
     <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">产品logo</div>
       <div class="column-item" flex="">产品名称</div>
       <div class="column-item" flex="">批款额度</div>
       <div class="column-item" flex="">下款条件</div>
@@ -16,6 +17,9 @@
   </div>
   <div class="list-body">
     <div class="list-item" layout="row" layout-align="start center" ng-repeat=" product in product_list">
+      <div class="column-item" flex="">
+        <img ng-src="{{product.logo}}"></img>
+      </div>
       <div class="column-item" flex="">{{product.name}}</div>
       <div class="column-item" flex="">{{product.min_limit}}-{{product.max_limit}}</div>
       <div class="column-item" flex="">test</div>
