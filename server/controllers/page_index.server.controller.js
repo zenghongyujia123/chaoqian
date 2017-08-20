@@ -13,8 +13,7 @@ exports.index = function (req, res, next) {
 
 exports.product_list = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_platform/views/product_list.client.view.html');
-  console.log(filepath);
-  return res.sendFile(filepath);
+  return res.render(filepath, { });
 };
 
 exports.product_detail = function (req, res, next) {
