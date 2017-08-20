@@ -36,6 +36,10 @@ gulp.task('platform-less', function () {
 gulp.task('js-concat', function () {
   return gulp.src([
     'web/c_backend/site_admin/app.js',
+    'web/c_backend/site_admin/event/**/*.js',
+    'web/c_backend/site_admin/constants/**/*.js',
+    'web/c_backend/site_admin/networks/**/*.js',
+    'web/c_backend/site_admin/services/**/*.js',
     'web/c_backend/site_admin/controllers/**/*.js',
   ])
     .pipe(jsconcat('chaoqian.js'))

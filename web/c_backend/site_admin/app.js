@@ -4,7 +4,8 @@ var cSite = angular.module('chaoQianSite', [
   'ui.router',
   //   'LocalStorageModule',
   //   'base64',
-  'ngMaterial'
+  'ngMaterial',
+  'textAngular'
 ]);
 
 cSite.config(function ($mdThemingProvider) {
@@ -27,7 +28,7 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       controller: 'ProductListController'
     })
     .state('product_detail', {
-      url: '/product_detail',
+      url: '/product_detail/:product_id',
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',
       controller: 'ProductDetailController'
     });

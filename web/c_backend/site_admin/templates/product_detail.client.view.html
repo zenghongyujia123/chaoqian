@@ -1,33 +1,70 @@
 <div class="page-body-view">
   <div class="page-operation-view" layout="row" layout-align="space-between center">
     <p class="title">产品详情</p>
-    <md-button class="md-primary md-raised md-hue-2">保存</md-button>
+    <div layout="row">
+      <md-button class="md-primary md-raised md-hue-2" id="qiniu-upload-test-button">上传logo</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="updateProduct()">保存</md-button>
+    </div>
   </div>
-
 
   <div class="c-product-detail-view">
     <md-content layout-padding>
       <div layout-gt-sm="row">
-        <md-input-container id="qiniu-upload-test-container" class="md-block" flex-gt-sm>
-          <label>City</label>
-          <input type="file" />
-          <md-button id="qiniu-upload-test-button">上传</md-button>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>产品名称</label>
+          <input ng-model="product.name"/>
         </md-input-container>
         <md-input-container class="md-block" flex-gt-sm>
-          <label>City</label>
-          <input/>
+          <label>产品描述</label>
+          <input ng-model="product.description" />
         </md-input-container>
         <md-input-container class="md-block" flex-gt-sm>
-          <label>City</label>
-          <input/>
+          <label>申请成功率</label>
+          <input ng-model="product.apply_success_percent" />
         </md-input-container>
         <md-input-container class="md-block" flex-gt-sm>
-          <label>City</label>
-          <input/>
+          <label>申请人数</label>
+          <input ng-model="product.apply_people_count" />
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>最长下款时间</label>
+          <input ng-model="product.longest_time" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>最小贷款额度</label>
+          <input ng-model="product.min_limit" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>最大贷款额度</label>
+          <input ng-model="product.max_limit" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>参考每日费用</label>
+          <input ng-model="product.refer_cost_per_day" />
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <div>费用说明</div>
+          <div text-angular ng-model="product.fee_info"></div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <div>申请要求</div>
+          <div text-angular ng-model="product.apply_info"></div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <div>其他说明</div>
+          <div text-angular ng-model="product.other_info"></div>
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <div>申请攻略</div>
+          <div text-angular ng-model="product.apply_strategy"></div>
         </md-input-container>
       </div>
     </md-content>
-
-
   </div>
 </div>

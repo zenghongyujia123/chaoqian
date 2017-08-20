@@ -38,6 +38,7 @@ module.exports = function (appDb) {
       require: true,
       default: 0
     },
+    //参考开销每天
     refer_cost_per_day: {
       type: Number,
       default: 0
@@ -88,5 +89,5 @@ module.exports = function (appDb) {
     createdAt: 'create_time',
     updatedAt: 'update_time'
   });
-  var User = appDb.model('Product', ProductSchema);
+   appDb.model('Product', ProductSchema);
 };
