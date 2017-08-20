@@ -1,13 +1,19 @@
 /**
  * Created by zenghong on 2017/8/8.
  */
-var appDb = require('./../../libraries/mongoose').appDb;
+var mongoose =  require('./../../libraries/mongoose');
+var appDb =mongoose.appDb;
 var Product = appDb.model('Product');
 var sysErr = require('./../errors/system');
 
 var that = exports;
 
 exports.updateProduct = function (productInfo, callback) {
+
+    if(!productInfo._id){
+        productInfo._id = mongoose.generateNewObjectId();
+    }
+
     that.productDetail(productInfo._id, function (err, product) {
         if (err) {
             return callback({ err: sysErr.database_query_error });
