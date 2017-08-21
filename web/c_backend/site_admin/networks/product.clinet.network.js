@@ -12,5 +12,11 @@ cSite.factory('ProductNetwork',
         productDetail: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/product/productDetail', params);
         },
+        udpateProductFilter: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/product_filter/updateFilter', params);
+        },
+        getProductFilter: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/product_filter/getFilter', params);
+        }
       };
     }]);

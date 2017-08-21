@@ -1,10 +1,54 @@
 <div class="page-body-view">
   <div class="page-operation-view" layout="row" layout-align="space-between center">
     <div layout="row">
-      <p class="title">过滤器编辑</p>
+      <p class="title">过滤器编辑 (使用逗号分隔，如：一个月内,1-6个月,6个月以上)</p>
     </div>
     <div layout="row">
-      <md-button class="md-primary md-raised md-hue-2">保存</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="udpateProductFilter()">保存</md-button>
     </div>
   </div>
+
+  <md-content layout-padding>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm flex="50">
+        <label>智能排序</label>
+        <input ng-model="filter_strings.brain_sort_string" />
+      </md-input-container>
+      <md-button class="md-primary md-hue-2" ng-repeat="filter in splitFilters(filter_strings.brain_sort_string) track by $index">{{filter}}</md-button>
+    </div>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm flex="50">
+        <label>贷款额度</label>
+        <input ng-model="filter_strings.loan_limit_string" />
+      </md-input-container>
+      <md-button class="md-primary md-hue-2" ng-repeat="filter in splitFilters(filter_strings.loan_limit_string) track by $index">{{filter}}</md-button>
+    </div>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm flex="50">
+        <label>职业身份</label>
+        <input ng-model="filter_strings.working_identity_string" />
+      </md-input-container>
+      <md-button class="md-primary md-hue-2" ng-repeat="filter in splitFilters(filter_strings.working_identity_string) track by $index">{{filter}}</md-button>
+    </div>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm flex="50">
+        <label>个人资质</label>
+        <input ng-model="filter_strings.personal_natural_string" />
+      </md-input-container>
+      <md-button class="md-primary md-hue-2" ng-repeat="filter in splitFilters(filter_strings.personal_natural_string) track by $index">{{filter}}</md-button>
+    </div>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm flex="50">
+        <label>办理周期</label>
+        <input ng-model="filter_strings.cycle_time_string" />
+      </md-input-container>
+      <md-button class="md-primary md-hue-2" ng-repeat="filter in splitFilters(filter_strings.cycle_time_string) track by $index">{{filter}}</md-button>
+    </div>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm flex="50">
+        <label>借款期限</label>
+        <input ng-model="filter_strings.loan_term_string" />
+      </md-input-container>
+      <md-button class="md-primary md-hue-2" ng-repeat="filter in splitFilters(filter_strings.loan_term_string) track by $index">{{filter}}</md-button>
+    </div>
 </div>
