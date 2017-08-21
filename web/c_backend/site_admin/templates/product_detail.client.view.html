@@ -31,8 +31,16 @@
           <label>申请人数</label>
           <input ng-model="product.apply_people_count" />
         </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>利率（日）</label>
+          <input ng-model="product.fee_cost_per_day" />
+        </md-input-container>
       </div>
       <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>机构连接（http://....）</label>
+          <input ng-model="product.organization_url" />
+        </md-input-container>
         <md-input-container class="md-block" flex-gt-sm>
           <label>最长下款时间</label>
           <input ng-model="product.longest_time" />

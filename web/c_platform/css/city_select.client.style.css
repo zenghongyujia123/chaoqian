@@ -78,6 +78,7 @@ select {
 }
 .c-header-area .c-logo {
   float: left;
+  margin-right: 20px;
 }
 .c-header-area .c-title {
   padding-left: 50px;

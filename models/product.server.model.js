@@ -43,6 +43,10 @@ module.exports = function (appDb) {
       type: Number,
       default: 0
     },
+    fee_cost_per_day: {
+      type: Number,
+      default: 0
+    },
     //最长下款时间
     longest_time: {
       type: Number,
@@ -89,5 +93,5 @@ module.exports = function (appDb) {
     createdAt: 'create_time',
     updatedAt: 'update_time'
   });
-   appDb.model('Product', ProductSchema);
+  appDb.model('Product', ProductSchema);
 };
