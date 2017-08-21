@@ -4,32 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <link rel="stylesheet" href="libs/bootstrap/dist/bootstrap.min.css" />
-  <link rel="stylesheet" href="c_platform/css/index.client.style.css" />
-  <link rel="stylesheet" href="c_platform/css/home.client.style.css" />
-  <script src="libs/jquery/dist/jquery.js"></script>
+  <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../c_platform/css/index.client.style.css" />
+  <link rel="stylesheet" href="../c_platform/css/home.client.style.css" />
+  <script src="../libs/jquery/dist/jquery.js"></script>
   <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
 
 <body>
-  <div class="c-top-header-area">
-    <div class="c-center-area">
-      <a class="c-signin">登录</a>
-      <a class="c-signup">注册</a>
-    </div>
-  </div>
-  <div class="c-header-area">
-    <div class="c-center-area">
-      <a class="c-logo">潮钱logo</a>
-      <a class="c-logo">上海</a>
-      <a class="c-title">问答百科</a>
-      <a class="c-title">咨询策略</a>
-      <a class="c-title">信用卡</a>
-      <a class="c-title">线下贷款</a>
-      <a href="/page/product_list" class="c-title">信用贷款</a>
-      <a href="/" class="c-title">首页</a>
-    </div>
-  </div>
+  <% include ../../c_platform/views/header.client.view.html %>
+    
   <div class="c-banner-area">
     <div class="c-center-area">
       <div class="c-banner-left">
@@ -281,52 +265,9 @@
       </div>
     </div>
   </div>
-  <div class="c-footer-area">
-    <div class="c-center-area">
-      
-      <div class="c-footer-container">
-        <div class="c-footer-item">
-          <a class="footer-title">关于我们</a>
-          <a class="footer-sub-title">公司简介</a>
-          <a class="footer-sub-title">诚聘英才</a>
-          <a class="footer-sub-title">企业文化</a>
-        </div>
-      </div>
-       <div class="c-footer-container">
-        <div class="c-footer-item">
-          <a class="footer-title">关于我们</a>
-          <a class="footer-sub-title">公司简介</a>
-          <a class="footer-sub-title">诚聘英才</a>
-          <a class="footer-sub-title">企业文化</a>
-        </div>
-      </div>
-       <div class="c-footer-container">
-        <div class="c-footer-item">
-          <a class="footer-title">关于我们</a>
-          <a class="footer-sub-title">公司简介</a>
-          <a class="footer-sub-title">诚聘英才</a>
-          <a class="footer-sub-title">企业文化</a>
-        </div>
-      </div>
-       <div class="c-footer-container">
-        <div class="c-footer-item">
-          <a class="footer-title">关于我们</a>
-          <a class="footer-sub-title">公司简介</a>
-          <a class="footer-sub-title">诚聘英才</a>
-          <a class="footer-sub-title">企业文化</a>
-        </div>
-      </div>
-       <div class="c-footer-container">
-        <div class="c-footer-item">
-          <a class="footer-title">关于我们</a>
-          <a class="footer-sub-title">公司简介</a>
-          <a class="footer-sub-title">诚聘英才</a>
-          <a class="footer-sub-title">企业文化</a>
-        </div>
-      </div>
-    </div>
 
-  </div>
+  <% include ../../c_platform/views/footer.client.view.html %>
+  
 </body>
 
 </html>

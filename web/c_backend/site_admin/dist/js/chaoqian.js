@@ -407,10 +407,10 @@ cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper'
 'use strict';
 
 cSite.controller('FilterEditController', [
-    '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'ProductNetwork', 'CommonHelper',
-    function ($rootScope, $scope, $state, $stateParams, QiniuService, ProductNetwork, CommonHelper) {
-       
-    }]);
+  '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'ProductNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, QiniuService, ProductNetwork, CommonHelper) {
+
+  }]);
 
 /**
  * Created by lance on 2016/11/17.
@@ -418,10 +418,10 @@ cSite.controller('FilterEditController', [
 'use strict';
 
 cSite.controller('HomeController', [
-    '$rootScope', '$scope', '$state', '$stateParams',
-    function ($rootScope, $scope, $state, $stateParams) {
+  '$rootScope', '$scope', '$state', '$stateParams',
+  function ($rootScope, $scope, $state, $stateParams) {
 
-    }]);
+  }]);
 
 /**
  * Created by lance on 2016/11/17.
@@ -429,22 +429,22 @@ cSite.controller('HomeController', [
 'use strict';
 
 cSite.controller('IndexController', [
-    '$rootScope', '$scope', '$state', '$stateParams', '$mdSidenav',
-    function ($rootScope, $scope, $state, $stateParams, $mdSidenav) {
-        $scope.toggleLeft = buildToggler('left');
-        $scope.toggleRight = buildToggler('right');
+  '$rootScope', '$scope', '$state', '$stateParams', '$mdSidenav',
+  function ($rootScope, $scope, $state, $stateParams, $mdSidenav) {
+    $scope.toggleLeft = buildToggler('left');
+    $scope.toggleRight = buildToggler('right');
 
-        $scope.goNav = function (nav) {
-            $scope.toggleLeft();
-            $state.go(nav);
-        }
+    $scope.goNav = function (nav) {
+      $scope.toggleLeft();
+      $state.go(nav);
+    }
 
-        function buildToggler(componentId) {
-            return function () {
-                $mdSidenav(componentId).toggle();
-            };
-        }
-    }]);
+    function buildToggler(componentId) {
+      return function () {
+        $mdSidenav(componentId).toggle();
+      };
+    }
+  }]);
 
 /**
  * Created by lance on 2016/11/17.
@@ -481,7 +481,7 @@ cSite.controller('ProductDetailController', [
             ProductNetwork.updateProduct($scope, { product_info: $scope.product }).then(function (data) {
                 if (!data.err) {
                     CommonHelper.showConfirm($scope, null, '操作成功', function () {
-                        $state.go('product_detail', null, {reload: true});
+                        $state.go('product_detail', null, { reload: true });
                     }, null, null, event);
                 }
 
