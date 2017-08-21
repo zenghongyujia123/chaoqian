@@ -12,7 +12,7 @@ exports.getCookie = function (req) {
   if (req.headers.cookie) {
     req.headers.cookie.split(';').forEach(function (cookie) {
       var parts = cookie.split('=');
-      cookies[parts[0].trim()] = ( parts[1] || '' ).trim();
+      cookies[parts[0].trim()] = (parts[1] || '').trim();
     });
   }
 

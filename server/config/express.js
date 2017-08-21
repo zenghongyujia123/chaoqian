@@ -59,7 +59,7 @@ module.exports = function () {
     parameterLimit: 100000,
     extended: true
   }));
-  app.use(bodyParser.json({limit: '100mb'}));
+  app.use(bodyParser.json({ limit: '100mb' }));
   app.use(methodOverride());
 
 
@@ -87,8 +87,16 @@ module.exports = function () {
   app.use('/old_web', express.static(path.resolve('../z_web/www')));
   app.use('/', express.static(path.resolve('../web')));
   app.use('/page', express.static(path.resolve('../web')));
-  
+
   app.use(function (req, res, next) {
+    var cookies = {};
+    if (req.headers.cookie) {
+      req.headers.cookie.split(';').forEach(function (cookie) {
+        var parts = cookie.split('=');
+        cookies[parts[0].trim()] = decodeURI((parts[1] || '').trim());
+      });
+    }
+    req.cookies = cookies;
 
     // Environment dependent middleware
     if (process.env.NODE_ENV !== 'test') {
