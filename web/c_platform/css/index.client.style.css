@@ -76,6 +76,12 @@ select {
   line-height: 75px;
   color: #757575;
 }
+.c-header-area .c-logo-image {
+  float: left;
+  margin-right: 20px;
+  width: 90px;
+  margin-top: 16px;
+}
 .c-header-area .c-logo {
   float: left;
   margin-right: 20px;
