@@ -13,107 +13,113 @@
 
 <body>
   <% include ../../c_platform/views/header.client.view.html %>
-    
-  <div class="c-banner-area">
-    <div class="c-center-area">
-    </div>
-  </div>
 
-  <div class="c-filter-area">
-    <div class="c-center-area">
-      <div class="c-filter-container">
-        <div class="c-filter-area-header">
-          <span class="clear-filter">清除筛选条件</span>
+    <div class="c-banner-area">
+      <div class="c-center-area">
+      </div>
+    </div>
+
+    <div class="c-filter-area">
+      <div class="c-center-area">
+        <div class="c-filter-container">
+          <div class="c-filter-area-header">
+            <span class="clear-filter">清除筛选条件</span>
+          </div>
+          <div class="c-filter-area-body">
+            <div class="c-filter-row">
+              <span class="filter-title">借款期限</span>
+              <% for(var i=0;i<filters.loan_term.length;i++){%>
+                <div class="filter-item">
+                  <input name="借款期限" id="<%= filters.loan_term[i] %>" type="radio" />
+                  <label for="<%= (filters.loan_term[i]) %>">
+                    <%= filters.loan_term[i] %>
+                  </label>
+                </div>
+                <%}%>
+            </div>
+            <div class="c-filter-row">
+              <span class="filter-title">办理周期</span>
+              <% for(var i=0;i<filters.cycle_time.length;i++){%>
+                <div class="filter-item">
+                  <input name="办理周期" id="<%= filters.cycle_time[i] %>" type="radio" />
+                  <label for="<%= (filters.cycle_time[i]) %>">
+                    <%= filters.cycle_time[i] %>
+                  </label>
+                </div>
+                <%}%>
+            </div>
+            <div class="c-filter-row">
+              <span class="filter-title">个人资质</span>
+              <% for(var i=0;i<filters.personal_natural.length;i++){%>
+                <div class="filter-item">
+                  <input name="个人资质" id="<%= filters.personal_natural[i] %>" type="checkbox" />
+                  <label for="<%= (filters.personal_natural[i]) %>">
+                    <%= filters.personal_natural[i] %>
+                  </label>
+                </div>
+                <%}%>
+            </div>
+            <div class="c-filter-row">
+              <span class="filter-title">职业身份</span>
+              <% for(var i=0;i<filters.working_identity.length;i++){%>
+                <div class="filter-item">
+                  <input name="职业身份" id="<%= filters.working_identity[i] %>" type="radio" />
+                  <label for="<%= (filters.working_identity[i]) %>">
+                    <%= filters.working_identity[i] %>
+                  </label>
+                </div>
+                <%}%>
+            </div>
+            <div class="c-filter-row">
+              <span class="filter-title">贷款额度</span>
+              <% for(var i=0;i<filters.loan_limit.length;i++){%>
+                <div class="filter-item">
+                  <input name="贷款额度" id="<%= filters.loan_limit[i] %>" type="radio" />
+                  <label for="<%= (filters.loan_limit[i]) %>">
+                  <%= filters.loan_limit[i] %>
+                </label>
+                </div>
+                <%}%>
+            </div>
+            <div class="c-filter-row">
+              <span class="filter-title">智能排序</span>
+              <% for(var i=0;i<filters.brain_sort.length;i++){%>
+                <div class="filter-item">
+                  <input name="智能排序" id="<%= filters.brain_sort[i] %>" type="radio" />
+                  <label for="<%= (filters.brain_sort[i]) %>">
+                  <%= filters.brain_sort[i] %>
+                </label>
+                </div>
+                <%}%>
+
+            </div>
+          </div>
         </div>
-        <div class="c-filter-area-body">
-          <div class="c-filter-row">
-            <span class="filter-title">智能排序</span>
-            <span class="filter-item">
-            <input type="checkbox" /> 智能排序
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 距离最近
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 限度最高
-          </span>
-          </div>
-          <div class="c-filter-row">
-            <span class="filter-title">智能排序</span>
-            <span class="filter-item">
-            <input type="checkbox" /> 智能排序
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 距离最近
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 限度最高
-          </span>
-          </div>
-          <div class="c-filter-row">
-            <span class="filter-title">智能排序</span>
-            <span class="filter-item">
-            <input type="checkbox" /> 智能排序
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 距离最近
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 限度最高
-          </span>
-          </div>
-          <div class="c-filter-row">
-            <span class="filter-title">智能排序</span>
-            <span class="filter-item">
-            <input type="checkbox" /> 智能排序
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 距离最近
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 限度最高
-          </span>
-          </div>
-          <div class="c-filter-row">
-            <span class="filter-title">智能排序</span>
-            <span class="filter-item">
-            <input type="checkbox" /> 智能排序
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 距离最近
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 限度最高
-          </span>
-          </div>
-          <div class="c-filter-row">
-            <span class="filter-title">智能排序</span>
-            <span class="filter-item">
-            <input type="checkbox" /> 智能排序
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 距离最近
-          </span>
-            <span class="filter-item"><input type="checkbox" /> 限度最高
-          </span>
-          </div>
+        <div class="c-filter-area-footer">
+          <button class="c-filter-btn">立即筛选</button>
         </div>
-
       </div>
-      <div class="c-filter-area-footer">
-        <button class="c-filter-btn">立即筛选</button>
+
+      <div class="c-center-area c-list-area">
+        <div class="c-list-header">
+          <div class="c-col-item">产品名称</div>
+          <div class="c-col-item">贷款额度</div>
+          <div class="c-col-item width180">产品描述</div>
+          <div class="c-col-item width180">参考每日费用</div>
+          <div class="c-col-item width80">最长下款时间</div>
+          <div class="c-col-item width60">操作</div>
+        </div>
+      </div>
+
+      <div class="c-list-footer-area">
+        <button class="list-footer-btn">上一页</button>
+        <button class="list-footer-btn">下一页</button>
       </div>
     </div>
 
-    <div class="c-center-area c-list-area">
-      <div class="c-list-header">
-        <div class="c-col-item">产品名称</div>
-        <div class="c-col-item">贷款额度</div>
-        <div class="c-col-item width180">产品描述</div>
-        <div class="c-col-item width180">参考每日费用</div>
-        <div class="c-col-item width80">最长下款时间</div>
-        <div class="c-col-item width60">操作</div>
-      </div>
-    </div>
 
-    <div class="c-list-footer-area">
-      <button class="list-footer-btn">上一页</button>
-      <button class="list-footer-btn">下一页</button>
-    </div>
-  </div>
+    <% include ../../c_platform/views/footer.client.view.html %>
 
-
-  <% include ../../c_platform/views/footer.client.view.html %>
-  
 </body>
 
 </html>

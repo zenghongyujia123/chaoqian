@@ -455,7 +455,7 @@ cSite.controller('FilterEditController', [
         working_identity: splitFilters($scope.filter_strings.working_identity_string),
         personal_natural: splitFilters($scope.filter_strings.personal_natural_string),
         cycle_time: splitFilters($scope.filter_strings.cycle_time_string),
-        loan_ter: splitFilters($scope.filter_strings.loan_term_string)
+        loan_term: splitFilters($scope.filter_strings.loan_term_string)
       };
 
       ProductNetwork.udpateProductFilter($scope, { filter_info: filter_info }).then(function (data) {

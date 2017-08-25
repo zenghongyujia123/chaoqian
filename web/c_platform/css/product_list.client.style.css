@@ -27,14 +27,15 @@
   display: inline-block;
 }
 .c-filter-area .c-center-area .c-filter-container .c-filter-area-body .c-filter-row .filter-title {
-  display: inline-block;
   width: 120px;
   font-size: 14px;
+  float: left;
 }
 .c-filter-area .c-center-area .c-filter-container .c-filter-area-body .c-filter-row .filter-item {
   font-size: 12px;
-  display: inline-block;
-  width: 130px;
+  width: 120px;
+  float: left;
+  cursor: pointer;
 }
 .c-filter-area .c-center-area .c-filter-area-footer {
   line-height: 70px;

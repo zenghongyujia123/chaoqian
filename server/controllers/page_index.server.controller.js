@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var productLogic = require('../logics/product');
+var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
 var cookieLib = require('../../libraries/cookie');
 exports.index = function (req, res, next) {
@@ -14,8 +15,14 @@ exports.index = function (req, res, next) {
 };
 
 exports.product_list = function (req, res, next) {
-  var filepath = path.join(__dirname, '../../web/c_platform/views/product_list.client.view.html');
-  return res.render(filepath, { city: req.cookies.city || '' });
+  productFilterloigc.getFilter(function (err, filters) {
+    if (err) {
+      return next(next);
+    }
+    var filepath = path.join(__dirname, '../../web/c_platform/views/product_list.client.view.html');
+    console.log(filters);
+    return res.render(filepath, { city: req.cookies.city || '', filters: filters });
+  });
 };
 
 exports.city_select = function (req, res, next) {
