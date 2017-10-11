@@ -1,0 +1,100 @@
+body {
+  background-color: #f2f2f2;
+  -webkit-overflow-scrolling: touch;
+}
+.page-result-header {
+  background-color: #1b1b1e;
+  overflow: hidden;
+  padding: 20px 0px;
+}
+.page-result-header .header-left,
+.page-result-header .header-right {
+  text-align: center;
+  width: 50%;
+  float: left;
+}
+.page-result-header .header-left .title,
+.page-result-header .header-right .title {
+  color: #a4a4a7;
+  line-height: 30px;
+}
+.page-result-header .header-left .value,
+.page-result-header .header-right .value {
+  line-height: 40px;
+  font-size: 25px;
+  color: #ffd481;
+}
+.page-result-header .header-right {
+  border-left: 1px solid #5e5e61;
+}
+.page-result-banner {
+  line-height: 40px;
+  text-align: center;
+  background-color: #343434;
+  color: #ffd481;
+}
+.page-result-center {
+  margin-bottom: 15px;
+  padding: 0px 15px 15px 15px;
+  background-color: white;
+}
+.page-result-center .title {
+  line-height: 40px;
+}
+.page-result-center .center-list {
+  overflow: hidden;
+}
+.page-result-center .center-list .center-list-item {
+  display: block;
+  float: left;
+  width: 25%;
+  text-align: center;
+  padding-top: 10px;
+}
+.page-result-center .center-list .center-list-item .icon {
+  border-radius: 10px;
+  width: 60px;
+  height: 60px;
+}
+.page-result-center .center-list .center-list-item .name {
+  line-height: 30px;
+}
+.page-result-panel {
+  padding: 0px 15px 15px 15px;
+  background-color: white;
+  border-bottom: 1px solid #cccccc;
+}
+.page-result-panel .panel-title {
+  line-height: 40px;
+}
+.page-result-panel .panel-content {
+  padding-left: 20px;
+}
+.page-result-panel .panel-content .text {
+  color: #999;
+  line-height: 20px;
+}
+.page-result-list {
+  background-color: white;
+}
+.page-result-list .result-list-item {
+  height: 110px;
+  position: relative;
+  padding-top: 15px;
+  padding-left: 170px;
+  border-bottom: 1px solid #cccccc;
+}
+.page-result-list .result-list-item .card-item {
+  width: 140px;
+  height: 80px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+.page-result-list .result-list-item .item-title {
+  line-height: 25px;
+}
+.page-result-list .result-list-item .item-content {
+  line-height: 20px;
+  color: #999;
+}
