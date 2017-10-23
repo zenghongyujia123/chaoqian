@@ -3,12 +3,13 @@
  */
 
 var index = require('../controllers/page_wechat');
+var userFilter = require('../filters/user');
 
 
 module.exports = function (app) {
   app.route('/page_wechat/result').get(index.result);
   app.route('/page_wechat/product_detail').get(index.product_detail);
-  app.route('/page_wechat/question').get(index.question);
+  app.route('/page_wechat/question').get(userFilter.requireUser, index.question);
   app.route('/page_wechat/home').get(index.home);
   app.route('/page_wechat/me').get(index.me);
   app.route('/page_wechat/signin').get(index.signin);

@@ -15,7 +15,11 @@ exports.home = function (req, res, next) {
 
 exports.result = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/result.client.view.html');
-  return res.render(filepath, { city: req.cookies.city || '' });
+  return res.render(filepath, {
+    city: req.cookies.city || '',
+    text: req.query.text || '',
+    price: req.query.price || '',
+  });
 };
 
 exports.product_detail = function (req, res, next) {

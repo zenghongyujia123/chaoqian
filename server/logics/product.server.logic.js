@@ -39,6 +39,8 @@ exports.updateProduct = function (productInfo, callback) {
     product.apply_strategy = productInfo.apply_strategy;
     product.organization_info = productInfo.organization_info;
     product.organization_url = productInfo.organization_url;
+    product.risk_codes = productInfo.risk_codes;
+    product.wechat_detail_info = productInfo.wechat_detail_info;
 
     product.save(function (err, savedProduct) {
       if (err) {

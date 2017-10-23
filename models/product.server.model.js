@@ -85,6 +85,18 @@ module.exports = function (appDb) {
     //机构信息
     organization_info: {
       type: Schema.Types.Mixed
+    },
+    organization_url: {
+      type: String,
+      default: ''
+    },
+    wechat_detail_info: {
+      type: String,
+      default: ''
+    },
+    risk_codes: {
+      type: String,
+      default: ''
     }
   });
 

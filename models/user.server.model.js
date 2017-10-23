@@ -40,7 +40,6 @@ module.exports = function (appDb) {
     country: {
       type: String
     },
-
     description: {//描述
       type: String
     },
