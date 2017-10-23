@@ -14,17 +14,114 @@ exports.home = function (req, res, next) {
 };
 
 exports.result = function (req, res, next) {
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/result.client.view.html');
-  return res.render(filepath, {
-    city: req.cookies.city || '',
-    text: req.query.text || '',
-    price: req.query.price || '',
+
+
+  var xinyongs = [
+    {
+      text: '差',
+      value: '2500元',
+      codes: [
+        '3113', '3114', '3123', '3124', '3133', '3134', '3143', '3144',
+        '3213', '3214', '3313', '3314', '3413', '3414', '4114', '4123',
+        '4124', '4133', '4134', '4143', '4144', '4213', '4214', '4313',
+        '4314', '4413', '4414', '4113'
+      ],
+      risk_codes: [
+        'G2', 'M1'
+      ]
+    },
+    {
+      text: '一般',
+      value: '5000元',
+      codes: [
+        '3233', '3234', '3243', '3244', '3323', '3324', '3343', '3344', '3423',
+        '3424', '4233', '4234', '4243', '4244', '4323', '4324', '4333', '4334',
+        '4343', '4423', '4424'
+      ],
+      risk_codes: [
+        'Z2', 'Z3', 'G1', 'G2'
+      ]
+    },
+
+    {
+      text: '差',
+      value: '3500元',
+      codes: [
+        '3223', '3224', '4223', '4224'
+      ],
+      risk_codes: [
+        'G2', 'M1'
+      ]
+    },
+
+    {
+      text: '差',
+      value: '1000元',
+      codes: [
+        '3333', '3334'
+      ],
+      risk_codes: [
+        'M2', 'M3'
+      ]
+    },
+
+    {
+      text: '较好',
+      value: '7000元',
+      codes: [
+        '3433', '3443', '4344', '4433'
+      ],
+      risk_codes: [
+        'Z2', 'Z3', 'G1', 'G2', 'M1', 'M2', 'M3', 'GQ'
+      ]
+    },
+
+    {
+      text: '很好',
+      value: '10000元',
+      codes: [
+        '3434', '4434'
+      ],
+      risk_codes: [
+        'Z1', 'Z2', 'Z3', 'G1', 'G2', 'M1', 'M2', 'M3', 'GQ'
+      ]
+    },
+    {
+      text: '非常好',
+      value: '20000元',
+      codes: [
+        '3444', '4443', '4444'
+      ],
+      risk_codes: [
+        'Y1', 'Y2', 'Y3', 'Z1', 'Z2', 'Z3', 'G1', 'G2', 'M1', 'M2', 'M3', 'GQ'
+      ]
+    }
+  ];
+
+
+  var result = null;
+  xinyongs.forEach(function (item) {
+    if (item.codes.indexOf(req.query.code) >= 0) {
+      result = item;
+    }
+  });
+
+
+  productLogic.productsByRiskCode(result.risk_codes, function (err, products) {
+    var filepath = path.join(__dirname, '../../web/c_wechat/views/result.client.view.html');
+    return res.render(filepath, {
+      city: req.cookies.city || '',
+      text: result.text || '',
+      price: result.value || '',
+      products: products || []
+    });
   });
 };
 
 exports.product_detail = function (req, res, next) {
+  var product = req.product || {};
   var filepath = path.join(__dirname, '../../web/c_wechat/views/product_detail.client.view.html');
-  return res.render(filepath, { city: req.cookies.city });
+  return res.render(filepath, { city: req.cookies.city, product: product });
 };
 
 exports.question = function (req, res, next) {

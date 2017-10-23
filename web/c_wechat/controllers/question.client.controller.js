@@ -22,7 +22,6 @@ $(function () {
       }
     }
 
-
     var doc = {
       e: {
         'A': '4',
@@ -50,82 +49,10 @@ $(function () {
       }
     }
 
-
-
-    var xinyongs = [
-      {
-        text: '差',
-        value: '2500元',
-        codes: [
-          '3113', '3114', '3123', '3124', '3133', '3134', '3143', '3144',
-          '3213', '3214', '3313', '3314', '3413', '3414', '4114', '4123',
-          '4124', '4133', '4134', '4143', '4144', '4213', '4214', '4313',
-          '4314', '4413', '4414', '4113'
-        ]
-      },
-      {
-        text: '一般',
-        value: '5000元',
-        codes: [
-          '3233', '3234', '3243', '3244', '3323', '3324', '3343', '3344', '3423',
-          '3424', '4233', '4234', '4243', '4244', '4323', '4324', '4333', '4334',
-          '4343', '4423', '4424'
-        ]
-      },
-
-      {
-        text: '差',
-        value: '3500元',
-        codes: [
-          '3223', '3224', '4223', '4224'
-        ]
-      },
-
-      {
-        text: '差',
-        value: '1000元',
-        codes: [
-          '3333', '3334'
-        ]
-      },
-
-      {
-        text: '较好',
-        value: '7000元',
-        codes: [
-          '3433', '3443', '4344', '4433'
-        ]
-      },
-
-      {
-        text: '很好',
-        value: '10000元',
-        codes: [
-          '3434', '4434'
-        ]
-      },
-
-      {
-        text: '非常好',
-        value: '20000元',
-        codes: [
-          '3444', '4443', '4444'
-        ]
-      }
-    ];
-
     var code = '' + doc.e[e] + doc.f[f] + doc.g[g] + doc.h[h];
 
-    var result = null;
-    xinyongs.forEach(function (item) {
-      if (item.codes.indexOf(code) >= 0) {
-        result = item;
-      }
-    });
-
     console.log(code);
-    console.log(result);
-    window.location = '/page_wechat/result?text=' + result.text + '&price=' + result.value;
+    window.location = '/page_wechat/result?code=' + code;
     //
   }
 });

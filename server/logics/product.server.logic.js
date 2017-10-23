@@ -68,4 +68,14 @@ exports.productDetail = function (productId, callback) {
     }
     return callback(null, product);
   });
-};      
+};
+
+exports.productsByRiskCode = function (codes, callback) {
+  codes = codes || [];
+  Product.find({ risk_codes: { $in: codes } }).limit(8).exec(function (err, products) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, products)
+  })
+}
