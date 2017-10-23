@@ -1,6 +1,7 @@
 body {
   background-color: #f2f2f2;
   -webkit-overflow-scrolling: touch;
+  font-size: 14px;
 }
 
 .page-result-header {
@@ -18,7 +19,7 @@ body {
     }
     .value {
       line-height: 40px;
-      font-size: 25px;
+      font-size: 24px;
       color: #ffd481;
     }
   }
@@ -29,6 +30,7 @@ body {
 
 .page-result-banner {
   line-height: 40px;
+  font-size: 12px;
   text-align: center;
   background-color: #343434;
   color: #ffd481;
@@ -51,8 +53,8 @@ body {
       padding-top: 10px;
       .icon {
         border-radius: 10px;
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
       }
       .name {
         line-height: 30px;
@@ -66,13 +68,23 @@ body {
   background-color: white;
   border-bottom: 1px solid #cccccc;
   .panel-title {
+    font-size: 14px;
     line-height: 40px;
   }
   .panel-content {
     padding-left: 20px;
-    .icon {}
+    position: relative;
+    .icon {
+      background-color: #ffd481;
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      left: 0px;
+      top: 6px;
+      border-radius: 90px;
+    }
     .text {
-      color: #999;
+      color: #666;
       line-height: 20px;
     }
   }
@@ -81,14 +93,14 @@ body {
 .page-result-list {
   background-color: white;
   .result-list-item {
-    height: 110px;
+    height: 120px;
     position: relative;
     padding-top: 15px;
-    padding-left: 170px;
+    padding-left: 200px;
     border-bottom: 1px solid #cccccc;
     .card-item {
-      width: 140px;
-      height: 80px;
+      width: 170px;
+      height: 90px;
       position: absolute;
       top: 15px;
       left: 15px;
@@ -99,6 +111,7 @@ body {
     .item-content {
       line-height: 20px;
       color: #999;
+      position: relative;
     }
   }
 }

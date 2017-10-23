@@ -9,7 +9,7 @@ html .page-footer,
 body .page-footer {
   border-top: 1px solid #cccccc;
   position: absolute;
-  height: 60px;
+  height: 50px;
   width: 100%;
   left: 0px;
   bottom: 0px;
@@ -26,11 +26,11 @@ body .page-footer .footer-item {
 html .page-footer .footer-item .icon,
 body .page-footer .footer-item .icon {
   margin: 5px;
-  width: 30px;
-  height: 30px;
+  width: 24px;
 }
 html .page-footer .footer-item .title,
 body .page-footer .footer-item .title {
+  font-size: 10px;
   color: #979797;
 }
 html .page-footer .footer-item.select .title,
