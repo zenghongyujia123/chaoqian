@@ -13,69 +13,98 @@
 </head>
 
 <body>
-  <div class="detail-header">
-    <img src="" class="icon"></img>
-    <div class="title">
-      快贷 芝麻分贷
+  <div class="product-detail-page">
+    <div class="detail-header">
+      <img src="<%= product.logo %>" class="photo">
+
+      </img>
+      <div class="header-content">
+        <div class="title">
+          <%= product.name||'--' %>
+        </div>
+        <div class="content">
+          <div class="content">
+            <div class="key">
+              <%= product.max_limit||'--' %>
+            </div>
+            <div class="value">最高额度</div>
+          </div>
+          <div class="border"></div>
+          <div class="content">
+            <div class="key">
+              <%= product.apply_people_count||'--' %>人</div>
+            <div class="value">成功借款</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="number">1421321人放款成功</div>
+    <div class="detail-input">
+      <div class="input-row">
+        <div class="title">金额</div>
+        <input type="number" class="value" placeholder="请输入金额">
+        <span style="color:#999;">元</span>
+        </input>
+      </div>
+      <div class="input-row">
+        <div class="title">期限</div>
+        <select class="value">
+          <option>3个月</option>
+          <option>6个月</option>
+          <option>9个月</option>
+          <option>一年</option>
+        </select>
+      </div>
+    </div>
+    <div class="detail-info">
+      <div class="info-item">
+        <div class="title">
+          <%= product.longest_time||'--' %>
+            <span>天</span>
+        </div>
+        <div class="value">最快放款时间</div>
+      </div>
+      <div class="info-item">
+        <div class="title">398.00
+          <span>元</span>
+        </div>
+        <div class="value">预计每月还款</div>
+      </div>
+      <div class="info-item">
+        <div class="title">0.6
+          <span>%</span>
+        </div>
+        <div class="value">参考月利率</div>
+      </div>
+    </div>
+    <div class="detail-apply">
+      <div class="apply-item">
+        <div class="title">
+          所需材料
+        </div>
+        <div class="value">
+          <div class="dot"></div>身份证</div>
+        <div class="value">
+          <div class="dot"></div>银行卡</div>
+        <div class="value">
+          <div class="dot"></div>运营商授权</div>
+        <div class="value">
+          <div class="dot"></div>芝麻信用</div>
+      </div>
+      <div class="apply-item">
+        <div class="title">
+          申请条件
+        </div>
+        <div class="value">
+          <div class="dot"></div>年龄在18-60周岁</div>
+        <div class="value">
+          <div class="dot"></div>手机号实名制</div>
+        <div class="value">
+          <div class="dot"></div>放款时绑定银行卡</div>
+      </div>
+    </div>
   </div>
-  <div class="detail-center">
-    <div class="center-title">
-      <div class="left">
-        <span class="key">金额</span>
-        <input class="value" value="1000元"></input>
-      </div>
-      <div class="right">
-        <span class="key">期限</span>
-        <input class="value" value="6个月"></input>
-      </div>
-    </div>
-    <div class="content">
-      <div class="left">
-        <div class="title">1391元</div>
-        <div class="text">预估每月还款</div>
-      </div>
-      <div class="center">
-        <div class="title">0.6%</div>
-        <div class="text">参考月利率</div>
-      </div>
-      <div class="right">
-        <div class="title">24小时</div>
-        <div class="text">最快放款时间</div>
-      </div>
-    </div>
-  </div>
-  <div class="detail-body">
-    <div class="title">
-      所需材料
-    </div>
-    <div class="list">
-      <div class="item">
-        <div class="icon">icon</div>
-        <div class="text">身份证</div>
-      </div>
-      <div class="item">
-        <div class="icon">icon</div>
-        <div class="text">银行卡</div>
-      </div>
-      <div class="item">
-        <div class="icon">icon</div>
-        <div class="text">运营商权限</div>
-      </div>
-      <div class="item">
-        <div class="icon">icon</div>
-        <div class="text">芝麻信用</div>
-      </div>
-    </div>
-  </div>
-  <div class="detail-condition">
-    <div class="title">申请条件</div>
-    <div class="content">1、年龄在16-60岁</div>
-    <div class="content">2、手机号实名制</div>
-    <div class="content">3、放款时绑定银行卡</div>
-    <div class="content">备注：客服电话为400-757-1310</div>
-  </div>
+  <div class="customer-number">
+    <div class="dot"></div>客服电话 400-3212-1231</div>
   <div class="detail-footer">
     <a href="<%= product.organization_url %>" class="footer-btn">确认申请</a>
   </div>

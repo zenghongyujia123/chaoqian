@@ -1,114 +1,164 @@
 body {
   background-color: #f2f2f2;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .detail-header {
   background-color: white;
-  margin: 10px 0px;
-  padding-left: 90px;
-  padding-top: 15px;
   position: relative;
-  height: 90px;
-  .icon {
-    background-color: green;
-    width: 60px;
-    height: 60px;
+  height: 100px;
+  padding: 15px 15px 15px 80px;
+  margin: 10px 0px;
+  .photo {
+    width: 50px;
+    height: 50px;
     position: absolute;
     left: 15px;
-    top: 15px;
+    right: 15px;
+    border-radius: 5px;
   }
-  .title {
-    font-size: 18px;
-    line-height: 30px;
-  }
-  .number {
-    color: #999;
+  .header-content {
+    .title {}
+    .content {
+      display: flex;
+      flex-direction: row;
+      .border {
+        width: 1px;
+        height: 30px;
+        border-left: 1px solid #979797;
+        margin-top: 15px;
+      }
+      .content {
+        width: 50%;
+        flex-grow: 1;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        padding-top: 6px;
+        .key {
+          margin-bottom: 4px;
+        }
+        .value {
+          font-size: 12px;
+          color: #999;
+        }
+      }
+    }
   }
 }
 
-.detail-center {
-  margin-bottom: 15px;
+.detail-input {
   background-color: white;
-  .center-title {
-    padding: 15px 0px;
-    border-bottom: 1px solid #eeeeee;
-    overflow: hidden;
-    .left,
-    .right {
-      position: relative;
-      padding-left: 40px;
-      float: left;
-      .key {
-        position: absolute;
-        left: 15px;
-        top: 4px;
-      }
-      .value {}
+  padding-left: 10px;
+  .input-row {
+    display: flex;
+    flex-direction: row;
+    line-height: 50px;
+    padding-right: 15px;
+    &:last-child {
+      border-top: 1px solid #eee;
+      padding-right: 8px;
     }
-  }
-  .content {
-    overflow: hidden;
-    .left,
-    .center,
-    .right {
-      text-align: center;
-      float: left;
-      padding: 15px 0px;
-      .title {
-        font-size: 16px;
-      }
-      .text {
-        line-height: 20px;
-        font-size: 12px;
+    .title {}
+    .value {
+      flex-grow: 1;
+      text-align: right;
+      border: 0px;
+      span {
         color: #999;
       }
     }
-    .left {
-      width: 33%;
+    input {
+      padding: 0px;
+      color: #3E82F7;
+      padding-right: 10px;
     }
-    .center {
-      width: 34%;
-    }
-    .right {
-      width: 33%;
-    }
-  }
-}
-
-.detail-body {
-  background-color: white;
-  padding: 15px;
-  border-bottom: 1px solid #eeeeee;
-  .title {
-    line-height: 30px;
-    color: #999;
-  }
-  .list {
-    overflow: hidden;
-    .item {
-      float: left;
-      width: 50%;
-      line-height: 30px;
-      .icon {
-        display: inline-block;
-      }
-      .text {
-        display: inline-block;
-      }
+    select {
+      color: #3E82F7;
+      border: solid 1px #000;
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      direction: rtl;
     }
   }
 }
 
-.detail-condition {
+.detail-info {
   background-color: white;
-  padding: 15px;
-  .title {
-    line-height: 30px;
-    color: #999;
+  margin-top: 10px;
+  padding: 23px 0px;
+  display: flex;
+  flex-direction: row;
+  .info-item {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    .title {
+      font-size: 20px;
+      span {
+        font-size: 12px;
+      }
+    }
+    .value {
+      font-size: 12px;
+      color: #9B9B9B;
+    }
   }
-  .content {
-    line-height: 30px;
+}
+
+.detail-apply {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-top: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  .apply-item {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 10px 35px;
+    font-size: 14px;
+    width: 50%;
+    &:first-child {
+      border-right: 1px solid #ccc;
+    }
+    .title {
+      margin-bottom: 10px;
+    }
+    .value {
+      line-height: 25px;
+      color: #333333;
+      position: relative;
+      .dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: #FFD591;
+        border-radius: 90px;
+        position: absolute;
+        left: -17px;
+        top: 8px;
+      }
+    }
+  }
+}
+
+.customer-number {
+  font-size: 12px;
+  padding: 10px 35px;
+  position: relative;
+  .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #F3455A;
+    border-radius: 90px;
+    position: absolute;
+    left: 18px;
+    top: 14px;
   }
 }
 
