@@ -8,6 +8,9 @@ a {
   text-decoration: none;
   color: #333;
 }
+.page-card-list {
+  background-color: white;
+}
 .page-card-list .list-banner {
   height: 140px;
   background-color: blue;
@@ -21,15 +24,14 @@ a {
   margin-left: 15px;
   border-bottom: 1px solid #ccc;
   position: relative;
-  padding-left: 200px;
-  padding: 13px 15px 13px 200px;
+  padding: 13px 15px 13px 185px;
   height: 116px;
 }
 .page-card-list .list .list-item .photo {
   width: 170px;
   height: 90px;
   position: absolute;
-  left: 15px;
+  left: 0px;
   top: 13px;
   background-color: black;
 }
