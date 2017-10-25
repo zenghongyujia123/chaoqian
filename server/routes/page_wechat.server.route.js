@@ -19,4 +19,8 @@ module.exports = function (app) {
   app.route('/page_wechat/me_business').get(index.me_business);
   app.route('/page_wechat/me_vip').get(index.me_vip);
   app.route('/page_wechat/apply_third').get(index.apply_third);
+  app.route('/page_wechat/card_home').get(index.card_home);
+  app.route('/page_wechat/card_detail').get(index.card_detail);
+  app.route('/page_wechat/card_list').get(index.card_list);
+  app.route('/page_wechat/card_progress').get(index.card_progress);
 };

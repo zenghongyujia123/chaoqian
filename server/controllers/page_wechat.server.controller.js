@@ -164,3 +164,24 @@ exports.apply_third = function (req, res, next) {
   // return res.render(filepath, { city: req.cookies.city });
   return res.redirect('https://www.baidu.com');
 };
+
+
+exports.card_list = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/card_list.client.view.html');
+  return res.render(filepath, { city: req.cookies.city });
+};
+
+exports.card_detail = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/card_detail.client.view.html');
+  return res.render(filepath, { city: req.cookies.city });
+};
+
+exports.card_home = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/card_home.client.view.html');
+  return res.render(filepath, { city: req.cookies.city });
+};
+
+exports.card_progress = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/card_progress.client.view.html');
+  return res.render(filepath, { city: req.cookies.city });
+};
