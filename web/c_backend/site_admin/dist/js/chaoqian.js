@@ -32,6 +32,16 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',
       controller: 'ProductDetailController'
     })
+    .state('credit_people_list', {
+      url: '/credit_people_list',
+      templateUrl: '/c_backend/site_admin/templates/credit_people_list.client.view.html',
+      controller: 'CreditPeopleListController'
+    })
+    .state('credit_people_detail', {
+      url: '/credit_people_detail/:credit_people_id',
+      templateUrl: '/c_backend/site_admin/templates/credit_people_detail.client.view.html',
+      controller: 'CreditPeopleDetailController'
+    })
     .state('filter_edit', {
       url: '/filter_edit',
       templateUrl: '/c_backend/site_admin/templates/filter_edit.client.view.html',
@@ -84,6 +94,23 @@ cSite.constant('AddressConstant', {
   uploadImageUrl: 'https://up.qbox.me/putb64/-1',
   qiniuUploadFileUrl: 'https://up.qbox.me'
 });
+
+'use strict';
+cSite.factory('CreditPeopleNetwork',
+  ['Http', 'CommonHelper',
+    function (Http, CommonHelper) {
+      return {
+        updateCreditPeople: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/credit_people/updateCreditPeople', params);
+        },
+        creditPeopleList: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/credit_people/creditPeopleList', params);
+        },
+        creditPeopleDetail: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/credit_people/creditPeopleDetail', params);
+        }
+      };
+    }]);
 
 'use strict';
 
@@ -406,6 +433,86 @@ cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper'
     }
   };
 }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('CreditPeopleDetailController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'CreditPeopleNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, QiniuService, CreditPeopleNetwork, CommonHelper) {
+    var qiniu = QiniuService.createUploader('qiniu-upload-test-button', function (info) {
+      $scope.credit_people.photo = QiniuService.getQiniuImageSrc(info.key);
+      console.log('upload successs : ---- ', info);
+    });
+
+    $scope.credit_people = {
+      _id: $stateParams.credit_people_id || '',
+      name: '',
+      photo: '',
+      tags: '',
+      job_start_time: '',
+      company_type: '',
+      personal_description: '',
+      business_description: '',
+    };
+
+    $scope.updateCreditPeople = function (event) {
+      CreditPeopleNetwork.updateCreditPeople($scope, { credit_people_info: $scope.credit_people }).then(function (data) {
+        if (!data.err) {
+          CommonHelper.showConfirm($scope, null, '操作成功', function () {
+            $state.go('credit_people_detail', null, { reload: true });
+          }, null, null, event);
+        }
+
+
+        console.log(data);
+      }, function (err) {
+        console.log(err);
+      });;
+    }
+
+    function creditPeopleDetail() {
+      if ($scope.credit_people._id) {
+        CreditPeopleNetwork.creditPeopleDetail($scope, { credit_people_id: $scope.credit_people._id }).then(function (data) {
+          console.log(data);
+          if (!data.err) {
+            $scope.credit_people = data;
+          }
+        }, function (err) {
+          console.log(err);
+        });
+      }
+    }
+    creditPeopleDetail();
+  }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('CreditPeopleListController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'CreditPeopleNetwork',
+  function ($rootScope, $scope, $state, $stateParams, CreditPeopleNetwork) {
+    $scope.goDetail = function (id) {
+      $state.go('credit_people_detail', { credit_people_id: id || '' });
+    }
+    $scope.credit_people_list = [];
+    $scope.creditPeopleList = function () {
+      CreditPeopleNetwork.creditPeopleList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.credit_people_list = data;
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.creditPeopleList();
+  }]);
 
 /**
  * Created by lance on 2016/11/17.

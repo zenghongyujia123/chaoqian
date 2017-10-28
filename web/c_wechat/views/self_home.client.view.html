@@ -26,16 +26,6 @@
       <div class="filter-select">10万元以上</div>
     </div>
     <div class="list">
-
-      <!-- <% for(var i=0; i<products.length; i++) {%>
-
-        <a class="center-list-item" href="/page_wechat/product_detail?product_id=<%= products[i]._id %>">
-          <img src="<%= products[i].logo %>" class="icon"></img>
-          <div class="name">
-            <%= products[i].name %>
-          </div>
-        </a>
-        <% } %> -->
       <% for(var i=0; i<products.length; i++) {%>
         <a href="/page_wechat/product_detail?product_id=<%= products[i]._id %>" class="list-item">
           <img class="photo" src="<%= products[i].logo %>" />

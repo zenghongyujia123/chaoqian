@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var productLogic = require('../logics/product');
+var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
 var cookieLib = require('../../libraries/cookie');
@@ -14,8 +15,6 @@ exports.home = function (req, res, next) {
 };
 
 exports.result = function (req, res, next) {
-
-
   var xinyongs = [
     {
       text: '差',
@@ -197,11 +196,17 @@ exports.self_home = function (req, res, next) {
 };
 
 exports.self_local = function (req, res, next) {
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/self_local.client.view.html');
-  return res.render(filepath, { city: req.cookies.city });
+  creditPeopleLogic.creditPeopleList(function (err, credit_people_list) {
+    var filepath = path.join(__dirname, '../../web/c_wechat/views/self_local.client.view.html');
+    return res.render(filepath, {
+      city: req.cookies.city || '',
+      credit_people_list: credit_people_list || []
+    });
+  });
 };
 
 exports.credit_people_detail = function (req, res, next) {
+  var credit_people = req.credit_people;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/credit_people_detail.client.view.html');
-  return res.render(filepath, { city: req.cookies.city });
+  return res.render(filepath, { city: req.cookies.city, credit_people: credit_people });
 };

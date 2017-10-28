@@ -4,6 +4,8 @@
 
 var index = require('../controllers/page_wechat');
 var userFilter = require('../filters/user');
+var creditPeopleFilter = require('../filters/credit_people');
+
 var productFilter = require('../filters/product');
 
 
@@ -25,5 +27,5 @@ module.exports = function (app) {
   app.route('/page_wechat/card_progress').get(index.card_progress);
   app.route('/page_wechat/self_home').get(index.self_home);
   app.route('/page_wechat/self_local').get(index.self_local);
-  app.route('/page_wechat/credit_people_detail').get(index.credit_people_detail);
+  app.route('/page_wechat/credit_people_detail').get(creditPeopleFilter.requireCreditPeople, index.credit_people_detail);
 };

@@ -5,4 +5,5 @@ module.exports = function (appDb) {
   require('./user')(appDb);
   require('./product')(appDb);
   require('./product_filter')(appDb);
+  require('./credit_people')(appDb);
 };

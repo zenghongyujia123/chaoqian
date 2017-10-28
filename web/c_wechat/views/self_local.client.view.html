@@ -27,111 +27,33 @@
       <dic class="filter-select">职能筛选</dic>
     </div>
     <div class="list">
-      <a href="/page_wechat/credit_people_detail" class="list-item">
-        <div class="photo">
-        </div>
-        <div class="title">随意贷
-          <span>小袋公司</span>
-        </div>
-        <div class="content">
-          我叫叶英，可以叫我印子，性格比较开朗，欢迎来…
-        </div>
-        <div class="tags">
-          <span class="tag-item">信用贷</span>
-          <span class="tag-item">社保贷</span>
-          <span class="tag-item">工薪贷</span>
-        </div>
-      </a>
-      <a href="/page_wechat/credit_people_detail" class="list-item">
-        <div class="photo">
-        </div>
-        <div class="title">随意贷
-          <span>小袋公司</span>
-        </div>
-        <div class="content">
-          我叫叶英，可以叫我印子，性格比较开朗，欢迎来…
-        </div>
-        <div class="tags">
-          <span class="tag-item">信用贷</span>
-          <span class="tag-item">社保贷</span>
-          <span class="tag-item">工薪贷</span>
-        </div>
-      </a>
-      <a href="/page_wechat/credit_people_detail" class="list-item">
-        <div class="photo">
-        </div>
-        <div class="title">随意贷
-          <span>小袋公司</span>
-        </div>
-        <div class="content">
-          我叫叶英，可以叫我印子，性格比较开朗，欢迎来…
-        </div>
-        <div class="tags">
-          <span class="tag-item">信用贷</span>
-          <span class="tag-item">社保贷</span>
-          <span class="tag-item">工薪贷</span>
-        </div>
-      </a>
-      <a href="/page_wechat/credit_people_detail" class="list-item">
-        <div class="photo">
-        </div>
-        <div class="title">随意贷
-          <span>小袋公司</span>
-        </div>
-        <div class="content">
-          我叫叶英，可以叫我印子，性格比较开朗，欢迎来…
-        </div>
-        <div class="tags">
-          <span class="tag-item">信用贷</span>
-          <span class="tag-item">社保贷</span>
-          <span class="tag-item">工薪贷</span>
-        </div>
-      </a>
-      <a href="/page_wechat/credit_people_detail" class="list-item">
-        <div class="photo">
-        </div>
-        <div class="title">随意贷
-          <span>小袋公司</span>
-        </div>
-        <div class="content">
-          我叫叶英，可以叫我印子，性格比较开朗，欢迎来…
-        </div>
-        <div class="tags">
-          <span class="tag-item">信用贷</span>
-          <span class="tag-item">社保贷</span>
-          <span class="tag-item">工薪贷</span>
-        </div>
-      </a>
-      <a href="/page_wechat/credit_people_detail" class="list-item">
-        <div class="photo">
-        </div>
-        <div class="title">随意贷
-          <span>小袋公司</span>
-        </div>
-        <div class="content">
-          我叫叶英，可以叫我印子，性格比较开朗，欢迎来…
-        </div>
-        <div class="tags">
-          <span class="tag-item">信用贷</span>
-          <span class="tag-item">社保贷</span>
-          <span class="tag-item">工薪贷</span>
-        </div>
-      </a>
-      <a href="/page_wechat/credit_people_detail" class="list-item">
-        <div class="photo">
-        </div>
-        <div class="title">随意贷
-          <span>小袋公司</span>
-        </div>
-        <div class="content">
-          我叫叶英，可以叫我印子，性格比较开朗，欢迎来…
-        </div>
-        <div class="tags">
-          <span class="tag-item">信用贷</span>
-          <span class="tag-item">社保贷</span>
-          <span class="tag-item">工薪贷</span>
-        </div>
-      </a>
+
+      <% for(var i=0; i<credit_people_list.length; i++) {%>
+
+        <a href="/page_wechat/credit_people_detail?credit_people_id=<%= credit_people_list[i]._id %>" class="list-item">
+          <div class="photo">
+          </div>
+          <div class="title">
+            <%= credit_people_list[i].name %>
+              <span>
+                <%= credit_people_list[i].company_type %>
+              </span>
+          </div>
+          <div class="content">
+            <%= credit_people_list[i].personal_description %>
+          </div>
+          <div class="tags">
+            <% for(var j=0; j<credit_people_list[i].tag_list.length; j++) {%>
+
+              <span class="tag-item">
+                <%= credit_people_list[i].tag_list[j] %>
+              </span>
+              <% } %>
+
+          </div>
+        </a>
+        <% } %>
+
     </div>
   </div>
 </body>
