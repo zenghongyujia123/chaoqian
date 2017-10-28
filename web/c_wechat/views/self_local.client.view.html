@@ -31,8 +31,8 @@
       <% for(var i=0; i<credit_people_list.length; i++) {%>
 
         <a href="/page_wechat/credit_people_detail?credit_people_id=<%= credit_people_list[i]._id %>" class="list-item">
-          <div class="photo">
-          </div>
+          <img src="<%= credit_people_list[i].photo %>" class="photo">
+          </img>
           <div class="title">
             <%= credit_people_list[i].name %>
               <span>
