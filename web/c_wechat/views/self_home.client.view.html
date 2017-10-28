@@ -34,17 +34,21 @@
           </div>
           <div class="content">
             <div class="content-item">
-              <div class="title">3万</div>
+              <div class="title">
+                <%= products[i].max_limit %>
+              </div>
               <div class="value">最高额度</div>
             </div>
             <div class="content-border "></div>
             <div class="content-item">
-              <div class="title">0.04%</div>
+              <div class="title">
+                <%= products[i].fee_cost_per_day %>%</div>
               <div class="value">参考日利率</div>
             </div>
             <div class="content-border "></div>
             <div class="content-item">
-              <div class="title">3242人</div>
+              <div class="title">
+                <%= products[i].apply_people_count %>人</div>
               <div class="value">借款成功</div>
             </div>
           </div>
