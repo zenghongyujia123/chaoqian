@@ -187,8 +187,13 @@ exports.card_progress = function (req, res, next) {
 };
 
 exports.self_home = function (req, res, next) {
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/self_home.client.view.html');
-  return res.render(filepath, { city: req.cookies.city });
+  productLogic.productList(function (err, products) {
+    var filepath = path.join(__dirname, '../../web/c_wechat/views/self_home.client.view.html');
+    return res.render(filepath, {
+      city: req.cookies.city || '',
+      products: products || []
+    });
+  });
 };
 
 exports.self_local = function (req, res, next) {
