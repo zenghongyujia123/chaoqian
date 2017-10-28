@@ -185,3 +185,18 @@ exports.card_progress = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/card_progress.client.view.html');
   return res.render(filepath, { city: req.cookies.city });
 };
+
+exports.self_home = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/self_home.client.view.html');
+  return res.render(filepath, { city: req.cookies.city });
+};
+
+exports.self_local = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/self_local.client.view.html');
+  return res.render(filepath, { city: req.cookies.city });
+};
+
+exports.credit_people_detail = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/credit_people_detail.client.view.html');
+  return res.render(filepath, { city: req.cookies.city });
+};
