@@ -8,6 +8,7 @@ var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
 var cookieLib = require('../../libraries/cookie');
 var cryptoLib = require('../../libraries/crypto');
+var agent = requie('superagent').agent();
 var moment = require('moment');
 exports.pay_test = function (req, res, next) {
 
