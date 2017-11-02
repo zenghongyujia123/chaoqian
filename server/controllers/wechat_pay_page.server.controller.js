@@ -11,16 +11,21 @@ var cryptoLib = require('../../libraries/crypto');
 var agent = require('superagent').agent();
 var moment = require('moment');
 var access_token = '';
+
+
+var xml2js = require('xml2js');
+var parseString = xml2js.parseString;
 exports.pay_test = function (req, res, next) {
 
   getAccessToken(function (tokenInfo) {
     sendPaytest(req, function (err, result) {
-
+      console.log('prepay_id', result.prepay_id[0]);
+      
       var info = {
         appId: 'wxf567e44e19240ae3',
         timeStamp: new Date().getTime().toString(),
         nonceStr: new Date().getTime().toString(),
-        package: 'prepay_id=' + result.prepay_id,
+        package: 'prepay_id=' + result.prepay_id[0],
         signType: 'MD5',
       }
 
@@ -33,7 +38,6 @@ exports.pay_test = function (req, res, next) {
       info.paySign = cryptoLib.toMd5(signArray.join('&')).toUpperCase();
 
 
-      console.log('prepay_id', result.prepay_id);
       var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
       req.cookies.city = req.params.city || req.cookies.city || '';
       cookieLib.setCookie(res, 'city', req.cookies.city);
@@ -42,7 +46,7 @@ exports.pay_test = function (req, res, next) {
   });
 };
 
-var xml2js = require('xml2js');
+
 
 function getClientIp(req) {
   return req.headers['x-forwarded-for'] ||
@@ -96,10 +100,11 @@ function sendPaytest(req, callback) {
       console.log(err);
       console.log('res.body =================================================================>');
       console.log(res.text);
-      callback(err, res.text);
+
+      parseString(res.text, { explicitArray: false, ignoreAttrs: true }, function (err, data) {
+        return callback(null, data.xml);
+      });
     });
-
-
   // // var json = parser.toJson(xml);
   // console.log("to json -> %s", json);
 };
