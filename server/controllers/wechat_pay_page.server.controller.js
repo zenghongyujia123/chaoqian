@@ -14,13 +14,30 @@ var access_token = '';
 exports.pay_test = function (req, res, next) {
 
   getAccessToken(function (tokenInfo) {
-
-
     sendPaytest(req, function (err, result) {
+
+      var info = {
+        appId: 'wxf567e44e19240ae3',
+        timeStamp: new Date().getTime().toString(),
+        nonceStr: new Date().getTime().toString(),
+        package: 'prepay_id=' + result.prepay_id,
+        signType: 'MD5',
+      }
+
+      var signArray = [];
+      for (var prop in info) {
+        signArray.push(prop + '=' + info[prop]);
+      }
+      signArray = signArray.sort();
+      signArray.push('key=' + 'kskjlskejki23456789kkksdjj22jjjj');
+      info.paySign = cryptoLib.toMd5(signArray.join('&')).toUpperCase();
+
+
+      console.log('prepay_id', result.prepay_id);
       var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
       req.cookies.city = req.params.city || req.cookies.city || '';
       cookieLib.setCookie(res, 'city', req.cookies.city);
-      return res.render(filepath, { city: req.cookies.city });
+      return res.render(filepath, { city: req.cookies.city, info: info });
     });
   });
 };
@@ -79,7 +96,7 @@ function sendPaytest(req, callback) {
       console.log(err);
       console.log('res.body =================================================================>');
       console.log(res.text);
-      callback(err, res);
+      callback(err, res.text);
     });
 
 
