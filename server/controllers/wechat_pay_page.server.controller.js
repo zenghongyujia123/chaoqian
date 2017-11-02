@@ -97,6 +97,7 @@ exports.token_verify = function (req, res, next) {
   return res.send(req.query.echostr);
 }
 
+
 function getAccessToken(callback) {
   agent.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxf567e44e19240ae3&secret=fe0fad0d4eb9cedec995dbea06bd2f3b')
     .end(function (err, result) {

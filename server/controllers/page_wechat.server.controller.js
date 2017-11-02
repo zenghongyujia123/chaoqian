@@ -7,11 +7,29 @@ var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
 var cookieLib = require('../../libraries/cookie');
+
+function getUserAccessToken(code) {
+  agent.get('https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf567e44e19240ae3&secret=fe0fad0d4eb9cedec995dbea06bd2f3b&code=' + code + '&grant_type=authorization_code ')
+    .end(function (err, result) {
+      console.log(' code err-----');
+      console.log(err);
+      console.log('code  result-----');
+      console.log(result.text);
+
+      access_token = result.text.access_token;
+      console.log('user_access_token : ', access_token);
+      callback();
+    });
+}
+
+
 exports.home = function (req, res, next) {
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/home.client.view.html');
-  req.cookies.city = req.params.city || req.cookies.city || '';
-  cookieLib.setCookie(res, 'city', req.cookies.city);
-  return res.render(filepath, { city: req.cookies.city });
+  getUserAccessToken(req.query.code, function (result) {
+    var filepath = path.join(__dirname, '../../web/c_wechat/views/home.client.view.html');
+    req.cookies.city = req.params.city || req.cookies.city || '';
+    cookieLib.setCookie(res, 'city', req.cookies.city);
+    return res.render(filepath, { city: req.cookies.city });
+  })
 };
 
 exports.result = function (req, res, next) {
