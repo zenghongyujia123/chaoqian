@@ -58,6 +58,7 @@ function sendPaytest(req, callback) {
   }
   signArray = signArray.sort();
   signArray.push('key=' + 'fe0fad0d4eb9cedec995dbea06bd2f3b');
+  console.log(signArray.join('&'));
   jsonInfo.xml.sign = cryptoLib.toMd5(signArray.join('&')).toUpperCase();
 
 
