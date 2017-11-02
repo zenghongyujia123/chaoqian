@@ -90,7 +90,7 @@ exports.notify_url = function (req, res, next) {
 
 exports.token_verify = function (req, res, next) {
   console.log(req.body);
-  return res.send('ok');
+  return res.send(req.query.echostr);
 }
 
 
