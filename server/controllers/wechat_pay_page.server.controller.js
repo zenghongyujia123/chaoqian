@@ -10,9 +10,12 @@ var cookieLib = require('../../libraries/cookie');
 var cryptoLib = require('../../libraries/crypto');
 var agent = require('superagent').agent();
 var moment = require('moment');
+var access_token = '';
 exports.pay_test = function (req, res, next) {
 
-  getAccessToken(function () {
+  getAccessToken(function (tokenInfo) {
+
+
     sendPaytest(req, function (err, result) {
       var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
       req.cookies.city = req.params.city || req.cookies.city || '';
@@ -101,6 +104,9 @@ function getAccessToken(callback) {
       console.log(err);
       console.log('result-----');
       console.log(result.text);
+
+      access_token = result.text.access_token;
+      console.log('access_token : ', access_token);
       callback();
     });
 }
