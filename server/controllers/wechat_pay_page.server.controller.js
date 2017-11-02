@@ -12,12 +12,13 @@ var agent = require('superagent').agent();
 var moment = require('moment');
 exports.pay_test = function (req, res, next) {
 
-  getAccessToken();
-  sendPaytest(req, function (err, result) {
-    var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
-    req.cookies.city = req.params.city || req.cookies.city || '';
-    cookieLib.setCookie(res, 'city', req.cookies.city);
-    return res.render(filepath, { city: req.cookies.city });
+  getAccessToken(function () {
+    sendPaytest(req, function (err, result) {
+      var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
+      req.cookies.city = req.params.city || req.cookies.city || '';
+      cookieLib.setCookie(res, 'city', req.cookies.city);
+      return res.render(filepath, { city: req.cookies.city });
+    });
   });
 };
 
@@ -93,14 +94,14 @@ exports.token_verify = function (req, res, next) {
   return res.send(req.query.echostr);
 }
 
-function getAccessToken() {
+function getAccessToken(callback) {
   agent.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxf567e44e19240ae3&secret=fe0fad0d4eb9cedec995dbea06bd2f3b')
-    .send()
     .end(function (err, result) {
-      console.log('err');
+      console.log('err-----');
       console.log(err);
-      console.log('result');
+      console.log('result-----');
       console.log(result);
+      callback();
     });
 }
 
