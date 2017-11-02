@@ -19,13 +19,13 @@ exports.pay_test = function (req, res, next) {
 
   getAccessToken(function (tokenInfo) {
     sendPaytest(req, function (err, result) {
-      console.log('prepay_id', result.prepay_id[0]);
-      
+      console.log('prepay_id', result.prepay_id);
+
       var info = {
         appId: 'wxf567e44e19240ae3',
         timeStamp: new Date().getTime().toString(),
         nonceStr: new Date().getTime().toString(),
-        package: 'prepay_id=' + result.prepay_id[0],
+        package: 'prepay_id=' + result.prepay_id,
         signType: 'MD5',
       }
 
