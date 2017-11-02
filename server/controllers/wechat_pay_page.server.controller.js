@@ -48,6 +48,7 @@ function sendPaytest(req, callback) {
       out_trade_no: new Date().getTime().toString(),
       fee_type: 'CNY',
       total_fee: 1,
+      openid: 'o3bcjv2tWUaLcIK_Jv5d2LspEhxM',
       spbill_create_ip: getClientIp(req),
       notify_url: 'http://chaoqianwang.com/page_wechat/notify_url',
       trade_type: 'JSAPI',

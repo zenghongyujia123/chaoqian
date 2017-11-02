@@ -18,6 +18,9 @@ function getUserAccessToken(code, callback) {
 
       access_token = result.text.access_token;
       console.log('user_access_token : ', access_token);
+
+      
+
       callback();
     });
 }
