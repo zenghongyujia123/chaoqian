@@ -89,17 +89,3 @@ exports.notify_url = function (req, res, next) {
 }
 
 
-var a = 'appid=wxf567e44e19240ae3&body=潮钱充值中心-测试会员充值&device_info=web&fee_type=CNY&mch_id=1447454002&nonce_str=1509645075866&notify_url=http://chaoqianwang.com/page_wechat/notify_url&out_trade_no=1509645075866&sign_type=MD5&spbill_create_ip=180.165.35.126&total_fee=1&trade_type=JSAPI&key=fe0fad0d4eb9cedec995dbea06bd2f3b'
-  < appid > wxf567e44e19240ae3</appid>
-    0 | server | <mch_id>1447454002</mch_id>
-0 | server | <device_info>web</device_info>
-0 | server | <nonce_str>1509645075866</nonce_str>
-0 | server | <sign_type>MD5</sign_type>
-0 | server | <body>潮钱充值中心-测试会员充值</body>
-0 | server | <out_trade_no>1509645075866</out_trade_no>
-0 | server | <fee_type>CNY</fee_type>
-0 | server | <total_fee>1</total_fee>
-0 | server | <spbill_create_ip>180.165.35.126</spbill_create_ip>
-0 | server | <notify_url>http://chaoqianwang.com/page_wechat/notify_url</notify_url>
-0 | server | <trade_type>JSAPI</trade_type>
-0 | server | <sign>B40E68F0781C726FFB831633C470B61A</sign>
