@@ -100,7 +100,7 @@ function getAccessToken(callback) {
       console.log('err-----');
       console.log(err);
       console.log('result-----');
-      console.log(result);
+      console.log(result.text);
       callback();
     });
 }
