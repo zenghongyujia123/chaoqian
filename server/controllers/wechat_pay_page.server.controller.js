@@ -88,4 +88,9 @@ exports.notify_url = function (req, res, next) {
   return res.send('ok');
 }
 
+exports.token_verify = function (req, res, next) {
+  console.log(req.body);
+  return res.send('ok');
+}
+
 

@@ -31,4 +31,5 @@ module.exports = function (app) {
   app.route('/page_wechat/credit_people_detail').get(creditPeopleFilter.requireCreditPeople, index.credit_people_detail);
   app.route('/page_wechat/pay_test').get(payController.pay_test);
   app.route('/page_wechat/notify_url').post(payController.notify_url);
+  app.route('/page_wechat/token_verify').post(payController.token_verify);
 };
