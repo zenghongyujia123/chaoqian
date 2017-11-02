@@ -12,11 +12,12 @@ var moment = require('moment');
 exports.pay_test = function (req, res, next) {
 
 
-  payTest(req);
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
-  req.cookies.city = req.params.city || req.cookies.city || '';
-  cookieLib.setCookie(res, 'city', req.cookies.city);
-  return res.render(filepath, { city: req.cookies.city });
+  sendPaytest(req, function (err, result) {
+    var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
+    req.cookies.city = req.params.city || req.cookies.city || '';
+    cookieLib.setCookie(res, 'city', req.cookies.city);
+    return res.render(filepath, { city: req.cookies.city });
+  });
 };
 
 var xml2js = require('xml2js');
@@ -27,7 +28,7 @@ function getClientIp(req) {
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
 }
-function payTest(req) {
+function sendPaytest(req, callback) {
   // console.log('test  pay tEST ===============>');
 
   var sk = '7daa4babae15ae17eee90c9e';
@@ -65,15 +66,16 @@ function payTest(req) {
   console.log(xml);
 
 
-  // agent.post('https://pay.swiftpass.cn/pay/gateway')
-  //   .set('Content-Type', 'application/xml')
-  //   .send(xml)
-  //   .end(function (err, res) {
-  // console.log('res.err =================================================================>');
-  // console.log(err);
-  // console.log('res.body =================================================================>');
-  // console.log(res.text);
-  // });
+  agent.post('https://api.mch.weixin.qq.com/pay/unifiedorder')
+    .set('Content-Type', 'application/xml')
+    .send(xml)
+    .end(function (err, res) {
+      console.log('res.err =================================================================>');
+      console.log(err);
+      console.log('res.body =================================================================>');
+      console.log(res.text);
+      callback(err, res);
+    });
 
 
   // // var json = parser.toJson(xml);
