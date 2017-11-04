@@ -24,6 +24,7 @@ body {
 .page-signin .signup-row .row-content {
   flex-grow: 1;
   border: 0px;
+  border-radius: 0px;
   border-bottom: 1px solid #f24659;
 }
 .page-signin .signup-agreements {
