@@ -27,7 +27,7 @@
       </div>
       <a href="/carrier/page_carrier_url" class="info-item carrier">
         <div class="item-text">通讯运营商</div>
-        <input class="item-value" type="text" />
+        <input class="item-value" type="text" value="<%= (user.carrier_token?'已授权':'去授权') %>" />
       </a>
       <div class="info-item">
         <div class="item-text">个人征信账号</div>

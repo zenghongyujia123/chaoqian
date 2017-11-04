@@ -166,17 +166,17 @@ exports.signup = function (req, res, next) {
 
 exports.me_info = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/me_info.client.view.html');
-  return res.render(filepath, { city: req.cookies.city });
+  return res.render(filepath, { city: req.cookies.city, user: req.user });
 };
 
 exports.me_business = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/me_business.client.view.html');
-  return res.render(filepath, { city: req.cookies.city });
+  return res.render(filepath, { city: req.cookies.city, user: req.user });
 };
 
 exports.me_vip = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/me_vip.client.view.html');
-  return res.render(filepath, { city: req.cookies.city });
+  return res.render(filepath, { city: req.cookies.city, user: req.user });
 };
 
 exports.apply_third = function (req, res, next) {
