@@ -13,6 +13,11 @@ exports.page_carrier_success = function (req, res, next) {
   userLogic.saveCarrierToken(user, token, function () {
     var filepath = path.join(__dirname, '../../web/c_wechat/views/carrier_success_callback.client.view.html');
     console.log(user);
+
+    get_carrier_detail(token, function (err, detail) {
+      console.log('detail', detail);
+    });
+
     return res.render(filepath, { city: req.cookies.city });
   });
 };
@@ -42,8 +47,8 @@ exports.page_carrier_url = function (req, res, next) {
     });
 };
 
-exports.get_carrier_detail = function (req, res, next) {
-  agent.get('http://e.apix.cn/apixanalysis/mobile/retrieve/phone/data/analyzed?query_code=a9a9febc-c146-11e7-a397-00163e0372c4')
+function get_carrier_detail(token, callback) {
+  agent.get('http://e.apix.cn/apixanalysis/mobile/retrieve/phone/data/analyzed?query_code=' + token)
     .set('apix-key', '92fd3f3bf03a40087fe4ece5bba355cf')
     .set('content-type', 'application/json')
     .set('accept', 'application/json')
@@ -53,6 +58,6 @@ exports.get_carrier_detail = function (req, res, next) {
       console.log('result----->');
       result = JSON.parse(result.text);
       console.log(result);
-      return res.redirect('/carrier/carrier_success_callback');
+      return callback(null, result.text);
     });
 }
