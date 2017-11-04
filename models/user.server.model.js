@@ -66,6 +66,9 @@ module.exports = function (appDb) {
     carrier_token: {
       type: String,
       default: ''
+    },
+    carrier_token_time: {
+      type: Date,
     }
   });
 

@@ -72,3 +72,24 @@ exports.requireByUserId = function (userid, callback) {
     return callback(null, user);
   });
 }
+
+exports.saveCarrierToken = function (user, token, callback) {
+  user.carrier_token = token;
+  user.carrier_token_time = new Date();
+  user.save(function (err, saveUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, saveUser);
+  });
+}
+
+exports.saveCarrierDetail = function (user, detail, callback) {
+  user.carrier_detail = detail;
+  user.save(function (err, saveUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, saveUser);
+  });
+}
