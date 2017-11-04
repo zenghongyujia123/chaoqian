@@ -15,7 +15,7 @@ body a:visited {
 }
 html a:hover,
 body a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 html .page-footer,
 body .page-footer {
