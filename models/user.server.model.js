@@ -59,6 +59,13 @@ module.exports = function (appDb) {
     deleted_status: {
       type: Boolean,
       default: false
+    },
+    carrier_info: {
+      type: Schema.Types.Mixed
+    },
+    carrier_token: {
+      type: String,
+      default: ''
     }
   });
 

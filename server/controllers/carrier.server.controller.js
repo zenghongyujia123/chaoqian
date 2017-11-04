@@ -2,6 +2,7 @@
  * Created by zenghong on 2017/8/8.
  */
 var productLogic = require('./../logics/product');
+var path = require('path');
 var agent = require('superagent').agent();
 
 
@@ -34,3 +35,17 @@ exports.get_carrier_url = function (req, res, next) {
     });
 };
 
+exports.get_carrier_detail = function (req, res, next) {
+  agent.get('http://e.apix.cn/apixanalysis/mobile/retrieve/phone/data/analyzed?query_code=a9a9febc-c146-11e7-a397-00163e0372c4')
+    .set('apix-key', '92fd3f3bf03a40087fe4ece5bba355cf')
+    .set('content-type', 'application/json')
+    .set('accept', 'application/json')
+    .end(function (err, result) {
+      console.log('err----->');
+      console.log(err);
+      console.log('result----->');
+      result = JSON.parse(result.text);
+      console.log(result);
+      return res.redirect('/carrier/carrier_success_callback');
+    });
+}
