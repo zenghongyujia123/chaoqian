@@ -93,3 +93,24 @@ exports.saveCarrierDetail = function (user, detail, callback) {
     return callback(null, saveUser);
   });
 }
+
+exports.savePbcToken = function (user, token, callback) {
+  user.pbc_token = token;
+  user.pbc_token_time = new Date();
+  user.save(function (err, saveUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, saveUser);
+  });
+}
+
+exports.savePbcDetail = function (user, detail, callback) {
+  user.pbc_detail = detail;
+  user.save(function (err, saveUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, saveUser);
+  });
+}

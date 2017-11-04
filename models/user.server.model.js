@@ -60,7 +60,7 @@ module.exports = function (appDb) {
       type: Boolean,
       default: false
     },
-    carrier_info: {
+    carrier_detail: {
       type: Schema.Types.Mixed
     },
     carrier_token: {
@@ -68,6 +68,16 @@ module.exports = function (appDb) {
       default: ''
     },
     carrier_token_time: {
+      type: Date,
+    },
+    pbc_detail: {
+      type: Schema.Types.Mixed
+    },
+    pbc_token: {
+      type: String,
+      default: ''
+    },
+    pbc_token_time: {
       type: Date,
     }
   });

@@ -11,7 +11,7 @@ exports.page_carrier_success = function (req, res, next) {
   var token = req.query.token || req.params.token;
 
   userLogic.saveCarrierToken(user, token, function () {
-    var filepath = path.join(__dirname, '../../web/c_wechat/views/carrier_success_callback.client.view.html');
+    var filepath = path.join(__dirname, '../../web/c_wechat/views/page_carrier_success.client.view.html');
     console.log(user);
 
     get_carrier_detail(token, function (err, detail) {
@@ -24,11 +24,11 @@ exports.page_carrier_success = function (req, res, next) {
   });
 };
 exports.page_carrier_failed = function (req, res, next) {
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/carrier_failed_callback.client.view.html');
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/page_carrier_failed.client.view.html');
   return res.render(filepath, { city: req.cookies.city });
 };
 exports.page_carrier_callback = function (req, res, next) {
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/carrier_callback.client.view.html');
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/page_carrier_callback.client.view.html');
   return res.render(filepath, { city: req.cookies.city });
 };
 
