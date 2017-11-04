@@ -19,7 +19,7 @@ function getUserAccessToken(code, callback) {
       access_token = result.text.access_token;
       console.log('user_access_token : ', access_token);
 
-      
+
 
       callback();
     });
@@ -230,4 +230,19 @@ exports.credit_people_detail = function (req, res, next) {
   var credit_people = req.credit_people;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/credit_people_detail.client.view.html');
   return res.render(filepath, { city: req.cookies.city, credit_people: credit_people });
+};
+
+exports.vip_base_info = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_base_info.client.view.html');
+  return res.render(filepath, { city: req.cookies.city });
+};
+
+exports.vip_auth_info = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_info.client.view.html');
+  return res.render(filepath, { city: req.cookies.city });
+};
+
+exports.vip_notice = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_notice.client.view.html');
+  return res.render(filepath, { city: req.cookies.city });
 };

@@ -32,4 +32,8 @@ module.exports = function (app) {
   app.route('/page_wechat/pay_test').get(payController.pay_test);
   app.route('/page_wechat/notify_url').post(payController.notify_url);
   app.route('/page_wechat/token_verify').get(payController.token_verify);
+
+  app.route('/page_wechat/vip_base_info').get(index.vip_base_info);
+  app.route('/page_wechat/vip_auth_info').get(index.vip_auth_info);
+  app.route('/page_wechat/vip_notice').get(index.vip_notice);
 };
