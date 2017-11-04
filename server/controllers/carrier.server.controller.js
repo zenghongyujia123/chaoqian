@@ -26,6 +26,7 @@ exports.page_carrier_callback = function (req, res, next) {
 };
 
 exports.page_carrier_url = function (req, res, next) {
+  var user = req.user;
   agent.get('http://e.apix.cn/apixanalysis/mobile/yys/phone/carrier/page?success_url=http://chaoqianwang.com/carrier/page_carrier_success?userid=' + user._id + '&failed_url=http://chaoqianwang.com/carrier/page_carrier_failed&callback_url=http://chaoqianwang.com/carrier/page_carrier_callback')
     .set('apix-key', '92fd3f3bf03a40087fe4ece5bba355cf')
     .set('content-type', 'application/json')
