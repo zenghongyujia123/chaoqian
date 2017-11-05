@@ -18,13 +18,17 @@ function getUserAccessToken(code, callback) {
       console.log(result.text);
       access_token = result.text.access_token;
       console.log('user_access_token : ', access_token);
-      callback();
+      callback(err, result.text);
     });
 }
 
 
 exports.home = function (req, res, next) {
   getUserAccessToken(req.query.code, function (result) {
+    if (result.openid) {
+      cookieLib.setCookie(res, 'openid', result.openid);
+      cookieLib.setCookie(res, 'user_access_token', result.access_token);
+    }
     var filepath = path.join(__dirname, '../../web/c_wechat/views/home.client.view.html');
     req.cookies.city = req.params.city || req.cookies.city || '';
     cookieLib.setCookie(res, 'city', req.cookies.city);
