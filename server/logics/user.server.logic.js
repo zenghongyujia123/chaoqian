@@ -28,6 +28,7 @@ exports.signup = function (userInfo, callback) {
 
     user = new User({
       username: userInfo.username,
+      openid: userInfo.openid
     });
     user.password = user.hashPassword(userInfo.password);
     user.save(function (err, saveUser) {
