@@ -36,6 +36,7 @@ $(function () {
       method: 'post',
       url: '/page_wechat/getPrePayId',
       success: function (data) {
+        alert(JSON.stringify(data));
         console.log(data);
       }
     });
