@@ -18,8 +18,7 @@ exports.page_carrier_success = function (req, res, next) {
         console.log('detail', detail);
       });
     });
-
-    return res.redirect('/page_wechat/vip_auth_info');
+    return res.redirect('/page_wechat/vip_auth_info?user_id=' + user._id);
   });
 };
 exports.page_carrier_failed = function (req, res, next) {
