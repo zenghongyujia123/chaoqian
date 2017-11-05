@@ -38,7 +38,7 @@ function getPrePayId(req, openid, user_id, callback) {
       total_fee: 1,
       openid: openid,
       spbill_create_ip: getClientIp(req),
-      notify_url: 'http://chaoqianwang.com/page_wechat/notify_url',
+      notify_url: 'http://chaoqianwang.com/page_wechat/notify_url?userid=' + user_id,
       trade_type: 'JSAPI',
     }
   };
