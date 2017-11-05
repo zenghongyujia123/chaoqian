@@ -51,7 +51,7 @@ function getClientIp(req) {
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
 }
-function getPrePayId(req, user_id, callback) {
+function getPrePayId(req, openid, user_id, callback) {
   // console.log('test  pay tEST ===============>');
 
   var jsonInfo = {
@@ -66,7 +66,7 @@ function getPrePayId(req, user_id, callback) {
       fee_type: 'CNY',
       detail: user_id,
       total_fee: 1,
-      openid: 'o3bcjv2tWUaLcIK_Jv5d2LspEhxM',
+      openid: openid,
       spbill_create_ip: getClientIp(req),
       notify_url: 'http://chaoqianwang.com/page_wechat/notify_url',
       trade_type: 'JSAPI',
@@ -133,7 +133,7 @@ function getAccessToken(callback) {
 
 exports.getPrePayId = function (req, res, next) {
   var user = req.user;
-  getPrePayId(req, user._id.toString(), function (err, result) {
+  getPrePayId(req, user.openid, user._id.toString(), function (err, result) {
     if (err) {
       return next(err);
     }
