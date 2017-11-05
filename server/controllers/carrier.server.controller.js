@@ -11,7 +11,6 @@ exports.page_carrier_success = function (req, res, next) {
   var token = req.query.token || req.params.token;
 
   userLogic.saveCarrierToken(user, token, function () {
-    var filepath = path.join(__dirname, '../../web/c_wechat/views/page_carrier_success.client.view.html');
     console.log(user);
 
     get_carrier_detail(token, function (err, detail) {
@@ -20,7 +19,7 @@ exports.page_carrier_success = function (req, res, next) {
       });
     });
 
-    return res.render(filepath, { city: req.cookies.city });
+    return res.redirect('/page_wechat/vip_auth_info');
   });
 };
 exports.page_carrier_failed = function (req, res, next) {
