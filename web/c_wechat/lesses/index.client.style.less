@@ -13,6 +13,24 @@ body {
   a:hover {
     text-decoration: none;
   }
+  input {
+     ::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: #ccc;
+    }
+     :-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: #ccc;
+    }
+     ::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: #ccc;
+    }
+     :-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: #ccc;
+    }
+  }
   .page-footer {
     border-top: 1px solid #cccccc;
     position: absolute;

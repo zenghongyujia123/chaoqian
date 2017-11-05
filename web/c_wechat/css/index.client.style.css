@@ -17,6 +17,26 @@ html a:hover,
 body a:hover {
   text-decoration: none;
 }
+html input ::-webkit-input-placeholder,
+body input ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #ccc;
+}
+html input :-moz-placeholder,
+body input :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ccc;
+}
+html input ::-moz-placeholder,
+body input ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ccc;
+}
+html input :-ms-input-placeholder,
+body input :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #ccc;
+}
 html .page-footer,
 body .page-footer {
   border-top: 1px solid #cccccc;
