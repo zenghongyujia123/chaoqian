@@ -4,6 +4,7 @@
 var mongoose = require('./../../libraries/mongoose');
 var appDb = mongoose.appDb;
 var User = appDb.model('User');
+var UserPay = appDb.model('UserPay');
 var sysErr = require('./../errors/system');
 
 var that = exports;
@@ -136,5 +137,32 @@ exports.updateUserAuth1 = function (user, real_name, real_phone, id_card, callba
       return callback({ err: sysErr.database_save_error });
     }
     return callback(null, savedUser);
+  });
+}
+
+exports.updateVipPayedByOpenid = function (openid, info, callback) {
+  User.findOne({ openid: openid }, function (err, user) {
+    if (!user) {
+      return callback();
+    }
+
+    UserPay.findOne({ 'content.transaction_id': info.transaction_id }, function (err, userPay) {
+      if (userPay) {
+        return callback();
+      }
+      userPay = new UserPay({
+        type: 'vip_pay',
+        content: info
+      });
+      userPay.save(function () {
+        user.vip_payed = true;
+        user.vip_payed_time = new Date();
+        user.save(function (err) {
+          return callback();
+        });
+      })
+    });
+
+
   });
 }

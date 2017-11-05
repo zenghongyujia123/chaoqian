@@ -99,6 +99,13 @@ module.exports = function (appDb) {
     has_read_vip_notice: {
       type: Boolean,
       default: false
+    },
+    vip_payed: {
+      type: Boolean,
+      default: false
+    },
+    vip_payed_time: {
+      type: Date
     }
   });
 
@@ -114,9 +121,24 @@ module.exports = function (appDb) {
     return this.password === this.hashPassword(password);
   };
 
+  var UserPaySchema = new Schema({
+    object: {
+      type: String,
+      default: 'UserPay'
+    },
+    type: {
+      type: String,
+      enum: ['vip_pay']
+    },
+    content: {
+      type: Schema.Types.Mixed
+    }
+  });
+
   UserSchema.plugin(timestamps, {
     createdAt: 'create_time',
     updatedAt: 'update_time'
   });
   var User = appDb.model('User', UserSchema);
+  var UserPay = appDb.model('UserPay', UserPaySchema);
 };

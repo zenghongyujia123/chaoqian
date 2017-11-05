@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var productLogic = require('../logics/product');
+var userLogic = require('../logics/user');
 var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
@@ -78,7 +79,40 @@ function getPrePayId(req, openid, user_id, callback) {
 exports.notify_url = function (req, res, next) {
   console.log(' notify_url = {------------>');
   console.log(req.body);
-  return res.send('ok');
+  var info = {
+    appid: req.body.xml.appid[0],
+    bank_type: req.body.xml.bank_type[0],
+    cash_fee: req.body.xml.cash_fee[0],
+    device_info: req.body.xml.device_info[0],
+    fee_type: req.body.xml.fee_type[0],
+    is_subscribe: req.body.xml.is_subscribe[0],
+    mch_id: req.body.xml.mch_id[0],
+    nonce_str: req.body.xml.nonce_str[0],
+    openid: req.body.xml.openid[0],
+    out_trade_no: req.body.xml.out_trade_no[0],
+    result_code: req.body.xml.result_code[0],
+    return_code: req.body.xml.return_code[0],
+    sign: req.body.xml.sign[0],
+    time_end: req.body.xml.time_end[0],
+    total_fee: req.body.xml.total_fee[0],
+    trade_type: req.body.xml.trade_type[0],
+    transaction_id: req.body.xml.transaction_id[0]
+  }
+  if (info && info.result_code == 'SUCCESS') {
+    userLogic.updateVipPayedByOpenid(req.body.xml.openid[0], info, function () {
+    });
+  }
+
+  var json = {
+    xml: {
+      return_code: 'SUCCESS',
+      return_msg: 'OK'
+    }
+  }
+  var builder = new xml2js.Builder();
+  var xml = builder.buildObject(json);
+
+  return res.send(xml);
 }
 
 exports.token_verify = function (req, res, next) {
