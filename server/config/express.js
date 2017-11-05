@@ -15,6 +15,8 @@ var express = require('express'),
   async = require('async'),
   mongoose = require('mongoose');
 
+var middlewares = require('express-middlewares-js');
+
 module.exports = function () {
   // Initialize express app
   var app = express();
@@ -58,6 +60,9 @@ module.exports = function () {
     limit: '100mb',
     parameterLimit: 100000,
     extended: true
+  }));
+  app.use(middlewares.xmlBodyParser({
+    type: 'text/xml'
   }));
   app.use(bodyParser.json({ limit: '100mb' }));
   app.use(methodOverride());
