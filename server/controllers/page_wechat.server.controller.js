@@ -253,7 +253,7 @@ exports.vip_auth_info = function (req, res, next) {
     filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_2.client.view.html');
   }
 
-  return res.render(filepath, { city: req.cookies.city });
+  return res.render(filepath, { city: req.cookies.city, user: user });
 };
 
 exports.vip_auth_1 = function (req, res, next) {
