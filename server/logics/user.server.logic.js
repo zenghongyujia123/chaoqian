@@ -14,8 +14,8 @@ exports.signup = function (userInfo, callback) {
     return callback({ err: { type: 'username_empty', zh_message: '用户名不能为空' } });
 
   }
-  if (!userInfo.username) {
-    return callback({ err: { type: 'password_empty', zh_message: '用户名不能为空' } });
+  if (!userInfo.password) {
+    return callback({ err: { type: 'password_empty', zh_message: '用户密码不能为空' } });
   }
 
   User.findOne({ username: userInfo.username }, function (err, user) {

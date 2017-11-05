@@ -7,7 +7,7 @@ var cookieLib = require('../../libraries/cookie');
 exports.signup = function (req, res, next) {
   var userinfo = req.body.user_info;
   userinfo.openid = req.cookies.openid;
-  userLogic.signup(user_info, function (err, result) {
+  userLogic.signup(userinfo, function (err, result) {
     if (err) {
       return next(err);
     }
