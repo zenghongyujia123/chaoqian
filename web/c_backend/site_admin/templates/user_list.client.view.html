@@ -19,7 +19,7 @@
       <div class="column-item" flex="">{{user.real_name}}</div>
       <div class="column-item" flex="">{{user.real_phone}}</div>
       <div class="column-item" flex="">{{user.vip_payed?'已支付':'未支付'}}</div>
-      <div class="column-item" flex="">{{user.vip_payed?user.vip_payed_time:'-'}}</div>
+      <div class="column-item" flex="">{{user.vip_payed?(user.vip_payed_time| date:"yyyy-MM-dd hh:mm:ss") :'-'}}</div>
       <div class="column-item" flex="">{{getVipStatus(user.vip_status)}}</div>
     </div>
   </div>
