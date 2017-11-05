@@ -77,7 +77,7 @@ function getPrePayId(req, openid, user_id, callback) {
 
 exports.notify_url = function (req, res, next) {
   console.log(' notify_url = {------------>');
-  console.log(JSON.stringify(req));
+  console.log(req);
   console.log(req.body);
   return res.send('ok');
 }
