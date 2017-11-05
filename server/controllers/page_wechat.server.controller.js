@@ -156,6 +156,8 @@ exports.me = function (req, res, next) {
 };
 
 exports.signin = function (req, res, next) {
+  var openid = req.cookies.openid;
+  console.log('openid ,', openid);
   var filepath = path.join(__dirname, '../../web/c_wechat/views/signin.client.view.html');
   return res.render(filepath, { city: req.cookies.city });
 };
