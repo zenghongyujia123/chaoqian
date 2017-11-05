@@ -25,7 +25,7 @@ function getUserAccessToken(code, callback) {
 
 
 exports.home = function (req, res, next) {
-  getUserAccessToken(req.query.code, function (result) {
+  getUserAccessToken(req.query.code, function (err, result) {
     if (result.openid) {
       cookieLib.setCookie(res, 'openid', result.openid);
       cookieLib.setCookie(res, 'user_access_token', result.access_token);
