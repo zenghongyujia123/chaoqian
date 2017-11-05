@@ -152,6 +152,7 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
       }
       userPay = new UserPay({
         type: 'vip_pay',
+        user_id: user._id,
         content: info
       });
       userPay.save(function () {

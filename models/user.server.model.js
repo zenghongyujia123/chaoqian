@@ -130,6 +130,9 @@ module.exports = function (appDb) {
       type: String,
       enum: ['vip_pay']
     },
+    user_id: {
+      type: String,
+    },
     content: {
       type: Schema.Types.Mixed
     }
