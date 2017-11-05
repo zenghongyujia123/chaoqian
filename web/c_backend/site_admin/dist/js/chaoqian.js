@@ -27,6 +27,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/product_list.client.view.html',
       controller: 'ProductListController'
     })
+    .state('user_list', {
+      url: '/user_list',
+      templateUrl: '/c_backend/site_admin/templates/user_list.client.view.html',
+      controller: 'UserListController'
+    })
     .state('product_detail', {
       url: '/product_detail/:product_id',
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',
@@ -230,6 +235,17 @@ cSite.factory('ProductNetwork',
         },
         getProductFilter: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/product_filter/getFilter', params);
+        }
+      };
+    }]);
+
+'use strict';
+cSite.factory('UserNetwork',
+  ['Http', 'CommonHelper',
+    function (Http, CommonHelper) {
+      return {
+        userList: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/userList', params);
         }
       };
     }]);
@@ -701,3 +717,43 @@ cSite.controller('ProductListController', [
 
         $scope.productList();
     }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('UserListController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork',
+  function ($rootScope, $scope, $state, $stateParams, UserNetwork) {
+    // $scope.goDetail = function (id) {
+    //     $state.go('product_detail', { product_id: id||'' });
+    // }
+    $scope.user_list = [];
+    $scope.userList = function () {
+      UserNetwork.userList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.user_list = data;
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.userList();
+
+    $scope.getVipStatus = function (status) {
+      var map = {
+        'un_submit': {
+          text: '未递交'
+        },
+        'submit': {
+          text: '已递交'
+        },
+        'passed': {
+          text: '审核通过'
+        },
+      }
+    }
+  }]);

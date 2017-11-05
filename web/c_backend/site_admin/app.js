@@ -27,6 +27,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/product_list.client.view.html',
       controller: 'ProductListController'
     })
+    .state('user_list', {
+      url: '/user_list',
+      templateUrl: '/c_backend/site_admin/templates/user_list.client.view.html',
+      controller: 'UserListController'
+    })
     .state('product_detail', {
       url: '/product_detail/:product_id',
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',

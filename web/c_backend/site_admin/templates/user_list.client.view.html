@@ -1,0 +1,26 @@
+<div class="page-body-view">
+  <div class="page-operation-view" layout="row" layout-align="space-between center">
+    <p class="title">用户列表</p>
+  </div>
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">用户名</div>
+      <div class="column-item" flex="">用户姓名</div>
+      <div class="column-item" flex="">用户手机</div>
+      <div class="column-item" flex="">是否vip支付</div>
+      <div class="column-item" flex="">是否vip支付时间</div>
+      <div class="column-item" flex="">vip审核状态</div>
+    </div>
+  </div>
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" ng-repeat=" user in user_list">
+      <div class="column-item" flex="">{{user.username}}</div>
+      <div class="column-item" flex="">{{user.real_name}}</div>
+      <div class="column-item" flex="">{{user.real_phone}}</div>
+      <div class="column-item" flex="">{{user.vip_payed?'已支付':'未支付'}}</div>
+      <div class="column-item" flex="">{{user.vip_payed?user.vip_payed_time:'-'}}</div>
+      <div class="column-item" flex="">{{getVipStatus(user.vip_status)}}</div>
+    </div>
+  </div>
+</div>

@@ -178,3 +178,12 @@ exports.updateUserAuth2 = function (user, callback) {
     return callback(null, savedUser);
   });
 }
+
+exports.userList = function (callback) {
+  User.find({}, function (err, users) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, users);
+  })
+}
