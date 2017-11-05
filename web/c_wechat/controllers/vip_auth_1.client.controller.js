@@ -37,6 +37,9 @@ $(function () {
       url: '/page_wechat/getPrePayId',
       success: function (data) {
         alert(JSON.stringify(data));
+        if (data.prepay_id) {
+          window.location = '/page_wechat/getPayPage?prepay_id=' + data.prepay_id;
+        }
         console.log(data);
       }
     });

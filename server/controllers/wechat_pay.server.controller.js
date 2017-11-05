@@ -137,7 +137,36 @@ exports.getPrePayId = function (req, res, next) {
     if (err) {
       return next(err);
     }
+
     req.data = result;
     return next();
   });
+}
+
+exports.getPayPage = function (req, res, next) {
+  var prepay_id = req.params.prepay_id || req.query.prepay_id;
+
+  console.log('prepay_id', prepay_id);
+
+  var info = {
+    appId: 'wxf567e44e19240ae3',
+    timeStamp: new Date().getTime().toString(),
+    nonceStr: new Date().getTime().toString(),
+    package: 'prepay_id=' + prepay_id,
+    signType: 'MD5',
+  }
+
+  var signArray = [];
+  for (var prop in info) {
+    signArray.push(prop + '=' + info[prop]);
+  }
+  signArray = signArray.sort();
+  signArray.push('key=' + 'kskjlskejki23456789kkksdjj22jjjj');
+  info.paySign = cryptoLib.toMd5(signArray.join('&')).toUpperCase();
+
+
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
+  req.cookies.city = req.params.city || req.cookies.city || '';
+  cookieLib.setCookie(res, 'city', req.cookies.city);
+  return res.render(filepath, { city: req.cookies.city, info: info });
 }
