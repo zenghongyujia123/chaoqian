@@ -167,3 +167,14 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
 
   });
 }
+
+exports.updateUserAuth2 = function (user, callback) {
+  user.vip_status = 'submit';
+  user.vip_status_submit_time = new Date();
+  user.save(function (err, savedUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, savedUser);
+  });
+}

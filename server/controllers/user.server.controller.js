@@ -41,3 +41,13 @@ exports.updateUserAuth1 = function (req, res, next) {
     return next();
   });
 }
+
+exports.updateUserAuth2 = function (req, res, next) {
+  userLogic.updateUserAuth2(req.user, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}

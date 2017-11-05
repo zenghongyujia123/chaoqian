@@ -106,6 +106,14 @@ module.exports = function (appDb) {
     },
     vip_payed_time: {
       type: Date
+    },
+    vip_status: {
+      type: String,
+      enum: ['un_submit', 'submit', 'passed'],
+      default: 'un_submit'
+    },
+    vip_status_submit_time: {
+      type:Date
     }
   });
 
