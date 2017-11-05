@@ -3,7 +3,7 @@
  */
 
 var index = require('../controllers/page_wechat');
-var payController = require('../controllers/wechat_pay_page');
+var payController = require('../controllers/wechat_pay');
 var userFilter = require('../filters/user');
 var creditPeopleFilter = require('../filters/credit_people');
 

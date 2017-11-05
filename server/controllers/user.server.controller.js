@@ -26,3 +26,16 @@ exports.signin = function (req, res, next) {
     return next();
   });
 };
+exports.updateUserAuth1 = function (req, res, next) {
+  var user = req.user;
+  var real_name = req.body.real_name;
+  var real_phone = req.body.real_phone;
+  var id_card = req.body.id_card;
+  userLogic.updateUserAuth1(user, real_name, real_phone, id_card, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}

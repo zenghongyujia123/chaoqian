@@ -19,6 +19,18 @@ module.exports = function (appDb) {
       type: String,
       trim: true
     },
+    real_name: {
+      type: String,
+      trim: true
+    },
+    real_phone: {
+      type: String,
+      trim: true
+    },
+    id_card: {
+      type: String,
+      trim: true
+    },
     password: {
       type: String,
       default: ''
@@ -79,6 +91,10 @@ module.exports = function (appDb) {
     },
     pbc_token_time: {
       type: Date,
+    },
+    has_read_vip_notice: {
+      type: Boolean,
+      default: false
     }
   });
 

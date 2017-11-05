@@ -114,3 +114,26 @@ exports.savePbcDetail = function (user, detail, callback) {
     return callback(null, saveUser);
   });
 }
+
+exports.updateVipNotice = function (user, callback) {
+  user.has_read_vip_notice = true;
+  user.save(function (err, savedUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, savedUser);
+  });
+}
+
+
+exports.updateUserAuth1 = function (user, real_name, real_phone, id_card, callback) {
+  user.real_name = real_name;
+  user.real_phone = real_phone;
+  user.id_card = id_card;
+  user.save(function (err, savedUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, savedUser);
+  });
+}

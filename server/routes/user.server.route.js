@@ -8,4 +8,5 @@ var userFilter = require('../filters/user');
 module.exports = function (app) {
   app.route('/user/signup').post(userController.signup);
   app.route('/user/signin').post(userController.signin);
+  app.route('/user/updateUserAuth1').post(userFilter.requireUser, userController.updateUserAuth1);
 };

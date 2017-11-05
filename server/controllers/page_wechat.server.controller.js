@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var productLogic = require('../logics/product');
+var userLogic = require('../logics/user');
 var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
@@ -234,11 +235,19 @@ exports.vip_base_info = function (req, res, next) {
 };
 
 exports.vip_auth_info = function (req, res, next) {
+  var user = req.user;
+  if (!user.has_read_vip_notice) {
+    userLogic.updateVipNotice(user, function (err, result) {
+    });
+  }
+
+  var filepath;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_1.client.view.html');
   return res.render(filepath, { city: req.cookies.city });
 };
 
 exports.vip_auth_1 = function (req, res, next) {
+  var user = req.user;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_1.client.view.html');
   return res.render(filepath, { city: req.cookies.city });
 };
@@ -254,6 +263,10 @@ exports.vip_auth_3 = function (req, res, next) {
 };
 
 exports.vip_notice = function (req, res, next) {
+  var user = req.user;
+  if (user.has_read_vip_notice) {
+    return res.redirect('/page_wechat/vip_auth_info');
+  }
   var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_notice.client.view.html');
   return res.render(filepath, { city: req.cookies.city });
 };

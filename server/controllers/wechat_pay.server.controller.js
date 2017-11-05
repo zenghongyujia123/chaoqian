@@ -16,9 +16,8 @@ var access_token = '';
 var xml2js = require('xml2js');
 var parseString = xml2js.parseString;
 exports.pay_test = function (req, res, next) {
-
   getAccessToken(function (tokenInfo) {
-    sendPaytest(req, function (err, result) {
+    getPrePayId(req, function (err, result) {
       console.log('prepay_id', result.prepay_id);
 
       var info = {
@@ -46,17 +45,14 @@ exports.pay_test = function (req, res, next) {
   });
 };
 
-
-
 function getClientIp(req) {
   return req.headers['x-forwarded-for'] ||
     req.connection.remoteAddress ||
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
 }
-function sendPaytest(req, callback) {
+function getPrePayId(req, user_id, callback) {
   // console.log('test  pay tEST ===============>');
-
 
   var jsonInfo = {
     xml: {
@@ -68,6 +64,7 @@ function sendPaytest(req, callback) {
       body: '潮钱充值中心-测试会员充值',
       out_trade_no: new Date().getTime().toString(),
       fee_type: 'CNY',
+      detail: user_id,
       total_fee: 1,
       openid: 'o3bcjv2tWUaLcIK_Jv5d2LspEhxM',
       spbill_create_ip: getClientIp(req),
@@ -84,7 +81,6 @@ function sendPaytest(req, callback) {
   signArray.push('key=' + 'kskjlskejki23456789kkksdjj22jjjj');
   console.log(signArray.join('&'));
   jsonInfo.xml.sign = cryptoLib.toMd5(signArray.join('&')).toUpperCase();
-
 
   var builder = new xml2js.Builder();
   var xml = builder.buildObject(jsonInfo);
@@ -135,3 +131,13 @@ function getAccessToken(callback) {
     });
 }
 
+exports.getPrePayId = function (req, res, next) {
+  var user = req.user;
+  getPrePayId(req, user._id.toString(), function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
