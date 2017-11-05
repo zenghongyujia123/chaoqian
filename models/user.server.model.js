@@ -31,6 +31,10 @@ module.exports = function (appDb) {
       type: String,
       trim: true
     },
+    openid: {
+      type: String,
+      trim: true
+    },
     password: {
       type: String,
       default: ''
