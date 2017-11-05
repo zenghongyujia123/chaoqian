@@ -753,7 +753,8 @@ cSite.controller('UserListController', [
         },
         'passed': {
           text: '审核通过'
-        },
+        }
       }
+      return map[status].text;
     }
   }]);
