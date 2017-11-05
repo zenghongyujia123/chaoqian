@@ -29,7 +29,6 @@ module.exports = function (app) {
   app.route('/page_wechat/self_home').get(userFilter.requireUser, index.self_home);
   app.route('/page_wechat/self_local').get(userFilter.requireUser, index.self_local);
   app.route('/page_wechat/credit_people_detail').get(userFilter.requireUser, creditPeopleFilter.requireCreditPeople, index.credit_people_detail);
-  app.route('/page_wechat/pay_test').get(userFilter.requireUser, payController.pay_test);
   app.route('/page_wechat/notify_url').post(payController.notify_url);
   app.route('/page_wechat/token_verify').get(userFilter.requireUser, payController.token_verify);
 
