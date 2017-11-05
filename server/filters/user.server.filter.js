@@ -15,8 +15,8 @@ exports.requireUser = function (req, res, next) {
       return res.redirect('/page_wechat/signin')
     }
 
-    if (cookie.opendid) {
-      user.opendid = cookie.opendid;
+    if (cookie.openid) {
+      user.openid = cookie.openid;
       user.save(function (err, savedUser) {
         if (err) {
           return next(err);
