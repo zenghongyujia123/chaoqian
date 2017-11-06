@@ -9,7 +9,7 @@ var agent = require('superagent').agent();
 exports.page_pbc_success = function (req, res, next) {
   var user = req.user;
 
-  return redirect('/page_wechat/vip_auth_info?user_id=' + user._id);
+  return res.redirect('/page_wechat/vip_auth_info?user_id=' + user._id);
 };
 exports.page_pbc_failed = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/page_pbc_failed.client.view.html');
@@ -28,7 +28,7 @@ exports.page_pbc_callback = function (req, res, next) {
       });
     });
     // var filepath = path.join(__dirname, '../../web/c_wechat/views/page_pbc_callback.client.view.html');
-    return redirect('/page_wechat/vip_auth_info?user_id=' + user._id);
+    return res.redirect('/page_wechat/vip_auth_info?user_id=' + user._id);
   });
 
 
