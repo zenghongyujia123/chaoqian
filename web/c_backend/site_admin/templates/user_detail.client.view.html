@@ -1,6 +1,6 @@
 <div class="page-body-view">
   <div class="page-operation-view" layout="row" layout-align="space-between center">
-    <p class="title">用户列表</p>
+    <p class="title">用户详情</p>
   </div>
 
   <div class="list-header">
@@ -13,25 +13,18 @@
       <div class="column-item" flex="">是否通讯运营商授权</div>
       <div class="column-item" flex="">是否人行征信授权</div>
       <div class="column-item" flex="">vip审核状态</div>
-      <div class="column-item" flex=""></div>
     </div>
   </div>
   <div class="list-body">
-    <div class="list-item" layout="row" layout-align="start center" ng-repeat=" user in user_list">
+    <div class="list-item" layout="row" layout-align="start center">
       <div class="column-item" flex="">{{user.username}}</div>
       <div class="column-item" flex="">{{user.real_name}}</div>
       <div class="column-item" flex="">{{user.real_phone}}</div>
       <div class="column-item" flex="">{{user.vip_payed?'已支付':'未支付'}}</div>
       <div class="column-item" flex="">{{user.vip_payed?(user.vip_payed_time| date:"yyyy-MM-dd hh:mm:ss") :'-'}}</div>
       <div class="column-item" flex="">{{user.carrier_token?'是':'否'}}</div>
-
       <div class="column-item" flex="">{{user.pbc_token?'是':'否'}}</div>
-
       <div class="column-item" flex="">{{getVipStatus(user.vip_status)}}</div>
-      <div class="column-item" flex="" layout="row" layout-align="start start">
-        <md-button class="md-primary" ng-click="goDetail(user._id)">详情
-        </md-button>
-      </div>
     </div>
   </div>
 </div>

@@ -27,4 +27,5 @@ cSite.controller('UserDetailController', [
       });
     };
     $scope.getUserById();
+    
   }]);
