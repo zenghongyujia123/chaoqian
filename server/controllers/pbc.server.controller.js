@@ -63,6 +63,6 @@ function get_pbc_detail(token, callback) {
       console.log('result----->');
       result = JSON.parse(result.text);
       console.log(result);
-      return callback(null, result.text);
+      return callback(null, result);
     });
 }
