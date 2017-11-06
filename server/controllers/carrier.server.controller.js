@@ -10,11 +10,11 @@ exports.page_carrier_success = function (req, res, next) {
   var user = req.user;
   var token = req.query.token || req.params.token;
 
-  userLogic.saveCarrierToken(user, token, function () {
+  userLogic.saveCarrierToken(user, token, function (err, user) {
     console.log(user);
 
     get_carrier_detail(token, function (err, detail) {
-      userLogic.saveCarrierDetail(user, detail, function () {
+      userLogic.saveCarrierDetail(user, detail, function (err, user) {
         console.log('detail', detail);
       });
     });

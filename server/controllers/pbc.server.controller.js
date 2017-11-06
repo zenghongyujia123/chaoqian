@@ -20,10 +20,10 @@ exports.page_pbc_callback = function (req, res, next) {
   console.log('token', token);
   var token = req.query.token || req.params.token;
 
-  userLogic.savePbcToken(user, token, function () {
+  userLogic.savePbcToken(user, token, function (err, user) {
     console.log(user);
     get_pbc_detail(token, function (err, detail) {
-      userLogic.savePbcDetail(user, detail, function () {
+      userLogic.savePbcDetail(user, detail, function (err, user) {
         console.log('detail', detail);
       });
     });
