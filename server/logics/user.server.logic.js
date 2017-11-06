@@ -202,3 +202,13 @@ exports.userList = function (callback) {
     return callback(null, users);
   })
 }
+
+exports.verifyVip = function (user,callback) { 
+  user.vip_status = 'passed';
+  user.save(function (err, savedUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, savedUser);
+  });
+}

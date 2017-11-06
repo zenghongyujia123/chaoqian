@@ -8,6 +8,9 @@ cSite.factory('UserNetwork',
         },
         getUserById: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/getUserById', params);
+        },
+        verifyVip: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/verifyVip', params);
         }
       };
     }]);

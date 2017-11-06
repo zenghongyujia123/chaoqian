@@ -1,6 +1,9 @@
 <div class="page-body-view">
   <div class="page-operation-view" layout="row" layout-align="space-between center">
     <p class="title">用户详情</p>
+    <div layout="row">
+      <md-button class="md-primary md-raised md-hue-2" ng-disabled="user.vip_status==='passed'||user.vip_status==='un_submit'" ng-click="verifyVip()">{{user.vip_status==='passed'?'vip已通过':'vip审核通过'}}</md-button>
+    </div>
   </div>
 
   <div class="list-header">

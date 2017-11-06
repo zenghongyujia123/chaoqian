@@ -128,11 +128,17 @@ exports.getUserById = function (req, res, next) {
     req.data = user;
     return next();
   });
-
-
-
 }
 
+exports.verifyVip = function (req, res, next) {
+  userLogic.verifyVip(req.requireUserById, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
 
 function get_carrier_detail(token, callback) {
   agent.get('http://e.apix.cn/apixanalysis/mobile/retrieve/phone/data/analyzed?query_code=' + token)

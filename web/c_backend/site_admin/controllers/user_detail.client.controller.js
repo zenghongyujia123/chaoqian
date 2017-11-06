@@ -55,6 +55,13 @@ cSite.controller('UserDetailController', [
         console.log(err);
       });
     };
+
+    $scope.verifyVip = function () { 
+      UserNetwork.getUserById($scope, { user_id: $stateParams.user_id }).then(function (data) { 
+        console.log(data);
+        $state.go('user_detail', null, { reload: true });
+      });
+    }
     $scope.getVipStatus = function (status) {
       var map = {
         'un_submit': {
