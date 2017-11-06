@@ -28,13 +28,27 @@ exports.page_pbc_failed = function (req, res, next) {
   return res.render(filepath, { city: req.cookies.city });
 };
 exports.page_pbc_callback = function (req, res, next) {
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/page_pbc_callback.client.view.html');
-  return res.render(filepath, { city: req.cookies.city });
+  var user = req.user;
+  var token = req.query.token || req.params.token;
+
+  userLogic.savePbcToken(user, token, function () {
+    console.log(user);
+    get_pbc_detail(token, function (err, detail) {
+      userLogic.savePbcDetail(user, detail, function () {
+        console.log('detail', detail);
+      });
+    });
+    // var filepath = path.join(__dirname, '../../web/c_wechat/views/page_pbc_callback.client.view.html');
+    return redirect('/page_wechat/vip_auth_info?user_id=' + user._id);
+  });
+
+
+
 };
 
 exports.page_pbc_url = function (req, res, next) {
   var user = req.user;
-  agent.get('http://e.apix.cn/apixanalysis/pbccrc/grant/credit/pbc/page?success_url=http://chaoqianwang.com/carrier/page_pbc_success?user_id=' + user._id + '&failed_url=http://chaoqianwang.com/carrier/page_pbc_failed&callback_url=http://chaoqianwang.com/carrier/page_pbc_callback')
+  agent.get('http://e.apix.cn/apixanalysis/pbccrc/grant/credit/pbc/page?success_url=http://chaoqianwang.com/pbc/page_pbc_success?user_id=' + user._id + '&failed_url=http://chaoqianwang.com/pbc/page_pbc_failed&callback_url=http://chaoqianwang.com/pbc/page_pbc_callback?user_id=' + user._id)
     .set('apix-key', 'd3bb7276d4364ee97cdb808ef6b043a8')
     .set('content-type', 'application/json')
     .set('accept', 'application/json')
