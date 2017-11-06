@@ -34,6 +34,7 @@ exports.requireUser = function (req, res, next) {
 
 
 exports.requireUserById = function (req, res, next) {
+  var cookie = cookieLib.getCookie(req);
   userLogic.requireByUserId(req.body.user_id || req.query.user_id || req.params.user_id, function (err, user) {
     if (err) {
       return next(err);
