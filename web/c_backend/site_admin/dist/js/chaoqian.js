@@ -743,10 +743,10 @@ cSite.controller('UserDetailController', [
         console.log(data);
         if (!data.err) {
           if (data.carrier_detail) {
-            data.carrier_detail = JSON.parse(data.carrier_detail);
+            data.carrier_detail = JSON.stringify(JSON.parse(data.carrier_detail), null, 2);
           }
           if (data.pbc_detail) {
-            data.pbc_detail = JSON.parse(data.pbc_detail);
+            data.pbc_detail = JSON.stringify(JSON.parse(data.pbc_detail), null, 2);
           }
           $scope.user = data;
         }
