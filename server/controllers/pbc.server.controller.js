@@ -34,7 +34,7 @@ exports.page_pbc_callback = function (req, res, next) {
 
 exports.page_pbc_url = function (req, res, next) {
   var user = req.user;
-  agent.get('http://e.apix.cn/apixanalysis/pbccrc/grant/credit/pbc/page?success_url=http://chaoqianwang.com/carrier/page_pbc_success?userid=' + user._id + '&failed_url=http://chaoqianwang.com/carrier/page_pbc_failed&callback_url=http://chaoqianwang.com/carrier/page_pbc_callback')
+  agent.get('http://e.apix.cn/apixanalysis/pbccrc/grant/credit/pbc/page?success_url=http://chaoqianwang.com/carrier/page_pbc_success?user_id=' + user._id + '&failed_url=http://chaoqianwang.com/carrier/page_pbc_failed&callback_url=http://chaoqianwang.com/carrier/page_pbc_callback')
     .set('apix-key', 'd3bb7276d4364ee97cdb808ef6b043a8')
     .set('content-type', 'application/json')
     .set('accept', 'application/json')
