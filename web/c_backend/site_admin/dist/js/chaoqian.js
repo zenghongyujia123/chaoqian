@@ -37,6 +37,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',
       controller: 'ProductDetailController'
     })
+    .state('user_detail', {
+      url: '/user_detail/:user_id',
+      templateUrl: '/c_backend/site_admin/templates/user_detail.client.view.html',
+      controller: 'UserDetailController'
+    })
     .state('credit_people_list', {
       url: '/credit_people_list',
       templateUrl: '/c_backend/site_admin/templates/credit_people_list.client.view.html',
@@ -246,6 +251,9 @@ cSite.factory('UserNetwork',
       return {
         userList: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/userList', params);
+        },
+        getUserById: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/getUserById', params);
         }
       };
     }]);
@@ -723,12 +731,37 @@ cSite.controller('ProductListController', [
  */
 'use strict';
 
-cSite.controller('UserListController', [
+cSite.controller('UserDetailController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork',
   function ($rootScope, $scope, $state, $stateParams, UserNetwork) {
     // $scope.goDetail = function (id) {
     //     $state.go('product_detail', { product_id: id||'' });
     // }
+    $scope.user = {};
+    $scope.getUserById = function () {
+      UserNetwork.getUserById($scope, { user_id: $stateParams.user_id }).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.user = data;
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+    $scope.getUserById();
+  }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('UserListController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork',
+  function ($rootScope, $scope, $state, $stateParams, UserNetwork) {
+    $scope.goDetail = function (user) {
+      $state.go('user_detail', { user_id: user._id });
+    }
     $scope.user_list = [];
     $scope.userList = function () {
       UserNetwork.userList($scope, {}).then(function (data) {

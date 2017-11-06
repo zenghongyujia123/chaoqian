@@ -7,7 +7,7 @@ var agent = require('superagent').agent();
 
 
 exports.page_pbc_success = function (req, res, next) {
-  var user = req.user;
+  var user = req.requireUserById;
 
   return res.redirect('/page_wechat/vip_auth_info?user_id=' + user._id);
 };
@@ -16,7 +16,7 @@ exports.page_pbc_failed = function (req, res, next) {
   return res.render(filepath, { city: req.cookies.city });
 };
 exports.page_pbc_callback = function (req, res, next) {
-  var user = req.user;
+  var user = req.requireUserById;
   console.log('token', token);
   var token = req.query.token || req.params.token;
 

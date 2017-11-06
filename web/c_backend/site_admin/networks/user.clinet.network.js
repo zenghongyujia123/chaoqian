@@ -5,6 +5,9 @@ cSite.factory('UserNetwork',
       return {
         userList: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/userList', params);
+        },
+        getUserById: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/getUserById', params);
         }
       };
     }]);

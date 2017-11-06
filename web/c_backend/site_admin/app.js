@@ -37,6 +37,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',
       controller: 'ProductDetailController'
     })
+    .state('user_detail', {
+      url: '/user_detail/:user_id',
+      templateUrl: '/c_backend/site_admin/templates/user_detail.client.view.html',
+      controller: 'UserDetailController'
+    })
     .state('credit_people_list', {
       url: '/credit_people_list',
       templateUrl: '/c_backend/site_admin/templates/credit_people_list.client.view.html',

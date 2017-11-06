@@ -6,9 +6,9 @@
 cSite.controller('UserListController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork',
   function ($rootScope, $scope, $state, $stateParams, UserNetwork) {
-    // $scope.goDetail = function (id) {
-    //     $state.go('product_detail', { product_id: id||'' });
-    // }
+    $scope.goDetail = function (user) {
+      $state.go('user_detail', { user_id: user._id });
+    }
     $scope.user_list = [];
     $scope.userList = function () {
       UserNetwork.userList($scope, {}).then(function (data) {

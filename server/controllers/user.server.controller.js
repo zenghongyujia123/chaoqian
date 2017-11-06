@@ -3,6 +3,7 @@
  */
 var userLogic = require('./../logics/user');
 var cookieLib = require('../../libraries/cookie');
+var async = require('async');
 
 exports.signup = function (req, res, next) {
   var userinfo = req.body.user_info;
@@ -60,4 +61,68 @@ exports.userList = function (req, res, next) {
     req.data = result;
     return next();
   });
+}
+
+exports.getUserById = function (req, res, next) {
+  var user = req.requireUserById;
+  async.auto({
+    getCarrierDetail: function (callback) {
+      if (!user.carrier_token) {
+        return callback();
+      }
+      get_carrier_detail(user.carrier_token, function (err, detail) {
+        if (err) {
+          return callback(err);
+        }
+        return callback(null, detail);
+      });
+    },
+    getPbcDetail: function (callback, result) {
+      if (!user.pbc_token) {
+        return callback();
+      }
+      get_pbc_detail(user.pbc_token, function (err, detail) {
+        if (err) {
+          return callback(err);
+        }
+
+        return callback(null, detail);
+      });
+    }
+  }, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    user = JSON.parse(JSON.stringify(user));
+    user.pbc_detail = result.getPbcDetail;
+    user.carrier_detail = result.getCarrierDetail;
+    req.data = user;
+    return next();
+  });
+
+
+
+}
+
+
+function get_carrier_detail(token, callback) {
+  agent.get('http://e.apix.cn/apixanalysis/mobile/retrieve/phone/data/analyzed?query_code=' + token)
+    .set('apix-key', '92fd3f3bf03a40087fe4ece5bba355cf')
+    .set('content-type', 'application/json')
+    .set('accept', 'application/json')
+    .end(function (err, result) {
+      result = JSON.parse(result.text);
+      return callback(err, result);
+    });
+}
+
+function get_pbc_detail(token, callback) {
+  agent.get('http://e.apix.cn/apixanalysis/pbccrc/retrieve/credit/data/query?query_code=' + token)
+    .set('apix-key', 'd3bb7276d4364ee97cdb808ef6b043a8')
+    .set('content-type', 'application/json')
+    .set('accept', 'application/json')
+    .end(function (err, result) {
+      result = JSON.parse(result.text);
+      return callback(err, result);
+    });
 }

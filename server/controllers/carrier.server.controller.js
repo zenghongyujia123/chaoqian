@@ -7,7 +7,7 @@ var agent = require('superagent').agent();
 
 
 exports.page_carrier_success = function (req, res, next) {
-  var user = req.user;
+  var user = req.requireUserById;
   var token = req.query.token || req.params.token;
 
   userLogic.saveCarrierToken(user, token, function (err, user) {

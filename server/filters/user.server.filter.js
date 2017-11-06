@@ -54,7 +54,7 @@ exports.requireUserById = function (req, res, next) {
       });
     }
     else {
-      req.user = user;
+      req.requireUserById = user;
       return next();
     }
   })
