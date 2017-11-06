@@ -737,16 +737,39 @@ cSite.controller('UserDetailController', [
     // $scope.goDetail = function (id) {
     //     $state.go('product_detail', { product_id: id||'' });
     // }
+
+    function syntaxHighlight(json) {
+      if (typeof json != 'string') {
+        json = JSON.stringify(json, undefined, 2);
+      }
+      json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+          if (/:$/.test(match)) {
+            cls = 'key';
+          } else {
+            cls = 'string';
+          }
+        } else if (/true|false/.test(match)) {
+          cls = 'boolean';
+        } else if (/null/.test(match)) {
+          cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+      });
+    }
+
     $scope.user = {};
     $scope.getUserById = function () {
       UserNetwork.getUserById($scope, { user_id: $stateParams.user_id }).then(function (data) {
         console.log(data);
         if (!data.err) {
           if (data.carrier_detail) {
-            data.carrier_detail = JSON.stringify(JSON.parse(data.carrier_detail), null, 2);
+            data.carrier_detail = syntaxHighlight(JSON.parse(data.carrier_detail));
           }
           if (data.pbc_detail) {
-            data.pbc_detail = JSON.stringify(JSON.parse(data.pbc_detail), null, 2);
+            data.pbc_detail = syntaxHighlight(JSON.parse(data.pbc_detail));
           }
           $scope.user = data;
         }
