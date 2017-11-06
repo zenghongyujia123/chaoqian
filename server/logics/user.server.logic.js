@@ -87,13 +87,19 @@ exports.saveCarrierToken = function (user, token, callback) {
 }
 
 exports.saveCarrierDetail = function (user, detail, callback) {
-  user.carrier_detail = detail;
-  user.save(function (err, saveUser) {
+  User.findOne({ _id: user._id }, function (err, u) {
     if (err) {
-      return callback({ err: sysErr.database_save_error });
+      return callback({ err: sysErr.database_query_error });
     }
-    return callback(null, saveUser);
-  });
+    u.carrier_detail = detail;
+    u.save(function (err, saveUser) {
+      if (err) {
+        return callback({ err: sysErr.database_save_error });
+      }
+      return callback(null, saveUser);
+    });
+  })
+
 }
 
 exports.savePbcToken = function (user, token, callback) {
@@ -108,12 +114,17 @@ exports.savePbcToken = function (user, token, callback) {
 }
 
 exports.savePbcDetail = function (user, detail, callback) {
-  user.pbc_detail = detail;
-  user.save(function (err, saveUser) {
+  User.findOne({ _id: user._id }, function (err, u) {
     if (err) {
-      return callback({ err: sysErr.database_save_error });
+      return callback({ err: sysErr.database_query_error });
     }
-    return callback(null, saveUser);
+    u.pbc_detail = detail;
+    u.save(function (err, saveUser) {
+      if (err) {
+        return callback({ err: sysErr.database_save_error });
+      }
+      return callback(null, saveUser);
+    });
   });
 }
 

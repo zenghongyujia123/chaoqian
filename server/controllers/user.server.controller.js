@@ -66,37 +66,58 @@ exports.userList = function (req, res, next) {
 
 exports.getUserById = function (req, res, next) {
   var user = req.requireUserById;
+  user = JSON.parse(JSON.stringify(user));
+
   async.auto({
     getCarrierDetail: function (callback) {
       if (!user.carrier_token) {
         return callback();
       }
+      if (user.carrier_detail) {
+        return callback();
+      }
+
       get_carrier_detail(user.carrier_token, function (err, detail) {
         if (err) {
           return callback(err);
         }
-        return callback(null, detail);
+        userLogic.saveCarrierDetail(user, detail, function (err, result) {
+          if (err) {
+            return callback(err);
+          }
+          user.carrier_detail = detail;
+          return callback();
+        })
       });
     },
     getPbcDetail: function (callback, result) {
       if (!user.pbc_token) {
         return callback();
       }
+
+      if (user.pbc_detail) {
+        return callback();
+      }
+
+
+
       get_pbc_detail(user.pbc_token, function (err, detail) {
         if (err) {
           return callback(err);
         }
-
-        return callback(null, detail);
+        userLogic.savePbcDetail(user, detail, function (err, result) {
+          if (err) {
+            return callback(err);
+          }
+          user.pbc_detail = detail;
+          return callback();
+        })
       });
     }
   }, function (err, result) {
     if (err) {
       return next(err);
     }
-    user = JSON.parse(JSON.stringify(user));
-    user.pbc_detail = result.getPbcDetail;
-    user.carrier_detail = result.getCarrierDetail;
     req.data = user;
     return next();
   });
