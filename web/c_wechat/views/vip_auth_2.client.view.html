@@ -78,6 +78,31 @@
   </div>
 </body>
 <script>
+  var carrier_token = "<%= (user.pbc_token?'已授权':'授权查询') %>";
+  var pbc_token = "<%= (user.pbc_token?'已授权':'授权查询') %>";
+
+  $(function () {
+    $('.submit-btn').click(function () {
+      if (!carrier_token) {
+        return alert('请通讯运营商授权');
+      }
+      if (!pbc_token) {
+        return alert('请通人行征信授权');
+      }
+      $.ajax({
+        method: 'post',
+        url: '/user/updateUserAuth2',
+        success: function (data) {
+
+
+          console.log(data);
+          if (!data.err) {
+            window.location = window.location;
+          }
+        }
+      });
+    });
+  });
 </script>
 
 </html>
