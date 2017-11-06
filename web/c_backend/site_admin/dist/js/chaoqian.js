@@ -772,6 +772,9 @@ cSite.controller('UserDetailController', [
             data.pbc_detail = syntaxHighlight(JSON.parse(data.pbc_detail));
           }
           $scope.user = data;
+
+          $('.id_pbc_detail').append(data.pbc_detail);
+          $('.id_pbc_detail').html($('.id_pbc_detail').text())
         }
       }, function (err) {
         console.log(err);
@@ -792,6 +795,7 @@ cSite.controller('UserDetailController', [
       return map[status].text;
     }
     $scope.getUserById();
+
 
   }]);
 
