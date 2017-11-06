@@ -203,7 +203,7 @@ exports.userList = function (callback) {
   })
 }
 
-exports.verifyVip = function (user,callback) { 
+exports.verifyVip = function (user, callback) {
   user.vip_status = 'passed';
   user.save(function (err, savedUser) {
     if (err) {
@@ -212,3 +212,17 @@ exports.verifyVip = function (user,callback) {
     return callback(null, savedUser);
   });
 }
+exports.updateVipInfo = function (user, vip_info, callback) {
+  user.vip_credit_assessment = vip_info.vip_credit_assessment;
+  user.vip_credit_starter = vip_info.vip_credit_starter;
+  user.vip_product_ids = vip_info.vip_product_ids;
+  user.markModified('vip_product_ids');
+  user.save(function (err, savedUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, savedUser);
+  });
+}
+
+

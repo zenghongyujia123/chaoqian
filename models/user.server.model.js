@@ -113,7 +113,20 @@ module.exports = function (appDb) {
       default: 'un_submit'
     },
     vip_status_submit_time: {
-      type:Date
+      type: Date
+    },
+    vip_product_ids: {
+      type: []
+    },
+    //vip_推荐信用初值
+    vip_credit_starter: {
+      type: String,
+      default: ''
+    },
+    //vip_推荐信用估值
+    vip_credit_assessment: {
+      type: String,
+      default: ''
     }
   });
 

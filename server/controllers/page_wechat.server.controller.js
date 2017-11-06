@@ -258,13 +258,14 @@ exports.vip_auth_info = function (req, res, next) {
   }
 
   if (user.vip_status === 'passed') {
-
-    filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result.client.view.html');
-    return res.render(filepath, { city: req.cookies.city, user: user, products: [] });
-
+    productLogic.productListByIds(user.vip_product_ids, function (err, products) {
+      filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result.client.view.html');
+      return res.render(filepath, { city: req.cookies.city, user: user, products: products });
+    });
   }
-
-  return res.render(filepath, { city: req.cookies.city, user: user });
+  else {
+    return res.render(filepath, { city: req.cookies.city, user: user });
+  }
 };
 
 exports.vip_auth_1 = function (req, res, next) {

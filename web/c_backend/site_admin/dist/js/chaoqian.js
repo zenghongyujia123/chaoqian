@@ -257,6 +257,9 @@ cSite.factory('UserNetwork',
         },
         verifyVip: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/verifyVip', params);
+        },
+        updateVipInfo: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/updateVipInfo', params);
         }
       };
     }]);
@@ -735,8 +738,8 @@ cSite.controller('ProductListController', [
 'use strict';
 
 cSite.controller('UserDetailController', [
-  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork',
-  function ($rootScope, $scope, $state, $stateParams, UserNetwork) {
+  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork', 'ProductNetwork',
+  function ($rootScope, $scope, $state, $stateParams, UserNetwork, ProductNetwork) {
     // $scope.goDetail = function (id) {
     //     $state.go('product_detail', { product_id: id||'' });
     // }
@@ -762,6 +765,21 @@ cSite.controller('UserDetailController', [
         return '<span class="' + cls + '">' + match + '</span>';
       });
     }
+    $scope.product_list = [];
+    $scope.productList = function () {
+      ProductNetwork.productList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.product_list = data;
+          $scope.user.vip_product_ids = $scope.user.vip_product_ids || [];
+          $scope.product_list.forEach(function (product) {
+            product.isSelect = $scope.user.vip_product_ids.indexOf(product._id) >= 0;
+          });
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
 
     $scope.user = {};
     $scope.getUserById = function () {
@@ -780,7 +798,9 @@ cSite.controller('UserDetailController', [
           $('.id_pbc_detail').html($('.id_pbc_detail').text());
 
           $('.id_carrier_detail').append(data.carrier_detail);
-          $('.id_carrier_detail').html($('.id_carrier_detail').text())
+          $('.id_carrier_detail').html($('.id_carrier_detail').text());
+
+          $scope.productList();
         }
       }, function (err) {
         console.log(err);
@@ -789,6 +809,29 @@ cSite.controller('UserDetailController', [
 
     $scope.verifyVip = function () {
       UserNetwork.verifyVip($scope, { user_id: $stateParams.user_id }).then(function (data) {
+        console.log(data);
+        $state.go('user_detail', null, { reload: true });
+      });
+    }
+
+    $scope.clickProduct = function (product) {
+      product.isSelect = !product.isSelect;
+    }
+
+    $scope.updateVipInfo = function () {
+      var productids = $scope.product_list.filter(function (product) {
+        return !!product.isSelect;
+      }).map(function (product) {
+        return product._id;
+      });
+
+      UserNetwork.updateVipInfo($scope, {
+        user_id: $stateParams.user_id, vip_info: {
+          vip_product_ids: productids,
+          vip_credit_starter: $scope.user.vip_credit_starter,
+          vip_credit_assessment: $scope.user.vip_credit_assessment
+        }
+      }).then(function (data) {
         console.log(data);
         $state.go('user_detail', null, { reload: true });
       });

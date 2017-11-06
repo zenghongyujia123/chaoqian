@@ -60,3 +60,17 @@
   border-radius: 4px;
   margin-right: 20px;
 }
+.page-body-view .user-detail-product-item {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+  background-color: white;
+  text-align: center;
+}
+.page-body-view .user-detail-product-item .product-photo {
+  width: 60px;
+  height: 60px;
+}
+.page-body-view .user-detail-product-item .product-name.select {
+  color: #f5091c;
+}

@@ -140,6 +140,18 @@ exports.verifyVip = function (req, res, next) {
   });
 }
 
+exports.updateVipInfo = function (req, res, next) {
+  userLogic.updateVipInfo(req.requireUserById, req.body.vip_info, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
+
+
+
 function get_carrier_detail(token, callback) {
   agent.get('http://e.apix.cn/apixanalysis/mobile/retrieve/phone/data/analyzed?query_code=' + token)
     .set('apix-key', '92fd3f3bf03a40087fe4ece5bba355cf')

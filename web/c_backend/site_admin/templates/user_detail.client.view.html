@@ -2,7 +2,10 @@
   <div class="page-operation-view" layout="row" layout-align="space-between center">
     <p class="title">用户详情</p>
     <div layout="row">
-      <md-button class="md-primary md-raised md-hue-2" ng-disabled="user.vip_status==='passed'||user.vip_status==='un_submit'" ng-click="verifyVip()">{{user.vip_status==='passed'?'vip已通过':'vip审核通过'}}</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-disabled="user.vip_status==='passed'||user.vip_status==='un_submit'"
+        ng-click="verifyVip()">{{user.vip_status==='passed'?'vip已通过':'vip审核通过'}}</md-button>
+
+      <md-button class="md-primary md-raised md-hue-2" ng-click="updateVipInfo()">保存</md-button>
     </div>
   </div>
 
@@ -30,6 +33,28 @@
       <div class="column-item" flex="">{{getVipStatus(user.vip_status)}}</div>
     </div>
   </div>
+
+  <md-content layout-padding>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>vip_推荐信用初值</label>
+        <input ng-model="user.vip_credit_starter" />
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>vip_推荐信用估值</label>
+        <input ng-model="user.vip_credit_assessment" />
+      </md-input-container>
+    </div>
+  </md-content>
+  <md-content layout-padding>
+    <div layout="row">
+      <div class="user-detail-product-item" ng-repeat="product in product_list" ng-click="clickProduct(product)">
+        <img class="product-photo" ng-src="{{product.logo}}" />
+        <div class="product-name" ng-class="{select:!!product.isSelect}">{{product.name}}</div>
+      </div>
+      <div class="user-detail-product-item"></div>
+    </div>
+  </md-content>
   <div>
     通讯运营商数据
   </div>

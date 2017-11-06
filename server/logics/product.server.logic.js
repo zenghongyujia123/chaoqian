@@ -61,6 +61,16 @@ exports.productList = function (callback) {
   });
 };
 
+exports.productListByIds = function (ids, callback) {
+  ids = ids || [];
+  Product.find({ _id: { $in: ids } }, function (err, products) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, products);
+  });
+};
+
 exports.productDetail = function (productId, callback) {
   Product.findOne({ _id: productId }, function (err, product) {
     if (err) {
