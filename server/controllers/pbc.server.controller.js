@@ -8,20 +8,8 @@ var agent = require('superagent').agent();
 
 exports.page_pbc_success = function (req, res, next) {
   var user = req.user;
-  var token = req.query.token || req.params.token;
 
-  userLogic.savePbcToken(user, token, function () {
-    var filepath = path.join(__dirname, '../../web/c_wechat/views/page_pbc_success.client.view.html');
-    console.log(user);
-
-    get_pbc_detail(token, function (err, detail) {
-      userLogic.savePbcDetail(user, detail, function () {
-        console.log('detail', detail);
-      });
-    });
-
-    return res.render(filepath, { city: req.cookies.city });
-  });
+  return redirect('/page_wechat/vip_auth_info?user_id=' + user._id);
 };
 exports.page_pbc_failed = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/page_pbc_failed.client.view.html');
@@ -29,6 +17,7 @@ exports.page_pbc_failed = function (req, res, next) {
 };
 exports.page_pbc_callback = function (req, res, next) {
   var user = req.user;
+  console.log('token', token);
   var token = req.query.token || req.params.token;
 
   userLogic.savePbcToken(user, token, function () {
