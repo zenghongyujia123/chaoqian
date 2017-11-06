@@ -3,6 +3,7 @@
  */
 var userLogic = require('./../logics/user');
 var cookieLib = require('../../libraries/cookie');
+var agent = require('superagent').agent();
 var async = require('async');
 
 exports.signup = function (req, res, next) {
