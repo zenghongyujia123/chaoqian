@@ -49,7 +49,7 @@ exports.requireUserById = function (req, res, next) {
         if (err) {
           return next(err);
         }
-        req.user = savedUser;
+        req.requireUserById = savedUser;
         return next();
       });
     }
