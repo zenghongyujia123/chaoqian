@@ -754,34 +754,6 @@ cSite.controller('UserDetailController', [
         console.log(err);
       });
     };
-    $scope.getUserById();
-    
-  }]);
-
-/**
- * Created by lance on 2016/11/17.
- */
-'use strict';
-
-cSite.controller('UserListController', [
-  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork',
-  function ($rootScope, $scope, $state, $stateParams, UserNetwork) {
-    $scope.goDetail = function (user) {
-      $state.go('user_detail', { user_id: user._id });
-    }
-    $scope.user_list = [];
-    $scope.userList = function () {
-      UserNetwork.userList($scope, {}).then(function (data) {
-        console.log(data);
-        if (!data.err) {
-          $scope.user_list = data;
-        }
-      }, function (err) {
-        console.log(err);
-      });
-    };
-
-
     $scope.getVipStatus = function (status) {
       var map = {
         'un_submit': {
@@ -796,7 +768,8 @@ cSite.controller('UserListController', [
       }
       return map[status].text;
     }
-    $scope.userList();
+    $scope.getUserById();
+
   }]);
 
 /**
