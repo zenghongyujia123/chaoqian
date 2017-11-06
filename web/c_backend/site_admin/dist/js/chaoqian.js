@@ -774,7 +774,10 @@ cSite.controller('UserDetailController', [
           $scope.user = data;
 
           $('.id_pbc_detail').append(data.pbc_detail);
-          $('.id_pbc_detail').html($('.id_pbc_detail').text())
+          $('.id_pbc_detail').html($('.id_pbc_detail').text());
+
+          $('.id_carrier_detail').append(data.carrier_detail);
+          $('.id_carrier_detail').html($('.id_carrier_detail').text())
         }
       }, function (err) {
         console.log(err);
