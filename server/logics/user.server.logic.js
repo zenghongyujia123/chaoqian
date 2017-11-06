@@ -91,7 +91,7 @@ exports.saveCarrierDetail = function (user, detail, callback) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }
-    u.carrier_detail = JSON.stringify(detail);
+    u.carrier_detail = detail;
     u.save(function (err, saveUser) {
       if (err) {
         console.log('err2');
@@ -120,7 +120,7 @@ exports.savePbcDetail = function (user, detail, callback) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }
-    u.pbc_detail = JSON.stringify(detail);
+    u.pbc_detail = detail;
     u.save(function (err, saveUser) {
       if (err) {
         console.log('err1');

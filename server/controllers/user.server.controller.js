@@ -81,6 +81,7 @@ exports.getUserById = function (req, res, next) {
         if (err) {
           return callback(err);
         }
+        detail = JSON.stringify(detail);
         userLogic.saveCarrierDetail(user, detail, function (err, result) {
           if (err) {
             return callback(err);
@@ -103,6 +104,7 @@ exports.getUserById = function (req, res, next) {
         if (err) {
           return callback(err);
         }
+        detail = JSON.stringify(detail);
         userLogic.savePbcDetail(user, detail, function (err, result) {
           if (err) {
             return callback(err);
