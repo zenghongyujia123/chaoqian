@@ -94,6 +94,8 @@ exports.saveCarrierDetail = function (user, detail, callback) {
     u.carrier_detail = detail;
     u.save(function (err, saveUser) {
       if (err) {
+        console.log('err2');
+        console.log(err);
         return callback({ err: sysErr.database_save_error });
       }
       return callback(null, saveUser);
@@ -121,6 +123,8 @@ exports.savePbcDetail = function (user, detail, callback) {
     u.pbc_detail = detail;
     u.save(function (err, saveUser) {
       if (err) {
+        console.log('err1');
+        console.log(err);
         return callback({ err: sysErr.database_save_error });
       }
       return callback(null, saveUser);

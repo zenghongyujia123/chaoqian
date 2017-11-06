@@ -99,8 +99,6 @@ exports.getUserById = function (req, res, next) {
         return callback();
       }
 
-
-
       get_pbc_detail(user.pbc_token, function (err, detail) {
         if (err) {
           return callback(err);
