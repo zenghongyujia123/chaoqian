@@ -257,6 +257,10 @@ exports.vip_auth_info = function (req, res, next) {
     filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_3.client.view.html');
   }
 
+  if (user.vip_status === 'passed') {
+    filepath = path.join(__dirname, '../../web/c_wechat/views/result.client.view.html');
+  }
+
   return res.render(filepath, { city: req.cookies.city, user: user });
 };
 
