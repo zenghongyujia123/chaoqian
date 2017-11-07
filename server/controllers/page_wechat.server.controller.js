@@ -3,6 +3,8 @@
  */
 var path = require('path');
 var productLogic = require('../logics/product');
+var cardLogic = require('../logics/card');
+
 var userLogic = require('../logics/user');
 var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
@@ -259,14 +261,27 @@ exports.vip_auth_info = function (req, res, next) {
 
   if (user.vip_status === 'passed') {
     productLogic.productListByIds(user.vip_product_ids, function (err, products) {
-      filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result.client.view.html');
-      return res.render(filepath, { city: req.cookies.city, user: user, products: products });
+      cardLogic.cardListByIds(user.vip_card_ids, function (err, cards) {
+        filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result.client.view.html');
+        return res.render(filepath, { city: req.cookies.city, user: user, products: products, cards: cards });
+      });
     });
   }
   else {
     return res.render(filepath, { city: req.cookies.city, user: user });
   }
 };
+
+exports.vip_result = function (req, res, next) {
+  var user = req.user;
+  productLogic.productListByIds(user.vip_product_ids, function (err, products) {
+    cardLogic.cardListByIds(user.vip_card_ids, function (err, cards) {
+      filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result.client.view.html');
+      return res.render(filepath, { city: req.cookies.city, user: user, products: products, cards: cards });
+    });
+  });
+};
+
 
 exports.vip_auth_1 = function (req, res, next) {
   var user = req.user;

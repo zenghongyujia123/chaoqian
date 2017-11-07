@@ -135,6 +135,11 @@ module.exports = function (appDb) {
     vip_report_url_text: {
       type: String,
       default: ''
+    },
+    //vip产品推荐文本
+    vip_product_assessment_text: {
+      type: String,
+      default: ''
     }
   });
 

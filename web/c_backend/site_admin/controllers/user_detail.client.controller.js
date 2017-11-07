@@ -33,7 +33,6 @@ cSite.controller('UserDetailController', [
     }
     $scope.product_list = [];
     $scope.select_product_list = [];
-
     $scope.card_list = [];
     $scope.select_card_list = [];
 
