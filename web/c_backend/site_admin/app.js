@@ -27,6 +27,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/product_list.client.view.html',
       controller: 'ProductListController'
     })
+    .state('card_list', {
+      url: '/card_list',
+      templateUrl: '/c_backend/site_admin/templates/card_list.client.view.html',
+      controller: 'CardListController'
+    })
     .state('user_list', {
       url: '/user_list',
       templateUrl: '/c_backend/site_admin/templates/user_list.client.view.html',
@@ -41,6 +46,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       url: '/user_detail/:user_id',
       templateUrl: '/c_backend/site_admin/templates/user_detail.client.view.html',
       controller: 'UserDetailController'
+    })
+    .state('card_detail', {
+      url: '/card_detail/:card_id',
+      templateUrl: '/c_backend/site_admin/templates/card_detail.client.view.html',
+      controller: 'CardDetailController'
     })
     .state('credit_people_list', {
       url: '/credit_people_list',
