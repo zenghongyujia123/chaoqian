@@ -27,6 +27,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/product_list.client.view.html',
       controller: 'ProductListController'
     })
+    .state('card_list', {
+      url: '/card_list',
+      templateUrl: '/c_backend/site_admin/templates/card_list.client.view.html',
+      controller: 'CardListController'
+    })
     .state('user_list', {
       url: '/user_list',
       templateUrl: '/c_backend/site_admin/templates/user_list.client.view.html',
@@ -41,6 +46,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       url: '/user_detail/:user_id',
       templateUrl: '/c_backend/site_admin/templates/user_detail.client.view.html',
       controller: 'UserDetailController'
+    })
+    .state('card_detail', {
+      url: '/card_detail/:card_id',
+      templateUrl: '/c_backend/site_admin/templates/card_detail.client.view.html',
+      controller: 'CardDetailController'
     })
     .state('credit_people_list', {
       url: '/credit_people_list',
@@ -104,6 +114,24 @@ cSite.constant('AddressConstant', {
   uploadImageUrl: 'https://up.qbox.me/putb64/-1',
   qiniuUploadFileUrl: 'https://up.qbox.me'
 });
+
+'use strict';
+cSite.factory('CardNetwork',
+  ['Http', 'CommonHelper',
+    function (Http, CommonHelper) {
+      return {
+        updateCard: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/card/updateCard', params);
+        },
+        cardList: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/card/cardList', params);
+        },
+        cardDetail: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/card/cardDetail', params);
+        }
+
+      };
+    }]);
 
 'use strict';
 cSite.factory('CreditPeopleNetwork',
@@ -469,6 +497,79 @@ cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper'
  */
 'use strict';
 
+cSite.controller('CardDetailController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'CardNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, QiniuService, CardNetwork, CommonHelper) {
+    var qiniu = QiniuService.createUploader('qiniu-upload-test-card-log-button', function (info) {
+      $scope.card.logo = QiniuService.getQiniuImageSrc(info.key);
+      console.log('upload successs : ---- ', info);
+    });
+
+    $scope.card = {
+      _id: $stateParams.card_id,
+      name: '',
+      logo: '',
+      description: '',
+    };
+
+    $scope.updateCard = function (event) {
+      CardNetwork.updateCard($scope, { card_info: $scope.card }).then(function (data) {
+        if (!data.err) {
+          CommonHelper.showConfirm($scope, null, '操作成功', function () {
+            $state.go('card_detail', { card_id: data._id }, { reload: true });
+          }, null, null, event);
+        }
+        console.log(data);
+      }, function (err) {
+        console.log(err);
+      });;
+    }
+
+    function cardDetail() {
+      if ($scope.card._id) {
+        CardNetwork.cardDetail($scope, { card_id: $scope.card._id }).then(function (data) {
+          console.log(data);
+          if (!data.err) {
+            $scope.card = data;
+          }
+        }, function (err) {
+          console.log(err);
+        });
+      }
+    }
+    cardDetail();
+  }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('CardListController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'CardNetwork',
+  function ($rootScope, $scope, $state, $stateParams, CardNetwork) {
+    $scope.goDetail = function (id) {
+      $state.go('card_detail', { card_id: id || '' });
+    }
+    $scope.card_list = [];
+    $scope.cardList = function () {
+      CardNetwork.cardList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.card_list = data;
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+    $scope.cardList();
+  }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
 cSite.controller('CreditPeopleDetailController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'CreditPeopleNetwork', 'CommonHelper',
   function ($rootScope, $scope, $state, $stateParams, QiniuService, CreditPeopleNetwork, CommonHelper) {
@@ -827,6 +928,7 @@ cSite.controller('UserDetailController', [
 
       UserNetwork.updateVipInfo($scope, {
         user_id: $stateParams.user_id, vip_info: {
+          vip_report_url_text: $scope.user.vip_report_url_text,
           vip_product_ids: productids,
           vip_credit_starter: $scope.user.vip_credit_starter,
           vip_credit_assessment: $scope.user.vip_credit_assessment

@@ -1,11 +1,11 @@
 <div class="page-body-view">
   <div class="page-operation-view" layout="row" layout-align="space-between center">
     <div layout="row">
-      <p class="title">产品详情</p>
+      <p class="title">信用卡详情</p>
     </div>
     <div layout="row">
-      <md-button class="md-primary md-raised md-hue-2" id="qiniu-upload-test-button">上传logo</md-button>
-      <md-button class="md-primary md-raised md-hue-2" ng-click="updateProduct($event)">保存</md-button>
+      <md-button class="md-primary md-raised md-hue-2" id="qiniu-upload-test-card-log-button">上传logo</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="updateCard($event)">保存</md-button>
     </div>
   </div>
 
@@ -13,82 +13,17 @@
     <md-content layout-padding>
       <div layout-gt-sm="row">
         <span>
-          <img class="product-detail-logo" ng-src="{{product.logo}}"></img>
+          <img class="product-detail-logo" ng-src="{{card.logo}}"></img>
         </span>
         <md-input-container class="md-block" flex-gt-sm>
-          <label>产品名称</label>
-          <input ng-model="product.name" />
+          <label>信用卡名称</label>
+          <input ng-model="card.name" />
         </md-input-container>
         <md-input-container class="md-block" flex-gt-sm>
-          <label>产品描述</label>
-          <input ng-model="product.description" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>申请成功率</label>
-          <input ng-model="product.apply_success_percent" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>申请人数</label>
-          <input ng-model="product.apply_people_count" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>利率（日）</label>
-          <input ng-model="product.fee_cost_per_day" />
+          <label>信用卡描述</label>
+          <input ng-model="card.description" />
         </md-input-container>
       </div>
-      <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>机构连接（http://....）</label>
-          <input ng-model="product.organization_url" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>最长下款时间</label>
-          <input ng-model="product.longest_time" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>最小贷款额度</label>
-          <input ng-model="product.min_limit" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>最大贷款额度</label>
-          <input ng-model="product.max_limit" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>参考每日费用</label>
-          <input ng-model="product.refer_cost_per_day" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>风控代码：</label>
-          <input ng-model="product.risk_codes" />
-        </md-input-container>
-      </div>
-      <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <div>费用说明</div>
-          <div text-angular ng-model="product.fee_info"></div>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <div>申请要求</div>
-          <div text-angular ng-model="product.apply_info"></div>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <div>其他说明</div>
-          <div text-angular ng-model="product.other_info"></div>
-        </md-input-container>
-      </div>
-      <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <div>申请攻略</div>
-          <div text-angular ng-model="product.apply_strategy"></div>
-        </md-input-container>
-      </div>
-      <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <div>微信产品详情</div>
-          <div text-angular ng-model="product.wechat_detail_info"></div>
-        </md-input-container>
-      </div>
-
     </md-content>
   </div>
 </div>

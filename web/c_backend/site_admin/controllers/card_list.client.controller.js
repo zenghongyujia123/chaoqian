@@ -4,22 +4,21 @@
 'use strict';
 
 cSite.controller('CardListController', [
-    '$rootScope', '$scope', '$state', '$stateParams', 'ProductNetwork',
-    function ($rootScope, $scope, $state, $stateParams, ProductNetwork) {
-        $scope.goDetail = function (id) {
-            $state.go('product_detail', { product_id: id||'' });
+  '$rootScope', '$scope', '$state', '$stateParams', 'CardNetwork',
+  function ($rootScope, $scope, $state, $stateParams, CardNetwork) {
+    $scope.goDetail = function (id) {
+      $state.go('card_detail', { card_id: id || '' });
+    }
+    $scope.card_list = [];
+    $scope.cardList = function () {
+      CardNetwork.cardList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.card_list = data;
         }
-        $scope.product_list = [];
-        $scope.productList = function () {
-            ProductNetwork.productList($scope, {}).then(function (data) {
-                console.log(data);
-                if (!data.err) {
-                    $scope.product_list = data;
-                }
-            }, function (err) {
-                console.log(err);
-            });
-        };
-
-        $scope.productList();
-    }]);
+      }, function (err) {
+        console.log(err);
+      });
+    };
+    $scope.cardList();
+  }]);
