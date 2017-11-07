@@ -114,6 +114,9 @@ module.exports = function (appDb) {
       type: String,
       default: ''
     },
+    str3s: {
+      type: []
+    },
     //金额
     str4: {
       type: String,
@@ -129,15 +132,24 @@ module.exports = function (appDb) {
       type: String,
       default: ''
     },
+    str6s: {
+      type: []
+    },
     //申请条件（英文逗号分隔）
     str7: {
       type: String,
       default: ''
     },
+    str7s: {
+      type: []
+    },
     //费用说明（月费率）
     str8: {
       type: String,
       default: ''
+    },
+    str8s: {
+      type: []
     },
     //费用说明（说明）
     str9: {

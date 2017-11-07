@@ -44,16 +44,21 @@ exports.updateProduct = function (productInfo, callback) {
     product.str1 = productInfo.str1;
     product.str2 = productInfo.str2;
     product.str3 = productInfo.str3;
+    product.str3s = productInfo.str3.split(',');
     product.str4 = productInfo.str4;
     product.str5 = productInfo.str5;
     product.str6 = productInfo.str6;
+    product.str6s = productInfo.str6.split(',')
     product.str7 = productInfo.str7;
+    product.str7s = productInfo.str7.split(',')
     product.str8 = productInfo.str8;
+    product.str8s = productInfo.str8.split(',')
     product.str9 = productInfo.str9;
     product.str10 = productInfo.str10;
     product.str11 = productInfo.str11;
     product.str12 = productInfo.str12;
 
+    product.ma
     product.save(function (err, savedProduct) {
       if (err) {
         return callback({ err: sysErr.database_save_error });
