@@ -16,6 +16,7 @@ cSite.controller('CardDetailController', [
       name: '',
       logo: '',
       description: '',
+      organization_url:'',
     };
 
     $scope.updateCard = function (event) {

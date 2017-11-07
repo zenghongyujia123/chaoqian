@@ -25,6 +25,11 @@ module.exports = function (appDb) {
     description: {
       type: String,
       trim: true
+    },
+    //跳转连接
+    organization_url: {
+      type: String,
+      default: ''
     }
   });
 

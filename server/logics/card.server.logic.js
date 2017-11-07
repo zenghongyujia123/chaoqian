@@ -26,6 +26,7 @@ exports.updateCard = function (cardInfo, callback) {
     card.name = cardInfo.name;
     card.logo = cardInfo.logo;
     card.description = cardInfo.description;
+    card.organization_url = cardInfo.organization_url;
     card.save(function (err, savedCard) {
       if (err) {
         return callback({ err: sysErr.database_save_error });

@@ -86,6 +86,7 @@ module.exports = function (appDb) {
     organization_info: {
       type: Schema.Types.Mixed
     },
+    //跳转连接
     organization_url: {
       type: String,
       default: ''
