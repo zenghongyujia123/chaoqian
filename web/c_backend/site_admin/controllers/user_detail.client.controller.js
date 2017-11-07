@@ -93,6 +93,7 @@ cSite.controller('UserDetailController', [
 
       UserNetwork.updateVipInfo($scope, {
         user_id: $stateParams.user_id, vip_info: {
+          vip_report_url_text: $scope.user.vip_report_url_text,
           vip_product_ids: productids,
           vip_credit_starter: $scope.user.vip_credit_starter,
           vip_credit_assessment: $scope.user.vip_credit_assessment

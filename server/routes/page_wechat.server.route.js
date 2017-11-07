@@ -37,5 +37,6 @@ module.exports = function (app) {
   app.route('/page_wechat/vip_auth_1').get(userFilter.requireUser, index.vip_auth_1);
   app.route('/page_wechat/vip_auth_2').get(userFilter.requireUser, index.vip_auth_2);
   app.route('/page_wechat/vip_auth_3').get(userFilter.requireUser, index.vip_auth_3);
+  app.route('/page_wechat/vip_auth_report').get(userFilter.requireUser, index.vip_auth_report);
   app.route('/page_wechat/vip_notice').get(userFilter.requireUser, index.vip_notice);
 };

@@ -127,6 +127,11 @@ module.exports = function (appDb) {
     vip_credit_assessment: {
       type: String,
       default: ''
+    },
+    //vip跳转连接文本
+    vip_report_url_text: {
+      type: String,
+      default: ''
     }
   });
 
