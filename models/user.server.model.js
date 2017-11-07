@@ -118,6 +118,9 @@ module.exports = function (appDb) {
     vip_product_ids: {
       type: []
     },
+    vip_card_ids: {
+      type: []
+    },
     //vip_推荐信用初值
     vip_credit_starter: {
       type: String,

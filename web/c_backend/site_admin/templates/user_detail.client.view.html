@@ -51,13 +51,40 @@
     </div>
   </md-content>
   <md-content layout-padding>
+    <div>已选产品（点击移除）</div>
+    <div layout="row">
+      <div class="user-detail-product-item" ng-repeat="product in select_product_list" ng-click="removeProduct(product)">
+        <img class="product-photo" ng-src="{{product.logo}}" />
+        <div class="product-name">{{$index+1}}--{{product.name}}</div>
+      </div>
+    </div>
+    <div>所有产品（点击添加）</div>
     <div layout="row">
       <div class="user-detail-product-item" ng-repeat="product in product_list" ng-click="clickProduct(product)">
         <img class="product-photo" ng-src="{{product.logo}}" />
-        <div class="product-name" ng-class="{select:!!product.isSelect}">{{product.name}}</div>
+        <div class="product-name">{{product.name}}</div>
+      </div>
+    </div>
+
+    <div>已选信用卡（点击移除）</div>
+    <div layout="row">
+      <div class="user-detail-product-item" ng-repeat="card in select_card_list" ng-click="removeCard(card)">
+        <img class="product-photo" ng-src="{{card.logo}}" />
+        <div class="product-name">{{$index+1}}--{{card.name}}</div>
+      </div>
+    </div>
+    <div>所有信用卡（点击添加）</div>
+    <div layout="row">
+      <div class="user-detail-product-item" ng-repeat="card in card_list" ng-click="clickCard(card)">
+        <img class="product-photo" ng-src="{{card.logo}}" />
+        <div class="product-name">{{card.name}}</div>
       </div>
     </div>
   </md-content>
+
+
+
+
   <div>
     通讯运营商数据
   </div>

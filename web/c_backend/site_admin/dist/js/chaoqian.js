@@ -840,8 +840,8 @@ cSite.controller('ProductListController', [
 'use strict';
 
 cSite.controller('UserDetailController', [
-  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork', 'ProductNetwork',
-  function ($rootScope, $scope, $state, $stateParams, UserNetwork, ProductNetwork) {
+  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork', 'ProductNetwork', 'CardNetwork',
+  function ($rootScope, $scope, $state, $stateParams, UserNetwork, ProductNetwork, CardNetwork) {
     // $scope.goDetail = function (id) {
     //     $state.go('product_detail', { product_id: id||'' });
     // }
@@ -868,14 +868,39 @@ cSite.controller('UserDetailController', [
       });
     }
     $scope.product_list = [];
+    $scope.select_product_list = [];
+
+    $scope.card_list = [];
+    $scope.select_card_list = [];
+
     $scope.productList = function () {
       ProductNetwork.productList($scope, {}).then(function (data) {
         console.log(data);
         if (!data.err) {
           $scope.product_list = data;
           $scope.user.vip_product_ids = $scope.user.vip_product_ids || [];
-          $scope.product_list.forEach(function (product) {
-            product.isSelect = $scope.user.vip_product_ids.indexOf(product._id) >= 0;
+
+          $scope.user.vip_product_ids.forEach(function (pid) {
+            $scope.select_product_list.push($scope.product_list.filter(function (p) {
+              return p._id === pid;
+            })[0]);
+          });
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.cardList = function () {
+      CardNetwork.cardList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.card_list = data;
+          $scope.user.vip_card_ids = $scope.user.vip_card_ids || [];
+          $scope.user.vip_card_ids.forEach(function (cid) {
+            $scope.select_card_list.push($scope.card_list.filter(function (c) {
+              return c._id === cid;
+            })[0]);
           });
         }
       }, function (err) {
@@ -903,6 +928,7 @@ cSite.controller('UserDetailController', [
           $('.id_carrier_detail').html($('.id_carrier_detail').text());
 
           $scope.productList();
+          $scope.cardList();
         }
       }, function (err) {
         console.log(err);
@@ -917,20 +943,71 @@ cSite.controller('UserDetailController', [
     }
 
     $scope.clickProduct = function (product) {
-      product.isSelect = !product.isSelect;
+      var index = -1;
+      for (var i = 0; i < $scope.select_product_list.length; i++) {
+        if ($scope.select_product_list[i]._id === product._id) {
+          index = i;
+          break;
+        }
+      }
+      if (index === -1) {
+        $scope.select_product_list.push(product);
+      }
+    }
+
+    $scope.removeProduct = function (product) {
+      var index = -1;
+      for (var i = 0; i < $scope.select_product_list.length; i++) {
+        if ($scope.select_product_list[i]._id === product._id) {
+          index = i;
+          break;
+        }
+      }
+      if (index !== -1) {
+        $scope.select_product_list.splice(index, 1);
+      }
+    }
+
+    $scope.clickCard = function (card) {
+      var index = -1;
+      for (var i = 0; i < $scope.select_card_list.length; i++) {
+        if ($scope.select_card_list[i]._id === card._id) {
+          index = i;
+          break;
+        }
+      }
+      if (index === -1) {
+        $scope.select_card_list.push(card);
+      }
+    }
+
+    $scope.removeCard = function (card) {
+      var index = -1;
+      for (var i = 0; i < $scope.select_card_list.length; i++) {
+        if ($scope.select_card_list[i]._id === card._id) {
+          index = i;
+          break;
+        }
+      }
+      if (index !== -1) {
+        $scope.select_card_list.splice(index, 1);
+      }
     }
 
     $scope.updateVipInfo = function () {
-      var productids = $scope.product_list.filter(function (product) {
-        return !!product.isSelect;
-      }).map(function (product) {
+      var productids = $scope.select_product_list.map(function (product) {
         return product._id;
       });
+      var cardids = $scope.select_card_list.map(function (card) {
+        return card._id;
+      });
+
 
       UserNetwork.updateVipInfo($scope, {
         user_id: $stateParams.user_id, vip_info: {
           vip_report_url_text: $scope.user.vip_report_url_text,
           vip_product_ids: productids,
+          vip_card_ids: cardids,
           vip_credit_starter: $scope.user.vip_credit_starter,
           vip_credit_assessment: $scope.user.vip_credit_assessment
         }

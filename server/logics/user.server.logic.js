@@ -217,7 +217,10 @@ exports.updateVipInfo = function (user, vip_info, callback) {
   user.vip_credit_starter = vip_info.vip_credit_starter;
   user.vip_report_url_text = vip_info.vip_report_url_text;
   user.vip_product_ids = vip_info.vip_product_ids;
+  user.vip_card_ids = vip_info.vip_card_ids;
+
   user.markModified('vip_product_ids');
+  user.markModified('vip_card_ids');
   user.save(function (err, savedUser) {
     if (err) {
       return callback({ err: sysErr.database_save_error });
