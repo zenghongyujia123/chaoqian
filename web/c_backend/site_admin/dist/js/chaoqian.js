@@ -775,7 +775,19 @@ cSite.controller('ProductDetailController', [
       organization_url: '',
       organization_info: '',
       wechat_detail_info: '',
-      risk_codes: ''
+      risk_codes: '',
+      str1:'',
+      str2:'',
+      str3:'',
+      str4:'',
+      str5:'',
+      str6:'',
+      str7:'',
+      str8:'',
+      str9:'',
+      str10:'',
+      str11:'',
+      str12:'',
     };
 
     $scope.updateProduct = function (event) {

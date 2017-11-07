@@ -98,6 +98,66 @@ module.exports = function (appDb) {
     risk_codes: {
       type: String,
       default: ''
+    },
+    //下款率
+    str1: {
+      type: String,
+      default: ''
+    },
+    //最快下款
+    str2: {
+      type: String,
+      default: ''
+    },
+    //产品标签（英文逗号分隔）
+    str3: {
+      type: String,
+      default: ''
+    },
+    //金额
+    str4: {
+      type: String,
+      default: ''
+    },
+    //期限
+    str5: {
+      type: String,
+      default: ''
+    },
+    //所需材料（英文逗号分隔）
+    str6: {
+      type: String,
+      default: ''
+    },
+    //申请条件（英文逗号分隔）
+    str7: {
+      type: String,
+      default: ''
+    },
+    //费用说明（月费率）
+    str8: {
+      type: String,
+      default: ''
+    },
+    //费用说明（说明）
+    str9: {
+      type: String,
+      default: ''
+    },
+    //还款方式
+    str10: {
+      type: String,
+      default: ''
+    },
+    //提前还款
+    str11: {
+      type: String,
+      default: ''
+    },
+    //逾期政策
+    str12: {
+      type: String,
+      default: ''
     }
   });
 
