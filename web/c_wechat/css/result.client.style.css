@@ -101,6 +101,7 @@ body {
   width: 170px;
   height: 90px;
   position: absolute;
+  background-color: grey;
   top: 15px;
   left: 15px;
 }
