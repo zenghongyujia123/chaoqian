@@ -18,27 +18,25 @@
     <div class="header-left">
       <div class="title">信用初值</div>
       <div class="value">
-          <%= user.vip_credit_starter %>
+        <%= user.vip_credit_starter %>
       </div>
     </div>
     <div class="header-right">
       <div class="title">信用估值（元）</div>
       <div class="value">
-          <%= user.vip_credit_assessment %>
+        <%= user.vip_credit_assessment %>
       </div>
     </div>
   </div>
   <div class="page-result-banner">
-    专业的信用状况调查及建议，请加入VIP还送100%下款通道哦！
+    <%= user.vip_report_url_text %>
   </div>
   <div class="page-result-center">
     <div class="title">
       强烈推荐您以下借款平台
     </div>
     <div class="center-list">
-
       <% for(var i=0; i<products.length; i++) {%>
-
         <a class="center-list-item" href="/page_wechat/product_detail?product_id=<%= products[i]._id %>">
           <img src="<%= products[i].logo %>" class="icon"></img>
           <div class="name">
@@ -46,8 +44,6 @@
           </div>
         </a>
         <% } %>
-
-        
     </div>
   </div>
   <div class="page-result-panel">
