@@ -311,7 +311,8 @@ exports.vip_notice = function (req, res, next) {
 
 exports.vip_auth_report = function (req, res, next) {
   var user = req.user;
-
+  var vip_report = user.vip_report || {};
+  vip_report.str29s = vip_report.str29s || [];
   var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_report.client.view.html');
-  return res.render(filepath, { city: req.cookies.city, vip_report: user.vip_report || {} });
+  return res.render(filepath, { city: req.cookies.city, vip_report: vip_report });
 };
