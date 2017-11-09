@@ -231,7 +231,7 @@ exports.updateVipInfo = function (user, vip_info, callback) {
 
 
 exports.updateVipReportInfo = function (user, vip_report, callback) {
-  vip_report.str29s = vip_report.str29.split('|');
+  vip_report.str29s = (vip_report.str29 || '').split('|');
   user.vip_report = vip_report;
   user.markModified('vip_report');
   user.save(function (err, savedUser) {
