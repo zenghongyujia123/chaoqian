@@ -76,20 +76,7 @@ cSite.controller('UserDetailController', [
       UserNetwork.getUserById($scope, { user_id: $stateParams.user_id }).then(function (data) {
         console.log(data);
         if (!data.err) {
-          if (data.carrier_detail) {
-            data.carrier_detail = syntaxHighlight(JSON.parse(data.carrier_detail));
-          }
-          if (data.pbc_detail) {
-            data.pbc_detail = syntaxHighlight(JSON.parse(data.pbc_detail));
-          }
           $scope.user = data;
-
-          $('.id_pbc_detail').append(data.pbc_detail);
-          $('.id_pbc_detail').html($('.id_pbc_detail').text());
-
-          $('.id_carrier_detail').append(data.carrier_detail);
-          $('.id_carrier_detail').html($('.id_carrier_detail').text());
-
           $scope.productList();
           $scope.cardList();
         }
