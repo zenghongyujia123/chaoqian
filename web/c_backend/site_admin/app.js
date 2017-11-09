@@ -47,6 +47,21 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/user_detail.client.view.html',
       controller: 'UserDetailController'
     })
+    .state('user_vip_report', {
+      url: '/user_vip_report/:user_id',
+      templateUrl: '/c_backend/site_admin/templates/user_vip_report.client.view.html',
+      controller: 'UserVipReportController'
+    })
+    .state('user_carrier_detail', {
+      url: '/user_carrier_detail/:user_id',
+      templateUrl: '/c_backend/site_admin/templates/user_carrier_detail.client.view.html',
+      controller: 'UserCarrierDetailController'
+    })
+    .state('user_pbc_detail', {
+      url: '/user_pbc_detail/:user_id',
+      templateUrl: '/c_backend/site_admin/templates/user_pbc_detail.client.view.html',
+      controller: 'UserPbcDetailController'
+    })
     .state('card_detail', {
       url: '/card_detail/:card_id',
       templateUrl: '/c_backend/site_admin/templates/card_detail.client.view.html',

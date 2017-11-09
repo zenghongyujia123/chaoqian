@@ -140,6 +140,9 @@ module.exports = function (appDb) {
     vip_product_assessment_text: {
       type: String,
       default: ''
+    },
+    vip_report: {
+      type: Schema.Types.Mixed
     }
   });
 
@@ -169,6 +172,13 @@ module.exports = function (appDb) {
     },
     content: {
       type: Schema.Types.Mixed
+    }
+  });
+
+  var UserVipReportSchema = new Schema({
+    object: {
+      type: String,
+      default: 'UserVipReport'
     }
   });
 

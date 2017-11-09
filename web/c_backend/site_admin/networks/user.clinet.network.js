@@ -14,6 +14,9 @@ cSite.factory('UserNetwork',
         },
         updateVipInfo: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/updateVipInfo', params);
+        },
+        updateVipReportInfo: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/updateVipReportInfo', params);
         }
       };
     }]);

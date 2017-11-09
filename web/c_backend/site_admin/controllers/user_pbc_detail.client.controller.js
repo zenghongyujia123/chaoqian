@@ -3,7 +3,7 @@
  */
 'use strict';
 
-cSite.controller('UserDetailController', [
+cSite.controller('UserPbcDetailController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork', 'ProductNetwork', 'CardNetwork',
   function ($rootScope, $scope, $state, $stateParams, UserNetwork, ProductNetwork, CardNetwork) {
     // $scope.goDetail = function (id) {

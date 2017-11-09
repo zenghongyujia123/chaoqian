@@ -14,6 +14,5 @@ module.exports = function (app) {
   app.route('/user/updateUserAuth2').post(userFilter.requireUser, userController.updateUserAuth2);
   app.route('/user/verifyVip').post(userFilter.requireUserById, userController.verifyVip);
   app.route('/user/updateVipInfo').post(userFilter.requireUserById, userController.updateVipInfo);
-  
-  
+  app.route('/user/updateVipReportInfo').post(userFilter.requireUserById, userController.updateVipReportInfo);
 };
