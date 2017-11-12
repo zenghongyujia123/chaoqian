@@ -12,18 +12,18 @@ var provinces = require('../constants/city');
 var cookieLib = require('../../libraries/cookie');
 var agent = require('superagent').agent();
 
-function getWechatUserInfo(openid, user_access_token, callback) {
-  agent.get('https://api.weixin.qq.com/sns/userinfo?access_token=' + user_access_token + '&openid=' + openid + '&lang=zh_CN')
-    .end(function (err, result) {
-      console.log('err-----');
-      console.log(err);
-      console.log('userinfo  result-----');
-      console.log(result.text);
-      if (callback) {
-        return callback();
-      }
-    });
-}
+// function getWechatUserInfo(openid, user_access_token, callback) {
+//   agent.get('https://api.weixin.qq.com/sns/userinfo?access_token=' + user_access_token + '&openid=' + openid + '&lang=zh_CN')
+//     .end(function (err, result) {
+//       console.log('err-----');
+//       console.log(err);
+//       console.log('userinfo  result-----');
+//       console.log(result.text);
+//       if (callback) {
+//         return callback();
+//       }
+//     });
+// }
 function getUserAccessToken(code, callback) {
   agent.get('https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf567e44e19240ae3&secret=fe0fad0d4eb9cedec995dbea06bd2f3b&code=' + code + '&grant_type=authorization_code ')
     .end(function (err, result) {
@@ -44,7 +44,7 @@ exports.home = function (req, res, next) {
     if (result.openid) {
       cookieLib.setCookie(res, 'openid', result.openid);
       cookieLib.setCookie(res, 'user_access_token', result.access_token);
-      getWechatUserInfo(result.openid, result.access_token);
+      // getWechatUserInfo(result.openid, result.access_token);
     }
     var filepath = path.join(__dirname, '../../web/c_wechat/views/home.client.view.html');
     req.cookies.city = req.params.city || req.cookies.city || '';

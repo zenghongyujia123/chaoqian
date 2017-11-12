@@ -66,6 +66,40 @@ exports.signin = function (userInfo, callback) {
   });
 };
 
+exports.updateUserWechatInfo = function (user, openid, wechat_info, callback) {
+  if (user.openid === openid) {
+    return callback(null, user);
+  }
+
+  User.findOne({ openid: openid }, function (err, oldUser) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+
+
+    if (oldUser) {
+      oldUser._id = null;
+      oldUser.wechat_info = {};
+      oldUser.save(function () {
+        user.openid = openid;
+        user.wechat_info = wechat_info;
+        user.save(function (err, savedUser) {
+          return callback(err, savedUser)
+        })
+      });
+    }
+    else {
+      user.openid = openid;
+      user.wechat_info = wechat_info;
+      user.save(function (err, savedUser) {
+        return callback(err, savedUser)
+      })
+    }
+
+
+  })
+}
+
 exports.requireByUserId = function (userid, callback) {
   User.findOne({ _id: userid }, function (err, user) {
     if (err) {
