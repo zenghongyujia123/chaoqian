@@ -13,7 +13,7 @@ function getWechatUserInfo(openid, user_access_token, callback) {
       console.log('userinfo  result-----');
       console.log(result.text);
       if (callback) {
-        return callback(null, result.text);
+        return callback(null, JSON.parse(result.text));
       }
     });
 }
