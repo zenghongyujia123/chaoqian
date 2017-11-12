@@ -15,7 +15,7 @@
 
 <body>
   <div class="page-me-header">
-    <div class="header-left"></div>
+    <img src="<%= (user.wechat_info.headimgurl?user.wechat_info.headimgurl:'--') %>" class="header-left"></img>
     <div class="header-right">
       <div class="header-name">
         <%= (user.wechat_info.openid?user.wechat_info.nickname:'--') %>
