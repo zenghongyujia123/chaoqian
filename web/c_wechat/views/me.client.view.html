@@ -17,7 +17,9 @@
   <div class="page-me-header">
     <div class="header-left"></div>
     <div class="header-right">
-      <div class="header-name">我的名字</div>
+      <div class="header-name">
+        <%= (user.wechat_info.openid?user.wechat_info.nickname:'--') %>
+      </div>
       <a class="header-login" href="/page_wechat/signup">注册／登录</a>
       <div class="header-rights">关于会员返利权限？</div>
     </div>
