@@ -14,7 +14,7 @@ exports.updateProduct = function (req, res, next) {
 };
 
 exports.productList = function (req, res, next) {
-  productLogic.productList(function (err, result) {
+  productLogic.productList({}, function (err, result) {
     if (err) {
       return next(err);
     }

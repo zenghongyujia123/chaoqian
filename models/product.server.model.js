@@ -168,8 +168,38 @@ module.exports = function (appDb) {
     },
     //逾期政策
     str12: {
-      type: String,
-      default: ''
+      type: Number,
+      default: 0
+    },
+    //排序金额
+    str13: {
+      type: Number,
+      default: 0
+    },
+    //排序下款时间
+    str14: {
+      type: Number,
+      default: 0
+    },
+    //排序成本
+    str15: {
+      type: Number,
+      default: 0
+    },
+    //排序信用卡标签
+    str16: {
+      type: Number,
+      default: 0
+    },
+    //排序虚拟信用卡标签
+    str17: {
+      type: Number,
+      default: 0
+    },
+    //排序信用无抵押贷款
+    str18: {
+      type: Number,
+      default: 0
     }
   });
 

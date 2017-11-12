@@ -58,6 +58,14 @@ exports.updateProduct = function (productInfo, callback) {
     product.str11 = productInfo.str11;
     product.str12 = productInfo.str12;
 
+    //排序相关
+    product.str13 = productInfo.str13;
+    product.str14 = productInfo.str14;
+    product.str15 = productInfo.str15;
+    product.str16 = productInfo.str16;
+    product.str17 = productInfo.str17;
+    product.str18 = productInfo.str18;
+
     product.ma
     product.save(function (err, savedProduct) {
       if (err) {
@@ -69,8 +77,18 @@ exports.updateProduct = function (productInfo, callback) {
 
 };
 
-exports.productList = function (callback) {
-  Product.find({}, function (err, products) {
+exports.productList = function (info, callback) {
+  var query = {};
+  var sort = {};
+  if (info.sort_key) {
+    sort[info.sort_key] = info.sort_value || 1;
+  }
+
+  if (info.query_key) {
+    query[info.query_key] = info.query_value;
+  }
+
+  Product.find(query).sort(sort).exec(function (err, products) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }

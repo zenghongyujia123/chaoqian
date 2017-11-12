@@ -29,23 +29,34 @@ a {
 }
 .page-self-local .filter-row {
   display: flex;
-  padding: 10px 0px;
   margin-bottom: 10px;
   background-color: white;
   flex-direction: row;
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  font-size: 13px;
+  line-height: 40px;
+  height: 40px;
 }
 .page-self-local .filter-row .filter-select {
-  width: 50%;
-  flex-grow: 1;
-  text-align: center;
-  line-height: 20px;
+  background-color: white;
+  line-height: 40px;
   font-size: 13px;
+  width: auto;
+  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+  border: 0px;
+  /*很关键：将默认的select选择框样式清除*/
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  text-align: center;
+  padding: 0 0 0 20px;
+  /*将背景改为红色*/
+  /*加padding防止文字覆盖*/
 }
-.page-self-local .filter-row .filter-select:first-child {
-  border-right: 1px solid #999;
-}
-.page-self-local .filter-row .filter-select:last-child {
-  border-left: 1px solid #999;
+.page-self-local .filter-row .filter-select:focus {
+  outline: none;
 }
 .page-self-local .list .list-item {
   display: block;

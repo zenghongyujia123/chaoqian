@@ -213,11 +213,18 @@ exports.card_progress = function (req, res, next) {
 };
 
 exports.self_home = function (req, res, next) {
-  productLogic.productList(function (err, products) {
+  var info = {
+    query_key: req.query.query_key,
+    query_value: req.query.query_value,
+    sort_key: req.query.sort_key,
+    sort_value: req.query.sort_value,
+  };
+  productLogic.productList(info, function (err, products) {
     var filepath = path.join(__dirname, '../../web/c_wechat/views/self_home.client.view.html');
     return res.render(filepath, {
       city: req.cookies.city || '',
-      products: products || []
+      products: products || [],
+      cur_filter: info.query_key || info.sort_key || ''
     });
   });
 };

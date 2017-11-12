@@ -43,6 +43,12 @@ cSite.controller('ProductDetailController', [
       str10:'',
       str11:'',
       str12:'',
+      str13:0,
+      str14:0,
+      str15:0,
+      str16:0,
+      str17:0,
+      str18:0,
     };
 
     $scope.updateProduct = function (event) {
