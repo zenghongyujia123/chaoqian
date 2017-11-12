@@ -41,11 +41,13 @@ body {
   background-color: white;
 }
 .page-me-list .list-item {
-  line-height: 40px;
   margin-left: 15px;
   display: block;
   border-bottom: 1px solid #eeeeee;
   position: relative;
+  font-size: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 .page-me-list .list-item .item-icon {
   background-color: black;
