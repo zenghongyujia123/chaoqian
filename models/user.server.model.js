@@ -100,6 +100,10 @@ module.exports = function (appDb) {
       type: Boolean,
       default: false
     },
+    has_read_invite_notice: {
+      type: Boolean,
+      default: false
+    },
     vip_payed: {
       type: Boolean,
       default: false

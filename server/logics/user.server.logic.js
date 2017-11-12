@@ -142,6 +142,16 @@ exports.updateVipNotice = function (user, callback) {
   });
 }
 
+exports.updateInviceNotice = function (user, callback) {
+  user.has_read_invite_notice = true;
+  user.save(function (err, savedUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, savedUser);
+  });
+}
+
 
 exports.updateUserAuth1 = function (user, real_name, real_phone, id_card, callback) {
   user.real_name = real_name;

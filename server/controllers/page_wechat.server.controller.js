@@ -316,3 +316,10 @@ exports.vip_auth_report = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_report.client.view.html');
   return res.render(filepath, { city: req.cookies.city, vip_report: vip_report });
 };
+
+
+exports.invite_notice = function (req, res, next) {
+  var user = req.user;
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/invite_notice.client.view.html');
+  return res.render(filepath, { city: req.cookies.city });
+};
