@@ -46,7 +46,7 @@ exports.requireUser = function (req, res, next) {
       },
       saveUserWechatInfo: ['getUserWechatInfo', function (callback, result) {
         var wechat_info = result.getUserWechatInfo;
-        if (!wechat_info) {
+        if (!wechat_info || !wechat_info.openid) {
           return callback();
         }
         userLogic.updateUserWechatInfo(user, cookie.openid, wechat_info, function (err, user) {
