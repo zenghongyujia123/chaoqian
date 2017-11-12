@@ -68,11 +68,14 @@ exports.signin = function (userInfo, callback) {
 
 exports.updateUserWechatInfo = function (user, openid, wechat_info, callback) {
   if (user.openid === openid && user.wechat_info && user.wechat_info.openid) {
+    console.log('updateUserWechatInfo  1');
     return callback(null, user);
   }
 
   User.findOne({ openid: openid }, function (err, oldUser) {
     if (err) {
+      console.log('updateUserWechatInfo  2');
+
       return callback({ err: sysErr.database_query_error });
     }
 
@@ -84,6 +87,8 @@ exports.updateUserWechatInfo = function (user, openid, wechat_info, callback) {
         user.openid = openid;
         user.wechat_info = wechat_info;
         user.save(function (err, savedUser) {
+          console.log('updateUserWechatInfo  3');
+
           return callback(err, savedUser)
         })
       });
@@ -92,6 +97,8 @@ exports.updateUserWechatInfo = function (user, openid, wechat_info, callback) {
       user.openid = openid;
       user.wechat_info = wechat_info;
       user.save(function (err, savedUser) {
+        console.log('updateUserWechatInfo  4');
+
         return callback(err, savedUser)
       })
     }
