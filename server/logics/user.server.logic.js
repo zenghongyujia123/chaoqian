@@ -67,7 +67,7 @@ exports.signin = function (userInfo, callback) {
 };
 
 exports.updateUserWechatInfo = function (user, openid, wechat_info, callback) {
-  if (user.openid === openid) {
+  if (user.openid === openid && user.wechat_info && user.wechat_info.openid) {
     return callback(null, user);
   }
 
