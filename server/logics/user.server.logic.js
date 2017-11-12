@@ -78,7 +78,7 @@ exports.updateUserWechatInfo = function (user, openid, wechat_info, callback) {
 
 
     if (oldUser) {
-      oldUser._id = null;
+      oldUser.openid = null;
       oldUser.wechat_info = {};
       oldUser.save(function () {
         user.openid = openid;
