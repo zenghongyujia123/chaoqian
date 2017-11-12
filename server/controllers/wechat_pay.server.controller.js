@@ -174,3 +174,4 @@ exports.getPayPage = function (req, res, next) {
   cookieLib.setCookie(res, 'city', req.cookies.city);
   return res.render(filepath, { city: req.cookies.city, info: info });
 }
+
