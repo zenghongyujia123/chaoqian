@@ -168,8 +168,8 @@ module.exports = function (appDb) {
     },
     //逾期政策
     str12: {
-      type: Number,
-      default: 0
+      type: String,
+      default: ''
     },
     //排序金额
     str13: {
