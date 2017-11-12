@@ -36,7 +36,8 @@ module.exports = function (appDb) {
       trim: true
     },
     wechat_info: {
-      type: Schema.Types.Mixed
+      type: Schema.Types.Mixed,
+      default: {}
     },
     password: {
       type: String,

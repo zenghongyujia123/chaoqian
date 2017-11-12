@@ -6,33 +6,37 @@ body {
 .page-me-header {
   background-color: #1b1b1e;
   position: relative;
-  padding-top: 30px;
+  padding-top: 20px;
   padding-left: 160px;
-  height: 160px;
+  padding-bottom: 20px;
+  min-height: 120px;
   .header-left {
     position: absolute;
-    left: 30px;
-    top: 30px;
-    width: 100px;
-    height: 100px;
+    left: 50px;
+    top: 20px;
+    width: 80px;
+    height: 80px;
     border-radius: 90px;
     background-color: white;
   }
   .header-right {
     .header-name {
       color: white;
-      font-size: 16px;
-      line-height: 50px;
+      font-size: 18px;
+      margin-bottom: 13px;
     }
     .header-login {
-      line-height: 20px;
-      color: #979797;
-      font-size: 12px;
+      color: white;
+      opacity: .6;
+      margin-bottom: 5px;
+      font-size: 14px;
     }
     .header-rights {
+      display: block;
       font-size: 12px;
-      color: #979797;
-      line-height: 20px;
+      opacity: .6;
+      color: white;
+      line-height: 24px;
     }
   }
 }
@@ -66,15 +70,28 @@ body {
 .me-current-rights {
   overflow: hidden;
   background-color: black;
-  color: #ffd481;
-  padding: 15px;
-  border-top: 1px solid #ffd481;
+  color: #F3CD8C;
+  padding: 10px 15px;
+  border-top: 1px solid #F3CD8C;
   .rights-title {
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 24px;
   }
   .rights-content {
-    font-size: 12px;
-    line-height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 90px;
+      background-color: #F3CD8C;
+      margin-right: 6px;
+    }
+    .text {
+      font-size: 12px;
+      line-height: 20px;
+    }
   }
 }
 
