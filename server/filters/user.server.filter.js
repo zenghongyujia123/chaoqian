@@ -112,6 +112,7 @@ exports.requireUserById = function (req, res, next) {
     // else {
     req.requireUserById = user;
     // return next();
+    return next();
     // }
   })
 };
