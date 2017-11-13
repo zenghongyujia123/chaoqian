@@ -200,6 +200,32 @@ exports.me_vip = function (req, res, next) {
   return res.render(filepath, { city: req.cookies.city, user: req.user });
 };
 
+
+exports.me_account = function (req, res, next) {
+  var user = req.user;
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_account.client.view.html');
+  return res.render(filepath, { city: req.cookies.city, user: req.user });
+};
+
+exports.me_bill = function (req, res, next) {
+  var user = req.user;
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_bill.client.view.html');
+  return res.render(filepath, { city: req.cookies.city, user: req.user });
+};
+
+exports.me_agent = function (req, res, next) {
+  var user = req.user;
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_agent.client.view.html');
+  return res.render(filepath, { city: req.cookies.city, user: req.user });
+};
+
+exports.me_achievement = function (req, res, next) {
+  var user = req.user;
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_achievement.client.view.html');
+  return res.render(filepath, { city: req.cookies.city, user: req.user });
+};
+
+
 exports.apply_third = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/apply_third.client.view.html');
   // return res.render(filepath, { city: req.cookies.city });

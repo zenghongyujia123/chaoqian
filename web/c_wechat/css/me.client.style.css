@@ -48,20 +48,19 @@ body {
   font-size: 16px;
   padding-top: 14px;
   padding-bottom: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .page-me-list .list-item .item-icon {
-  background-color: black;
   width: 20px;
-  height: 20px;
   margin-right: 20px;
 }
 .page-me-list .list-item .item-arrow {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: black;
+  height: 13px;
   right: 15px;
-  top: 10px;
+  top: 19px;
 }
 .me-current-rights {
   overflow: hidden;

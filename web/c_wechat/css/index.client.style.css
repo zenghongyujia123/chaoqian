@@ -5,16 +5,23 @@ body {
   position: relative;
   overflow: auto;
 }
+html a,
+body a {
+  color: #333;
+}
 html a:link,
 body a:link {
+  color: #333;
   text-decoration: none;
 }
 html a:visited,
 body a:visited {
+  color: #333;
   text-decoration: none;
 }
 html a:hover,
 body a:hover {
+  color: #333;
   text-decoration: none;
 }
 html input ::-webkit-input-placeholder,

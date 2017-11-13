@@ -21,6 +21,12 @@ module.exports = function (app) {
   app.route('/page_wechat/me_info').get(userFilter.requireUser, index.me_info);
   app.route('/page_wechat/me_business').get(userFilter.requireUser, index.me_business);
   app.route('/page_wechat/me_vip').get(userFilter.requireUser, index.me_vip);
+  app.route('/page_wechat/me_bill').get(userFilter.requireUser, index.me_bill);
+  app.route('/page_wechat/me_agent').get(userFilter.requireUser, index.me_agent);
+  app.route('/page_wechat/me_account').get(userFilter.requireUser, index.me_account);
+  app.route('/page_wechat/me_achievement').get(userFilter.requireUser, index.me_achievement);
+  app.route('/page_wechat/apply_third').get(userFilter.requireUser, index.apply_third);
+
   app.route('/page_wechat/apply_third').get(userFilter.requireUser, index.apply_third);
   app.route('/page_wechat/card_home').get(userFilter.requireUser, index.card_home);
   app.route('/page_wechat/card_detail').get(userFilter.requireUser, index.card_detail);
