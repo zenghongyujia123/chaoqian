@@ -43,6 +43,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
 }
 .page-me-achievement .list .list-item .body .body-item {
   flex-grow: 1;
