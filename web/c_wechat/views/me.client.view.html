@@ -34,14 +34,14 @@
             <% } %>
       </div>
       <% if (user.vip_status==='passed') { %>
-        <span class="header-login vip-time">
+        <div class="header-login vip-time">
           <%= user.vip_payed_time %>
-        </span>
-        <a class="header-login" href="/page_wechat/vip_notice">升级为s级代理商</a>
-        <a class="header-rights">s级代理商的优势说明</a>
+        </div>
+        <div class="header-login" href="/page_wechat/vip_notice">升级为s级代理商</div>
+        <div class="header-rights">s级代理商的优势说明</div>
         <% } else  {%>
-          <a class="header-login" href="/page_wechat/vip_notice">成为vip会员</a>
-          <a class="header-rights">关于会员及返现权益？</a>
+          <div class="header-login" href="/page_wechat/vip_notice">成为vip会员</div>
+          <div class="header-rights">关于会员及返现权益？</div>
           <% } %>
 
     </div>
