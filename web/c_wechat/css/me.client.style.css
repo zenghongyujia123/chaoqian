@@ -23,11 +23,11 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 13px;
 }
 .page-me-header .header-right .header-name .nickname {
   color: white;
   font-size: 18px;
-  margin-bottom: 13px;
 }
 .page-me-header .header-right .header-name .vip-tag {
   border: 1px solid#FFD081;
