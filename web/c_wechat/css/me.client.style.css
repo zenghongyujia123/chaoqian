@@ -20,9 +20,27 @@ body {
   background-color: white;
 }
 .page-me-header .header-right .header-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.page-me-header .header-right .header-name .nickname {
   color: white;
   font-size: 18px;
   margin-bottom: 13px;
+}
+.page-me-header .header-right .header-name .vip-tag {
+  border: 1px solid#FFD081;
+  color: #FFD081;
+  font-size: 12px;
+  border-radius: 2px;
+  height: 20px;
+  margin-left: 10px;
+  padding: 0px 5px;
+}
+.page-me-header .header-right .header-name .vip-tag.no {
+  color: white;
+  border: 1px solid white;
 }
 .page-me-header .header-right .header-login {
   color: white;

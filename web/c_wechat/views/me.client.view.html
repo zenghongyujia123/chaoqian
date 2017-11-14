@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/me.client.style.css" />
   <script src="../libs/jquery/dist/jquery.js"></script>
+  <script src="../c_wechat/helpers/time.client.helper.js"></script>
+  <script src="../c_wechat/controllers/me.client.controller.js"></script>
   <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
 
@@ -18,10 +20,28 @@
     <img src="<%= (user.wechat_info.headimgurl?user.wechat_info.headimgurl:'--') %>" class="header-left"></img>
     <div class="header-right">
       <div class="header-name">
-        <%= (user.wechat_info.openid?user.wechat_info.nickname:'--') %>
+        <div class="nickname">
+          <%= (user.wechat_info.openid?user.wechat_info.nickname:'--') %>
+        </div>
+
+
+        <% if (user.vip_status==='passed') { %>
+          <div class="vip-tag">vip会员</div>
+          <div class="vip-tag">返现</div>
+          <% } else  {%>
+            <div class="vip-tag no">非vip会员</div>
+            <% } %>
       </div>
-      <a class="header-login" href="/page_wechat/signup">注册／登录</a>
-      <a class="header-rights">会员制说明？</a>
+      <% if (user.vip_status==='passed') { %>
+        <span class="header-login vip-time">
+          <%= user.vip_payed_time %>
+        </span>
+        <a class="header-rights">会员制说明？</a>
+        <% } else  {%>
+          <a class="header-login" href="/page_wechat/vip_notice">成为vip会员</a>
+          <a class="header-rights">关于会员及返现权益？</a>
+          <% } %>
+
     </div>
   </div>
   <div class="me-current-rights">
