@@ -92,7 +92,7 @@ body {
   background-color: white;
 }
 .page-result-list .result-list-item {
-  height: 120px;
+  height: 137px;
   position: relative;
   padding-top: 15px;
   padding-left: 200px;
@@ -100,7 +100,7 @@ body {
 }
 .page-result-list .result-list-item .card-item {
   width: 170px;
-  height: 90px;
+  height: 107px;
   position: absolute;
   background-color: grey;
   top: 15px;
