@@ -3,14 +3,11 @@
  */
 'use strict';
 
-cSite.controller('CardListController', [
+cSite.controller('CardSettingController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'CardNetwork',
   function ($rootScope, $scope, $state, $stateParams, CardNetwork) {
     $scope.goDetail = function (id) {
       $state.go('card_detail', { card_id: id || '' });
-    }
-    $scope.goSetting = function (id) {
-      $state.go('card_setting', {});
     }
     $scope.card_list = [];
     $scope.cardList = function () {
