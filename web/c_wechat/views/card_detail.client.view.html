@@ -18,25 +18,21 @@
 <body>
   <div class="page-card-detail">
     <div class="header">
-      <div class="photo"></div>
+      <img class="photo" src="<%= card.logo %>"></img>
     </div>
-    <div class="description">名声in卡信用卡（银联卡比卡）周周狂省200元，每日优惠不停</div>
+    <div class="description">
+      <%= card.description %>
+    </div>
     <div class="content">
-      <div class="content-item">
-        <div class="dot"></div>每周一1积分兑换辛巴克大咖啡</div>
-      <div class="content-item">
-        <div class="dot"></div>每周一1积分兑换辛巴克大咖啡</div>
-      <div class="content-item">
-        <div class="dot"></div>每周一1积分兑换辛巴克大咖啡</div>
-      <div class="content-item">
-        <div class="dot"></div>每周一1积分兑换辛巴克大咖啡</div>
-      <div class="content-item">
-        <div class="dot"></div>每周一1积分兑换辛巴克大咖啡</div>
-      <div class="content-item">
-        <div class="dot"></div>每周一1积分兑换辛巴克大咖啡</div>
+      <% for(var i=0; i<card.str1s.length; i++) {%>
+        <div class="content-item">
+          <div class="dot"></div>
+          <%= card.str1s[i] %>
+        </div>
+        <% } %>
     </div>
     <div class="footer">
-      <a href="http://www.baidu.com" class="submit-btn">确认申请</a>
+      <a href="<%= card.organization_url %>" class="submit-btn">确认申请</a>
     </div>
   </div>
 </body>

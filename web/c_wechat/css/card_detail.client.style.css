@@ -18,6 +18,7 @@ a {
   height: 160px;
   background-color: white;
   padding-top: 17px;
+  text-align: center;
 }
 .page-card-detail .header .photo {
   background-color: black;

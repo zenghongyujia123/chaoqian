@@ -18,10 +18,12 @@
 <body>
   <div class="page-card-list">
     <img src="../c_wechat/images/card/banner2.png" class="list-banner"></img>
-    <div class="list-title">新手办卡精选</div>
+    <div class="list-title">
+      <%= title %>
+    </div>
     <div class="list">
       <% for(var i=0; i<cards.length; i++) {%>
-        <a href="/page_wechat/card_detail" class="list-item">
+        <a href="/page_wechat/card_detail?card_id=<%= cards[i]._id %>" class="list-item">
           <img class="photo" src="<%= cards[i].logo %>"></img>
           <div class="title">
             <%= cards[i].name %>

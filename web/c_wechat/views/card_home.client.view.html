@@ -52,7 +52,7 @@
     <div class="card-list">
       <div class="list-title">信用卡推荐</div>
       <% for(var i=0; i<cards.length; i++) {%>
-        <a href="/page_wechat/card_detail" class="card-item">
+        <a href="/page_wechat/card_detail?card_id=<%= cards[i]._id %>" class="card-item">
           <img class="photo" src="<%= cards[i].logo %>">
           </img>
           <div class="title">

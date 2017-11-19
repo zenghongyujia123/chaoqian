@@ -234,20 +234,29 @@ exports.apply_third = function (req, res, next) {
 
 
 exports.card_list = function (req, res, next) {
+
+  var title = {
+    'int1': '新手办卡',
+    'int2': '高额取现',
+    'int3': '网购精选',
+    'int4': '商务旅游',
+  }
+
   var user = req.user;
   var query = {};
   if (req.query.key)
     query[req.query.key] = 1;
   cardLogic.cardListByTag(query, function (err, cards) {
     var filepath = path.join(__dirname, '../../web/c_wechat/views/card_list.client.view.html');
-    return res.render(filepath, { city: req.cookies.city, user: user, cards: cards });
+    return res.render(filepath, { city: req.cookies.city, user: user, cards: cards, title: title[req.query.key] });
   });
 };
 
 exports.card_detail = function (req, res, next) {
+  var card = req.card;
   var user = req.user;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/card_detail.client.view.html');
-  return res.render(filepath, { city: req.cookies.city, user: user });
+  return res.render(filepath, { city: req.cookies.city, user: user, card: card });
 };
 
 exports.card_home = function (req, res, next) {
