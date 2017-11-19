@@ -27,6 +27,10 @@ exports.updateCard = function (cardInfo, callback) {
     card.logo = cardInfo.logo;
     card.description = cardInfo.description;
     card.organization_url = cardInfo.organization_url;
+    card.int1 = cardInfo.int1;
+    card.int2 = cardInfo.int2;
+    card.int3 = cardInfo.int3;
+    card.int4 = cardInfo.int4;
     card.save(function (err, savedCard) {
       if (err) {
         return callback({ err: sysErr.database_save_error });
@@ -49,6 +53,19 @@ exports.cardList = function (callback) {
 exports.cardListByIds = function (ids, callback) {
   ids = ids || [];
   Card.find({ _id: { $in: ids } }, function (err, cards) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, cards);
+  });
+};
+
+exports.cardListByTag = function (info, callback) {
+  var query = {};
+  if (info) {
+    query = info;
+  }
+  Card.find(query, function (err, cards) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }

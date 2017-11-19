@@ -30,6 +30,22 @@ module.exports = function (appDb) {
     organization_url: {
       type: String,
       default: ''
+    },
+    int1: {
+      type: Number,
+      default: 0
+    },
+    int2: {
+      type: Number,
+      default: 0
+    },
+    int3: {
+      type: Number,
+      default: 0
+    },
+    int4: {
+      type: Number,
+      default: 0
     }
   });
 
