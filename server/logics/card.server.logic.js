@@ -35,7 +35,7 @@ exports.updateCard = function (cardInfo, callback) {
     card.str1 = cardInfo.str1;
     card.str1s = cardInfo.str1.split(',');
     card.str2 = cardInfo.str2;
-    card.str2s = cardInfo.str2s.split(',');
+    card.str2s = cardInfo.str2.split(',');
     card.save(function (err, savedCard) {
       if (err) {
         return callback({ err: sysErr.database_save_error });
