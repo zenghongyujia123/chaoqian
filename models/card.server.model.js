@@ -65,6 +65,14 @@ module.exports = function (appDb) {
       type: [],
       default: []
     },
+    str2: {
+      type: String,
+      default: ''
+    },
+    str2s: {
+      type: [],
+      default: []
+    },
   });
 
   var User = appDb.model('Card', CardSchema);
