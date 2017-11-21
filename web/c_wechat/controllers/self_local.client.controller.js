@@ -1,10 +1,13 @@
 $(function () {
-  function getUserJsApiTicket() {
+  function getUserJsApiTicket(callback) {
     $.ajax({
       url: '/page_wechat/getUserJsApiTicket',
       method: 'post',
       success: function (data) {
         alert(JSON.stringify(data));
+        if (callback) {
+          return callback(data);
+        }
       }
     });
   }
