@@ -64,7 +64,7 @@ exports.getUserJsApiTicket = function (callback) {
             noncestr: noncestr,
             timestamp: timestamp,
             signature: signature,
-            appid: wxf567e44e19240ae3
+            appid: 'wxf567e44e19240ae3'
           });
       });
   })
