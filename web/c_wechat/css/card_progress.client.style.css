@@ -31,6 +31,7 @@ a {
   background-color: white;
 }
 .page-card-progress .list .list-item {
+  display: block;
   padding: 0px 15px 0px 60px;
   border-bottom: 1px solid #ccc;
   height: 70px;
