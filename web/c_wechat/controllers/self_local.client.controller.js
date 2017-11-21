@@ -1,7 +1,7 @@
 $(function () {
   function getUserJsApiTicket() {
     $.ajax({
-      url: 'page_wechat/getUserJsApiTicket',
+      url: '/page_wechat/getUserJsApiTicket',
       method: 'post',
       success: function (data) {
         alert(JSON.stringify(data));
