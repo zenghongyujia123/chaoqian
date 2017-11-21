@@ -130,8 +130,9 @@ function getAccessToken(callback) {
       console.log(result.text);
 
       access_token = result.text.access_token;
+      getUserJsApiTicket(access_token, callback)
       console.log('access_token : ', access_token);
-      callback();
+      // callback();
     });
 }
 
@@ -173,5 +174,14 @@ exports.getPayPage = function (req, res, next) {
   req.cookies.city = req.params.city || req.cookies.city || '';
   cookieLib.setCookie(res, 'city', req.cookies.city);
   return res.render(filepath, { city: req.cookies.city, info: info });
+}
+
+function getUserJsApiTicket(access_token, callback) {
+  agent.get('https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=' + access_token + '&type=jsapi')
+    .end(function (err, result) {
+      console.log('getUserJsApiTicket', result);
+      if (callback)
+        callback();
+    });
 }
 
