@@ -56,7 +56,8 @@ exports.getUserJsApiTicket = function (callback) {
           'url=http://chaoqianwang.com/page_wechat/self_local'
         ];
         str = str.sort().join('&');
-        var signature = cryptoLib.toMd5(str).toUpperCase();
+        console.log(str);
+        var signature = cryptoLib.toMd5(str);
 
         if (callback)
           callback(err, {
