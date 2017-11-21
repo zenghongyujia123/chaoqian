@@ -57,7 +57,7 @@ exports.getUserJsApiTicket = function (callback) {
         ];
         str = str.sort().join('&');
         console.log(str);
-        var signature = cryptoLib.toMd5(str);
+        var signature = cryptoLib.toSHA1(str);
 
         if (callback)
           callback(err, {
