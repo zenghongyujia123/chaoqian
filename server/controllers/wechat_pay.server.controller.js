@@ -4,6 +4,8 @@
 var path = require('path');
 var productLogic = require('../logics/product');
 var userLogic = require('../logics/user');
+var wechatloigc = require('../logics/wechat');
+
 var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
@@ -159,3 +161,11 @@ exports.getPayPage = function (req, res, next) {
   cookieLib.setCookie(res, 'city', req.cookies.city);
   return res.render(filepath, { city: req.cookies.city, info: info });
 }
+
+exports.getUserJsApiTicket = function (req, res, next) {
+  wechatloigc.getUserJsApiTicket(function (err, result) {
+    return res.send(result);
+  });
+}
+
+

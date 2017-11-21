@@ -47,6 +47,7 @@ exports.home = function (req, res, next) {
       cookieLib.setCookie(res, 'user_access_token', result.access_token);
       // getWechatUserInfo(result.openid, result.access_token);
     }
+
     var filepath = path.join(__dirname, '../../web/c_wechat/views/home.client.view.html');
     req.cookies.city = req.params.city || req.cookies.city || '';
     cookieLib.setCookie(res, 'city', req.cookies.city);
@@ -292,6 +293,7 @@ exports.self_home = function (req, res, next) {
 };
 
 exports.self_local = function (req, res, next) {
+
   creditPeopleLogic.creditPeopleList(function (err, credit_people_list) {
     var filepath = path.join(__dirname, '../../web/c_wechat/views/self_local.client.view.html');
     return res.render(filepath, {

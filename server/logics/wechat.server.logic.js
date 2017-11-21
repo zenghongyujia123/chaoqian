@@ -16,6 +16,8 @@ var access_token = '';
 
 var xml2js = require('xml2js');
 var parseString = xml2js.parseString;
+var that = exports;
+
 function getClientIp(req) {
   return req.headers['x-forwarded-for'] ||
     req.connection.remoteAddress ||
@@ -23,7 +25,7 @@ function getClientIp(req) {
     req.connection.socket.remoteAddress;
 }
 
-function getAccessToken(callback) {
+exports.getAccessToken = function (callback) {
   agent.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxf567e44e19240ae3&secret=fe0fad0d4eb9cedec995dbea06bd2f3b')
     .end(function (err, result) {
       console.log('err-----');
@@ -32,23 +34,35 @@ function getAccessToken(callback) {
       console.log(result.text);
 
       access_token = JSON.parse(result.text).access_token;
-      getUserJsApiTicket(access_token, callback)
       console.log('access_token : ', access_token);
-      // callback();
+      callback(err, access_token);
     });
 }
 
-function getUserJsApiTicket(access_token, callback) {
-  agent.get('https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=' + access_token + '&type=jsapi')
-    .end(function (err, result) {
-      var ticket = JSON.parse(result.text).ticket;
-      console.log('getUserJsApiTicket', ticket);
+exports.getUserJsApiTicket = function (callback) {
+  that.getAccessToken(function (err, token) {
+    agent.get('https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=' + token + '&type=jsapi')
+      .end(function (err, result) {
+        var ticket = JSON.parse(result.text).ticket;
+        console.log('getUserJsApiTicket', ticket);
 
+        var noncestr = new Date().getTime().toString();
+        var timestamp = new Date().getTime();
 
-      if (callback)
-        callback(err, ticket);
-    });
+        var str = [
+          'jsapi_ticket=' + ticket,
+          'noncestr=' + noncestr,
+          'timestamp=' + timestamp,
+          'url=http://chaoqianwang.com/page_wechat/self_local'
+        ];
+        str = str.sort().join('&');
+        var signature = cryptoLib.toMd5(str).toUpperCase();
+
+        if (callback)
+          callback(err, { ticket: ticket, noncestr: noncestr, timestamp: timestamp, signature: signature });
+      });
+  })
+
 }
 
-getAccessToken();
 
