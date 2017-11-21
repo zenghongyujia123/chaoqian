@@ -59,7 +59,13 @@ exports.getUserJsApiTicket = function (callback) {
         var signature = cryptoLib.toMd5(str).toUpperCase();
 
         if (callback)
-          callback(err, { ticket: ticket, noncestr: noncestr, timestamp: timestamp, signature: signature });
+          callback(err, {
+            ticket: ticket,
+            noncestr: noncestr,
+            timestamp: timestamp,
+            signature: signature,
+            appid: wxf567e44e19240ae3
+          });
       });
   })
 
