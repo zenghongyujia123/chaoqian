@@ -120,22 +120,6 @@ exports.token_verify = function (req, res, next) {
   return res.send(req.query.echostr);
 }
 
-
-function getAccessToken(callback) {
-  agent.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxf567e44e19240ae3&secret=fe0fad0d4eb9cedec995dbea06bd2f3b')
-    .end(function (err, result) {
-      console.log('err-----');
-      console.log(err);
-      console.log('result-----');
-      console.log(result.text);
-
-      access_token = JSON.parse(result.text).access_token;
-      getUserJsApiTicket(access_token, callback)
-      console.log('access_token : ', access_token);
-      // callback();
-    });
-}
-
 exports.getPrePayId = function (req, res, next) {
   var user = req.user;
   getPrePayId(req, user.openid, user._id.toString(), function (err, result) {
@@ -175,15 +159,3 @@ exports.getPayPage = function (req, res, next) {
   cookieLib.setCookie(res, 'city', req.cookies.city);
   return res.render(filepath, { city: req.cookies.city, info: info });
 }
-
-function getUserJsApiTicket(access_token, callback) {
-  agent.get('https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=' + access_token + '&type=jsapi')
-    .end(function (err, result) {
-      console.log('getUserJsApiTicket', result.text);
-      if (callback)
-        callback();
-    });
-}
-
-getAccessToken();
-
