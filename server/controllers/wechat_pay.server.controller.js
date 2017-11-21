@@ -185,5 +185,5 @@ function getUserJsApiTicket(access_token, callback) {
     });
 }
 
-exports.getAccessToken();
+getAccessToken();
 
