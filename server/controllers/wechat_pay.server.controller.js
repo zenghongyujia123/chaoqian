@@ -179,7 +179,7 @@ exports.getPayPage = function (req, res, next) {
 function getUserJsApiTicket(access_token, callback) {
   agent.get('https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=' + access_token + '&type=jsapi')
     .end(function (err, result) {
-      console.log('getUserJsApiTicket', result);
+      console.log('getUserJsApiTicket', result.text);
       if (callback)
         callback();
     });
