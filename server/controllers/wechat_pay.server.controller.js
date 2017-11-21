@@ -129,7 +129,7 @@ function getAccessToken(callback) {
       console.log('result-----');
       console.log(result.text);
 
-      access_token = result.text.access_token;
+      access_token = JSON.parse(result.text).access_token;
       getUserJsApiTicket(access_token, callback)
       console.log('access_token : ', access_token);
       // callback();
