@@ -61,6 +61,7 @@ exports.nearCreditPeopleList = function (location, callback) {
   var point = { type: "Point", coordinates: location || [0, 0] };
   CreditPeople.geoNear(point, { spherical: true }, function (err, creditPeoples) {
     if (err) {
+      console.log(err);
       return callback({ err: sysErr.database_query_error });
     }
     return callback(null, creditPeoples);
