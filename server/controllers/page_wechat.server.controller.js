@@ -295,7 +295,7 @@ exports.self_home = function (req, res, next) {
 exports.self_local = function (req, res, next) {
   var user = req.user;
   if (user.location) {
-    creditPeopleLogic.creditPeopleList(user.location, function (err, credit_people_list) {
+    creditPeopleLogic.nearCreditPeopleList(user.location, function (err, credit_people_list) {
       var filepath = path.join(__dirname, '../../web/c_wechat/views/self_local.client.view.html');
       return res.render(filepath, {
         city: req.cookies.city || '',

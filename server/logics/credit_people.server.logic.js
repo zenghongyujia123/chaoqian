@@ -26,11 +26,13 @@ exports.updateCreditPeople = function (info, callback) {
     creditPeople.phone = info.phone;
     creditPeople.photo = info.photo;
     creditPeople.tags = info.tags;
-    creditPeople.tag_list = info.tags.split(',') || [];
+    if (info.tags)
+      creditPeople.tag_list = info.tags.split(',') || [];
     creditPeople.job_start_time = info.job_start_time;
     creditPeople.personal_description = info.personal_description;
     creditPeople.business_description = info.business_description;
     creditPeople.company_type = info.company_type;
+    creditPeople.location = info.location;
 
     creditPeople.save(function (err, savedCreditPeople) {
       if (err) {
@@ -42,7 +44,16 @@ exports.updateCreditPeople = function (info, callback) {
 
 };
 
-exports.creditPeopleList = function (location, callback) {
+exports.creditPeopleList = function (callback) {
+  CreditPeople.find({}, function (err, creditPeoples) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, creditPeoples);
+  });
+};
+
+exports.nearCreditPeopleList = function (location, callback) {
   var point = { type: "Point", coordinates: location || [0, 0] };
   CreditPeople.geoNear(point, { spherical: true }, function (err, creditPeoples) {
     if (err) {

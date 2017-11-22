@@ -14,8 +14,6 @@ exports.updateCreditPeople = function (req, res, next) {
 };
 
 exports.creditPeopleList = function (req, res, next) {
-  var lng = req.query.lng;
-  var lat = req.query.lat;
   creditPeopleLogic.creditPeopleList(function (err, result) {
     if (err) {
       return next(err);

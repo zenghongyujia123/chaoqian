@@ -39,6 +39,14 @@
           <label>业务详情</label>
           <input ng-model="credit_people.business_description" />
         </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>经度</label>
+          <input ng-model="credit_people.location[0]" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>维度</label>
+          <input ng-model="credit_people.location[1]" />
+        </md-input-container>
       </div>
     </md-content>
   </div>
