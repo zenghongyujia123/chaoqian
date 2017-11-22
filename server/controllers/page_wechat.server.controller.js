@@ -315,6 +315,12 @@ exports.self_local = function (req, res, next) {
   }
 };
 
+exports.banner = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/banner.client.view.html');
+  return res.render(filepath, { img: req.query.img });
+};
+
+
 exports.credit_people_detail = function (req, res, next) {
   var credit_people = req.credit_people;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/credit_people_detail.client.view.html');

@@ -40,6 +40,8 @@ module.exports = function (app) {
   app.route('/page_wechat/notify_url').post(payController.notify_url);
   app.route('/page_wechat/token_verify').get(userFilter.requireUser, payController.token_verify);
 
+  app.route('/page_wechat/banner').get(index.banner);
+
   app.route('/page_wechat/vip_base_info').get(userFilter.requireUser, index.vip_base_info);
   app.route('/page_wechat/vip_auth_info').get(userFilter.requireUser, index.vip_auth_info);
   app.route('/page_wechat/vip_auth_1').get(userFilter.requireUser, index.vip_auth_1);
