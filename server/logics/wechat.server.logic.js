@@ -53,7 +53,7 @@ exports.getUserJsApiTicket = function (callback) {
           'jsapi_ticket=' + ticket,
           'noncestr=' + noncestr,
           'timestamp=' + timestamp,
-          'url=http://chaoqianwang.com/page_wechat/self_local'
+          'url=http://chaoqianwang.com/page_wechat/home'
         ];
         str = str.sort().join('&');
         console.log(str);
@@ -69,7 +69,6 @@ exports.getUserJsApiTicket = function (callback) {
           });
       });
   })
-
 }
 
 

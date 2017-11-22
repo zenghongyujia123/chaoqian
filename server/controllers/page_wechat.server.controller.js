@@ -293,7 +293,6 @@ exports.self_home = function (req, res, next) {
 };
 
 exports.self_local = function (req, res, next) {
-
   creditPeopleLogic.creditPeopleList(function (err, credit_people_list) {
     var filepath = path.join(__dirname, '../../web/c_wechat/views/self_local.client.view.html');
     return res.render(filepath, {

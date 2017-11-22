@@ -42,8 +42,9 @@ exports.updateCreditPeople = function (info, callback) {
 
 };
 
-exports.creditPeopleList = function (callback) {
-  CreditPeople.find({}, function (err, creditPeoples) {
+exports.creditPeopleList = function (location, callback) {
+  var point = { type: "Point", coordinates: location || [0, 0] };
+  CreditPeople.geoNear(point, { spherical: true }, function (err, creditPeoples) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }

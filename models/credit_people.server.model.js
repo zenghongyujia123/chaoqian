@@ -50,6 +50,10 @@ module.exports = function (appDb) {
     business_description: {
       type: String,
       require: true,
+    },
+    location: {
+      type: [Number],
+      index: '2dsphere'
     }
   });
 
