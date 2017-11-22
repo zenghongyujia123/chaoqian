@@ -26,8 +26,12 @@ exports.updateCreditPeople = function (info, callback) {
     creditPeople.phone = info.phone;
     creditPeople.photo = info.photo;
     creditPeople.tags = info.tags;
-    if (info.tags)
+    if (info.tags) {
       creditPeople.tag_list = info.tags.split(',') || [];
+    }
+    else {
+      creditPeople.tag_list = []
+    }
     creditPeople.job_start_time = info.job_start_time;
     creditPeople.personal_description = info.personal_description;
     creditPeople.business_description = info.business_description;
