@@ -48,6 +48,20 @@ $(function () {
     });
   }
 
+  function updateUserLocation(lng, lat) {
+    $.ajax({
+      url: '/user/updateUserLocation',
+      method: 'post',
+      data: {
+        lng: lng,
+        lat: lat
+      },
+      success: function (data) {
+        alert(JSON.stringify(data));
+      }
+    });
+  }
+
   getUserJsApiTicket(function (data) {
     wx.config({
       debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -69,6 +83,9 @@ $(function () {
           var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
           var speed = res.speed; // 速度，以米/每秒计
           var accuracy = res.accuracy; // 位置精度
+          if (longitude > 0 && latitude > 0) {
+            updateUserLocation(longitude, latitude);
+          }
         }
       });
     });

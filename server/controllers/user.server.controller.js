@@ -160,6 +160,18 @@ exports.updateVipReportInfo = function (req, res, next) {
   });
 }
 
+exports.updateUserLocation = function (req, res, next) {
+  userLogic.updateUserLocation(req.user, req.body.lng, req.body.lat, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
+
+
+
 
 
 

@@ -12,6 +12,7 @@ module.exports = function (app) {
   app.route('/user/getUserById').post(userFilter.requireUserById, userController.getUserById);
   app.route('/user/updateUserAuth1').post(userFilter.requireUser, userController.updateUserAuth1);
   app.route('/user/updateUserAuth2').post(userFilter.requireUser, userController.updateUserAuth2);
+  app.route('/user/updateUserLocation').post(userFilter.requireUser, userController.updateUserLocation);
   app.route('/user/verifyVip').post(userFilter.requireUserById, userController.verifyVip);
   app.route('/user/updateVipInfo').post(userFilter.requireUserById, userController.updateVipInfo);
   app.route('/user/updateVipReportInfo').post(userFilter.requireUserById, userController.updateVipReportInfo);

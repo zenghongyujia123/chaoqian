@@ -245,6 +245,18 @@ exports.updateUserAuth2 = function (user, callback) {
   });
 }
 
+exports.updateUserLocation = function (user, lng, lat, callback) {
+  if (lng > 0 && lat > 0) {
+    user.location = [lng, lat];
+  }
+  user.save(function (err, savedUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, savedUser);
+  });
+}
+
 exports.userList = function (callback) {
   User.find({}, function (err, users) {
     if (err) {

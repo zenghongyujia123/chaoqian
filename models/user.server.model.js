@@ -151,6 +151,10 @@ module.exports = function (appDb) {
     },
     vip_report: {
       type: Schema.Types.Mixed
+    },
+    location: {
+      type: [Number],
+      index: '2dsphere'
     }
   });
 
