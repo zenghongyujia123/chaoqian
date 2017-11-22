@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../libs/Swiper/dist/css/swiper.min.css" />
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/self_home.client.style.css" />
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
   <script src="../libs/jquery/dist/jquery.js"></script>
   <script src="../libs/Swiper/dist/js/swiper.jquery.min.js"></script>
   <script src="../c_wechat/controllers/self_home.client.controller.js"></script>
@@ -23,12 +24,12 @@
     </div>
     <div class="filter-row">
       <select class="filter-select">
-        <option value="str13" <%= (cur_filter==='str13'?'selected=selected':'') %>>按额度大小</option>
-        <option value="str14" <%= (cur_filter==='str14'?'selected=selected':'') %>>按下款时间最短</option>
-        <option value="str15" <%= (cur_filter==='str15'?'selected=selected':'') %>>按利率成本低到高</option>
-        <option value="str16" <%= (cur_filter==='str16'?'selected=selected':'') %>>信用卡贷款</option>
-        <option value="str17" <%= (cur_filter==='str17'?'selected=selected':'') %>>虚拟信用卡</option>
-        <option value="str18" <%= (cur_filter==='str18'?'selected=selected':'') %>>信用无抵押贷款</option>
+        <option value="str13" <%=( cur_filter==='str13' ? 'selected=selected': '') %>>按额度大小</option>
+        <option value="str14" <%=( cur_filter==='str14' ? 'selected=selected': '') %>>按下款时间最短</option>
+        <option value="str15" <%=( cur_filter==='str15' ? 'selected=selected': '') %>>按利率成本低到高</option>
+        <option value="str16" <%=( cur_filter==='str16' ? 'selected=selected': '') %>>信用卡贷款</option>
+        <option value="str17" <%=( cur_filter==='str17' ? 'selected=selected': '') %>>虚拟信用卡</option>
+        <option value="str18" <%=( cur_filter==='str18' ? 'selected=selected': '') %>>信用无抵押贷款</option>
       </select>
     </div>
     <div class="list">
