@@ -32,23 +32,23 @@
 
       <% for(var i=0; i<credit_people_list.length; i++) {%>
 
-        <a href="/page_wechat/credit_people_detail?credit_people_id=<%= credit_people_list[i]._id %>" class="list-item">
-          <img src="<%= credit_people_list[i].photo %>" class="photo">
+        <a href="/page_wechat/credit_people_detail?credit_people_id=<%= credit_people_list[i].obj._id %>" class="list-item">
+          <img src="<%= credit_people_list[i].obj.photo %>" class="photo">
           </img>
           <div class="title">
-            <%= credit_people_list[i].name %>
+            <%= credit_people_list[i].obj.name %>
               <span>
-                <%= credit_people_list[i].company_type %>
+                <%= credit_people_list[i].obj.company_type %>
               </span>
           </div>
           <div class="content">
-            <%= credit_people_list[i].personal_description %>
+            <%= credit_people_list[i].obj.personal_description %>
           </div>
           <div class="tags">
-            <% for(var j=0; j<credit_people_list[i].tag_list.length; j++) {%>
+            <% for(var j=0; j<credit_people_list[i].obj.tag_list.length; j++) {%>
 
               <span class="tag-item">
-                <%= credit_people_list[i].tag_list[j] %>
+                <%= credit_people_list[i].obj.tag_list[j] %>
               </span>
               <% } %>
 
