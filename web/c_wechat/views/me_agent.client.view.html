@@ -20,11 +20,13 @@
       <div class="header-content">
         <div class="content-item">
           <div class="title">我发展的客户数量</div>
-          <div class="value">456 人</div>
+          <div class="value">
+            <%= user.first_child_count %> 人</div>
         </div>
         <div class="content-item">
           <div class="title">我的二阶人脉数量</div>
-          <div class="value">2342 人</div>
+          <div class="value">
+            <%= user.second_child_count %> 人</div>
         </div>
       </div>
     </div>
@@ -35,11 +37,15 @@
     <div class="agent-body">
       <div class="body-row">
         <div class="left">我的专属推荐码</div>
-        <div class="right">13322222222</div>
+        <div class="right">
+          <%= user.username %>
+        </div>
       </div>
       <div class="body-row">
         <div class="left">我的专属推广连接</div>
-        <div class="right">撒发发发</div>
+        <div class="right">
+          <%= ('http://localhost:5002/page_wechat/me_share?code='+user.username) %>
+        </div>
       </div>
 
       <div class="body-row">
@@ -70,8 +76,8 @@
         </div>
       </div>
       <div class="list-item">
-        <div class="icon red">最多
-          拓VIP</div>
+        <div class="icon red">最多 拓VIP
+        </div>
         <div class="item-left">
           <div class="title">135XXXXXX45
           </div>
@@ -84,9 +90,8 @@
         </div>
       </div>
       <div class="list-item">
-        <div class="icon light-green">最多
-          拓POS
-          </div>
+        <div class="icon light-green">最多 拓POS
+        </div>
         <div class="item-left">
           <div class="title">135XXXXXX45
           </div>
@@ -99,8 +104,8 @@
         </div>
       </div>
       <div class="list-item">
-        <div class="icon light-blue">最多
-          贷款额</div>
+        <div class="icon light-blue">最多 贷款额
+        </div>
         <div class="item-left">
           <div class="title">135XXXXXX45
           </div>
@@ -113,9 +118,8 @@
         </div>
       </div>
       <div class="list-item">
-        <div class="icon blue">最多
-          拓POS
-          </div>
+        <div class="icon blue">最多 拓POS
+        </div>
         <div class="item-left">
           <div class="title">135XXXXXX45
           </div>

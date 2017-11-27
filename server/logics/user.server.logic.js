@@ -29,15 +29,77 @@ exports.signup = function (userInfo, callback) {
 
     user = new User({
       username: userInfo.username,
-      openid: userInfo.openid
+      openid: userInfo.openid,
+      parent: userInfo.code || ''
     });
     user.password = user.hashPassword(userInfo.password);
     user.save(function (err, saveUser) {
       if (err) {
         return callback({ err: sysErr.database_save_error });
       }
-      return callback(null, { success: true, user_id: saveUser._id });
+
+      if (saveUser.parent) {
+        that.getParent(saveUser.parent, function (parentInfo) {
+          if (parentInfo.top_parent) {
+            saveUser.top_parent = parentInfo.top_parent.username;
+          }
+          saveUser.save(function () {
+            that.updateChildsCount(parentInfo.parent, function () {
+              that.updateChildsCount(parentInfo.top_parent, function () {
+                return callback(null, { success: true, user_id: saveUser._id });
+              });
+            });
+          });
+        });
+      }
+      else {
+        return callback(null, { success: true, user_id: saveUser._id });
+      }
     });
+  });
+}
+
+exports.updateChildsCount = function (user, callback) {
+  if (!user) {
+    return callback();
+  }
+  User.count({ parent: user.username }, function (err, count) {
+    if (count) {
+      user.first_child_count = count || 0;
+    }
+    User.count({ top_parent: user.username }, function (err, scount) {
+      if (scount) {
+        user.second_child_count = scount;
+      }
+      user.save(function () {
+        return callback();
+      });
+    })
+  });
+}
+
+exports.getParent = function (code, callback) {
+  User.findOne({ username: code }, function (err, parent) {
+    if (!parent) {
+      return callback({});
+    }
+
+    if (parent.parent) {
+      User.findOne({ username: parent.parent }, function (err, top_parent) {
+        if (top_parent) {
+          return callback({ parent: parent, top_parent: top_parent });
+        }
+        else {
+          return callback({ parent: parent, top_parent: null });
+        }
+
+      })
+    }
+    else {
+      return callback({ parent: parent, top_parent: null });
+    }
+
+
   });
 }
 

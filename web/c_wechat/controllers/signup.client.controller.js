@@ -27,7 +27,8 @@ $(function () {
       data: {
         user_info: {
           username: username,
-          password: password
+          password: password,
+          code: $('.code').text()
         }
       },
       success: function (data) {

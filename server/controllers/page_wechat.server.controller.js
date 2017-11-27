@@ -183,8 +183,9 @@ exports.signin = function (req, res, next) {
 };
 
 exports.signup = function (req, res, next) {
+  var code = req.query.code || '';
   var filepath = path.join(__dirname, '../../web/c_wechat/views/signup.client.view.html');
-  return res.render(filepath, { city: req.cookies.city });
+  return res.render(filepath, { city: req.cookies.city, code: code });
 };
 
 exports.me_info = function (req, res, next) {
@@ -412,3 +413,8 @@ exports.invite_notice = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/invite_notice.client.view.html');
   return res.render(filepath, { city: req.cookies.city });
 };
+
+exports.me_share = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_share.client.view.html');
+  return res.render(filepath, { city: req.cookies.city, code: req.query.code || '' });
+}

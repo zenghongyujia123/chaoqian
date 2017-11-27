@@ -68,6 +68,7 @@ body {
   color: #333333;
 }
 .page-me-agent .agent-body .body-row .right {
+  text-align: right;
   color: #999;
 }
 .page-me-agent .agent-body .body-footer {

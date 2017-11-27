@@ -15,6 +15,22 @@ module.exports = function (appDb) {
       type: String,
       default: 'User'
     },
+    parent: {
+      type: String,
+      trim: true
+    },
+    top_parent: {
+      type: String,
+      trim: true
+    },
+    first_child_count: {
+      type: Number,
+      default: 0
+    },
+    second_child_count: {
+      type: Number,
+      default: 0
+    },
     username: {
       type: String,
       trim: true
