@@ -8,17 +8,39 @@
   <title>我的账户</title>
   <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
-  <link rel="stylesheet" href="../c_wechat/css/me_share.client.style.css" />
   <script src="../libs/jquery/dist/jquery.js"></script>
   <meta name="baidu-site-verification" content="4hPH3hudxx" />
+  <style>
+    .icon {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .submit-btn {
+      width: 80%;
+      line-height: 50px;
+      height: 50px;
+      margin: auto;
+      top: 60%;
+      left: 10%;
+      right: 10%;
+      position: absolute;
+      text-align: center;
+      color: white;
+      background-color: #FF6259;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 
 <body>
-  <a href="/page_wechat/signup?code=<%= (code||'') %>">立即注册</a>
+  <img src="../c_wechat/images/me_share/background.jpg" style="width:100%;" class="icon"></img>
+  <a href="/page_wechat/signup?code=<%= (code||'') %>" style="color:white;" class="submit-btn">立即注册</a>
 </body>
 <script>
 
-  
+
 </script>
 
 </html>
