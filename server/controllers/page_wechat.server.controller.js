@@ -219,7 +219,10 @@ exports.me_bill = function (req, res, next) {
 exports.me_agent = function (req, res, next) {
   var user = req.user;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/me_agent.client.view.html');
-  return res.render(filepath, { city: req.cookies.city, user: req.user });
+
+  userLogic.getUserShareUrl(user.username, function (err, url_info) {
+    return res.render(filepath, { city: req.cookies.city, user: req.user, url_info: url_info || {} });
+  })
 };
 
 exports.me_achievement = function (req, res, next) {

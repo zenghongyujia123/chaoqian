@@ -6,6 +6,7 @@ var appDb = mongoose.appDb;
 var User = appDb.model('User');
 var UserPay = appDb.model('UserPay');
 var sysErr = require('./../errors/system');
+var agent = require('superagent').agent();
 
 var that = exports;
 
@@ -365,5 +366,12 @@ exports.updateVipReportInfo = function (user, vip_report, callback) {
     }
     return callback(null, savedUser);
   });
+}
+
+exports.getUserShareUrl = function (username, callback) {
+  agent.get('http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long=http://chaoqianwang.com/page_wechat/me_share?code=' + username)
+    .end(function (err, data) {
+      return callback(err, data.body);
+    });
 }
 

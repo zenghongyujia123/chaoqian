@@ -45,7 +45,7 @@
       <div class="body-row">
         <div class="left">我的专属推广连接</div>
         <div class="right shareurl">
-
+          <%= url_info[0].url_short %>
         </div>
       </div>
 
@@ -145,15 +145,7 @@
 
 </body>
 <script>
-  $(function () {
-    $.ajax({
-      url: 'http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long=http://chaoqianwang.com/page_wechat/me_share?code=<%= user.username %>',
-      method: 'get',
-      success: function (data) {
-        $('.shareurl').text(data[0].url_short);
-      }
-    })
-  });
+
 </script>
 
 </html>
