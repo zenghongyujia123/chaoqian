@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/me_agent.client.style.css" />
   <script src="../libs/jquery/dist/jquery.js"></script>
-  <meta name="baidu-site-verification" content="4hPH3hudxx" />
+  <script src="../c_wechat/controllers/me_agent.client.controller.js"></script>
+  <meta http-equiv="Access-Control-Allow-Origin" content="api.t.sina.com.cn">
 </head>
 
 <body>
@@ -37,14 +38,14 @@
     <div class="agent-body">
       <div class="body-row">
         <div class="left">我的专属推荐码</div>
-        <div class="right">
+        <div class="right username">
           <%= user.username %>
         </div>
       </div>
       <div class="body-row">
         <div class="left">我的专属推广连接</div>
-        <div class="right">
-          <%= ('http://chaoqianwang.com/page_wechat/me_share?code='+user.username) %>
+        <div class="right shareurl">
+
         </div>
       </div>
 
@@ -143,5 +144,16 @@
   </div>
 
 </body>
+<script>
+  $(function () {
+    $.ajax({
+      url: 'http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long=http://chaoqianwang.com/page_wechat/me_share?code=<%= user.username %>',
+      method: 'get',
+      success: function (data) {
+        $('.shareurl').text(data[0].url_short);
+      }
+    })
+  });
+</script>
 
 </html>

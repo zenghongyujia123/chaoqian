@@ -113,7 +113,7 @@ module.exports = function () {
         error: {
           type: 'invalid_request_error',
           message: 'Unrecognized request URL (' +
-          req.method + ': ' + req.originalUrl + ').'
+            req.method + ': ' + req.originalUrl + ').'
         }
       });
     } else {
