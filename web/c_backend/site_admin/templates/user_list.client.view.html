@@ -8,6 +8,10 @@
       <div class="column-item" flex="">用户名</div>
       <div class="column-item" flex="">用户姓名</div>
       <div class="column-item" flex="">用户手机</div>
+      <div class="column-item" flex="">上一级</div>
+      <div class="column-item" flex="">上二级</div>
+      <div class="column-item" flex="">下级客户数</div>
+      <div class="column-item" flex="">下二级客户数</div>
       <div class="column-item" flex="">是否vip支付</div>
       <div class="column-item" flex="">vip支付时间</div>
       <div class="column-item" flex="">是否通讯运营商授权</div>
@@ -21,6 +25,10 @@
       <div class="column-item" flex="">{{user.username}}</div>
       <div class="column-item" flex="">{{user.real_name}}</div>
       <div class="column-item" flex="">{{user.real_phone}}</div>
+      <div class="column-item" flex="">{{user.parent}}</div>
+      <div class="column-item" flex="">{{user.top_parent}}</div>
+      <div class="column-item" flex="">{{user.first_child_count}}</div>
+      <div class="column-item" flex="">{{user.second_child_count}}</div>
       <div class="column-item" flex="">{{user.vip_payed?'已支付':'未支付'}}</div>
       <div class="column-item" flex="">{{user.vip_payed?(user.vip_payed_time| date:"yyyy-MM-dd hh:mm:ss") :'-'}}</div>
       <div class="column-item" flex="">{{user.carrier_token?'是':'否'}}</div>
