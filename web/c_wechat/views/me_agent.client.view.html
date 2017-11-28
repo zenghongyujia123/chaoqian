@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/me_agent.client.style.css" />
   <script src="../libs/jquery/dist/jquery.js"></script>
+  <script src="../libs/jquery-qrcode/dist/jquery.qrcode.js"></script>
   <script src="../c_wechat/controllers/me_agent.client.controller.js"></script>
-  <meta http-equiv="Access-Control-Allow-Origin" content="api.t.sina.com.cn">
 </head>
 
 <body>
@@ -33,7 +33,7 @@
     </div>
     <div class="agent-body">
       <div class="body-title">专属推广二维码 （长按保存）</div>
-      <div class="body-code"></div>
+      <div class="body-code" id="qrcode"></div>
     </div>
     <div class="agent-body">
       <div class="body-row">
@@ -145,7 +145,13 @@
 
 </body>
 <script>
-
+  $(function () {
+    $("#qrcode").qrcode({
+      render: "table", //table方式 
+      text: "<%= url_info[0].url_short %>",//任意内容 \
+      size: 120,
+    });
+  })
 </script>
 
 </html>
