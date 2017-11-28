@@ -34,6 +34,7 @@
     <div class="agent-body">
       <div class="body-title">专属推广二维码 （长按保存）</div>
       <div class="body-code" id="qrcode"></div>
+      <img class="body-code" id="imgcode" />
     </div>
     <div class="agent-body">
       <div class="body-row">
@@ -146,11 +147,13 @@
 </body>
 <script>
   $(function () {
-    $("#qrcode").qrcode({
-      render: "table", //table方式 
+    var qrcode = $("#qrcode").qrcode({
       text: "<%= url_info[0].url_short %>",//任意内容 \
       size: 120,
-    });
+    }).hide();
+
+    var canvas = qrcode.find('canvas').get(0);
+    $('#imgcode').attr('src', canvas.toDataURL('image/jpg'))
   })
 </script>
 
