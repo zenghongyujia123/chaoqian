@@ -6,6 +6,7 @@ var productLogic = require('../logics/product');
 var userLogic = require('../logics/user');
 var wechatloigc = require('../logics/wechat');
 
+
 var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
@@ -15,6 +16,8 @@ var agent = require('superagent').agent();
 var moment = require('moment');
 var access_token = '';
 
+const VIP_PRICE = 9800;
+const CREDIT198_PRICE = 6800;
 
 var xml2js = require('xml2js');
 var parseString = xml2js.parseString;
@@ -24,7 +27,7 @@ function getClientIp(req) {
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
 }
-function getPrePayId(req, openid, user_id, callback) {
+function getPrePayId(product,price,req, openid, user_id, callback) {
   // console.log('test  pay tEST ===============>');
 
   var jsonInfo = {
@@ -34,11 +37,11 @@ function getPrePayId(req, openid, user_id, callback) {
       device_info: 'web',
       nonce_str: new Date().getTime().toString(),
       sign_type: 'MD5',
-      body: '潮钱充值中心-测试会员充值',
+      body: product,// '潮钱充值中心-会员充值',
       out_trade_no: new Date().getTime().toString(),
       fee_type: 'CNY',
       detail: user_id,
-      total_fee: 1,
+      total_fee: price,//1,
       openid: openid,
       spbill_create_ip: getClientIp(req),
       notify_url: 'http://chaoqianwang.com/page_wechat/notify_url',
@@ -101,8 +104,16 @@ exports.notify_url = function (req, res, next) {
     transaction_id: req.body.xml.transaction_id[0]
   }
   if (info && info.result_code == 'SUCCESS') {
-    userLogic.updateVipPayedByOpenid(req.body.xml.openid[0], info, function () {
-    });
+    var price = req.body.xml.total_fee[0];
+    if(price==VIP_PRICE) {//vip 
+      userLogic.updateVipPayedByOpenid(req.body.xml.openid[0], info, function () {
+      });
+    }
+    else if (price==CREDIT198_PRICE){// credit card agency
+      userLogic.updateCredit198PayedByOpenid(req.body.xml.openid[0], info, function () {
+      });  
+    } 
+
   }
 
   var json = {
@@ -121,7 +132,7 @@ exports.token_verify = function (req, res, next) {
   console.log(req.body);
   return res.send(req.query.echostr);
 }
-
+/*
 exports.getPrePayId = function (req, res, next) {
   var user = req.user;
   getPrePayId(req, user.openid, user._id.toString(), function (err, result) {
@@ -133,9 +144,40 @@ exports.getPrePayId = function (req, res, next) {
     return next();
   });
 }
+*/
+
+exports.getPrePayId = function (req, res, next) {
+  var user = req.user;
+  var product="潮钱充值中心-会员充值";
+  var price =VIP_PRICE; //6900;
+  getPrePayId(product,price,req, user.openid, user._id.toString(), function (err, result) {
+    if (err) {
+      return next(err);
+    }
+
+    req.data = result;
+    return next();
+  });
+}
+
+exports.getPrePayId4PayCredit = function (req, res, next) {
+  var user = req.user;
+  var product="代还信用卡服务费：198元";
+  var price =CREDIT198_PRICE; // 19800;
+  getPrePayId(product,price,req, user.openid, user._id.toString(), function (err, result) {
+    if (err) {
+      return next(err);
+    }
+
+    req.data = result;
+    return next();
+  });
+}
+
 
 exports.getPayPage = function (req, res, next) {
   var prepay_id = req.params.prepay_id || req.query.prepay_id;
+  var product = req.params.product || req.query.product;
 
   console.log('prepay_id', prepay_id);
 
@@ -159,7 +201,7 @@ exports.getPayPage = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
   req.cookies.city = req.params.city || req.cookies.city || '';
   cookieLib.setCookie(res, 'city', req.cookies.city);
-  return res.render(filepath, { city: req.cookies.city, info: info });
+  return res.render(filepath, { city: req.cookies.city, info: info ,product: product});
 }
 
 exports.getUserJsApiTicket = function (req, res, next) {

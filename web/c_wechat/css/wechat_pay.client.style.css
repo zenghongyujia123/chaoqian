@@ -1,0 +1,15 @@
+body {
+  font-size: 12px;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px;
+}
+
+.pay-btn {
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #f24659;
+  line-height: 20px;
+  border-radius: 90px;
+  padding: 20px;
+}

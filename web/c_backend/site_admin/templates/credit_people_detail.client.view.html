@@ -20,6 +20,10 @@
           <input ng-model="credit_people.name" />
         </md-input-container>
         <md-input-container class="md-block" flex-gt-sm>
+          <label>专员手机</label>
+          <input ng-model="credit_people.phone" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
           <label>专员标签(如：信用贷,社保贷)</label>
           <input ng-model="credit_people.tags" />
         </md-input-container>
@@ -32,14 +36,6 @@
           <input ng-model="credit_people.company_type" />
         </md-input-container>
         <md-input-container class="md-block" flex-gt-sm>
-          <label>个人信息</label>
-          <input ng-model="credit_people.personal_description" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>业务详情</label>
-          <input ng-model="credit_people.business_description" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
           <label>经度</label>
           <input ng-model="credit_people.location[0]" />
         </md-input-container>
@@ -47,6 +43,34 @@
           <label>维度</label>
           <input ng-model="credit_people.location[1]" />
         </md-input-container>
+      </div>
+    </md-content>
+  </div>
+  <div class="c-product-detail-view">
+    <md-content layout-padding>
+      <div layout-gt-sm="row">
+        <span>
+          <img class="product-detail-logo" ng-src=""></img>
+        </span>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>个人信息</label>
+          <input ng-model="credit_people.personal_description" />
+        </md-input-container>
+
+      </div>
+    </md-content>
+  </div>
+  <div class="c-product-detail-view">
+    <md-content layout-padding>
+      <div layout-gt-sm="row">
+        <span>
+          <img class="product-detail-logo" ng-src=""></img>
+        </span>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>业务详情</label>
+          <input ng-model="credit_people.business_description" />
+        </md-input-container>
+
       </div>
     </md-content>
   </div>

@@ -65,11 +65,12 @@ a {
   padding: 15px;
 }
 .page-credit-people-detail .footer-content {
-  position: absolute;
+/*  position: absolute;*/
   left: 0px;
   bottom: 0px;
   padding: 15px;
   width: 100%;
+
 }
 .page-credit-people-detail .footer-content .submit-btn {
   display: block;
@@ -78,4 +79,16 @@ a {
   color: white;
   line-height: 50px;
   border-radius: 90px;
+ 
+
+}
+
+.page-credit-people-detail .body-content  .content-text {
+  color: #666;
+  font-size: 14px;
+  padding: 15px;
+}
+.page-credit-people-detail .body-content .content-text .body-text {
+  margin-bottom: 30px;
+  font-size: 14px;
 }

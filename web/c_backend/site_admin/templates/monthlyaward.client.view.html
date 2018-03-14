@@ -1,0 +1,163 @@
+<div class="page-body-view">
+    <div class="page-operation-view" layout="row" layout-align="space-between center">
+      <p class="title">用户按月佣金汇总统计(调试中...)   </p>
+      <div layout="row">
+          <md-button class="md-primary md-raised md-hue-2" ng-click="test()" >测试数据库
+          </md-button>
+  
+          <md-button class="md-primary md-raised md-hue-2" ng-click="">打印记录
+          </md-button>
+      </div>
+    </div>
+    
+    <div>
+          统计月份设定:
+        <select ng-model="selectedMonth" ng-options="x for x in allmonths">
+        </select>
+      输入号码筛选用户：
+      <input type="text" ng-model="customer_mobile">
+      <md-button class="md-primary md-raised md-hue-2" ng-click="checkUserTj()" >查询及统计
+      </md-button>
+
+    </div>
+  
+    <div class="list-header">
+      <div class="list-item" layout="row" layout-align="start center">
+        <div class="column-item" flex="">统计用户姓名</div>
+        <div class="column-item" flex="">用户号码</div>
+        <div class="column-item" flex="">用户支付宝</div>
+        <div class="column-item" flex="">用户电子邮箱</div>
+        <div class="column-item" flex="">用户地址</div>
+        <div class="column-item" flex="">用户代理身份</div>
+        <div class="column-item" flex="">vip身份</div>
+        
+      </div>
+    </div>
+    <div class="list-body">
+      <div class="list-item" layout="row" layout-align="start center" >
+          <div class="column-item" flex="">{{user.real_name}}</div>
+          <div class="column-item" flex="">{{customer_mobile}}</div>
+          <div class="column-item" flex="">{{user.alipay_id}}</div>
+          <div class="column-item" flex="">{{user.email}}</div>
+          <div class="column-item" flex="">{{user.adress}}</div>
+          <div class="column-item" flex="">{{user.agent_rate}}</div>
+          <div class="column-item" flex="">{{user.vip_payed?'VIP用户':'非VIP用户'}}</div>
+          </div>
+    </div>
+  
+    <div class="list-header">一级返佣
+      <div class="list-item" layout="row" layout-align="start center">
+        <div  class="column-item" flex="">下线姓名</div>
+        <div   class="column-item" flex="">注册号码</div>
+        <div   class="column-item" flex="">贷款业务佣金</div>
+        <div   class="column-item" flex="">信用卡奖励金</div>
+        <div   class="column-item" flex="">POS返佣</div>
+        <div   class="column-item" flex="">vip返佣</div>
+        <div   class="column-item" flex="">晋级代理返佣</div>
+        <div   class="column-item" flex="">S级代理返佣</div>  
+        <div   class="column-item" flex="">车业务返佣</div>
+        <div   class="column-item" flex="">代还返佣</div>
+        <div   class="column-item" flex="">聚合返佣</div>
+        <div   class="column-item" flex=""></div>
+            
+      </div>
+    </div>
+    <div class="list-body">
+      <div class="list-item" layout="row" layout-align="start center" ng-repeat="record in as_parent_record_list">
+        <div class="column-item" flex="">{{record.target_user_real_name}}</div>
+        <div class="column-item" flex="">{{record.target_user}}</div>
+        <div class="column-item" flex="">{{record.parent_loan_award }}</div>
+        <div class="column-item" flex="">{{record.parent_credit_award}}</div>
+        <div class="column-item" flex="">{{record.parent_pos_award}}</div>
+        <div class="column-item" flex="">{{record.parent_vip_award}}</div>
+        <div class="column-item" flex="">{{record.parent_money4agent_award }}</div>
+        <div class="column-item" flex="">{{record.parent_money4Sagent_award}}</div>
+        <div class="column-item" flex="">{{record.parent_car_mgr_award }}</div>
+        <div class="column-item" flex="">{{record.parent_help4credit_award}}</div>
+        <div class="column-item" flex="">{{record.parent_help4card_award}}</div>      
+        <div class="column-item" flex="" layout="row" layout-align="start start">
+          <md-button class="md-primary" ng-click="goDetail(record._id,0)">详情
+          </md-button>
+        </div>
+      </div>
+
+      <div class="list-item" layout="row" layout-align="start center" >
+        <div class="column-item" flex="">一级返佣小计</div>
+        <div class="column-item" flex=""></div>
+        <div class="column-item" flex="">{{sum1_parent_loan_award.toFixed(1) }}</div>
+        <div class="column-item" flex="">{{sum1_parent_credit_award.toFixed(1)}}</div>
+        <div class="column-item" flex="">{{sum1_parent_pos_award.toFixed(1)}}</div>
+        <div class="column-item" flex="">{{sum1_parent_vip_award.toFixed(1)}}</div>
+        <div class="column-item" flex="">{{sum1_parent_money4agent_award.toFixed(1) }}</div>
+        <div class="column-item" flex="">{{sum1_parent_money4Sagent_award.toFixed(1)}}</div>
+        <div class="column-item" flex="">{{sum1_parent_car_mgr_award.toFixed(1) }}</div>
+        <div class="column-item" flex="">{{sum1_parent_help4credit_award.toFixed(1)}}</div>
+        <div class="column-item" flex="">{{sum1_parent_help4card_award.toFixed(1)}}</div>      
+        <div class="column-item" flex="" layout="row" layout-align="start start">
+          <md-button class="md-primary" ng-click="">详情
+          </md-button>
+        </div>
+      </div>
+
+
+
+    </div>
+  
+  
+    <div class="list-header">二级返佣
+      <div class="list-item" layout="row" layout-align="start center">
+        <div class="column-item" flex="">下下线姓名</div>
+        <div class="column-item" flex="">注册号码</div>
+        <div class="column-item" flex="">贷款业务佣金</div>
+        <div class="column-item" flex="">信用卡奖励金</div>
+        <div class="column-item" flex="">POS返佣</div>
+        <div class="column-item" flex="">vip返佣</div>
+        <div class="column-item" flex="">晋级代理返佣</div>
+        <div class="column-item" flex="">S级代理返佣</div>  
+        <div class="column-item" flex="">车业务返佣</div>
+        <div class="column-item" flex="">代还返佣</div>
+        <div class="column-item" flex="">聚合返佣</div>
+        <div   class="column-item" flex=""></div>
+            
+      </div>
+    </div>
+    <div class="list-body">
+      <div class="list-item" layout="row" layout-align="start center" ng-repeat="record in as_topparent_record_list">
+        <div class="column-item" flex="">{{record.target_user_real_name}}</div>
+        <div class="column-item" flex="">{{record.target_user}}</div>
+        <div class="column-item" flex="">{{record.topparent_loan_award }}</div>
+        <div class="column-item" flex="">{{record.topparent_credit_award}}</div>
+        <div class="column-item" flex="">{{record.topparent_pos_award}}</div>
+        <div class="column-item" flex="">{{record.topparent_vip_award}}</div>
+        <div class="column-item" flex="">{{record.topparent_money4agent_award }}</div>
+        <div class="column-item" flex="">{{record.topparent_money4Sagent_award}}</div>
+        <div class="column-item" flex="">{{record.topparent_car_mgr_award }}</div>
+        <div class="column-item" flex="">{{record.topparent_help4credit_award}}</div>
+        <div class="column-item" flex="">{{record.topparent_help4card_award}}</div>       
+        <div class="column-item" flex="" layout="row" layout-align="start start">
+          <md-button class="md-primary" ng-click="goDetail(record._id,1)">详情
+          </md-button>
+        </div>
+      </div>
+
+      <div class="list-item" layout="row" layout-align="start center" >
+        <div class="column-item" flex="">二级返佣小计</div>
+        <div class="column-item" flex=""></div>
+        <div class="column-item" flex="">{{sum1_topparent_loan_award.toFixed(1) }}</div>
+        <div class="column-item" flex="">{{sum1_topparent_credit_award.toFixed(1)}}</div>
+        <div class="column-item" flex="">{{sum1_topparent_pos_award.toFixed(1)}}</div>
+        <div class="column-item" flex="">{{sum1_topparent_vip_award.toFixed(1)}}</div>
+        <div class="column-item" flex="">{{sum1_topparent_money4agent_award.toFixed(1) }}</div>
+        <div class="column-item" flex="">{{sum1_topparent_money4Sagent_award.toFixed(1)}}</div>
+        <div class="column-item" flex="">{{sum1_topparent_car_mgr_award.toFixed(1) }}</div>
+        <div class="column-item" flex="">{{sum1_topparent_help4credit_award.toFixed(1)}}</div>
+        <div class="column-item" flex="">{{sum1_topparent_help4card_award.toFixed(1)}}</div>      
+        <div class="column-item" flex="" layout="row" layout-align="start start">
+          <md-button class="md-primary" ng-click="">详情
+          </md-button>
+        </div>
+      </div>
+
+    </div>
+    
+  </div>

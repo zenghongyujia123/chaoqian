@@ -45,50 +45,40 @@
             <%= products[i].name %>
           </div>
         </a>
-        <% } %>
-
-        
+        <% } %>      
     </div>
   </div>
   <div class="page-result-panel">
     <div class="panel-title">
-      您的资料相当优秀，推荐您申请民生银行信用卡
+      依据您的资料，推荐您申请以下信用卡
     </div>
     <div class="panel-content">
       <div class="icon"></div>
-      <div class="text">下卡率90%</div>
+      <div class="text">超高的渠道合作下卡率（低风控标准）</div>
     </div>
     <div class="panel-content">
       <div class="icon"></div>
-      <div class="text">限制申请，激活旧宋养卡神器xxpos，当月刷满3000还可返现100元哦，赶快申请吧</div>
+      <div class="text">良好的银行信用交往历史记录将使您信用财富受益匪浅</div>
     </div>
     <div class="panel-content">
       <div class="icon"></div>
-      <div class="text">下卡率90%</div>
+      <div class="text">申请下卡就可免费赠送养卡提额MOPS，联系客服即可获得</div>
     </div>
   </div>
   <div class="page-result-list">
-    <div class="result-list-item">
-      <img src="" class="card-item"></img>
-      <div class="item-title">建设银行</div>
-      <div class="item-content">
-        积分兑换辛巴克</div>
-    </div>
-    <div class="result-list-item">
-      <img src="" class="card-item"></img>
-      <div class="item-title">建设银行</div>
-      <div class="item-content">积分兑换辛巴克</div>
-    </div>
-    <div class="result-list-item">
-      <img src="" class="card-item"></img>
-      <div class="item-title">建设银行</div>
-      <div class="item-content">积分兑换辛巴克</div>
-    </div>
-    <div class="result-list-item">
-      <img src="" class="card-item"></img>
-      <div class="item-title">建设银行</div>
-      <div class="item-content">积分兑换辛巴克</div>
-    </div>
+
+    <% for(var i=0; i<3; i++) {%>
+      <div class="result-list-item">
+        <img src="<%= cards[i].logo %>" class="card-item"></img>
+        <div class="item-title">
+          <%= cards[i].name %>
+        </div>
+        <div class="item-content">
+          <%= cards[i].description %>
+        </div>
+      </div>
+      <% } %>
+
   </div>
 </body>
 

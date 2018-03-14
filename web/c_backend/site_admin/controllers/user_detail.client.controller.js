@@ -92,6 +92,11 @@ cSite.controller('UserDetailController', [
       });
     }
 
+    //goNotifyPassed
+    $scope.goNotifyPassed = function () {
+      //$state.go('user_vip_report', { user_id: $stateParams.user_id }, { reload: true });
+      alert('test button !')
+    }
 
     $scope.goReport = function () {
       $state.go('user_vip_report', { user_id: $stateParams.user_id }, { reload: true });

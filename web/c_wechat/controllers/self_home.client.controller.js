@@ -9,18 +9,22 @@ $(function () {
     switch (type) {
       case 'str13':
         sort_key = type;
-        sort_value = -1
+        sort_value = -1;
         break;
       case 'str14':
       case 'str15':
         sort_key = type;
-        sort_value = 1
+        sort_value = 1;
         break;
       case 'str16':
       case 'str17':
       case 'str18':
         query_key = type;
-        query_value = 1
+        query_value = 1;
+        break;
+      default:
+        sort_key = "create_time";
+        sort_value = -1;
         break;
     }
 
@@ -62,7 +66,7 @@ $(function () {
 
   getUserJsApiTicket(function (data) {
     wx.config({
-      debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+      debug: false, // true 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
       appId: data.appid, // 必填，公众号的唯一标识
       timestamp: data.timestamp, // 必填，生成签名的时间戳
       nonceStr: data.noncestr, // 必填，生成签名的随机串

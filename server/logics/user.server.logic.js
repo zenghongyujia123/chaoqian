@@ -31,7 +31,9 @@ exports.signup = function (userInfo, callback) {
     user = new User({
       username: userInfo.username,
       openid: userInfo.openid,
-      parent: userInfo.code || ''
+      parent: userInfo.code || '',
+      // vincent : check the topparent in signup step , and save in db
+      top_parent : userInfo.top_parent ||''
     });
     user.password = user.hashPassword(userInfo.password);
     user.save(function (err, saveUser) {
@@ -44,6 +46,7 @@ exports.signup = function (userInfo, callback) {
           if (parentInfo.top_parent) {
             saveUser.top_parent = parentInfo.top_parent.username;
           }
+
           saveUser.save(function () {
             that.updateChildsCount(parentInfo.parent, function () {
               that.updateChildsCount(parentInfo.top_parent, function () {
@@ -51,6 +54,7 @@ exports.signup = function (userInfo, callback) {
               });
             });
           });
+        
         });
       }
       else {
@@ -178,6 +182,19 @@ exports.requireByUserId = function (userid, callback) {
     return callback(null, user);
   });
 }
+/*******************************************************/
+exports.requireByUsername = function (name1, callback) {
+  User.findOne({ username: name1 }, function (err, user) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, user);
+  });
+}
+
+  
+ /********************************************************* */
+
 
 exports.saveCarrierToken = function (user, token, callback) {
   user.carrier_token = token;
@@ -268,6 +285,39 @@ exports.updateUserAuth1 = function (user, real_name, real_phone, id_card, callba
     return callback(null, savedUser);
   });
 }
+//updateCredit198PayedByOpenid
+exports.updateCredit198PayedByOpenid = function (openid, info, callback) {
+//  var user={};
+  User.findOne({ openid: openid }, function (err, user) {
+    if (!user) {
+ //     user=user;
+      return callback();
+    }
+
+    UserPay.findOne({ 'content.transaction_id': info.transaction_id }, function (err, userPay) {
+      if (userPay) {
+        return callback();
+      }
+      var real_name = ((user.real_name!='')?user.real_name:user.wechat_info.nickname);
+      userPay = new UserPay({
+        type: 'credit198_pay',
+        user_id: user._id,
+        user_phone:user.username,
+        user_real_name:user.wechat_info.nickname,
+        content: info
+      });
+      userPay.save(function () {
+        user.credit198_payed = true;
+        user.credit198_payed_time = new Date();
+        user.save(function (err) {
+          return callback();
+        });
+      })
+    });
+
+
+  });
+}
 
 exports.updateVipPayedByOpenid = function (openid, info, callback) {
   User.findOne({ openid: openid }, function (err, user) {
@@ -279,9 +329,12 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
       if (userPay) {
         return callback();
       }
+      var real_name = ((user.real_name!='')?user.real_name:user.wechat_info.nickname);
       userPay = new UserPay({
         type: 'vip_pay',
         user_id: user._id,
+        user_phone:user.username,
+        user_real_name:user.wechat_info.nickname,
         content: info
       });
       userPay.save(function () {
@@ -329,6 +382,18 @@ exports.userList = function (callback) {
   })
 }
 
+//userListByCondition
+
+exports.userListByCondition = function (condition,sort,callback) {
+  User.find(condition, function (err, users) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, users);
+  }).sort(sort);
+}
+
+
 exports.verifyVip = function (user, callback) {
   user.vip_status = 'passed';
   user.save(function (err, savedUser) {
@@ -344,6 +409,7 @@ exports.updateVipInfo = function (user, vip_info, callback) {
   user.vip_report_url_text = vip_info.vip_report_url_text;
   user.vip_product_ids = vip_info.vip_product_ids;
   user.vip_card_ids = vip_info.vip_card_ids;
+ // user.agent_rate = vip_info.agent_rate;
 
   user.markModified('vip_product_ids');
   user.markModified('vip_card_ids');
@@ -354,6 +420,31 @@ exports.updateVipInfo = function (user, vip_info, callback) {
     return callback(null, savedUser);
   });
 }
+
+
+exports.updateAddInfo = function (user, vip_info, callback) {
+  user.real_name = vip_info.real_name;
+  user.alipay_id = vip_info.alipay_id;
+  user.email = vip_info.email;
+  user.adress = vip_info.adress;
+
+  user.save(function (err, savedUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, savedUser);
+  });
+}
+//updateAgentRate
+exports.updateAgentRate = function (user, info, callback) {
+    user.agent_rate = info.agent_rate;
+    user.save(function (err, savedUser) {
+      if (err) {
+        return callback({ err: sysErr.database_save_error });
+      }
+      return callback(null, savedUser);
+    });
+  }
 
 
 exports.updateVipReportInfo = function (user, vip_report, callback) {

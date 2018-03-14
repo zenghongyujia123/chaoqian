@@ -2,10 +2,10 @@ $(function () {
   $('.signup-btn').click(function () {
     var username = $('.username').val();
     var password = $('.password').val();
-    if (!username) {
-      return alert('请输入手机号');
-    }
 
+    if(!(/^1(3|4|5|7|8|9)\d{9}$/.test(username))){ 
+     return alert("请确认号码是否正确！");
+    }
     if (!password) {
       return alert('请输入密码');
     }

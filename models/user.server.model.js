@@ -124,6 +124,17 @@ module.exports = function (appDb) {
       type: Boolean,
       default: false
     },
+    agent_rate: {
+      type: String, 
+      default: '一般代理'
+    },
+    credit198_payed: {
+      type: Boolean,
+      default: false
+    },
+    credit198_payed_time: {
+      type: Date
+    },
     vip_payed: {
       type: Boolean,
       default: false
@@ -168,6 +179,15 @@ module.exports = function (appDb) {
     vip_report: {
       type: Schema.Types.Mixed
     },
+    alipay_id:{
+      type: String,
+    },
+    email:{
+      type: String,
+    },
+    adress:{
+      type: String,
+    },
     location: {
       type: [Number],
       index: '2dsphere'
@@ -193,11 +213,17 @@ module.exports = function (appDb) {
     },
     type: {
       type: String,
-      enum: ['vip_pay']
+      enum: ['vip_pay','credit198_pay']
     },
     user_id: {
       type: String,
     },
+    user_real_name: {
+      type: String,
+    },
+    user_phone: {
+      type: String,
+    },    
     content: {
       type: Schema.Types.Mixed
     }

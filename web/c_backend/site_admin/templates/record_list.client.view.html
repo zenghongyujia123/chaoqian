@@ -1,0 +1,49 @@
+<div class="page-body-view">
+  <div class="page-operation-view" layout="row" layout-align="space-between center">
+    <p class="title">客户商务记录列表</p>
+    <div layout="row">
+      <md-button class="md-primary md-raised md-hue-2" ng-click="addnewrecord()">输入记录</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="statistics()">按用户统计</md-button>
+    </div>
+  </div>
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">登记时间</div>
+      <div class="column-item" flex="">目标客户</div>
+      <div class="column-item" flex="">下贷金额</div>
+      <div class="column-item" flex="">信用卡有效量</div>
+      <div class="column-item" flex="">POS刷卡额</div>
+      <div class="column-item" flex="">晋级代理金额</div>
+      <div class="column-item" flex="">S级代理金额</div>
+      <div class="column-item" flex="">车业务交易量</div>
+      <div class="column-item" flex="">卡代还激活费</div>
+      <div class="column-item" flex="">聚合支付金额</div>
+      <div class="column-item" flex=""></div>
+    </div>
+  </div>
+  <div class="list-body">
+    <!--record in record_list     ng-repeat="record in record_list"-->
+    <div class="list-item" layout="row" layout-align="start center" ng-repeat="record in record_list">
+      <div class="column-item" flex="">{{record.record_date.toLocaleString().substring(0,10);}}</div>
+      <div class="column-item" flex="">{{record.target_user}}</div>
+      <div class="column-item" flex="">{{record.loan_num}}</div>
+      <div class="column-item" flex="">{{record.credit_num}}</div>
+      <div class="column-item" flex="">{{record.pos_num}}</div>
+      <div class="column-item" flex="">{{record.money4agent}}</div>
+      <div class="column-item" flex="">{{record.money4Sagent}}</div>
+      <div class="column-item" flex="">{{record.car_mgr_num}}</div>
+      <div class="column-item" flex="">{{record.help4credit}}</div>
+      <div class="column-item" flex="">{{record.help4card}}</div>      
+      <div class="column-item" flex="" layout="row" layout-align="start start">
+        <md-button class="md-primary" ng-click="goDetail(record._id)">详情
+        </md-button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--
+  ng-click="goDetail(record._id)"
+-->

@@ -99,10 +99,10 @@ body {
   border-bottom: 1px solid #cccccc;
 }
 .page-result-list .result-list-item .card-item {
-  width: 170px;
+  width: 130px;
   height: 107px;
   position: absolute;
-  background-color: grey;
+  background-color:#f2f2f2;
   top: 15px;
   left: 15px;
 }
@@ -113,4 +113,13 @@ body {
   line-height: 20px;
   color: #999;
   position: relative;
+}
+.page-result-list .bottom {
+  overflow: hidden;
+}
+.page-result-list .bottom .item {
+  width: 100%;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  height: 75px;
 }

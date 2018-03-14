@@ -63,6 +63,31 @@ exports.userList = function (req, res, next) {
     return next();
   });
 }
+// add condition and query the database,  
+exports.userListByCondition = function (req, res, next) {
+  userLogic.userListByCondition(req.body.condition,req.body.sort,function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
+
+/**********************************/
+//requireByUsername= function (username, callback)
+exports.getUserByUsername = function (req, res, next) {
+  userLogic.requireByUsername(req.body.username,function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
+
+/**********************************/
+
 
 exports.getUserById = function (req, res, next) {
   var user = req.requireUserById;
@@ -149,6 +174,26 @@ exports.updateVipInfo = function (req, res, next) {
     return next();
   });
 }
+//updateAgentRate
+exports.updateAgentRate = function (req, res, next) {
+  userLogic.updateAgentRate(req.requireUserById, req.body.vip_info, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
+exports.updateAddInfo = function (req, res, next) {
+  userLogic.updateAddInfo(req.requireUserById, req.body.user_info, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
+
 
 exports.updateVipReportInfo = function (req, res, next) {
   userLogic.updateVipReportInfo(req.requireUserById, req.body.vip_report, function (err, result) {

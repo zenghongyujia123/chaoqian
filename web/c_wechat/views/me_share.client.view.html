@@ -1,46 +1,21 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
+        <title>潮钱网</title>
+      </head>
 
-  <title>赚钱邀请</title>
-  <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
-  <script src="../libs/jquery/dist/jquery.js"></script>
-  <meta name="baidu-site-verification" content="4hPH3hudxx" />
-  <style>
-    .icon {
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-
-    .submit-btn {
-      width: 80%;
-      line-height: 50px;
-      height: 50px;
-      margin: auto;
-      top: 60%;
-      left: 10%;
-      right: 10%;
-      position: absolute;
-      text-align: center;
-      color: white;
-      background-color: #FF6259;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-
-<body>
-  <img src="../c_wechat/images/me_share/background.jpg" style="width:100%;" class="icon"></img>
+<body >
+  <div align="center">
+      <a href="/page_wechat/signup?code=<%= (code||'') %>" >
+        <img  src="../c_wechat/images/banner/poster.jpg"  style="width:100%; height:100%"></img>
+      </a>
+  <!--
   <a href="/page_wechat/signup?code=<%= (code||'') %>" style="color:white;" class="submit-btn">立即注册</a>
+  -->
+  </div>
 </body>
-<script>
-
-
-</script>
 
 </html>

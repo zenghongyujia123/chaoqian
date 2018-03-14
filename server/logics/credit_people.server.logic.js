@@ -34,7 +34,19 @@ exports.updateCreditPeople = function (info, callback) {
     }
     creditPeople.job_start_time = info.job_start_time;
     creditPeople.personal_description = info.personal_description;
+    if (info.personal_description) {
+      creditPeople.personal_description_list = info.personal_description.split('|') || [];
+    }
+    else {
+      creditPeople.personal_description_list = []
+    }
     creditPeople.business_description = info.business_description;
+    if (info.business_description) {
+      creditPeople.business_description_list = info.business_description.split('|') || [];
+    }
+    else {
+      creditPeople.business_description_list = []
+    }  
     creditPeople.company_type = info.company_type;
     creditPeople.location = info.location;
 

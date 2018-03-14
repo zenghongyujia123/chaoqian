@@ -17,6 +17,7 @@ module.exports = function (app) {
   app.route('/page_wechat/product_detail').get(productFilter.requireProduct, index.product_detail);
   app.route('/page_wechat/question').get(userFilter.requireUser, index.question);
   app.route('/page_wechat/home').get(index.home);
+  app.route('/page_wechat/paycredit').get(userFilter.requireUser,index.paycredit);
   app.route('/page_wechat/me').get(userFilter.requireUser, index.me);
   app.route('/page_wechat/signin').get(index.signin);
   app.route('/page_wechat/signup').get(index.signup);

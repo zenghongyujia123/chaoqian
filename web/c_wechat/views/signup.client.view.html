@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
 
-  <title>潮钱借钱</title>
+  <title>潮钱网</title>
   <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../libs/Swiper/dist/css/swiper.min.css" />
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
@@ -17,32 +17,35 @@
 </head>
 
 <body>
-  <div class="code" style="display:none">
-    <%= (code||'') %>
-  </div>
   <div class="page-signup">
     <div class="signup-row">
       <span class="row-title">手机号码</span>
       <input class="row-content username" type="text" placeholder="请输入手机号码"></input>
     </div>
-    <!-- <div class="signup-row">
+    <div class="signup-row">
       <div class="row-title">验证码</div>
       <input class="row-content verify_code" type="text" placeholder="请输入验证码"></input>
-    </div> -->
+      <div id='verify_button' class="signup-verify-btn">发送验证码</div>
+    </div> 
+    
     <div class="signup-row">
       <div class="row-title">密码</div>
-      <input class="row-content password" type="password" placeholder="请输入密码"></input>
+      <input class="row-content password" type="password" placeholder="请输入6位以上密码"></input>
     </div>
     <div class="signup-row">
       <div class="row-title">重复密码</div>
       <input class="row-content repassword" type="password" placeholder="请重复密码"></input>
     </div>
-    <!-- <div class="signup-row">
+    <div class="signup-row">
       <div class="row-title">邀请码</div>
-      <input class="row-content invite_code" type="text" placeholder="请输入邀请码"></input>
-    </div> -->
+      <input class="row-content invite_code" type="text" placeholder= <%= (code||'') %>></input>
+    </div> 
+    
     <div class="signup-row">
 
+    </div>
+    <div class="code" style="display:none">
+      <%= (code||'') %>
     </div>
     <div class="signup-agreements">
       <input type="radio" />

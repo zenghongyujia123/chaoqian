@@ -10,79 +10,222 @@
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/me_achievement.client.style.css" />
   <script src="../libs/jquery/dist/jquery.js"></script>
+  <script src="../c_wechat/controllers/me_achievement.client.controller.js"></script>
   <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
 
 <body>
+  <div class="myphone" style="display:none">
+      <%= (user.username) %>
+    </div>
   <div class="page-me-achievement">
     <div class="list">
       <div class="list-item">
         <div class="header">
-          <div class="type yellow">POS机</div>
-          <div class="text">佣金：1500.00</div>
+          <div class="type yellow">贷款</div>
+          <div class="text"> 佣金：<%= (record.loan_award) %></div>
         </div>
         <div class="body">
           <div class="body-item">
             <div class="title">推荐用户尾号</div>
-            <div class="text">3456</div>
+            <div class="text"><%= (record.username) %></div>
           </div>
           <div class="border"></div>
           <div class="body-item">
             <div class="title">业务月份</div>
-            <div class="text">3456</div>
+            <div class="text"><%= (record.record_date) %></div>
           </div>
           <div class="border"></div>
           <div class="body-item">
             <div class="title">支付时间</div>
-            <div class="text">3456</div>
+            <div class="text">月末</div>
           </div>
         </div>
       </div>
       <div class="list-item">
         <div class="header">
-          <div class="type blue">贷款</div>
-          <div class="text">佣金：1500.00</div>
+          <div class="type blue">办卡</div>
+          <div class="text">佣金：<%= (record.credit_award) %></div>
         </div>
         <div class="body">
           <div class="body-item">
             <div class="title">推荐用户尾号</div>
-            <div class="text">3456</div>
+            <div class="text"><%= (record.username) %></div>
           </div>
           <div class="border"></div>
           <div class="body-item">
             <div class="title">业务月份</div>
-            <div class="text">3456</div>
+            <div class="text"><%= (record.record_date) %></div>
           </div>
           <div class="border"></div>
           <div class="body-item">
             <div class="title">支付时间</div>
-            <div class="text">3456</div>
+            <div class="text">月末</div>
           </div>
         </div>
       </div>
 
       <div class="list-item">
-        <div class="header">
-          <div class="type red">VIP会员</div>
-          <div class="text">佣金：1500.00</div>
+          <div class="header">
+            <div class="type red">POS机</div>
+            <div class="text">佣金：<%= (record.pos_award) %></div>
+          </div>
+          <div class="body">
+            <div class="body-item">
+              <div class="title">推荐用户尾号</div>
+              <div class="text"><%= (record.username) %></div>
+            </div>
+            <div class="border"></div>
+            <div class="body-item">
+              <div class="title">业务月份</div>
+              <div class="text"><%= (record.record_date) %></div>
+            </div>
+            <div class="border"></div>
+            <div class="body-item">
+              <div class="title">支付时间</div>
+              <div class="text">月末</div>
+            </div>
+          </div>
         </div>
-        <div class="body">
-          <div class="body-item">
-            <div class="title">推荐用户尾号</div>
-            <div class="text">3456</div>
+
+        <div class="list-item">
+            <div class="header">
+              <div class="type green">VIP会员</div>
+              <div class="text">佣金：<%= (record.vip_award) %></div>
+            </div>
+            <div class="body">
+              <div class="body-item">
+                <div class="title">推荐用户尾号</div>
+                <div class="text"><%= (record.username) %></div>
+              </div>
+              <div class="border"></div>
+              <div class="body-item">
+                <div class="title">业务月份</div>
+                <div class="text"><%= (record.record_date) %></div>
+              </div>
+              <div class="border"></div>
+              <div class="body-item">
+                <div class="title">支付时间</div>
+                <div class="text">月末</div>
+              </div>
+            </div>
           </div>
-          <div class="border"></div>
-          <div class="body-item">
-            <div class="title">业务月份</div>
-            <div class="text">3456</div>
-          </div>
-          <div class="border"></div>
-          <div class="body-item">
-            <div class="title">支付时间</div>
-            <div class="text">3456</div>
-          </div>
-        </div>
-      </div>
+
+          <div class="list-item">
+              <div class="header">
+                <div class="type orange">晋级代理</div>
+                <div class="text">佣金：<%= (record.money4agent_award) %></div>
+              </div>
+              <div class="body">
+                <div class="body-item">
+                  <div class="title">推荐用户尾号</div>
+                  <div class="text"><%= (record.username) %></div>
+                </div>
+                <div class="border"></div>
+                <div class="body-item">
+                  <div class="title">业务月份</div>
+                  <div class="text"><%= (record.record_date) %></div>
+                </div>
+                <div class="border"></div>
+                <div class="body-item">
+                  <div class="title">支付时间</div>
+                  <div class="text">月末</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="list-item">
+                <div class="header">
+                  <div class="type purple">S级代理</div>
+                  <div class="text">佣金：<%= (record.money4Sagent_award) %></div>
+                </div>
+                <div class="body">
+                  <div class="body-item">
+                    <div class="title">推荐用户尾号</div>
+                    <div class="text"><%= (record.username) %></div>
+                  </div>
+                  <div class="border"></div>
+                  <div class="body-item">
+                    <div class="title">业务月份</div>
+                    <div class="text"><%= (record.record_date) %></div>
+                  </div>
+                  <div class="border"></div>
+                  <div class="body-item">
+                    <div class="title">支付时间</div>
+                    <div class="text">月末</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="list-item">
+                  <div class="header">
+                    <div class="type brown">车管家</div>
+                    <div class="text">佣金：<%= (record.car_mgr_award) %></div>
+                  </div>
+                  <div class="body">
+                    <div class="body-item">
+                      <div class="title">推荐用户尾号</div>
+                      <div class="text"><%= (record.username) %></div>
+                    </div>
+                    <div class="border"></div>
+                    <div class="body-item">
+                      <div class="title">业务月份</div>
+                      <div class="text"><%= (record.record_date) %></div>
+                    </div>
+                    <div class="border"></div>
+                    <div class="body-item">
+                      <div class="title">支付时间</div>
+                      <div class="text">月末</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="header">
+                      <div class="type pink">代还</div>
+                      <div class="text">佣金：<%= (record.help4credit_award) %></div>
+                    </div>
+                    <div class="body">
+                      <div class="body-item">
+                        <div class="title">推荐用户尾号</div>
+                        <div class="text"><%= (record.username) %></div>
+                      </div>
+                      <div class="border"></div>
+                      <div class="body-item">
+                        <div class="title">业务月份</div>
+                        <div class="text"><%= (record.record_date) %></div>
+                      </div>
+                      <div class="border"></div>
+                      <div class="body-item">
+                        <div class="title">支付时间</div>
+                        <div class="text">月末</div>
+                      </div>
+                    </div>
+                  </div>               
+                  <div class="list-item">
+                      <div class="header">
+                        <div class="type lightblue">聚合</div>
+                        <div class="text">佣金：<%= (record.help4card_award) %></div>
+                      </div>
+                      <div class="body">
+                        <div class="body-item">
+                          <div class="title">推荐用户尾号</div>
+                          <div class="text"><%= (record.username) %></div>
+                        </div>
+                        <div class="border"></div>
+                        <div class="body-item">
+                          <div class="title">业务月份</div>
+                          <div class="text"><%= (record.record_date) %></div>
+                        </div>
+                        <div class="border"></div>
+                        <div class="body-item">
+                          <div class="title">支付时间</div>
+                          <div class="text">月末</div>
+                        </div>
+                      </div>
+                    </div>  
+
+      
     </div>
   </div>
 </body>

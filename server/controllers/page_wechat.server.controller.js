@@ -5,6 +5,7 @@ var path = require('path');
 var productLogic = require('../logics/product');
 var cardLogic = require('../logics/card');
 
+var cblogic = require('../logics/customer_business');
 var userLogic = require('../logics/user');
 var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
@@ -41,6 +42,7 @@ function getUserAccessToken(code, callback) {
 
 
 exports.home = function (req, res, next) {
+  
   getUserAccessToken(req.query.code, function (err, result) {
     if (result.openid) {
       cookieLib.setCookie(res, 'openid', result.openid);
@@ -52,10 +54,18 @@ exports.home = function (req, res, next) {
     req.cookies.city = req.params.city || req.cookies.city || '';
     cookieLib.setCookie(res, 'city', req.cookies.city);
     return res.render(filepath, { city: req.cookies.city });
-  })
+  });
+};
+
+exports.paycredit = function(req, res, next) {
+
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/paycredit.client.view.html');
+  return res.render(filepath, { city: req.cookies.city});
+
 };
 
 exports.result = function (req, res, next) {
+  var user = req.user;
   var xinyongs = [
     {
       text: '差',
@@ -148,12 +158,15 @@ exports.result = function (req, res, next) {
 
 
   productLogic.productsByRiskCode(result.risk_codes, function (err, products) {
+    cardLogic.cardList(function (err, cards) {
     var filepath = path.join(__dirname, '../../web/c_wechat/views/result.client.view.html');
-    return res.render(filepath, {
-      city: req.cookies.city || '',
-      text: result.text || '',
-      price: result.value || '',
-      products: products || []
+      return res.render(filepath, {
+        city: req.cookies.city || '',
+        text: result.text || '',
+        price: result.value || '',
+        products: products || [],
+        cards: cards || []
+      });
     });
   });
 };
@@ -227,8 +240,114 @@ exports.me_agent = function (req, res, next) {
 
 exports.me_achievement = function (req, res, next) {
   var user = req.user;
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_achievement.client.view.html');
-  return res.render(filepath, { city: req.cookies.city, user: req.user });
+
+  var as_parent_record_list=[];
+  var as_topparent_record_list=[];
+  var sum1_parent_loan_award =0;
+  var sum1_parent_credit_award=0;
+  var sum1_parent_pos_award=0;
+  var sum1_parent_vip_award=0;
+  var sum1_parent_money4agent_award =0;
+  var sum1_parent_money4Sagent_award=0;
+  var sum1_parent_car_mgr_award =0;
+  var sum1_parent_help4credit_award=0;
+  var sum1_parent_help4card_award=0;
+
+  var sum1_topparent_loan_award =0;
+  var sum1_topparent_credit_award=0;
+  var sum1_topparent_pos_award=0;
+  var sum1_topparent_vip_award=0;
+  var sum1_topparent_money4agent_award =0;
+  var sum1_topparent_money4Sagent_award=0;
+  var sum1_topparent_car_mgr_award =0;
+  var sum1_topparent_help4credit_award=0;
+  var sum1_topparent_help4card_award=0;
+
+  var get_award =function(username){
+
+    var current_date=new Date();
+    var ss=current_date.getMonth()+1; 
+    var mm_s='2018,'+ss+',2';
+    var start=new Date(mm_s);
+    var end=current_date; 
+    var target_name = '';
+
+    username=username.replace(/[\r\n]/g, "");
+    username = username.replace(/[ ]/g, ""); 
+    var query_s= {'parent_name':username,"record_date":{$gte:start,$lte:end}};
+    //  alert('top_parent:'+top_parent);
+      cblogic.recordList(query_s,function(err,data){
+        as_parent_record_list=data;
+
+        // need to modify later , if the requirement is clear 
+        
+        as_parent_record_list.map(function(value,index,array){               
+          sum1_parent_loan_award += array[index].parent_loan_award;
+          sum1_parent_credit_award+= array[index].parent_credit_award;
+          sum1_parent_pos_award+= array[index].parent_pos_award;
+          sum1_parent_vip_award+= array[index].parent_vip_award;
+          sum1_parent_money4agent_award += array[index].parent_money4agent_award;
+          sum1_parent_money4Sagent_award+= array[index].parent_money4Sagent_award;
+          sum1_parent_car_mgr_award += array[index].parent_car_mgr_award;
+          sum1_parent_help4credit_award+= array[index].parent_help4credit_award;
+          sum1_parent_help4card_award+= array[index].parent_help4card_award;
+          target_name=as_parent_record_list[0].target_user.slice(-4);
+        }); 
+        console.log(sum1_parent_loan_award);
+
+
+              //topparent tj
+          var query_s= {'topparent_name':username,"record_date":{$gte:start,$lte:end}};
+          cblogic.recordList(query_s,function(err,data){
+
+            as_topparent_record_list=data;
+            as_topparent_record_list.map(function(value,index,array){               
+              sum1_topparent_loan_award += array[index].topparent_loan_award;
+              sum1_topparent_credit_award+= array[index].topparent_credit_award;
+              sum1_topparent_pos_award+= array[index].topparent_pos_award;
+              sum1_topparent_vip_award+= array[index].topparent_vip_award;
+              sum1_topparent_money4agent_award += array[index].topparent_money4agent_award;
+              sum1_topparent_money4Sagent_award+= array[index].topparent_money4Sagent_award;
+              sum1_topparent_car_mgr_award += array[index].topparent_car_mgr_award;
+              sum1_topparent_help4credit_award+= array[index].topparent_help4credit_award;
+              sum1_topparent_help4card_award+= array[index].topparent_help4card_award;
+            }); 
+            console.log(sum1_topparent_loan_award);
+          });
+          var filepath = path.join(__dirname, '../../web/c_wechat/views/me_achievement.client.view.html');
+          var records={
+            'loan_award' : 0,
+            'credit_award' : 0,
+            'pos_award' : 0,
+            'vip_award' : 0,
+            'money4agent_award' : 0,
+            'money4Sagent_award' : 0,
+            'car_mgr_award' : 0,
+            'help4credit_award' : 0,
+            'help4card_award' : 0,
+            'record_date' : ss,
+            'username': ''
+          };        
+          records.loan_award= (sum1_parent_loan_award+sum1_topparent_loan_award).toFixed(1);
+          records.credit_award = (sum1_parent_credit_award+sum1_topparent_credit_award).toFixed(1);
+          records.pos_award = (sum1_parent_pos_award+sum1_topparent_pos_award).toFixed(1);
+          records.vip_award = (sum1_parent_vip_award+sum1_topparent_vip_award).toFixed(1);
+          records.money4agent_award = (sum1_parent_money4agent_award+sum1_topparent_money4agent_award).toFixed(1);
+          records.money4Sagent_award = (sum1_parent_money4Sagent_award+sum1_topparent_money4Sagent_award).toFixed(1);
+          records.car_mgr_award = (sum1_parent_car_mgr_award+sum1_topparent_car_mgr_award).toFixed(1);
+          records.help4credit_award = (sum1_parent_help4credit_award+sum1_topparent_help4credit_award).toFixed(1);
+          records.help4card_award = (sum1_parent_help4card_award+sum1_topparent_help4card_award).toFixed(1);        
+        // get_award(user.username);
+          records.username=target_name;
+          records.record_date=ss;
+          return res.render(filepath, { city: req.cookies.city, user: req.user, record:records });
+
+      });
+
+  }
+
+  get_award(user.username);
+
 };
 
 

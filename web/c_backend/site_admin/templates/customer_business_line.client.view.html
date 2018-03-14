@@ -1,0 +1,168 @@
+<div class="page-body-view">
+  <div class="page-operation-view" layout="row" layout-align="space-between center">
+    <p class="title">用户资料及业务线(调试中...)   </p>
+    <div layout="row">
+        <md-button class="md-primary md-raised md-hue-2" ng-click="saveRecord() " >保存记录
+        </md-button>
+
+        <md-button class="md-primary md-raised md-hue-2" ng-click="showAllRecord()">显示所有记录
+        </md-button>
+    </div>
+  </div>
+  
+  <div>
+    录入日期 {{current_date.toLocaleString().substring(0,10);}} <br>
+    输入号码筛选用户：
+    <input type="text" ng-model="customer_mobile">
+    <md-button class="md-primary md-raised md-hue-2" ng-click="checkUser()" >查询
+    </md-button>
+    <md-button class="md-primary md-raised md-hue-2" ng-click="calAward()" >计算佣金
+      </md-button>
+    <md-button class="md-primary md-raised md-hue-2" ng-click="monthlyAward()" >按月统计佣金
+      </md-button>  
+  </div>
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">目标用户姓名</div>
+      <div class="column-item" flex="">用户号码</div>
+      <div class="column-item" flex="">用户支付宝</div>
+      <div class="column-item" flex="">用户电子邮箱</div>
+      <div class="column-item" flex="">用户地址</div>
+      <div class="column-item" flex="">用户代理身份</div>
+      <div class="column-item" flex="">vip身份</div>
+      
+    </div>
+  </div>
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" >
+        <div class="column-item" flex="">{{user.real_name}}</div>
+        <div class="column-item" flex="">{{customer_mobile}}</div>
+        <div class="column-item" flex="">{{user.alipay_id}}</div>
+        <div class="column-item" flex="">{{user.email}}</div>
+        <div class="column-item" flex="">{{user.adress}}</div>
+        <div class="column-item" flex="">{{user.agent_rate}}</div>
+        <div class="column-item" flex="">{{user.vip_payed?'VIP用户':'非VIP用户'}}</div>
+        </div>
+  </div>
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">目标姓名</div>
+      <div class="column-item" flex="">注册号码</div>
+      <div class="column-item" flex="">注册时间</div>
+      <div class="column-item" flex="">下贷金额</div>
+      <div class="column-item" flex="">信用卡有效量</div>
+      <div class="column-item" flex="">POS刷卡额</div>
+      <div class="column-item" flex="">晋级代理金额</div>
+      <div class="column-item" flex="">S级代理金额</div>  
+      <div class="column-item" flex="">车业务交易量</div>
+      <div class="column-item" flex="">卡代还激活费</div>
+      <div class="column-item" flex="">聚合支付金额</div>
+          
+    </div>
+  </div>
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" >
+        <div class="column-item" flex="">{{user.real_name}}</div>
+        <div class="column-item" flex="">{{user.username}}</div>
+        <div class="column-item" flex="">{{user.create_time.substring(0,10)}}</div>
+        <div class="column-item" flex="">
+            <input type="text" ng-model="loan_num">
+        </div>
+        <div class="column-item" flex="">
+            <input type="text" ng-model="credit_num">
+        </div>
+        <div class="column-item" flex="">
+            <input type="text" ng-model="pos_num" >
+        </div>
+        <div class="column-item" flex="">
+            <input type="text" ng-model="money4agent">
+        </div>
+        <div class="column-item" flex="">
+            <input type="text" ng-model="money4Sagent">
+        </div> 
+        <div class="column-item" flex="">
+            <input type="text" ng-model="car_mgr_num">
+        </div>
+        <div class="column-item" flex="">
+            <input type="text" ng-model="help4credit">
+        </div>
+        <div class="column-item" flex="">
+            <input type="text" ng-model="help4card">
+        </div>
+    </div>
+  </div>
+
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">上线姓名</div>
+      <div class="column-item" flex="">注册号码</div>
+      <div class="column-item" flex="">注册时间</div>
+      <div class="column-item" flex="">贷款业务佣金</div>
+      <div class="column-item" flex="">信用卡奖励金</div>
+      <div class="column-item" flex="">POS返佣</div>
+      <div class="column-item" flex="">vip返佣</div>
+      <div class="column-item" flex="">晋级代理返佣</div>
+      <div class="column-item" flex="">S级代理返佣</div>  
+      <div class="column-item" flex="">车业务返佣</div>
+      <div class="column-item" flex="">代还返佣</div>
+      <div class="column-item" flex="">聚合返佣</div>
+          
+    </div>
+  </div>
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" >
+        <div class="column-item" flex="">{{firstParent.real_name}}</div>
+        <div class="column-item" flex="">{{firstParent.username}}</div>
+        <div class="column-item" flex="">{{firstParent.create_time.substring(0,10)}}</div>
+        <div class="column-item" flex="">{{parent_loan_award}}</div>
+        <div class="column-item" flex="">{{parent_credit_award}}</div>
+        <div class="column-item" flex="">{{parent_pos_award}}</div>
+        <div class="column-item" flex="">{{parent_vip_award}}</div> 
+        <div class="column-item" flex="">{{parent_money4agent_award}}</div>
+        <div class="column-item" flex="">{{parent_money4Sagent_award}}</div>
+        <div class="column-item" flex="">{{parent_car_mgr_award}}</div>  
+        <div class="column-item" flex="">{{parent_help4credit_award}}</div>
+        <div class="column-item" flex="">{{parent_help4card_award}}</div>
+           
+    </div>
+  </div>
+
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">上上线姓名</div>
+      <div class="column-item" flex="">注册号码</div>
+      <div class="column-item" flex="">注册时间</div>
+      <div class="column-item" flex="">贷款业务佣金</div>
+      <div class="column-item" flex="">信用卡奖励金</div>
+      <div class="column-item" flex="">POS返佣</div>
+      <div class="column-item" flex="">vip返佣</div>
+      <div class="column-item" flex="">晋级代理返佣</div>
+      <div class="column-item" flex="">S级代理返佣</div>  
+      <div class="column-item" flex="">车业务返佣</div>
+      <div class="column-item" flex="">代还返佣</div>
+      <div class="column-item" flex="">聚合返佣</div>
+          
+    </div>
+  </div>
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" >
+        <div class="column-item" flex="">{{topParent.real_name}}</div>
+        <div class="column-item" flex="">{{topParent.username}}</div>
+        <div class="column-item" flex="">{{topParent.create_time.substring(0,10)}}</div>
+        <div class="column-item" flex="">{{topparent_loan_award}}</div>
+        <div class="column-item" flex="">{{topparent_credit_award}}</div>
+        <div class="column-item" flex="">{{topparent_pos_award}}</div>
+        <div class="column-item" flex="">{{topparent_vip_award}}</div> 
+        <div class="column-item" flex="">{{topparent_money4agent_award}}</div>
+        <div class="column-item" flex="">{{topparent_money4Sagent_award}}</div>
+        <div class="column-item" flex="">{{topparent_car_mgr_award}}</div>  
+        <div class="column-item" flex="">{{topparent_help4credit_award}}</div>
+        <div class="column-item" flex="">{{topparent_help4card_award}}</div>
+    </div>
+  </div>
+  
+</div>

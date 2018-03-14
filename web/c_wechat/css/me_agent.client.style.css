@@ -185,3 +185,9 @@ body {
   line-height: 17px;
   margin-bottom: 30px;
 }
+
+#imgcode {
+  margin-top: 20px;
+  padding: 3px;
+  border: 1px solid #ccc;
+}

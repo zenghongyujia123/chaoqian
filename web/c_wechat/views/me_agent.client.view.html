@@ -17,7 +17,7 @@
 <body>
   <div class="page-me-agent">
     <div class="agent-header">
-      <div class="header-title">S级代理商</div>
+      <div class="header-title"><%= user.agent_rate %></div>
       <div class="header-content">
         <div class="content-item">
           <div class="title">我发展的客户数量</div>
@@ -34,7 +34,7 @@
     <div class="agent-body">
       <div class="body-title">专属推广二维码 （长按保存）</div>
       <div class="body-code" id="qrcode"></div>
-      <img class="body-code" id="imgcode" />
+      <img class="body-code" id="imgcode" src="" />
     </div>
     <div class="agent-body">
       <div class="body-row">
@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="body-row">
-        <div class="left">我的专属推广连接</div>
+        <div class="left">我的专属推广链接</div>
         <div class="right shareurl">
           <%= url_info[0].url_short %>
         </div>
@@ -52,17 +52,18 @@
 
       <div class="body-row">
         <div class="left">我的专属营销客服微信</div>
-        <div class="right">13322222222</div>
+        <div class="right">kingbeich</div>
       </div>
       <div class="body-footer">
         <div class="dot"></div>
         <div class="text">以上均为专属推广资料，但凡经过该信息注册过来的用户不再输入举荐码也可被系统识别为你拓展的客户</div>
       </div>
     </div>
+    <!--
     <div class="agent-list">
       <div class="list-title">
         <div class="boder"></div>
-        <div class="text">昨日推广排行榜</div>
+        <div class="text">1月8日推广排行榜</div>
       </div>
       <div class="list-item">
         <div class="icon green">最多拓新</div>
@@ -72,9 +73,9 @@
           <div class="value">李先生</div>
         </div>
         <div class="item-right">
-          <div class="title">100元
+          <div class="title">
           </div>
-          <div class="value">赏金已发支付宝</div>
+          <div class="value"></div>
         </div>
       </div>
       <div class="list-item">
@@ -86,9 +87,9 @@
           <div class="value">李先生</div>
         </div>
         <div class="item-right">
-          <div class="title">100元
+          <div class="title">
           </div>
-          <div class="value">赏金已发支付宝</div>
+          <div class="value"></div>
         </div>
       </div>
       <div class="list-item">
@@ -100,9 +101,9 @@
           <div class="value">李先生</div>
         </div>
         <div class="item-right">
-          <div class="title">100元
+          <div class="title">
           </div>
-          <div class="value">赏金已发支付宝</div>
+          <div class="value"></div>
         </div>
       </div>
       <div class="list-item">
@@ -114,9 +115,9 @@
           <div class="value">李先生</div>
         </div>
         <div class="item-right">
-          <div class="title">100元
+          <div class="title">
           </div>
-          <div class="value">赏金已发支付宝</div>
+          <div class="value"></div>
         </div>
       </div>
       <div class="list-item">
@@ -128,9 +129,9 @@
           <div class="value">李先生</div>
         </div>
         <div class="item-right">
-          <div class="title">100元
+          <div class="title">
           </div>
-          <div class="value">赏金已发支付宝</div>
+          <div class="value"></div>
         </div>
       </div>
     </div>
@@ -141,6 +142,8 @@
         <div class="text">每名代理每个月只有2次上榜机会，针对月排名第一超过8次的（系统能侦测到数据），官方定期以每月采访一个做公开报道的形式分享</div>
       </div>
     </div>
+
+  -->
   </div>
   </div>
 
@@ -148,7 +151,10 @@
 <script>
   $(function () {
     var qrcode = $("#qrcode").qrcode({
-      text: "<%= url_info[0].url_short %>",//任意内容 \
+      render: "canvas",
+      foreground: "#C00",
+      background: "#FFF",
+      text: "<%= url_info[0].url_short %>",//任意内容 
       size: 120,
     }).hide();
 

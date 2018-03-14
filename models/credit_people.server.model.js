@@ -44,12 +44,18 @@ module.exports = function (appDb) {
       require: true,
     },
     personal_description: {
-      type: String,
-      require: true,
+     type: String,
+     require: true,
+    },
+    personal_description_list: {
+      type: []
     },
     business_description: {
       type: String,
       require: true,
+    }, 
+    business_description_list: {
+      type: []
     },
     location: {
       type: [Number],

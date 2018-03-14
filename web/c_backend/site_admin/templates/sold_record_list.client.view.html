@@ -1,0 +1,46 @@
+<div class="page-body-view">
+  <div class="page-operation-view" layout="row" layout-align="space-between center">
+    <p class="title">付款记录</p>
+    <div layout="row">
+        <md-button class="md-primary md-raised md-hue-2" ng-click="record_by_username()">按用户统计</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="VIP_sold_record()">VIP购买统计</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="Credit198_sold_record()">信用卡代付统计</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="All()">全部付款记录</md-button>
+    </div>
+  </div>
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">付款时间</div>
+      <div class="column-item" flex="">付款客户姓名</div>
+      <div class="column-item" flex="">付款客户手机号</div>
+      <div class="column-item" flex="">购买产品</div>
+      <div class="column-item" flex="">购买金额</div>
+      <div class="column-item" flex="">银行类别</div>
+      <div class="column-item" flex="">币种</div>
+      <div class="column-item" flex=""></div>
+    </div>
+  </div>
+  <div class="list-body">
+    <!--record in record_list     ng-repeat="record in record_list"-->
+    <div class="list-item" layout="row" layout-align="start center" ng-repeat="record in sold_record_list">
+      <div class="column-item" flex="">{{record.content.time_end.toLocaleString().substring(0,8);}}</div>
+      <div class="column-item" flex="">{{record.user_real_name}}</div>
+      <div class="column-item" flex="">{{record.user_phone}}</div>
+      <div class="column-item" flex="">{{record.type}}</div>
+      <div class="column-item" flex="">{{record.content.total_fee/100}}</div>
+      <div class="column-item" flex="">{{record.content.bank_type}}</div>
+      <div class="column-item" flex="">{{record.content.fee_type}}</div>
+  
+      <div class="column-item" flex="" layout="row" layout-align="start start">
+        <md-button class="md-primary" ng-click="goDetail(record._id)">详情
+        </md-button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--
+  ng-click="goDetail(record._id)"
+-->

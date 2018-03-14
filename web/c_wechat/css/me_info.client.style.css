@@ -65,3 +65,13 @@ body {
   line-height: 40px;
   border-radius: 90px;
 }
+.home-bottom {
+  overflow: hidden;
+}
+
+.home-bottom .item_bottom{
+  width: 100%;
+  text-align: center;
+  float: left;
+  height: 150px;
+}

@@ -2,9 +2,11 @@
   <div class="page-operation-view" layout="row" layout-align="space-between center">
     <p class="title">用户详情</p>
     <div layout="row">
+
+      <md-button class="md-primary md-raised md-hue-2" ng-click="updateAgentRate()">更新保存代理级别</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-disabled="user.vip_status==='passed'||user.vip_status==='un_submit'"
         ng-click="verifyVip()">{{user.vip_status==='passed'?'vip已通过':'vip审核通过'}}</md-button>
-
+      <md-button class="md-primary md-raised md-hue-2" ng-click="goNotifyPassed()">通过通知</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-click="goReport()">VIP报告编写</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-click="goCarrier()">通讯运营商详情查看</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-click="goPbc()">人行征信详情查看</md-button>
@@ -37,6 +39,37 @@
     </div>
   </div>
 
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">用户身份证</div>
+      <div class="column-item" flex="">用户代理级别:</div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+    </div>
+  </div>
+
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" ng-if="user._id">
+      <div class="column-item" flex="">{{user.id_card}}</div>
+        <md-input-container class="md-block" flex-gt-sm>
+          代理级别设定
+          <select ng-model="$parent.selectedAgent_rate" ng-options="x for x in agent_rate">
+          </select>
+        </md-input-container> 
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+     
+    </div>
+  </div>
+
   <md-content layout-padding>
     <div layout-gt-sm="row">
       <md-input-container class="md-block" flex-gt-sm>
@@ -53,6 +86,7 @@
       </md-input-container>
     </div>
   </md-content>
+
   <md-content layout-padding>
     <div>已选产品（点击移除）</div>
     <div layout="row">

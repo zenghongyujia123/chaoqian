@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
 
-  <title>潮钱借钱</title>
+  <title>潮钱网</title>
   <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../libs/Swiper/dist/css/swiper.min.css" />
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
@@ -41,15 +41,42 @@
     <div class="body-content">
       <div class="border"></div>
       <div class="title">个人描述</div>
+      <!--
       <div class="value">
         <%= credit_people.personal_description %>
+      </div>
+       -->
+      <div class="content-text">
+        <% for(var j=0; j<credit_people.personal_description_list.length; j++) {%>
+          <span class="body-text">
+            <%= credit_people.personal_description_list[j] %>
+          </span>
+          <br>
+          <% } %>
       </div>
     </div>
     <div class="body-content">
       <div class="border"></div>
       <div class="title">业务详情</div>
+      <!--
       <div class="value">
         <%= credit_people.business_description %>
+      </div>
+    -->
+      <div class="content-text">
+        <% for(var j=0; j<credit_people.business_description_list.length; j++) {%>
+          <span class="body-text">
+            <%= credit_people.business_description_list[j] %>
+          </span>
+          <br>
+          <% } %>
+      </div>
+      </div>
+    <div class="body-content">
+      <div class="border"></div>
+      <div class="title">联系电话</div>
+      <div class="value">
+        <%= credit_people.phone %>
       </div>
     </div>
     <a class="footer-content">
