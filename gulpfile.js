@@ -29,9 +29,9 @@ gulp.task('platform-less', function () {
   gulp.src('web/c_wechat/lesses/*.less')
     .pipe(less())
     .pipe(gulp.dest('web/c_wechat/css'));
-  gulp.src('web/c_backend/site_admin/lesses/chaoqian.client.style.less')
-    .pipe(less())
-    .pipe(gulp.dest('web/c_backend/site_admin/dist/css'));
+  // gulp.src('web/c_backend/site_admin/lesses/chaoqian.client.style.less')
+  //   .pipe(less())
+  //   .pipe(gulp.dest('web/c_backend/site_admin/dist/css'));
 
   return;
 });

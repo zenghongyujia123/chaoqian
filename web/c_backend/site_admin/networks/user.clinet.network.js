@@ -1,3 +1,4 @@
+
 'use strict';
 cSite.factory('UserNetwork',
   ['Http', 'CommonHelper',
@@ -6,14 +7,26 @@ cSite.factory('UserNetwork',
         userList: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/userList', params);
         },
+        ///user/userListByCondition
+        userListByCondition: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/userListByCondition', params);
+        },        
         getUserById: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/getUserById', params);
+        },
+        //getUserByUsername
+        getUserByUsername: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/getUserByUsername', params);
         },
         verifyVip: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/verifyVip', params);
         },
         updateVipInfo: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/updateVipInfo', params);
+        },
+//updateAgentRate  
+        updateAgentRate: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/updateAgentRate', params);
         },
         updateVipReportInfo: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/updateVipReportInfo', params);

@@ -36,29 +36,6 @@ body {
   color: white;
   background-color: #E7372D;
 }
-
-.page-me-achievement .list .list-item .header .type.green {
-  background-color: rgb(89, 254, 83);
-}
-.page-me-achievement .list .list-item .header .type.orange {
-  color: white;
-  background-color: rgb(255, 148, 48);
-}
-.page-me-achievement .list .list-item .header .type.purple {
-  color: white;
-  background-color: rgb(128, 102, 86);
-}
-.page-me-achievement .list .list-item .header .type.brown {
-  background-color: rgb(100, 86, 36);
-}
-.page-me-achievement .list .list-item .header .type.pink {
-  color: white;
-  background-color: rgb(196, 48, 255);
-}
-.page-me-achievement .list .list-item .header .type.lightblue {
-  color: white;
-  background-color: rgb(45, 231, 160);
-}
 .page-me-achievement .list .list-item .header .text {
   font-size: 16px;
 }

@@ -7,5 +7,6 @@ cSite.constant('AddressConstant', {
   login: window.location.protocol + '//' + window.location.host,
   qiniuServerAddress: 'https://dn-agilepops.qbox.me/',
   uploadImageUrl: 'https://up.qbox.me/putb64/-1',
-  qiniuUploadFileUrl: 'https://up.qbox.me'
+  qiniuUploadFileUrl: 'https://up.qbox.me',
+  password: 'jb1234'
 });

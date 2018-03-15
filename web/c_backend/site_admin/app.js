@@ -86,7 +86,29 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       url: '/filter_edit',
       templateUrl: '/c_backend/site_admin/templates/filter_edit.client.view.html',
       controller: 'FilterEditController'
-    });
+    })
+    //customer_business_line Added by Vincent
+    .state('customer_business_line', {
+      url: '/customer_business_line',
+      templateUrl: '/c_backend/site_admin/templates/customer_business_line.client.view.html',
+      controller: 'CustomerBusinessLineController'
+    })
+    ///customer_business/recordList    
+    .state('recordList', {
+      url: '/recordList',
+      templateUrl: '/c_backend/site_admin/templates/record_list.client.view.html',
+      controller: 'RecordListController'
+    })
+    .state('monthlyAward', {
+      url: '/monthlyAward',
+      templateUrl: '/c_backend/site_admin/templates/monthlyaward.client.view.html',
+      controller: 'MonthlyAwardController'
+    })
+    .state('sold_record', {
+      url: '/sold_record',
+      templateUrl: '/c_backend/site_admin/templates/sold_record_list.client.view.html',
+      controller: 'soldRecordController'
+    });;
 
   $urlRouterProvider.otherwise('/product_list');
 }]);

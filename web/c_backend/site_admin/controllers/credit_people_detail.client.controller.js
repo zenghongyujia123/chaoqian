@@ -14,6 +14,7 @@ cSite.controller('CreditPeopleDetailController', [
     $scope.credit_people = {
       _id: $stateParams.credit_people_id || '',
       name: '',
+      phone: '',
       photo: '',
       tags: '',
       job_start_time: '',

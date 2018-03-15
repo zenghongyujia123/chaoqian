@@ -41,10 +41,10 @@ body {
   border-radius: 90px;
 }
 .page-signin .signup-bottom {
- /* position: absolute;
+  position: absolute;
   bottom: 0px;
-  left: 0px;*/
-  padding: 80px;
+  left: 0px;
+  padding: 20px;
 }
 .page-signin .signup-bottom a {
   color: #f24659;

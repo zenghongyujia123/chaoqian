@@ -16,10 +16,9 @@ a {
   height: 140px;
 }
 .page-card-list .list-title {
-  padding: 13px 10px;
+  padding: 13px 15px;
   border-bottom: 1px solid #ccc;
 }
-
 .page-card-list .list .list-item {
   display: block;
   margin-left: 15px;
@@ -29,20 +28,18 @@ a {
   height: 116px;
 }
 .page-card-list .list .list-item .photo {
-  width: 142px;
+  width: 170px;
   height: 90px;
   position: absolute;
   left: 0px;
   top: 13px;
   background-color: black;
 }
-
-
 .page-card-list .list .list-item .title {
   margin-bottom: 10px;
 }
 .page-card-list .list .list-item .tag-row {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
 }
@@ -53,34 +50,6 @@ a {
   padding: 0px 5px;
   margin-right: 10px;
 }
-
-.tag-row {
-  margin-bottom: 5px;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  padding: 0px 5px 0px 5px;
-  flex-wrap: wrap;
-}
-
-.tag-row .row-item {
-  border: 1px solid #f24659;
-  color: #f24659;
-  padding: 0px 5px;
-  margin-bottom: 5px;
-  border-radius: 90px;
-  margin-right: 5px;
-  font-size: 8px;
-}
-
-.title{
-  font-size: 12px;
-}
-.content {
-  font-size: 8px;
-}
-
-
 .page-card-list .list .list-item .content {
   color: #F25167;
 }

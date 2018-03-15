@@ -18,10 +18,10 @@ cSite.config(function ($mdThemingProvider) {
 cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     // .state('home', {
-   //    url: '/home',
+    //   url: '/home',
     //   templateUrl: '/c_backend/site_admin/templates/home.client.view.html',
-   //    controller: 'HomeController'
-  //   })
+    //   controller: 'HomeController'
+    // })
     .state('product_list', {
       url: '/product_list',
       templateUrl: '/c_backend/site_admin/templates/product_list.client.view.html',
@@ -87,13 +87,13 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/filter_edit.client.view.html',
       controller: 'FilterEditController'
     })
-//customer_business_line Added by Vincent
+    //customer_business_line Added by Vincent
     .state('customer_business_line', {
       url: '/customer_business_line',
       templateUrl: '/c_backend/site_admin/templates/customer_business_line.client.view.html',
       controller: 'CustomerBusinessLineController'
     })
-///customer_business/recordList    
+    ///customer_business/recordList    
     .state('recordList', {
       url: '/recordList',
       templateUrl: '/c_backend/site_admin/templates/record_list.client.view.html',
@@ -108,7 +108,7 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       url: '/sold_record',
       templateUrl: '/c_backend/site_admin/templates/sold_record_list.client.view.html',
       controller: 'soldRecordController'
-    });
+    });;
 
   $urlRouterProvider.otherwise('/product_list');
 }]);
@@ -176,8 +176,6 @@ cSite.factory('CardNetwork',
       };
     }]);
 
-
-    
 'use strict';
 cSite.factory('CreditPeopleNetwork',
   ['Http', 'CommonHelper',
@@ -191,6 +189,29 @@ cSite.factory('CreditPeopleNetwork',
         },
         creditPeopleDetail: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/credit_people/creditPeopleDetail', params);
+        }
+      };
+    }]);
+
+'use strict';
+cSite.factory('CustomerBusinessNetwork',
+  ['Http', 'CommonHelper',
+    function (Http, CommonHelper) {
+      return {
+        addRecord: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/customerbusiness/addRecord', params);
+        },
+        recordList: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/customerbusiness/recordList', params);
+        },
+        recordDetail: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/customerbusiness/recordDetail', params);
+        },
+        udpateCustomerBusinessFilter: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/customer_business_filter/updateFilter', params);
+        },
+        getCustomerBusinessFilter: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/customer_business_filter/getFilter', params);
         }
       };
     }]);
@@ -222,7 +243,6 @@ cSite.factory('Http',
         $http.post(address, params)
           .then(function (data) {
             q.resolve(data);
-      //      alert(JSON.stringify(params));
           }, function (err) {
             q.reject(err);
           })
@@ -317,7 +337,7 @@ cSite.factory('ProductNetwork',
         }
       };
     }]);
-//RecordNetwork
+
 'use strict';
 cSite.factory('RecordNetwork',
   ['Http', 'CommonHelper',
@@ -341,6 +361,7 @@ cSite.factory('RecordNetwork',
       };
     }]);
 
+
 //SoldRecordNetwork
 'use strict';
 cSite.factory('SoldRecordNetwork',
@@ -356,10 +377,10 @@ cSite.factory('SoldRecordNetwork',
         credit198SoldList: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/sold_record/credit198SoldList', params);
         },
- //       soldRecordListByCondition:function
+        //       soldRecordListByCondition:function
         soldRecordListByCondition: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/sold_record/soldRecordListByCondition', params);
-        } 
+        }
       };
     }]);
 
@@ -789,6 +810,287 @@ cSite.controller('CreditPeopleListController', [
     $scope.creditPeopleList();
   }]);
 
+cSite.controller('CustomerBusinessLineController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork', 'RecordNetwork',
+  function ($rootScope, $scope, $state, $stateParams, UserNetwork, RecordNetwork) {
+
+    $scope.wait = 0;
+    var current_date = new Date();
+    $scope.current_date = current_date;//'2018.1.6';
+
+    $scope.user = {};
+
+    $scope.loan_num = 0;
+    $scope.credit_num = 0;
+    $scope.pos_num = 0;
+    $scope.money4agent = 298;
+    $scope.money4Sagent = 1099;
+    $scope.car_mgr_num = 0;
+    $scope.help4credit = 198;
+    $scope.help4card = 0;
+
+    var checkInputEmpty = function () {
+      return ($scope.loan_num + $scope.credit_num + $scope.pos_num + $scope.money4agent + $scope.money4Sagent + $scope.car_mgr_num);
+
+    };
+    $scope.checkUser = function () {
+
+      $scope.wait = 1;
+      if (!$scope.customer_mobile) {
+        return alert('请输入用户注册电话号码！');
+      }
+      else {
+        //         alert($scope.customer_mobile);
+      }
+
+      $scope.user = {};
+      $scope.firstParent = {};
+      $scope.topParent = {};
+
+      $scope.getUserByUsername = function () {
+        UserNetwork.getUserByUsername($scope, { 'username': $scope.customer_mobile }).then(function (data) {
+
+          if (!data.err) {
+            //alert(JSON.stringify(data));
+            $scope.user = data;
+            //second layer start
+            UserNetwork.getUserByUsername($scope, { 'username': $scope.user.parent }).then(function (data) {
+
+              if (!data.err) {
+                //alert(JSON.stringify(data));
+                $scope.firstParent = data;
+                //3 layer start
+
+                UserNetwork.getUserByUsername($scope, { 'username': $scope.firstParent.parent }).then(function (data) {
+
+                  if (!data.err) {
+                    //alert(JSON.stringify(data));
+                    $scope.topParent = data;
+                  }
+                }, function (err) {
+                  console.log(err);
+                });
+                // 3 layer end
+              }
+            }, function (err) {
+              console.log(err);
+            });
+            // second layer end  
+          }
+        }, function (err) {
+          console.log(err);
+        });
+      };
+
+      $scope.getUserByUsername();
+    };
+    $scope.agent_rate = ['一般代理', '晋级代理', 'S级代理'];
+    $scope.vip_rate = ['VIP会员', '非VIP会员'];
+    // 板块： 贷款业务奖励金	信用卡奖励金	POS返佣	VIP返佣	晋级代理返佣	S级代理商返佣	车管家返佣
+    /***************************************************************/
+    // 按返佣原则计算上线和上上线的返佣数据
+    // 系数index  0:'一般推广',1:'晋级代理',2:'S级代理'
+    var p_ratio = [
+
+      {
+        'loan': 0.005,
+        'credit': 20,
+        'pos': 0.0005,
+        'vip': 6.9,
+        'agent': 5.96,
+        'sagent': 0,
+        'car_mgr': 0.003,
+        'help4credit': 6.9,
+        'help4card': 0.0005
+      }
+
+      ,
+
+      {
+        'loan': 0.01,
+        'credit': 50,
+        'pos': 0.001,
+        'vip': 2.76,
+        'agent': 2.98,
+        'sagent': 0,
+        'car_mgr': 0.01,
+        'help4credit': 2.76,
+        'help4card': 0.001
+      }
+
+      ,
+
+      {
+        'loan': 0,
+        'credit': 0,
+        'pos': 0,
+        'vip': 0,
+        'agent': 0,
+        'sagent': 0,
+        'car_mgr': 0,
+        'help4credit': 0,
+        'help4card': 0
+      }
+
+    ];
+    var tp_ratio = [
+
+      {
+        'loan': 0,
+        'credit': 0,
+        'pos': 0,
+        'vip': 0,
+        'agent': 0,
+        'sagent': 0,
+        'car_mgr': 0,
+        'help4credit': 0,
+        'help4card': 0
+      }
+
+      ,
+
+      {
+        'loan': 0,
+        'credit': 0,
+        'pos': 0.0001,
+        'vip': 6.9,
+        'agent': 10,
+        'sagent': 0,
+        'car_mgr': 0.003,
+        'help4credit': 6.9,
+        'help4card': 0.0002
+      }
+
+      ,
+
+      {
+        'loan': 0,
+        'credit': 0,
+        'pos': 0,
+        'vip': 0,
+        'agent': 0,
+        'sagent': 0,
+        'car_mgr': 0,
+        'help4credit': 0,
+        'help4card': 0
+      }
+
+    ];
+
+    var get_index = function (agent_rate) {
+      if (agent_rate == "S级代理") return 2;
+      else if (agent_rate == "晋级代理") return 1;
+      else return 0;
+
+    };
+
+    var get_val = function (basenum, ratio) {
+      if (!ratio) return 0;
+      else return (basenum / ratio).toFixed(1);
+    };
+
+    $scope.monthlyAward = function () {
+      $state.go('monthlyAward', {});
+    };
+
+    $scope.calAward = function () {
+
+      if (!$scope.customer_mobile) {
+        return alert('请先查询再计算！');
+      };
+      if ($scope.wait != 1) {
+        return alert('请先输入数据再计算！');
+      };
+      $scope.wait = 2;
+
+      $scope.parent_loan_award = ($scope.loan_num * p_ratio[get_index($scope.firstParent.agent_rate)].loan).toFixed(1);
+      $scope.parent_credit_award = ($scope.credit_num * p_ratio[get_index($scope.firstParent.agent_rate)].credit).toFixed(1);
+      $scope.parent_pos_award = ($scope.pos_num * p_ratio[get_index($scope.firstParent.agent_rate)].pos).toFixed(1);
+      $scope.parent_vip_award = get_val((($scope.user.vip_payed) ? 69 : 0), p_ratio[get_index($scope.firstParent.agent_rate)].vip);
+      $scope.parent_money4agent_award = get_val($scope.money4agent, p_ratio[get_index($scope.firstParent.agent_rate)].agent);
+      $scope.parent_money4Sagent_award = get_val($scope.money4Sagent, p_ratio[get_index($scope.firstParent.agent_rate)].sagent);
+      $scope.parent_car_mgr_award = ($scope.car_mgr_num * p_ratio[get_index($scope.firstParent.agent_rate)].car_mgr).toFixed(1);
+      $scope.parent_help4credit_award = get_val($scope.help4credit, p_ratio[get_index($scope.firstParent.agent_rate)].help4credit);
+      $scope.parent_help4card_award = ($scope.help4card * p_ratio[get_index($scope.firstParent.agent_rate)].help4card).toFixed(1);
+
+      $scope.topparent_loan_award = ($scope.loan_num * tp_ratio[get_index($scope.topParent.agent_rate)].loan).toFixed(1);
+      $scope.topparent_credit_award = ($scope.credit_num * tp_ratio[get_index($scope.topParent.agent_rate)].credit).toFixed(1);
+      $scope.topparent_pos_award = ($scope.pos_num * tp_ratio[get_index($scope.topParent.agent_rate)].pos).toFixed(1);
+      $scope.topparent_vip_award = get_val((($scope.user.vip_payed) ? 69 : 0), tp_ratio[get_index($scope.topParent.agent_rate)].vip);
+      $scope.topparent_money4agent_award = get_val($scope.money4agent, tp_ratio[get_index($scope.topParent.agent_rate)].agent);
+      $scope.topparent_money4Sagent_award = get_val($scope.money4Sagent, tp_ratio[get_index($scope.topParent.agent_rate)].sagent);
+      $scope.topparent_car_mgr_award = ($scope.car_mgr_num * tp_ratio[get_index($scope.topParent.agent_rate)].car_mgr).toFixed(1);
+      $scope.topparent_help4credit_award = get_val($scope.help4credit, tp_ratio[get_index($scope.topParent.agent_rate)].help4credit);
+      $scope.topparent_help4card_award = ($scope.help4card * tp_ratio[get_index($scope.topParent.agent_rate)].help4card).toFixed(1);
+
+    }
+    /***************************************************************/
+
+    //按键函数, 存储填写的record到customerbusiness 数据库
+
+    $scope.saveRecord = function () {
+
+      if ($scope.wait != 2) {
+        return alert('请先输入并计算数据再存储 ！');
+      };
+      $scope.wait = 0;
+      $scope.record =
+        {
+          _id: '',
+          target_user: $scope.customer_mobile,
+          target_user_real_name: $scope.user.real_name,
+          record_date: $scope.current_date,
+          target_user_agent_rate: $scope.user.agent_rate,
+          parent_name: $scope.user.parent,
+          topparent_name: $scope.firstParent.parent,
+          loan_num: $scope.loan_num,
+          credit_num: $scope.credit_num,
+          pos_num: $scope.pos_num,
+          money4agent: $scope.money4agent,
+          money4Sagent: $scope.money4Sagent,
+          car_mgr_num: $scope.car_mgr_num,
+          help4credit: $scope.help4credit,
+          help4card: $scope.help4card,
+
+          parent_loan_award: $scope.parent_loan_award,
+          parent_credit_award: $scope.parent_credit_award,
+          parent_pos_award: $scope.parent_pos_award,
+          parent_vip_award: $scope.parent_vip_award,
+          parent_money4agent_award: $scope.parent_money4agent_award,
+          parent_money4Sagent_award: $scope.parent_money4Sagent_award,
+          parent_car_mgr_award: $scope.parent_car_mgr_award,
+          parent_help4credit_award: $scope.parent_help4credit_award,
+          parent_help4card_award: $scope.parent_help4card_award,
+          topparent_loan_award: $scope.topparent_loan_award,
+          topparent_credit_award: $scope.topparent_credit_award,
+          topparent_pos_award: $scope.topparent_pos_award,
+          topparent_vip_award: $scope.topparent_vip_award,
+          topparent_money4agent_award: $scope.topparent_money4agent_award,
+          topparent_money4Sagent_award: $scope.topparent_money4Sagent_award,
+          topparent_car_mgr_award: $scope.topparent_car_mgr_award,
+          topparent_help4credit_award: $scope.topparent_help4credit_award,
+          topparent_help4card_award: $scope.topparent_help4card_award
+
+        };
+      RecordNetwork.updateRecord($scope, { record_info: $scope.record }).then(function (data) {
+        if (!data.err) {
+          $scope.wait = 1;
+          alert('存储成功');
+          $state.go('recordList', {});
+        }
+      }, function (err) {
+          console.log(err);
+        });
+
+    };
+
+    //showAllRecord , 跳转到新的页面
+    $scope.showAllRecord = function () {
+      $state.go('recordList', {});
+    };
+
+  }]);
+
 /**
  * Created by lance on 2016/11/17.
  */
@@ -861,14 +1163,8 @@ cSite.controller('HomeController', [
   '$rootScope', '$scope', '$state', '$stateParams',
   function ($rootScope, $scope, $state, $stateParams) {
 
-    // vincent testing 
-    console.log("Entered admin Home controller !");
-
   }]);
 
-/**
- * Created by lance on 2016/11/17.
- */
 'use strict';
 
 cSite.controller('IndexController', [
@@ -892,7 +1188,6 @@ cSite.controller('IndexController', [
       };
     }
   }]);
-
 /**
  * Created by lance on 2016/11/17.
  */
@@ -1002,6 +1297,101 @@ cSite.controller('ProductListController', [
         $scope.productList();
     }]);
 
+
+cSite.controller('soldRecordController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'SoldRecordNetwork', 'UserNetwork',
+  function ($rootScope, $scope, $state, $stateParams, SoldRecordNetwork, UserNetwork) {
+
+    var soldRecordListByCondition = function (condition, sort) {
+
+      SoldRecordNetwork.soldRecordListByCondition($scope, { 'condition': condition, 'sort': sort }).then(function (data) {
+        // $scope.user_list = data;
+      });
+    }
+    //record_by_username
+    $scope.record_by_username = function () {
+
+      $scope.sold_record_list = [];
+      var username = prompt("请输入要查找的用户手机号：", "");
+
+      if (!(/^1(3|4|5|7|8|9)\d{9}$/.test(username))) {
+        return alert("请确认号码是否正确！");
+      }
+      var condition = { 'user_phone': username };
+      var sort = { 'user_phone': 1 };
+      SoldRecordNetwork.soldRecordListByCondition($scope, { 'condition': condition, 'sort': sort }).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.sold_record_list = data;
+          //             alert(JSON.stringify(data));
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    }
+    var user = {};
+    var getUserById = function (user_id) {
+      UserNetwork.getUserById($scope, { user_id: user_id }).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          user = data;
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.VIP_sold_record = function () {
+      //        alert('vip sold');
+      $scope.sold_record_list = [];
+      SoldRecordNetwork.vip69SoldList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.sold_record_list = data;
+
+        }
+      }, function (err) {
+        console.log(err);
+      });
+
+    }
+
+    $scope.Credit198_sold_record = function () {
+      //        alert('credit198 sold');
+      $scope.sold_record_list = [];
+      SoldRecordNetwork.credit198SoldList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.sold_record_list = data;
+          //             alert(JSON.stringify(data));
+        }
+      }, function (err) {
+        console.log(err);
+      });
+
+    }
+
+    $scope.All = function () {
+
+      $scope.sold_record_list = [];
+      SoldRecordNetwork.soldRecordList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.sold_record_list = data;
+          //             alert(JSON.stringify(data));
+        }
+      }, function (err) {
+        console.log(err);
+      });
+
+
+    }
+
+
+  }]);
+
+
+
 /**
  * Created by lance on 2016/11/17.
  */
@@ -1059,11 +1449,6 @@ cSite.controller('UserCarrierDetailController', [
 
 
   }]);
-
-/**
- * Created by lance on 2016/11/17.
- */
-'use strict';
 
 cSite.controller('UserDetailController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork', 'ProductNetwork', 'CardNetwork',
@@ -1325,10 +1710,6 @@ cSite.controller('UserDetailController', [
 
   }]);
 
-/**
- * Created by lance on 2016/11/17.
- */
-'use strict';
 
 cSite.controller('UserListController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork',
@@ -1435,6 +1816,7 @@ cSite.controller('UserListController', [
     }
   }]);
 
+
 /**
  * Created by lance on 2016/11/17.
  */
@@ -1491,11 +1873,6 @@ cSite.controller('UserPbcDetailController', [
 
   }]);
 
-/**
- * Created by lance on 2016/11/17.
- */
-'use strict';
-
 cSite.controller('UserVipReportController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork', 'ProductNetwork', 'CardNetwork',
   function ($rootScope, $scope, $state, $stateParams, UserNetwork, ProductNetwork, CardNetwork) {
@@ -1523,614 +1900,3 @@ cSite.controller('UserVipReportController', [
     $scope.getUserById();
   }]);
 
-/**
- * Created by Vincent on 2018/1/4.
- */
-'use strict';
-
-cSite.controller('CustomerBusinessLineController', [
-  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork','RecordNetwork',
-  function ($rootScope, $scope, $state, $stateParams, UserNetwork, RecordNetwork) {
-
-    $scope.wait=0;
-    var current_date=new Date();
-    $scope.current_date = current_date;//'2018.1.6';
- 
-    $scope.user={};
-    
-    $scope.loan_num=0;
-    $scope.credit_num=0;
-    $scope.pos_num=0;
-    $scope.money4agent=298;
-    $scope.money4Sagent=1099;
-    $scope.car_mgr_num=0;
-    $scope.help4credit=198;
-    $scope.help4card = 0;
-
-    var checkInputEmpty=function(){
-      return ($scope.loan_num+$scope.credit_num+$scope.pos_num+$scope.money4agent+$scope.money4Sagent+$scope.car_mgr_num);
-
-    };
-    $scope.checkUser=function(){
-
-      $scope.wait =1;
-      if(!$scope.customer_mobile){
-          return alert('请输入用户注册电话号码！');
-        }
-        else {
- //         alert($scope.customer_mobile);
-        }
-  
-        $scope.user = {};
-        $scope.firstParent = {};
-        $scope.topParent = {};
-
-        $scope. getUserByUsername = function () {
-          UserNetwork.getUserByUsername($scope, {'username': $scope.customer_mobile}).then(function (data) {
- 
-            if (!data.err) {
-              //alert(JSON.stringify(data));
-              $scope.user = data;   
-                      //second layer start
-                      UserNetwork.getUserByUsername($scope, {'username': $scope.user.parent}).then(function (data) {
-      
-                        if (!data.err) {
-                          //alert(JSON.stringify(data));
-                          $scope.firstParent = data;
-                            //3 layer start
-      
-                              UserNetwork.getUserByUsername($scope, {'username': $scope.firstParent.parent}).then(function (data) {
-                    
-                                if (!data.err) {
-                                  //alert(JSON.stringify(data));
-                                  $scope.topParent = data;
-                                }
-                              }, function (err) {
-                                console.log(err);
-                              });                     
-                            // 3 layer end
-                        }
-                      }, function (err) {
-                        console.log(err);
-                      });
-                      // second layer end  
-            }
-          }, function (err) {
-            console.log(err);
-          });
-        };
-
-        $scope. getUserByUsername();   
-    };
-    $scope.agent_rate=['一般代理','晋级代理','S级代理'];
-    $scope.vip_rate=['VIP会员','非VIP会员'];
-    // 板块： 贷款业务奖励金	信用卡奖励金	POS返佣	VIP返佣	晋级代理返佣	S级代理商返佣	车管家返佣
-/***************************************************************/
- // 按返佣原则计算上线和上上线的返佣数据
- // 系数index  0:'一般推广',1:'晋级代理',2:'S级代理'
-    var p_ratio = [
-      
-        {
-          'loan':0.005,
-          'credit':20,
-          'pos':0.0005,
-          'vip':6.9,
-          'agent':5.96,
-          'sagent':0,
-          'car_mgr':0.003,
-          'help4credit':6.9,
-          'help4card':0.0005
-        }
-     
-      ,
-     
-        {
-          'loan':0.01,
-          'credit':50,
-          'pos':0.001,
-          'vip':2.76,
-          'agent':2.98,
-          'sagent':0,
-          'car_mgr':0.01,
-          'help4credit':2.76,
-          'help4card':0.001
-        }
-          
-      ,
-     
-        {
-          'loan':0,
-          'credit':0,
-          'pos':0,
-          'vip':0,
-          'agent':0,
-          'sagent':0,
-          'car_mgr':0,
-          'help4credit':0,
-          'help4card':0
-        }        
-   
-      ];
-    var tp_ratio = [
-    
-        {
-          'loan':0,
-          'credit':0,
-          'pos':0,
-          'vip':0,
-          'agent':0,
-          'sagent':0,
-          'car_mgr':0,
-          'help4credit':0,
-          'help4card':0
-        }
-  
-      ,
-   
-        {
-          'loan':0,
-          'credit':0,
-          'pos':0.0001,
-          'vip':6.9,
-          'agent':10,
-          'sagent':0,
-          'car_mgr':0.003,
-          'help4credit':6.9,
-          'help4card':0.0002
-        }
-     
-      ,
- 
-        {
-          'loan':0,
-          'credit':0,
-          'pos':0,
-          'vip':0,
-          'agent':0,
-          'sagent':0,
-          'car_mgr':0,
-          'help4credit':0,
-          'help4card':0
-        }        
-
-      ];
-
-   var get_index = function(agent_rate){
-    if(agent_rate=="S级代理") return 2;
-    else if(agent_rate=="晋级代理") return 1;
-    else return 0;
-
-   }; 
-   
-   var get_val = function(basenum,ratio){
-    if(!ratio) return 0;
-    else return (basenum/ratio).toFixed(1);
-   };
-
-   $scope.monthlyAward=function(){
-    $state.go('monthlyAward', {});
-   };
-
-   $scope.calAward=function(){
-    
-    if(!$scope.customer_mobile){
-      return alert('请先查询再计算！');
-    };
-    if($scope.wait !=1){
-      return alert('请先输入数据再计算！');
-    };
-    $scope.wait =2;
-
-    $scope.parent_loan_award=($scope.loan_num*p_ratio[get_index($scope.firstParent.agent_rate)].loan).toFixed(1);
-    $scope.parent_credit_award=($scope.credit_num*p_ratio[get_index($scope.firstParent.agent_rate)].credit).toFixed(1);
-    $scope.parent_pos_award=($scope.pos_num*p_ratio[get_index($scope.firstParent.agent_rate)].pos).toFixed(1);
-    $scope.parent_vip_award= get_val((($scope.user.vip_payed)?69:0),p_ratio[get_index($scope.firstParent.agent_rate)].vip);
-    $scope.parent_money4agent_award =get_val($scope.money4agent,p_ratio[get_index($scope.firstParent.agent_rate)].agent);
-    $scope.parent_money4Sagent_award=get_val($scope.money4Sagent,p_ratio[get_index($scope.firstParent.agent_rate)].sagent);
-    $scope.parent_car_mgr_award =($scope.car_mgr_num*p_ratio[get_index($scope.firstParent.agent_rate)].car_mgr).toFixed(1);
-    $scope.parent_help4credit_award=get_val($scope.help4credit,p_ratio[get_index($scope.firstParent.agent_rate)].help4credit);
-    $scope.parent_help4card_award=($scope.help4card*p_ratio[get_index($scope.firstParent.agent_rate)].help4card).toFixed(1);
-
-    $scope.topparent_loan_award=($scope.loan_num*tp_ratio[get_index($scope.topParent.agent_rate)].loan).toFixed(1);
-    $scope.topparent_credit_award=($scope.credit_num*tp_ratio[get_index($scope.topParent.agent_rate)].credit).toFixed(1);
-    $scope.topparent_pos_award=($scope.pos_num*tp_ratio[get_index($scope.topParent.agent_rate)].pos).toFixed(1);
-    $scope.topparent_vip_award= get_val((($scope.user.vip_payed)?69:0),tp_ratio[get_index($scope.topParent.agent_rate)].vip);
-    $scope.topparent_money4agent_award =get_val($scope.money4agent,tp_ratio[get_index($scope.topParent.agent_rate)].agent);
-    $scope.topparent_money4Sagent_award=get_val($scope.money4Sagent,tp_ratio[get_index($scope.topParent.agent_rate)].sagent);
-    $scope.topparent_car_mgr_award=($scope.car_mgr_num*tp_ratio[get_index($scope.topParent.agent_rate)].car_mgr).toFixed(1);
-    $scope.topparent_help4credit_award=get_val($scope.help4credit,tp_ratio[get_index($scope.topParent.agent_rate)].help4credit);
-    $scope.topparent_help4card_award=($scope.help4card*tp_ratio[get_index($scope.topParent.agent_rate)].help4card).toFixed(1);
-
-   }
- /***************************************************************/
-
-//按键函数, 存储填写的record到customerbusiness 数据库
-
-$scope.saveRecord=function()
-{
-
-  if($scope.wait !=2){
-    return alert('请先输入并计算数据再存储 ！');
-  };
-  $scope.wait =0;
-    $scope.record =
-    {
-        _id:'',
-        target_user:$scope.customer_mobile,
-        target_user_real_name:$scope.user.real_name,
-        record_date : $scope.current_date,
-        target_user_agent_rate : $scope.user.agent_rate,
-        parent_name:$scope.user.parent,
-        topparent_name:$scope.firstParent.parent,
-        loan_num : $scope.loan_num,
-        credit_num : $scope.credit_num,
-        pos_num : $scope.pos_num,
-        money4agent : $scope.money4agent ,
-        money4Sagent : $scope.money4Sagent,
-        car_mgr_num : $scope.car_mgr_num,
-        help4credit : $scope.help4credit,
-        help4card : $scope.help4card,
-        
-        parent_loan_award : $scope.parent_loan_award,
-        parent_credit_award : $scope.parent_credit_award,
-        parent_pos_award : $scope.parent_pos_award,
-        parent_vip_award : $scope.parent_vip_award,
-        parent_money4agent_award : $scope.parent_money4agent_award,
-        parent_money4Sagent_award : $scope.parent_money4Sagent_award,
-        parent_car_mgr_award : $scope.parent_car_mgr_award, 
-        parent_help4credit_award : $scope.parent_help4credit_award,
-        parent_help4card_award : $scope.parent_help4card_award,
-        topparent_loan_award : $scope.topparent_loan_award,
-        topparent_credit_award : $scope.topparent_credit_award,
-        topparent_pos_award : $scope.topparent_pos_award,
-        topparent_vip_award : $scope.topparent_vip_award,
-        topparent_money4agent_award : $scope.topparent_money4agent_award, 
-        topparent_money4Sagent_award : $scope.topparent_money4Sagent_award,
-        topparent_car_mgr_award : $scope.topparent_car_mgr_award,
-        topparent_help4credit_award : $scope.topparent_help4credit_award,
-        topparent_help4card_award : $scope.topparent_help4card_award
-
-    };
-    RecordNetwork.updateRecord($scope,{record_info: $scope.record}).then(function (data) 
-     {          
-            if (!data.err) 
-            {
-                $scope.wait=1;
-                alert('存储成功');
-                $state.go('recordList', {});
-            }
-      }, function (err) 
-      {
-            console.log(err);
-      });
-      
-};
-
-//showAllRecord , 跳转到新的页面
-    $scope.showAllRecord=function(){ 
-      $state.go('recordList', {}); 
-    };
-    
-  }]);
-  /**
- * Created by Vincent on 2018/1/9.
- */
-'use strict';
-
-cSite.controller('RecordListController', [
-    '$rootScope', '$scope', '$state', '$stateParams', 'RecordNetwork',
-    function ($rootScope, $scope, $state, $stateParams, RecordNetwork) {
-        
-        ///customer_business/recordList
-        //从数据库customer business 集合读取所有的记录，如果内容太多可能有问题
-        //所有的函数在这里定义，并在按键函数中调用
-        $scope.record_list = [];
-        $scope.recordList = function () {
-          RecordNetwork.recordList($scope, {}).then(function (data) {
-            console.log(data);
-            if (!data.err) {
-              $scope.record_list = data;
-            }
-          }, function (err) {
-            console.log(err);
-          });
-        };
-        $scope.recordList();
-        //按键函数
-        $scope.test=function(){
-             alert('testing...');
-            };
-        $scope.addnewrecord=function(){
-          $state.go('customer_business_line', {}); 
-            };
-        $scope.goDetail=function(id){
-            $scope.record_list.map(function(value,index,array){
-              if(array[index]._id==id)
-              {
-                $scope.thisrecord=array[index];       
-              }             
-            });
-            function replacer(key, value) {
-              if (key == 'object'||key == '_id'||value == ""||key == 'create_time'||key == 'update_time'||key == '$$hashKey') {
-                return undefined;
-              }
-              return value;
-            };
-            alert(JSON.stringify($scope.thisrecord,replacer,'\t')); 
-         };   
-
-         $scope.statistics=function(){
-          alert('按用户统计...');
-         }; 
-
-    }]);
-
-//monthlyAward
-
-'use strict';
-
-cSite.controller('MonthlyAwardController', [
-    '$rootScope', '$scope', '$state', '$stateParams','UserNetwork', 'RecordNetwork',
-    function ($rootScope, $scope, $state, $stateParams,UserNetwork, RecordNetwork) {
-        
-        ///customer_business/recordList
-        //从数据库customer business 集合读取所有的记录，如果内容太多可能有问题
-        //所有的函数在这里定义，并在按键函数中调用
-        $scope.selectedMonth ='1';
-        $scope.allmonths =['1','2','3','4','5','6','7','8','9','10','11','12'];
-       //getUserByUsername 
-        $scope.user = {};
-        $scope. getUserByUsername = function () {
-          UserNetwork.getUserByUsername($scope, {'username': $scope.customer_mobile}).then(function (data) {
- 
-            if (!data.err) {
-              //alert(JSON.stringify(data));
-              $scope.user = data;
-            }
-          }, function (err) {
-            console.log(err);
-          });
-        };
-
-        //按键函数
-        $scope.as_parent_record_list=[];
-        $scope.as_topparent_record_list=[];
-
-        var init_v=function(){
-          $scope.sum1_parent_loan_award =0;
-          $scope.sum1_parent_credit_award=0;
-          $scope.sum1_parent_pos_award=0;
-          $scope.sum1_parent_vip_award=0;
-          $scope.sum1_parent_money4agent_award =0;
-          $scope.sum1_parent_money4Sagent_award=0;
-          $scope.sum1_parent_car_mgr_award =0;
-          $scope.sum1_parent_help4credit_award=0;
-          $scope.sum1_parent_help4card_award=0;
-
-          $scope.sum1_topparent_loan_award =0;
-          $scope.sum1_topparent_credit_award=0;
-          $scope.sum1_topparent_pos_award=0;
-          $scope.sum1_topparent_vip_award=0;
-          $scope.sum1_topparent_money4agent_award =0;
-          $scope.sum1_topparent_money4Sagent_award=0;
-          $scope.sum1_topparent_car_mgr_award =0;
-          $scope.sum1_topparent_help4credit_award=0;
-          $scope.sum1_topparent_help4card_award=0;
-        };
-
-        
-        
-
-
-        $scope.recordListAsParent = function () {
-          $scope.as_parent_record_list=[];
-          //{"record_date":{$gte:new Date(2018,1,25)}}  'parent_name':$scope.customer_mobile,,"record_date":{$lte:new Date(mm_e)}
-          var ss=$scope.selectedMonth;
-          var mm_s='2018,'+ss+',1';
-          var mm_e='2018,'+ss+',31';
-          var query_s= {'parent_name':$scope.customer_mobile,"record_date":{$gte:new Date(mm_s),$lte:new Date(mm_e)}};
-          init_v();
-          RecordNetwork.recordList($scope,query_s).then(function (data) {
-            console.log(data);
-            if (!data.err) {
-              $scope.as_parent_record_list = data;
-
-              $scope.as_parent_record_list.map(function(value,index,array){               
-                $scope.sum1_parent_loan_award += array[index].parent_loan_award;
-                $scope.sum1_parent_credit_award+= array[index].parent_credit_award;
-                $scope.sum1_parent_pos_award+= array[index].parent_pos_award;
-                $scope.sum1_parent_vip_award+= array[index].parent_vip_award;
-                $scope.sum1_parent_money4agent_award += array[index].parent_money4agent_award;
-                $scope.sum1_parent_money4Sagent_award+= array[index].parent_money4Sagent_award;
-                $scope.sum1_parent_car_mgr_award += array[index].parent_car_mgr_award;
-                $scope.sum1_parent_help4credit_award+= array[index].parent_help4credit_award;
-                $scope.sum1_parent_help4card_award+= array[index].parent_help4card_award;
-              }); 
-
-
-              //alert(JSON.stringify(data));          
-            }
-          }, function (err) {
-            console.log(err);
-          });
-        };
-        $scope.recordListAsTopParent = function () {
-          $scope.as_topparent_record_list=[];
-          var ss=$scope.selectedMonth;
-          var mm_s='2018,'+ss+',1';
-          var mm_e='2018,'+ss+',31';
-          var query_s= {'topparent_name':$scope.customer_mobile,"record_date":{$gte:new Date(mm_s),$lte:new Date(mm_e)}};
-          
-          RecordNetwork.recordList($scope, query_s).then(function (data) {
-            console.log(data);
-            if (!data.err) {
-              $scope.as_topparent_record_list = data;
-              $scope.as_topparent_record_list.map(function(value,index,array){               
-                $scope.sum1_topparent_loan_award += array[index].topparent_loan_award;
-                $scope.sum1_topparent_credit_award+= array[index].topparent_credit_award;
-                $scope.sum1_topparent_pos_award+= array[index].topparent_pos_award;
-                $scope.sum1_topparent_vip_award+= array[index].topparent_vip_award;
-                $scope.sum1_topparent_money4agent_award += array[index].topparent_money4agent_award;
-                $scope.sum1_topparent_money4Sagent_award+= array[index].topparent_money4Sagent_award;
-                $scope.sum1_topparent_car_mgr_award += array[index].topparent_car_mgr_award;
-                $scope.sum1_topparent_help4credit_award+= array[index].topparent_help4credit_award;
-                $scope.sum1_topparent_help4card_award+= array[index].topparent_help4card_award;
-              }); 
-              //alert(JSON.stringify(data));
-            }
-          }, function (err) {
-            console.log(err);
-          });
-        };
-
-        $scope.checkUserTj=function(){
-          if(!$scope.customer_mobile){
-            return alert('请输入客户电话号码！');
-          };
-          $scope.getUserByUsername();
-          $scope.recordListAsParent();
-          $scope.recordListAsTopParent();
-        };
-        $scope.test=function(){
-          if(!$scope.customer_mobile){
-            return alert('testing the db...');
-          };
-//          $scope.recordListAsTopParent();
-        };
-        
-        //goDetail(record._id)
-        // p_top =0 : parents , =1 : topparents
-
-        $scope.goDetail=function(id,p_top){
-
-          function replacer(key, value) {
-            if (key == 'object'||key == '_id'||value == ""||key == 'create_time'||key == 'update_time'||key == '$$hashKey') {
-              return undefined;
-            }
-            return value;
-          };
-          var thisrecord={};
-          if(!p_top)
-          {
-            $scope.as_parent_record_list.map(function(value,index,array){
-              if(array[index]._id==id)
-              {
-                thisrecord=array[index];       
-              }             
-            });
-            //alert(JSON.stringify($scope.thisrecord,replacer,'\t')); 
-         }
-         else
-         {
-          $scope.as_topparent_record_list.map(function(value,index,array){
-            if(array[index]._id==id)
-            {
-              thisrecord=array[index];       
-            }             
-          });
-          
-         }
-         alert(JSON.stringify(thisrecord,replacer,'\t')); 
-        };   
-
-}]);
-
-  /**
- * Created by Vincent on 2018/1/9.
- */
-'use strict';
-
-cSite.controller('soldRecordController', [
-    '$rootScope', '$scope', '$state', '$stateParams', 'SoldRecordNetwork','UserNetwork',
-    function ($rootScope, $scope, $state, $stateParams, SoldRecordNetwork,UserNetwork) {
-        
-      var soldRecordListByCondition = function(condition,sort){
-
-        SoldRecordNetwork.soldRecordListByCondition($scope, {'condition': condition,'sort':sort}).then(function (data){
-         // $scope.user_list = data;
-        });
-      }
-//record_by_username
-$scope.record_by_username = function(){
-
-  $scope.sold_record_list = [];
-  var username = prompt("请输入要查找的用户手机号：","");
-
-  if(!(/^1(3|4|5|7|8|9)\d{9}$/.test(username))){ 
-    return alert("请确认号码是否正确！");
-   }
-  var condition = {'user_phone':username};
-  var sort = {'user_phone': 1};
-    SoldRecordNetwork.soldRecordListByCondition($scope, {'condition': condition,'sort':sort}).then(function (data){
-      console.log(data);
-      if (!data.err) {
-        $scope.sold_record_list = data;
-//             alert(JSON.stringify(data));
-      }
-    }, function (err) {
-      console.log(err);
-    });
-}
-      var user = {};
-      var getUserById = function (user_id) {
-        UserNetwork.getUserById($scope, { user_id: user_id }).then(function (data) {
-          console.log(data);
-          if (!data.err) {
-            user = data;
-          }
-        }, function (err) {
-          console.log(err);
-        });
-      };
-
-      $scope.VIP_sold_record = function(){
-//        alert('vip sold');
-        $scope.sold_record_list = [];
-        SoldRecordNetwork.vip69SoldList($scope, {}).then(function (data) {
-            console.log(data);
-            if (!data.err) {
-              $scope.sold_record_list = data;
-              
-            }
-          }, function (err) {
-            console.log(err);
-          });
-       
-      }
-
-      $scope.Credit198_sold_record = function(){
-//        alert('credit198 sold');
-        $scope.sold_record_list = [];
-        SoldRecordNetwork.credit198SoldList($scope, {}).then(function (data) {
-            console.log(data);
-            if (!data.err) {
-              $scope.sold_record_list = data;
- //             alert(JSON.stringify(data));
-            }
-          }, function (err) {
-            console.log(err);
-          });
-       
-      }
-
-      $scope.All = function(){
-
-        $scope.sold_record_list = [];
-        SoldRecordNetwork.soldRecordList($scope, {}).then(function (data) {
-            console.log(data);
-            if (!data.err) {
-              $scope.sold_record_list = data;
- //             alert(JSON.stringify(data));
-            }
-          }, function (err) {
-            console.log(err);
-          });
-
-        
-      }
-
-
-    }]);
-
-
-   

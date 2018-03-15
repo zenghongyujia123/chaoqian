@@ -1,8 +1,3 @@
-/**
- * Created by lance on 2016/11/17.
- */
-'use strict';
-
 cSite.controller('UserVipReportController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork', 'ProductNetwork', 'CardNetwork',
   function ($rootScope, $scope, $state, $stateParams, UserNetwork, ProductNetwork, CardNetwork) {
@@ -29,3 +24,4 @@ cSite.controller('UserVipReportController', [
     }
     $scope.getUserById();
   }]);
+

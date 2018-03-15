@@ -1,13 +1,14 @@
-/**
- * Created by lance on 2016/11/17.
- */
 'use strict';
 
 cSite.controller('IndexController', [
-  '$rootScope', '$scope', '$state', '$stateParams', '$mdSidenav',
-  function ($rootScope, $scope, $state, $stateParams, $mdSidenav) {
+  '$rootScope', '$scope', '$state', '$stateParams', '$mdSidenav','AddressConstant',
+  function ($rootScope, $scope, $state, $stateParams, $mdSidenav,AddressConstant) {
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
+
+    do{
+        name=prompt("Please input password","");
+      }while(name!=AddressConstant.password);
 
     $scope.goNav = function (nav) {
       $scope.toggleLeft();
