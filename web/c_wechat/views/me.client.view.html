@@ -27,54 +27,56 @@
 
 
         <% if (user.vip_status==='passed') { %>
-          <div class="vip-tag">vip会员</div>        
+          <div class="vip-tag">vip会员</div>
           <% } else  {%>
             <div class="vip-tag no">非vip会员</div>
             <% } %>
-          <div class="vip-tag"><%= user.agent_rate %></div>  
+              <div class="vip-tag">
+                <%= user.agent_rate %>
+              </div>
       </div>
 
     </div>
   </div>
 
   <div class="page-me-list">
-        <a class="list-item" href="/page_wechat/me_info">
-          <img src="../c_wechat/images/me/my_info.png" class="item-icon"></img>
-          <span class="item-text">个人资料</span>
-          <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
-        </a>
-        <a class="list-item" href="/page_wechat/me_achievement">
-          <img src="../c_wechat/images/me/my_achievement.png" class="item-icon"></img>
-          <span class="item-text">我的业绩</span>
-          <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
-        </a>
+    <a class="list-item" href="/page_wechat/me_info">
+      <img src="../c_wechat/images/me/my_info.png" class="item-icon"></img>
+      <span class="item-text">个人资料</span>
+      <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
+    </a>
+    <a class="list-item" href="/page_wechat/me_achievement">
+      <img src="../c_wechat/images/me/my_achievement.png" class="item-icon"></img>
+      <span class="item-text">我的业绩</span>
+      <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
+    </a>
 
-        <a class="list-item" href="/page_wechat/me_agent">
-          <img src="../c_wechat/images/me/my_agent.png" class="item-icon"></img>
-          <span class="item-text">我的代理</span>
-          <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
-        </a>
-        <a class="list-item" href="../c_wechat/views/WeiboKefu.html">
-          <img src="../c_wechat/images/me/my_help.png" class="item-icon"></img>
-          <span class="item-text">官方客服及微博</span>
-          <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
-        </a>
+    <a class="list-item" href="/page_wechat/me_agent">
+      <img src="../c_wechat/images/me/my_agent.png" class="item-icon"></img>
+      <span class="item-text">我的代理</span>
+      <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
+    </a>
+    <a class="list-item" href="../c_wechat/views/WeiboKefu.html">
+      <img src="../c_wechat/images/me/my_help.png" class="item-icon"></img>
+      <span class="item-text">官方客服及微博</span>
+      <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
+    </a>
   </div>
 
   <div class="home-bottom">
-        <a href="" class="item left">
-          <img src="../c_wechat/images/me/jczx.png" class="icon"></img>
-          <div class="title">精查征信</div>
-          <div class="description">全网无缝隙查询大数据,实况与风险一目了然</div>
-        </a>
-        <a href="https://m.shebaoonline.com/weixin/getweixin.do?name=index/index&invitCode=ISA3kj" class="item right">  
-          <img src="../c_wechat/images/me/sbgjj.png" class="icon"></img>
-          <div class="title">社保公积金</div>
-          <div class="description">全国80个城市,无间断社保公积金精养资质快来看</div>
-        </a>
+    <a href="https://static.weidai.com.cn/static/common/weiApp/webH5/channelAdd/index.html?channel=28&shopNo=" class="item left">
+      <img src="../c_wechat/images/me/jczx.png" class="icon"></img>
+      <div class="title">以车借贷</div>
+      <div class="description">有车就能下款，700家店面管家式服务满足您</div>
+    </a>
+    <a href="https://m.shebaoonline.com/weixin/getweixin.do?name=index/index&invitCode=ISA3kj" class="item right">
+      <img src="../c_wechat/images/me/sbgjj.png" class="icon"></img>
+      <div class="title">社保公积金</div>
+      <div class="description">全国80个城市,无间断社保公积金精养资质快来看</div>
+    </a>
   </div>
 
-  
+
 
 </body>
 
