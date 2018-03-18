@@ -17,7 +17,7 @@ module.exports = function (app) {
   app.route('/page_wechat/product_detail').get(productFilter.requireProduct, index.product_detail);
   app.route('/page_wechat/question').get(userFilter.requireUser, index.question);
   app.route('/page_wechat/home').get(index.home);
-  app.route('/page_wechat/paycredit').get(userFilter.requireUser,index.paycredit);
+  app.route('/page_wechat/paycredit').get(userFilter.requireUser, index.paycredit);
   app.route('/page_wechat/me').get(userFilter.requireUser, index.me);
   app.route('/page_wechat/signin').get(index.signin);
   app.route('/page_wechat/signup').get(index.signup);
@@ -38,6 +38,7 @@ module.exports = function (app) {
   app.route('/page_wechat/card_list').get(userFilter.requireUser, index.card_list);
   app.route('/page_wechat/card_progress').get(userFilter.requireUser, index.card_progress);
   app.route('/page_wechat/self_home').get(userFilter.requireUser, index.self_home);
+  app.route('/page_wechat/self_jietiao').get(userFilter.requireUser, index.self_jietiao);
   app.route('/page_wechat/self_local').get(userFilter.requireUser, index.self_local);
   app.route('/page_wechat/credit_people_detail').get(userFilter.requireUser, creditPeopleFilter.requireCreditPeople, index.credit_people_detail);
   app.route('/page_wechat/notify_url').post(payController.notify_url);
