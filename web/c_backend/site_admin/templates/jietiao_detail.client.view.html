@@ -1,0 +1,37 @@
+<div class="page-body-view">
+  <div class="page-operation-view" layout="row" layout-align="space-between center">
+    <div layout="row">
+      <p class="title">产品详情</p>
+    </div>
+    <div layout="row">
+      <md-button class="md-primary md-raised md-hue-2" id="qiniu-upload-test-button">上传logo</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="updateJietiao($event)">保存</md-button>
+    </div>
+  </div>
+
+  <div class="c-product-detail-view">
+    <md-content layout-padding>
+      <div layout-gt-sm="row">
+        <span>
+          <img class="product-detail-logo" ng-src="{{jietiao.logo}}"></img>
+        </span>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>借条名称</label>
+          <input ng-model="jietiao.name" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>借条申请要求</label>
+          <input ng-model="jietiao.require" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>借条描述1</label>
+          <input ng-model="jietiao.str1" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>借条描述2</label>
+          <input ng-model="jietiao.str2" />
+        </md-input-container>
+      </div>
+    </md-content>
+  </div>
+</div>

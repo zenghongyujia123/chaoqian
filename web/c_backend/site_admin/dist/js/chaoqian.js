@@ -27,6 +27,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/product_list.client.view.html',
       controller: 'ProductListController'
     })
+    .state('jietiao_list', {
+      url: '/jietiao_list',
+      templateUrl: '/c_backend/site_admin/templates/jietiao_list.client.view.html',
+      controller: 'JietiaoListController'
+    })
     .state('card_list', {
       url: '/card_list',
       templateUrl: '/c_backend/site_admin/templates/card_list.client.view.html',
@@ -41,6 +46,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       url: '/product_detail/:product_id',
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',
       controller: 'ProductDetailController'
+    })
+    .state('jietiao_detail', {
+      url: '/jietiao_detail/:jietiao_id',
+      templateUrl: '/c_backend/site_admin/templates/jietiao_detail.client.view.html',
+      controller: 'JietiaoDetailController'
     })
     .state('user_detail', {
       url: '/user_detail/:user_id',
@@ -334,7 +344,16 @@ cSite.factory('ProductNetwork',
         },
         getProductFilter: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/product_filter/getFilter', params);
-        }
+        },
+        updateJietiao: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/jietiao/updateJietiao', params);
+        },
+        jietiaoList: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/jietiao/jietiaoList', params);
+        },
+        jietiaoDetail: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/jietiao/jietiaoDetail', params);
+        },
       };
     }]);
 
@@ -1188,6 +1207,84 @@ cSite.controller('IndexController', [
       };
     }
   }]);
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('JietiaoDetailController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'ProductNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, QiniuService, ProductNetwork, CommonHelper) {
+    var qiniu = QiniuService.createUploader('qiniu-upload-test-button', function (info) {
+      $scope.jietiao.logo = QiniuService.getQiniuImageSrc(info.key);
+      console.log('upload successs : ---- ', info);
+    });
+
+    $scope.jietiao = {
+      _id: $stateParams.jietiao_id,
+      logo: '',
+      name: '',
+      require: '',
+      str1: '',
+      str2: '',
+    };
+
+    $scope.updateJietiao = function (event) {
+      ProductNetwork.updateJietiao($scope, { jietiao_info: $scope.jietiao }).then(function (data) {
+        if (!data.err) {
+          CommonHelper.showConfirm($scope, null, '操作成功', function () {
+            $state.go('jietiao_detail', null, { reload: true });
+          }, null, null, event);
+        }
+
+
+        console.log(data);
+      }, function (err) {
+        console.log(err);
+      });;
+    }
+
+    function jietiaoDetail() {
+      if ($scope.jietiao._id) {
+        ProductNetwork.jietiaoDetail($scope, { jietiao_id: $scope.jietiao._id }).then(function (data) {
+          console.log(data);
+          if (!data.err) {
+            $scope.jietiao = data;
+          }
+        }, function (err) {
+          console.log(err);
+        });
+      }
+    }
+    jietiaoDetail();
+  }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('JietiaoListController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'ProductNetwork',
+  function ($rootScope, $scope, $state, $stateParams, ProductNetwork) {
+    $scope.goDetail = function (id) {
+      $state.go('jietiao_detail', { jietiao_id: id || '' });
+    }
+    $scope.jietiao_list = [];
+    $scope.jietiaoList = function () {
+      ProductNetwork.jietiaoList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.jietiao_list = data;
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.jietiaoList();
+  }]);
+
 /**
  * Created by lance on 2016/11/17.
  */

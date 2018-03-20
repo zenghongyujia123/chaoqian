@@ -1,0 +1,32 @@
+<div class="page-body-view">
+  <div class="page-operation-view" layout="row" layout-align="space-between center">
+    <p class="title">产品列表</p>
+    <md-button class="md-primary md-raised md-hue-2" ng-click="goDetail()">创建借条产品</md-button>
+  </div>
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">借条logo</div>
+      <div class="column-item" flex="">借条名称</div>
+      <div class="column-item" flex="">要求</div>
+      <div class="column-item" flex="">描述1</div>
+      <div class="column-item" flex="">描述2</div>
+      <div class="column-item" flex=""></div>
+    </div>
+  </div>
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" ng-repeat=" jietiao in jietiao_list">
+      <div class="column-item" flex="">
+        <img ng-src="{{jietiao.logo}}"></img>
+      </div>
+      <div class="column-item" flex="">{{jietiao.name}}</div>
+      <div class="column-item" flex="">{{jietiao.require}}</div>
+      <div class="column-item" flex="">{{jietiao.str1}}</div>
+      <div class="column-item" flex="">{{jietiao.str2}}</div>
+      <div class="column-item" flex="" layout="row" layout-align="start start">
+        <md-button class="md-primary" ng-click="goDetail(jietiao._id)">详情
+        </md-button>
+      </div>
+    </div>
+  </div>
+</div>

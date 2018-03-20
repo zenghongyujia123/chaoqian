@@ -50,7 +50,7 @@ module.exports = function (appDb) {
   });
 
 
-  ProductSchema.plugin(timestamps, {
+  JieTiaoSchema.plugin(timestamps, {
     createdAt: 'create_time',
     updatedAt: 'update_time'
   });
