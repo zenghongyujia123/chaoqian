@@ -46,7 +46,7 @@ body input :-ms-input-placeholder {
 }
 html .page-footer,
 body .page-footer {
-  border-top: 1px solid #cccccc;
+  border-top: 0.5px solid #cccccc;
   position: absolute;
   height: 50px;
   width: 100%;
