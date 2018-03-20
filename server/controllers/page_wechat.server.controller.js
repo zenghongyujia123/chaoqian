@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var productLogic = require('../logics/product');
+var jietiaoLogic = require('../logics/jietiao');
 var cardLogic = require('../logics/card');
 
 var cblogic = require('../logics/customer_business');
@@ -417,14 +418,13 @@ exports.self_home = function (req, res, next) {
 
 
 exports.self_jietiao = function (req, res, next) {
-  var info = {
-    query_key: req.query.query_key,
-    query_value: req.query.query_value,
-    sort_key: req.query.sort_key,
-    sort_value: req.query.sort_value,
-  };
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/self_jietiao.client.view.html');
-  return res.render(filepath, {
+
+
+  jietiaoLogic.jietiaoList({}, function (err, results) {
+    var filepath = path.join(__dirname, '../../web/c_wechat/views/self_jietiao.client.view.html');
+    return res.render(filepath, {
+      jietiaos: results || []
+    });
   });
 };
 

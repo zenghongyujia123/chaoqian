@@ -80,8 +80,16 @@ a {
         top: 25px;
       }
       .title {
-        font-size: 16px;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        justify-content: space-between;
         margin-bottom: 10px;
+        .title-left {
+          font-size: 16px;
+        }
+        .title-right {}
       }
       .content {
         display: flex;

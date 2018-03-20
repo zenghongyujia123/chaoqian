@@ -75,8 +75,15 @@ a {
   top: 25px;
 }
 .page-self-home .list .list-item .title {
-  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 10px;
+}
+.page-self-home .list .list-item .title .title-left {
+  font-size: 16px;
 }
 .page-self-home .list .list-item .content {
   display: flex;
