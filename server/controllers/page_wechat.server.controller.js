@@ -172,6 +172,16 @@ exports.result = function (req, res, next) {
   });
 };
 
+exports.page_query_list = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/page_query_list.client.view.html');
+  return res.render(filepath, {});
+};
+
+exports.page_query_main = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/page_query_main.client.view.html');
+  return res.render(filepath, {});
+};
+
 exports.product_detail = function (req, res, next) {
   var product = req.product || {};
   var filepath = path.join(__dirname, '../../web/c_wechat/views/product_detail.client.view.html');
@@ -418,8 +428,6 @@ exports.self_home = function (req, res, next) {
 
 
 exports.self_jietiao = function (req, res, next) {
-
-
   jietiaoLogic.jietiaoList({}, function (err, results) {
     var filepath = path.join(__dirname, '../../web/c_wechat/views/self_jietiao.client.view.html');
     return res.render(filepath, {
