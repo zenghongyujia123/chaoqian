@@ -7,7 +7,7 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   timestamps = require('mongoose-timestamp'),
-  crypto = require('crypto');
+  cryptoLib = require('../libraries/crypto');
 
 module.exports = function (appDb) {
   var UserSchema = new Schema({
@@ -196,7 +196,7 @@ module.exports = function (appDb) {
 
   UserSchema.methods.hashPassword = function (password) {
     if (this.salt && password) {
-      return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
+      return cryptoLib.toMd5(password);
     } else {
       return password;
     }

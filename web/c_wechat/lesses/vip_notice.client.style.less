@@ -2,32 +2,37 @@ body {
   font-size: 12px;
   -webkit-overflow-scrolling: touch;
   color: #333;
+  background-color: #f6f6f6;
 }
 
 .page-vip-notice {
   position: absolute;
   left: 0px;
   top: 0px;
-  bottom: 90px;
+  bottom: 60px;
   right: 0px;
   overflow: auto;
   padding: 10px;
   padding-bottom: 80px;
-  .title {
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  .sub-title {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
   .content {
-    font-size: 16px;
+    font-size: 14px;
     color: #666;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     div {
       margin-bottom: 10px;
+      text-indent:20px;
+    }
+  }
+  .agree-row{
+    text-align: center;
+    input{
+      margin-right: 5px;
+    }
+    span{
+      color:#999;
+    }
+    a{
+      color:#71b4fd;
     }
   }
 }
@@ -38,15 +43,14 @@ body {
   width: 100%;
   bottom: 0px;
   background-color: #F2F2F2;
-  padding: 10px;
   .notice-btn {
+    margin:10px;
     display: block;
-    background-color: #F3455A;
+    background-color: #fe7e30;
     text-align: center;
     color: white;
-    font-size: 18px;
-    line-height: 50px;
-    width: 100%;
+    font-size: 16px;
+    line-height: 40px;
     border-radius: 90px;
   }
 }

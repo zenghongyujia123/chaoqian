@@ -16,8 +16,12 @@ var agent = require('superagent').agent();
 var moment = require('moment');
 var access_token = '';
 
-const VIP_PRICE = 9800;
-const CREDIT198_PRICE = 6800;
+// const VIP_PRICE = 9800;
+// const CREDIT198_PRICE = 6800;
+
+const VIP_PRICE = 1;
+const CREDIT198_PRICE = 1;
+
 
 var xml2js = require('xml2js');
 var parseString = xml2js.parseString;

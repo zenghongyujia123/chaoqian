@@ -27,8 +27,7 @@
 }
 .page-home .home-apply-text {
   text-align: center;
-  font-size: 14px;
-  margin-bottom: 5px;
+  font-size: 12px;
 }
 .page-home .home-bottom {
   padding: 0px 5px;
@@ -38,11 +37,11 @@
   display: block;
   border: 0.5px solid #cccccc;
   text-align: center;
-  min-height: 140px;
+  min-height: 120px;
 }
 .page-home .home-bottom .item .icon {
   margin: 5px auto 0px auto;
-  width: 46px;
+  width: 40px;
 }
 .page-home .home-bottom .item .description {
   font-size: 12px;
