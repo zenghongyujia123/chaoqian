@@ -4,11 +4,13 @@
 'use strict';
 
 cSite.controller('CardDetailController', [
-  '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'CardNetwork', 'CommonHelper',
-  function ($rootScope, $scope, $state, $stateParams, QiniuService, CardNetwork, CommonHelper) {
+  '$rootScope', '$scope', '$state', '$stateParams','$timeout', 'QiniuService', 'CardNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, $timeout,QiniuService, CardNetwork, CommonHelper) {
     var qiniu = QiniuService.createUploader('qiniu-upload-test-card-log-button', function (info) {
-      $scope.card.logo = QiniuService.getQiniuImageSrc(info.key);
-      console.log('upload successs : ---- ', info);
+      $timeout(function(){
+        $scope.card.logo = QiniuService.getQiniuImageSrc(info.key);
+        console.log('upload successs : ---- ', info);
+      });;
     });
 
     $scope.card = {

@@ -408,7 +408,15 @@ exports.updateVipInfo = function (user, vip_info, callback) {
   user.vip_credit_starter = vip_info.vip_credit_starter;
   user.vip_report_url_text = vip_info.vip_report_url_text;
   user.vip_product_ids = vip_info.vip_product_ids;
-  user.vip_card_ids = vip_info.vip_card_ids;
+  user.vip_card_ids = vip_info.vip_card_ids||[];
+
+  user.str1 = vip_info.str1;
+  user.str2 = vip_info.str2;
+  user.str3 = vip_info.str3;
+  user.str4 = vip_info.str4;
+  user.str5 = vip_info.str5;
+  user.str6 = vip_info.str6;
+
  // user.agent_rate = vip_info.agent_rate;
 
   user.markModified('vip_product_ids');

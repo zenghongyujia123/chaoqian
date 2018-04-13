@@ -125,7 +125,7 @@ module.exports = function (appDb) {
       default: false
     },
     agent_rate: {
-      type: String, 
+      type: String,
       default: '一般代理'
     },
     credit198_payed: {
@@ -179,19 +179,43 @@ module.exports = function (appDb) {
     vip_report: {
       type: Schema.Types.Mixed
     },
-    alipay_id:{
+    alipay_id: {
       type: String,
     },
-    email:{
+    email: {
       type: String,
     },
-    adress:{
+    adress: {
       type: String,
     },
     location: {
       type: [Number],
       index: '2dsphere'
-    }
+    },
+    //信用评估
+    str1: {
+      type: String
+    },
+    //信用额度
+    str2: {
+      type: String
+    },
+    //授信周期
+    str3: {
+      type: String
+    },
+    //授信利率
+    str4: {
+      type: String
+    },
+    //返现额度
+    str5: {
+      type: String
+    },
+    //资金方
+    str6: {
+      type: String
+    },
   });
 
   UserSchema.methods.hashPassword = function (password) {
@@ -213,7 +237,7 @@ module.exports = function (appDb) {
     },
     type: {
       type: String,
-      enum: ['vip_pay','credit198_pay']
+      enum: ['vip_pay', 'credit198_pay']
     },
     user_id: {
       type: String,
@@ -223,7 +247,7 @@ module.exports = function (appDb) {
     },
     user_phone: {
       type: String,
-    },    
+    },
     content: {
       type: Schema.Types.Mixed
     }

@@ -73,17 +73,29 @@
   <md-content layout-padding>
     <div layout-gt-sm="row">
       <md-input-container class="md-block" flex-gt-sm>
-        <label>vip_推荐信用初值</label>
-        <input ng-model="user.vip_credit_starter" />
+        <label>vip_信用评估</label>
+        <input ng-model="user.str1" />
       </md-input-container>
       <md-input-container class="md-block" flex-gt-sm>
-        <label>vip_推荐信用估值</label>
-        <input ng-model="user.vip_credit_assessment" />
+        <label>vip_信用额度</label>
+        <input ng-model="user.str2" />
       </md-input-container>
       <md-input-container class="md-block" flex-gt-sm>
-        <label>vip_报告跳转超链接文本</label>
-        <input ng-model="user.vip_report_url_text" />
+        <label>vip_授信周期</label>
+        <input ng-model="user.str3" />
       </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+          <label>vip_授信利率</label>
+          <input ng-model="user.str4" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>vip_返现额度</label>
+          <input ng-model="user.str5" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>vip_资金方</label>
+          <input ng-model="user.str6" />
+        </md-input-container>
     </div>
   </md-content>
 

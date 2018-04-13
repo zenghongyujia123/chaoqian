@@ -644,11 +644,13 @@ cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper'
 'use strict';
 
 cSite.controller('CardDetailController', [
-  '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'CardNetwork', 'CommonHelper',
-  function ($rootScope, $scope, $state, $stateParams, QiniuService, CardNetwork, CommonHelper) {
+  '$rootScope', '$scope', '$state', '$stateParams','$timeout', 'QiniuService', 'CardNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, $timeout,QiniuService, CardNetwork, CommonHelper) {
     var qiniu = QiniuService.createUploader('qiniu-upload-test-card-log-button', function (info) {
-      $scope.card.logo = QiniuService.getQiniuImageSrc(info.key);
-      console.log('upload successs : ---- ', info);
+      $timeout(function(){
+        $scope.card.logo = QiniuService.getQiniuImageSrc(info.key);
+        console.log('upload successs : ---- ', info);
+      });;
     });
 
     $scope.card = {
@@ -1769,6 +1771,12 @@ cSite.controller('UserDetailController', [
           vip_card_ids: cardids,
           vip_credit_starter: $scope.user.vip_credit_starter,
           vip_credit_assessment: $scope.user.vip_credit_assessment,
+          str1: $scope.user.str1,
+          str2: $scope.user.str2,
+          str3: $scope.user.str3,
+          str4: $scope.user.str4,
+          str5: $scope.user.str5,
+          str6: $scope.user.str6,
 //          agent_rate: $scope.selectedAgent_rate
         }
       }).then(function (data) {
