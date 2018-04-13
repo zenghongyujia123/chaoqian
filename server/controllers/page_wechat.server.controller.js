@@ -536,9 +536,9 @@ exports.vip_auth_3 = function (req, res, next) {
 
 exports.vip_notice = function (req, res, next) {
   var user = req.user;
-  // if (user.has_read_vip_notice) {
-  //   return res.redirect('/page_wechat/vip_auth_info');
-  // }
+  if (user.has_read_vip_notice) {
+    return res.redirect('/page_wechat/vip_auth_info');
+  }
   var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_notice.client.view.html');
   return res.render(filepath, { city: req.cookies.city });
 };
