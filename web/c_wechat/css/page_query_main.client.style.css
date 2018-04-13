@@ -1,52 +1,66 @@
-.page-home {
-  overflow: auto;
+body {
   -webkit-overflow-scrolling: touch;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  right: 0px;
-  bottom: 50px;
-  font-size: 16px;
 }
-.page-home .swiper-container {
-  width: 100%;
-  height: 200px;
+.weui-panel__hd::after {
+  border: 0px;
 }
-.page-home .swiper-container img {
-  width: 100%;
+.weui-grid__icon {
+  width: 50px;
+  height: 50px;
 }
-.page-home .home-apply-btn {
-  width: 280px;
-  margin: 10px auto 10px auto;
-  line-height: 40px;
-  background-color: #f24659;
-  display: block;
+.weui-grid__icon .big-data-icon {
+  width: 50px;
+  height: 50px;
   color: white;
-  text-align: center;
   border-radius: 90px;
-}
-.page-home .home-apply-text {
   text-align: center;
-  font-size: 14px;
-  margin-bottom: 5px;
+  font-size: 26px;
+  line-height: 50px;
 }
-.page-home .home-bottom {
-  padding: 0px 5px;
+.weui-grid__icon .big-data-icon.orange {
+  background-color: #fe7e30;
 }
-.page-home .home-bottom .item {
-  margin: 5px;
-  display: block;
-  border: 0.5px solid #cccccc;
+.weui-grid__icon .big-data-icon.blue {
+  background-color: #6fadfd;
+}
+.weui-grid__icon .big-data-icon.green {
+  background-color: #21c198;
+}
+.weui-grid__icon .big-data-icon.purple {
+  background-color: #9966e0;
+}
+.weui-grid__icon .big-data-icon.red {
+  background-color: #fa5e76;
+}
+.weui-grid__icon .big-data-icon.black {
+  background-color: #686662;
+}
+.weui-media-box_appmsg .weui-media-box__hd {
+  height: 140px;
+  width: 140px;
+  vertical-align: middle;
+  line-height: 30px;
+}
+.weui-media-box_appmsg .weui-media-box__hd img {
+  vertical-align: middle;
+  max-height: 110px;
+  max-width: 140px;
+  width: auto;
+}
+.weui-media-box_appmsg .weui-media-box__bd {
   text-align: center;
-  min-height: 140px;
 }
-.page-home .home-bottom .item .icon {
-  margin: 5px auto 0px auto;
-  width: 46px;
+.weui-media-box_appmsg .weui-media-box__bd .title {
+  color: #fe6301;
 }
-.page-home .home-bottom .item .description {
-  font-size: 12px;
-  width: 150px;
-  color: #979797;
-  margin: auto;
+.weui-media-box_appmsg .weui-media-box__bd .tip {
+  color: #6fadfd;
+  line-height: 40px;
+}
+.weui-media-box_appmsg .weui-media-box__bd .btn {
+  background-color: #fe6301;
+  color: white;
+  line-height: 40px;
+  border-radius: 35px;
+  text-align: center;
 }

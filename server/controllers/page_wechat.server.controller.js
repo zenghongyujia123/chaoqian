@@ -177,6 +177,11 @@ exports.page_query_list = function (req, res, next) {
   return res.render(filepath, {});
 };
 
+exports.page_query_create = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/page_query_create.client.view.html');
+  return res.render(filepath, {});
+};
+
 exports.page_query_main = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/page_query_main.client.view.html');
   return res.render(filepath, {});
@@ -568,3 +573,10 @@ exports.me_share = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/me_share.client.view.html');
   return res.render(filepath, { city: req.cookies.city, code: req.query.code || '' });
 }
+
+exports.page_reward = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/reward/page_reward.client.view.html');
+  return res.render(filepath, { });
+}
+
+
