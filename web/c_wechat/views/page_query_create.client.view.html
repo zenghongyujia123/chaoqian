@@ -9,102 +9,65 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
   <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
-  <link rel="stylesheet" href="../c_wechat/css/page_query_main.client.style.css" />
+  <link rel="stylesheet" href="../c_wechat/css/page_query_create.client.style.css" />
   <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
   <script src="../libs/jquery/dist/jquery.js"></script>
   <script src="../c_wechat/controllers/page_query_main.client.controller.js"></script>
 </head>
 
 <body>
-  <div class="weui-panel weui-panel_access">
-    <div class="weui-panel__hd">查大数据</div>
-    <div class="weui-grids">
-      <a href="" class="weui-grid js_grid">
-        <div class="weui-grid__icon">
-          <div class="big-data-icon orange">黑</div>
+  <div class="page-header">
+    <div class="header-title">
+      <div class="icon orange">黑</div>
+      <div class="text">网贷黑灰行为</div>
+    </div>
+    <div class="header-tip">帮您寻找网贷过程中不规范导致的灰黑度因素</div>
+  </div>
+  <div class="page-body">
+    <div class="weui-cells">
+      <div class="weui-cell">
+        <div class="weui-cell__hd">
+          <label class="weui-label">姓名</label>
         </div>
-        <p class="weui-grid__label">
-          网贷黑灰行为
-        </p>
-      </a>
-      <a href="" class="weui-grid js_grid">
-        <div class="weui-grid__icon">
-          <div class="big-data-icon blue">介</div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入姓名">
         </div>
-        <p class="weui-grid__label">
-          网贷黑中介
-        </p>
-      </a>
-      <a href="" class="weui-grid js_grid">
-        <div class="weui-grid__icon">
-          <div class="big-data-icon green">大</div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__hd">
+          <label class="weui-label">身份证</label>
         </div>
-        <p class="weui-grid__label">
-          网贷成功率
-        </p>
-      </a>
-      <a href="" class="weui-grid js_grid">
-        <div class="weui-grid__icon">
-          <div class="big-data-icon purple">征</div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入有效的身份证件号码">
         </div>
-        <p class="weui-grid__label">
-          人行征信
-        </p>
-      </a>
-      <a href="" class="weui-grid js_grid">
-        <div class="weui-grid__icon">
-          <div class="big-data-icon red">贷</div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__hd">
+          <label class="weui-label">手机号</label>
         </div>
-        <p class="weui-grid__label">
-          网贷产品详情
-        </p>
-      </a>
-      <a href="" class="weui-grid js_grid">
-        <div class="weui-grid__icon">
-          <div class="big-data-icon black">码</div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入手机号">
         </div>
-        <p class="weui-grid__label">
-          POS机MCC码
-        </p>
-      </a>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__hd">
+          <label class="weui-label">银行卡号</label>
+        </div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入银行卡号">
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="weui-panel weui-panel_access">
-      <div class="weui-panel__hd">申请刷卡机-MPOS版</div>
-      <div class="weui-panel__bd">
-        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-          <div class="weui-media-box__hd">
-            <img class="weui-media-box__thumb" src="../c_wechat/images/query/大POS机无背景原图.png">
-            <div>0.65%+2</div>
-          </div>
-          <div class="weui-media-box__bd">
-            <div class="title">随行付-央视冠名优质产品</div>
-            <div class="tip">购前须知</div>
-            <div class="btn">点击申请</div>
-          </div>
-        </a>
-      </div>
+  <div class="footer">
+    <div class="agree-row">
+      <input type="checkbox" checked="checked">
+      <span> 我已阅读并统一</span>
+      <a>《潮钱网用户查询使用协议》</a>
     </div>
+    <div class="page-btn">同意协议，开始查询</div>
+  </div>
 
-    
-    <div class="weui-panel weui-panel_access">
-        <div class="weui-panel__hd">申请刷卡机-多商户大机版</div>
-        <div class="weui-panel__bd">
-          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-            <div class="weui-media-box__hd">
-              <img class="weui-media-box__thumb" src="../c_wechat/images/query/小POS机无背景原图.png">
-              <div>0.65%+2</div>
-            </div>
-            <div class="weui-media-box__bd">
-                <div class="title">新国都-上市公司品牌</div>
-                <div class="tip">购前须知</div>
-                <div class="btn">点击申请</div>
-            </div>
-          </a>
-        </div>
-      </div>
-      
 </body>
 
 </html>
