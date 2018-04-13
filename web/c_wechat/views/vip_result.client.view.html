@@ -6,84 +6,161 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
 
   <title>推荐结果</title>
-  <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
-  <link rel="stylesheet" href="../c_wechat/css/result.client.style.css" />
+  <link rel="stylesheet" href="../c_wechat/css/vip_result.client.style.css" />
   <script src="../libs/jquery/dist/jquery.js"></script>
   <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
 
 <body>
-  <div class="page-result-header">
-    <div class="header-left">
-      <div class="title">信用初值</div>
-      <div class="value">
-        <%= user.vip_credit_starter %>
+  <div class="header">
+    <div class="header-detail">
+      <div class="detail-row">
+        <div class="row-item">
+          <div class="title">信用评估</div>
+          <div class="value">一般</div>
+        </div>
+        <div class="row-item">
+          <div class="title">信用额度</div>
+          <div class="value">2500元</div>
+        </div>
+        <div class="row-item">
+          <div class="title">授信周期</div>
+          <div class="value">12个月</div>
+        </div>
+      </div>
+      <div class="detail-row">
+        <div class="row-item">
+          <div class="title">授信利率</div>
+          <div class="value">5.63%</div>
+        </div>
+        <div class="row-item">
+          <div class="title">返现额度</div>
+          <div class="value">300元</div>
+        </div>
+        <div class="row-item">
+          <div class="title">资金方</div>
+          <div class="value">潮钱网</div>
+        </div>
       </div>
     </div>
-    <div class="header-right">
-      <div class="title">信用估值（元）</div>
-      <div class="value">
-        <%= user.vip_credit_assessment %>
-      </div>
-    </div>
   </div>
-  <a class="page-result-banner" style="color:#ffd481" href="/page_wechat/vip_auth_report">
-    <%= user.vip_report_url_text %>
-  </a>
-  <div class="page-result-center">
-    <div class="title">
-      强烈推荐您以下借款平台
-    </div>
-   
-    <div class="center-list">
-      <% for(var i=0; i<products.length; i++) {%>
-        <a class="center-list-item" href="/page_wechat/product_detail?product_id=<%= products[i]._id %>">
-          <img src="<%= products[i].logo %>" class="icon"></img>
-          <div class="name">
-            <%= products[i].name %>
-          </div>
-        </a>
-        <% } %>
-    </div>
-  
+  <div class="panel">
+    <div class="report-btn">点击这里获取征资财划报告</div>
   </div>
-  <div class="page-result-panel">
-    <div class="panel-title">
-      根据您的资质，强烈推荐您申请以下信用卡：
-    </div>
-    <div class="panel-content">
-      <div class="icon"></div>
-      <div class="text">官方绿色通道加权</div>
-    </div>
-    <div class="panel-content">
-      <div class="icon"></div>
-      <div class="text">精准推荐，下卡率大于90%</div>
-    </div>
-    <div class="panel-content">
-      <div class="icon"></div>
-      <div class="text">现在申请，附智能收款机，线上二维码随意刷，线下实体卡不限刷，5秒钟到账户，微乎其微的手续费，从此刷卡不求人</div>
-    </div>
+  <div class="panel">
+    <div class="report-btn left">大爷我要拿钱</div>
+    <div class="report-btn right">有横财不错了</div>
   </div>
-  <div class="page-result-list">
+  <div class="panel column">
+    <div class="panel-title">您获得额外返现额度，请点击进入寻宝领取</div>
+    <div class="report-btn">立即领取</div>
+  </div>
 
-    <% for(var i=0; i<cards.length; i++) {%>
-      <div class="result-list-item">
-        <img src="<%= cards[i].logo %>" class="card-item"></img>
-        <div class="item-title">
-          <%= cards[i].name %>
-        </div>
-        <div class="item-content">
-          <%= cards[i].description %>
-        </div>
+
+  <div class="weui-panel weui-panel_access">
+    <div class="page-result-panel">
+      <div class="panel-title">
+        根据您的资质，强烈推荐您申请以下信用卡：
       </div>
-      <% } %>
-    
-    <div class="bottom">
-        <a href="/page_wechat/home" >
-         
-          <img src="../c_wechat/images/paycredit/ba3.png" class="item"/>
-        </a>
+      <div class="panel-content">
+        <div class="icon"></div>
+        <div class="text">官方绿色通道加权</div>
+      </div>
+      <div class="panel-content">
+        <div class="icon"></div>
+        <div class="text">精准推荐，下卡率大于90%</div>
+      </div>
+      <div class="panel-content">
+        <div class="icon"></div>
+        <div class="text">现在申请，附智能收款机，线上二维码随意刷，线下实体卡不限刷，5秒钟到账户，微乎其微的手续费，从此刷卡不求人</div>
+      </div>
+    </div>
+
+    <div class="weui-panel__bd">
+      <a href="javascript:void(0);">
+
+      </a>
+      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb" src="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">中信银行生肖卡</h4>
+          <p class="weui-media-box__desc">定制卡版，9元大片</p>
+          <div class="card-footer">
+            <div class="footer-left">
+              <span class="left-item">刷卡免年费</span>
+              <span class="left-item">网购有积分</span>
+            </div>
+            <div class="footer-right">
+              <span class="number"> 38万人</span> 已申请
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb" src="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">中信银行生肖卡</h4>
+          <p class="weui-media-box__desc">定制卡版，9元大片</p>
+          <div class="card-footer">
+            <div class="footer-left">
+              <span class="left-item">刷卡免年费</span>
+              <span class="left-item">网购有积分</span>
+            </div>
+            <div class="footer-right">
+              <span class="number"> 38万人</span> 已申请
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb" src="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">中信银行生肖卡</h4>
+          <p class="weui-media-box__desc">定制卡版，9元大片</p>
+          <div class="card-footer">
+            <div class="footer-left">
+              <span class="left-item">刷卡免年费</span>
+              <span class="left-item">网购有积分</span>
+            </div>
+            <div class="footer-right">
+              <span class="number"> 38万人</span> 已申请
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb" src="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">中信银行生肖卡</h4>
+          <p class="weui-media-box__desc">定制卡版，9元大片</p>
+          <div class="card-footer">
+            <div class="footer-left">
+              <span class="left-item">刷卡免年费</span>
+              <span class="left-item">网购有积分</span>
+            </div>
+            <div class="footer-right">
+              <span class="number"> 38万人</span> 已申请
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="weui-panel__ft">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd">查看更多</div>
+        <span class="weui-cell__ft"></span>
+      </a>
     </div>
   </div>
 </body>

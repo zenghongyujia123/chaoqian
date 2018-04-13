@@ -1,0 +1,150 @@
+body {
+  background-color: #f2f2f2;
+  -webkit-overflow-scrolling: touch;
+  font-size: 14px;
+}
+
+.header {
+  /* 标准的语法（必须放在最后） */
+  overflow: hidden;
+  .header-detail {
+    background-color: white;
+    border-radius: 4px;
+    padding: 10px 20px;
+    .detail-row {
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+      &:first-child {
+        border-bottom: 0.5px solid #efefef;
+      }
+      .row-item {
+        text-align: center;
+        flex-grow: 1;
+        .title {
+          color: #999;
+          line-height: 50px;
+          font-size: 18px;
+        }
+        .value {
+          color: #fd7a00;
+          font-size: 20px;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+}
+
+.panel {
+  padding: 10px 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  .report-btn {
+    background: -webkit-linear-gradient(left, #fdb42a, #fd7a00);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(left, #fdb42a, #fd7a00);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(left, #fdb42a, #fd7a00);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(left, #fdb42a, #fd7a00);
+    /* 标准的语法（必须放在最后） */
+    color: white;
+    border-radius: 45px;
+    text-align: center;
+    width: 60%;
+    line-height: 30px;
+    &.left {
+      margin-right: 10px;
+    }
+    &.right {
+      margin-left: 10px;
+    }
+  }
+  &.column {
+    flex-direction: column;
+    align-items: center;
+    .panel-title {
+      height: 30px;
+      color: #a02de5;
+      font-size: 12px;
+      line-break: 20px;
+    }
+    .report-btn {
+      width: 100%;
+      background: -webkit-linear-gradient(left, #a02de5, #5408fb);
+      /* Safari 5.1 - 6.0 */
+      background: -o-linear-gradient(left, #a02de5, #5408fb);
+      /* Opera 11.1 - 12.0 */
+      background: -moz-linear-gradient(left, #a02de5, #5408fb);
+      /* Firefox 3.6 - 15 */
+      background: linear-gradient(left, #a02de5, #5408fb);
+      /* 标准的语法（必须放在最后） */
+    }
+  }
+}
+
+.page-result-panel {
+  padding: 0px 15px 15px 15px;
+  background-color: white;
+  &::before {
+    border-bottom: 0.5px solid #e5e5e5;
+  }
+  .panel-title {
+    font-size: 14px;
+    line-height: 40px;
+  }
+  .panel-content {
+    padding-left: 20px;
+    position: relative;
+    .icon {
+      background-color: #fd7a00;
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      left: 0px;
+      top: 6px;
+      border-radius: 90px;
+    }
+    .text {
+      color: #999;
+      line-height: 20px;
+    }
+  }
+}
+
+.weui-panel__bd {
+  .weui-media-box__hd {
+    width: 100px;
+    background-color: #fb8252;
+  }
+  .weui-media-box__bd {
+    .card-footer {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10px;
+      .footer-left {
+        .left-item {
+          color: #fb8252;
+          border: 0.5px solid #fb8252;
+          margin-right: 10px;
+          border-radius: 4px;
+          background-color: #fef4ee;
+          padding: 3px 10px;
+        }
+      }
+      .footer-right {
+        .number {
+          color: #fd7a00;
+        }
+      }
+    }
+  }
+}
