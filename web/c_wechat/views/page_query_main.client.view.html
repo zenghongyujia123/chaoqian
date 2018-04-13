@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../c_wechat/css/page_query_main.client.style.css" />
   <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
   <script src="../libs/jquery/dist/jquery.js"></script>
+  <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
   <script src="../c_wechat/controllers/page_query_main.client.controller.js"></script>
 </head>
 
@@ -71,40 +72,108 @@
   </div>
 
   <div class="weui-panel weui-panel_access">
-      <div class="weui-panel__hd">申请刷卡机-MPOS版</div>
-      <div class="weui-panel__bd">
-        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-          <div class="weui-media-box__hd">
-            <img class="weui-media-box__thumb" src="../c_wechat/images/query/大POS机无背景原图.png">
-            <div>0.65%+2</div>
-          </div>
-          <div class="weui-media-box__bd">
-            <div class="title">随行付-央视冠名优质产品</div>
-            <div class="tip">购前须知</div>
-            <div class="btn">点击申请</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    
-    <div class="weui-panel weui-panel_access">
-        <div class="weui-panel__hd">申请刷卡机-多商户大机版</div>
-        <div class="weui-panel__bd">
-          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-            <div class="weui-media-box__hd">
-              <img class="weui-media-box__thumb" src="../c_wechat/images/query/小POS机无背景原图.png">
-              <div>0.65%+2</div>
-            </div>
-            <div class="weui-media-box__bd">
-                <div class="title">新国都-上市公司品牌</div>
-                <div class="tip">购前须知</div>
-                <div class="btn">点击申请</div>
-            </div>
-          </a>
+    <div class="weui-panel__hd">申请刷卡机-MPOS版</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb" src="../c_wechat/images/query/小POS机无背景原图.png">
+          <div>0.65%+3</div>
+        </div>
+        <div class="weui-media-box__bd">
+          <div class="title">随行付-央视冠名优质产品</div>
+          <a href="javascript:;" class="tip open-popup about-1" data-target="about-1">购前须知</a>
+          <div class="btn">点击申请</div>
         </div>
       </div>
-      
+    </div>
+  </div>
+
+
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__hd">申请刷卡机-多商户大机版</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb" src="../c_wechat/images/query/大POS机无背景原图.png">
+          <div>0.65%+2</div>
+        </div>
+        <div class="weui-media-box__bd">
+          <div class="title">新国都-上市公司品牌</div>
+          <a href="javascript:;" class="tip open-popup about-2" data-target="about-2">购前须知</a>
+          <div class="btn">点击申请</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="about-1" class="weui-popup__container">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+      <div class="title">购买须知</div>
+      <div class="text">
+        随行付POS机0.6%+3元秒到账；云闪付0.38%秒到账；可二维码收账，可扫码收账，可刷京东白条。
+      </div>
+      <div class="text">
+        申请说明：
+      </div>
+      <div class="text">
+        1，申请前请返回首页在我的版块的个人资料内填写个人姓名和资料邮寄地址及个人支付宝帐号。
+      </div>
+      <div class="text">
+        2，用户需缴纳120元作为押金，POS机方可邮寄。
+      </div>
+      <div class="text">
+        3，用户拿到POS机后，手刷200元，系统冻结196元才算激活POS机。
+      </div>
+      <div class="text">
+        4，激活POS机后，我们会在次日主动将120元押金款打款至您的支付宝账户。
+      </div>
+      <div class="text">
+        5，三个月内刷满10万元额度即可在软件内提现196元冻结款到您的银行卡。
+      </div>
+      <div class="text">
+        6，您在线支付款项120元后，我们将在12小时内顺丰快递发出，发出前您手机会收到我们的提醒短信。
+      </div>
+      <a href="javascript:;" class="btn close-popup" style="color:white;">确认</a>
+    </div>
+  </div>
+
+
+  <div id="about-2" class="weui-popup__container">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+      <div class="title">购买须知</div>
+      <div class="text">
+        新国都制造，随行付品牌多商户纸质小票型POS机，0.6%秒到：本地化详细行业，具体商户，数千家真实店面自由选择，最关键，秒到账，无跳码。
+      </div>
+      <div class="text">
+        申请说明：
+      </div>
+      <div class="text">
+        1，申请前请返回首页在我的版块的个人资料内填写个人姓名和资料邮寄地址及个人支付宝帐号。
+      </div>
+      <div class="text">
+        2，用户需要缴纳399元购买费用，POS机方可邮寄。
+      </div>
+      <div class="text">
+        3，您在线支付款项399元后，我们将在12小时内顺丰快递发出，发出前您手机会收到我们的提醒短信。
+      </div>
+      <div class="text">
+        4, 纸质小票，商户自选，低费率秒到，不跳码，养卡，大额收款好帮手，不定期举办活动，您有机会获得购买费用全免的福利哦，经常关注我们吧
+      </div>
+      <a href="javascript:;" class="btn close-popup" style="color:white;">确认</a>
+    </div>
+  </div>
 </body>
+<script>
+  $(function () {
+    $('.about-1').click(function () {
+      $("#about-1").popup();
+    });
+    $('.about-2').click(function () {
+      $("#about-2").popup();
+    });
+  })
+</script>
 
 </html>

@@ -58,7 +58,11 @@ body {
   font-size: 12px;
   line-height: 40px;
 }
+.footer .agree-row a {
+  color: #6fadfd;
+}
 .footer .page-btn {
+  display: block;
   background-color: #fe7e30;
   color: white;
   line-height: 40px;

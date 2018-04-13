@@ -65,3 +65,23 @@ body {
   border-radius: 35px;
   text-align: center;
 }
+.weui-popup__modal {
+  background-color: white;
+}
+.weui-popup__modal .title {
+  font-size: 24px;
+  text-align: center;
+  line-height: 50px;
+}
+.weui-popup__modal .text {
+  padding: 5px 10px;
+}
+.weui-popup__modal .btn {
+  margin: 20px;
+  display: block;
+  background-color: #fe6301;
+  color: white;
+  line-height: 40px;
+  border-radius: 35px;
+  text-align: center;
+}

@@ -20,6 +20,7 @@ module.exports = function (app) {
   app.route('/page_wechat/paycredit').get(userFilter.requireUser, index.paycredit);
   app.route('/page_wechat/page_query_main').get(userFilter.requireUser, index.page_query_main);
   app.route('/page_wechat/page_query_create').get( index.page_query_create);
+  app.route('/page_wechat/page_query_create_result').get( index.page_query_create_result);
   app.route('/page_wechat/page_query_list').get(userFilter.requireUser, index.page_query_list);
   app.route('/page_wechat/me').get(userFilter.requireUser, index.me);
   app.route('/page_wechat/signin').get(index.signin);

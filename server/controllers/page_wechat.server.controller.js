@@ -182,6 +182,11 @@ exports.page_query_create = function (req, res, next) {
   return res.render(filepath, {});
 };
 
+exports.page_query_create_result = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/page_query_create_result.client.view.html');
+  return res.render(filepath, {});
+};
+
 exports.page_query_main = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/page_query_main.client.view.html');
   return res.render(filepath, {});
