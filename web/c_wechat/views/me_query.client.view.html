@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/me_query.client.style.css" />
+  <script src="../libs/moment/min/moment.min.js"></script>
   <script src="../libs/jquery/dist/jquery.js"></script>
 </head>
 
@@ -18,12 +19,13 @@
     <i class="weui-icon-info weui-icon_msg"></i>注意：查询报告将在72小时后自动删除！ </div>
   <div class="weui-panel weui-panel_access">
     <div class="weui-panel__bd">
+      <!-- 
       <a href="/page_wechat/me_query_detail" class="weui-media-box weui-media-box_appmsg">
         <div class="weui-media-box__hd icon orange">
           黑
         </div>
         <div class="weui-media-box__bd">
-          <div class="item-title">查询类目：网贷黑灰行为</div>
+          <div class="item-title">查询类目：1</div>
           <div class="item-title">查询日期：2018-02-14 18:33</div>
         </div>
         <div class="item-detail">
@@ -65,11 +67,51 @@
         <div class="item-detail">
           详情
         </div>
-      </a>
+      </a> -->
     </div>
   </div>
 </body>
 <script>
+  $(function () {
+    var list = '<%- JSON.stringify( list) %>';
+    list = JSON.parse(list);
+
+    list.forEach(function (item) {
+      var obj = $(
+        ' <a href="/page_wechat/me_query_detail?detail_id=' + item._id + '" class="weui-media-box weui-media-box_appmsg">' +
+        '      <div class="weui-media-box__hd icon ' + getStyle(item).color + '">' +
+        '      ' + getStyle(item).text +
+        '    </div>' +
+        '    <div class="weui-media-box__bd">' +
+        '        <div class="item-title">查询类目：' + item.query_name + '</div>' +
+        '        <div class="item-title">查询日期：' + moment( item.create_time).format('YYYY-MM-DD HH:mm') + '</div>' +
+        '    </div>' +
+        '    <div class="item-detail">' +
+        '      详情' +
+        '    </div>' +
+        '  </a>');
+
+      $('.weui-panel__bd').append(obj);
+    });
+
+    function getStyle(item) {
+      switch (item.type) {
+        case '黑':
+          item.text = '黑';
+          item.color = 'orange';
+          break;
+        case '介':
+          item.text = '介';
+          item.color = 'blue';
+          break;
+        case '大':
+          item.text = '大';
+          item.color = 'green';
+          break;
+      }
+      return item;
+    }
+  })
 </script>
 
 </html>

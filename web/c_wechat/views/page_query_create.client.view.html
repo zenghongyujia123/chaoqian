@@ -109,15 +109,17 @@
       // mi_guan_da_shu_ju();
       // ge_ren_hei_ming_dan();
       if (hander) {
+        $.showLoading();
         hander({
           name: rowName.find('input').val(),
           phone: rowPhone.find('input').val(),
           idcard: rowIdcard.find('input').val(),
           banknumber: rowBancknumber.find('input').val(),
         }, function (data) {
+          $.hideLoading();
           if (data && !data.err) {
             $.toast("操作成功", function () {
-              window.location = '/page_wechat/me_query';
+              window.location = '/page_wechat/page_query_create_result';
             });
           }
         });

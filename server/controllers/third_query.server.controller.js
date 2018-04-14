@@ -19,7 +19,7 @@ exports.mi_guan_da_shu_ju = function (req, res, next) {
       appkey: appkey
     })
     .end(function (err, result) {
-      thirdQueryLogic.insert_query_result(user, '网贷成功率', JSON.parse(result.text), function (err, result) {
+      thirdQueryLogic.insert_query_result(user, '网贷成功率','大', JSON.parse(result.text), function (err, result) {
         if (err) {
           return res.send(err);
         }
@@ -46,7 +46,7 @@ exports.ge_ren_hei_ming_dan = function (req, res, next) {
       appkey: appkey
     })
     .end(function (err, result) {
-      thirdQueryLogic.insert_query_result(user, '网贷黑行为', JSON.parse(result.text), function (err, result) {
+      thirdQueryLogic.insert_query_result(user, '网贷灰黑行为','黑', JSON.parse(result.text), function (err, result) {
         if (err) {
           return res.send(err);
         }
@@ -67,7 +67,7 @@ exports.hei_zhong_jie = function (req, res, next) {
       appkey: appkey
     })
     .end(function (err, result) {
-      thirdQueryLogic.insert_query_result(user, '网贷黑中介', JSON.parse(result.text), function (err, result) {
+      thirdQueryLogic.insert_query_result(user, '网贷黑中介','介', JSON.parse(result.text), function (err, result) {
         if (err) {
           return res.send(err);
         }

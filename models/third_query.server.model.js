@@ -15,6 +15,9 @@ module.exports = function (appDb) {
       type: String,
       default: 'ThirdQuery'
     },
+    type:{
+      type:String
+    },
     query_name: {
       type: String
     },

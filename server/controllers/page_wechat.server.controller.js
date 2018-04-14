@@ -8,6 +8,7 @@ var cardLogic = require('../logics/card');
 
 var cblogic = require('../logics/customer_business');
 var userLogic = require('../logics/user');
+var thirdQueryLogic = require('../logics/third_query');
 var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
 var wechatloigc = require('../logics/wechat');
@@ -179,7 +180,7 @@ exports.page_query_list = function (req, res, next) {
 
 exports.page_query_create = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/page_query_create.client.view.html');
-  return res.render(filepath, {type: req.query.type });
+  return res.render(filepath, { type: req.query.type });
 };
 
 exports.page_query_create_result = function (req, res, next) {
@@ -189,7 +190,7 @@ exports.page_query_create_result = function (req, res, next) {
 
 exports.page_query_main = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/page_query_main.client.view.html');
-  return res.render(filepath, { });
+  return res.render(filepath, {});
 };
 
 exports.product_detail = function (req, res, next) {
@@ -261,8 +262,11 @@ exports.me_agent = function (req, res, next) {
 
 exports.me_query = function (req, res, next) {
   var user = req.user;
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_query.client.view.html');
-  return res.render(filepath, {});
+
+  thirdQueryLogic.get_query_by_list(req.user, { user_id: user._id }, function (err, result) {
+    var filepath = path.join(__dirname, '../../web/c_wechat/views/me_query.client.view.html');
+    return res.render(filepath, {list:result});
+  });
 };
 
 exports.me_query_detail = function (req, res, next) {
