@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../c_wechat/css/page_query_create.client.style.css" />
   <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
   <script src="../libs/jquery/dist/jquery.js"></script>
+  <script src="../c_wechat/helpers/query.client.helper.js"></script>
   <script src="../c_wechat/controllers/page_query_main.client.controller.js"></script>
 </head>
 
@@ -65,9 +66,20 @@
       <span> 我已阅读并统一</span>
       <a>《潮钱网用户查询使用协议》</a>
     </div>
-    <a href="/page_wechat/page_query_create_result" class="page-btn" >同意协议，开始查询</a>
+    <a  class="page-btn" >同意协议，开始查询</a>
   </div>
 
 </body>
+  <script>
+  $(function(){
 
+    var type = '';
+    //href="/page_wechat/page_query_create_result"
+    $('.page-btn').click(function(){
+      // mi_guan_da_shu_ju();
+      // ge_ren_hei_ming_dan();
+      hei_zhong_jie();
+    });
+  })
+  </script>
 </html>
