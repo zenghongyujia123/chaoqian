@@ -179,7 +179,7 @@ exports.page_query_list = function (req, res, next) {
 
 exports.page_query_create = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/page_query_create.client.view.html');
-  return res.render(filepath, {});
+  return res.render(filepath, {type: req.query.type });
 };
 
 exports.page_query_create_result = function (req, res, next) {
@@ -189,7 +189,7 @@ exports.page_query_create_result = function (req, res, next) {
 
 exports.page_query_main = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/page_query_main.client.view.html');
-  return res.render(filepath, {});
+  return res.render(filepath, { });
 };
 
 exports.product_detail = function (req, res, next) {

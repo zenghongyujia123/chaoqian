@@ -26,5 +26,10 @@ module.exports = function (appDb) {
       ref: 'User',
     }
   });
+
+  ThirdQuerySchema.plugin(timestamps, {
+    createdAt: 'create_time',
+    updatedAt: 'update_time'
+  });
   appDb.model('ThirdQuery', ThirdQuerySchema);
 };
