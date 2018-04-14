@@ -1,0 +1,52 @@
+body {
+  background-color: #f2f2f2;
+  -webkit-overflow-scrolling: touch;
+  color: #333;
+}
+.icon {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  color: white;
+  border-radius: 90px;
+  text-align: center;
+  font-size: 26px;
+  line-height: 50px;
+}
+.icon.orange {
+  background-color: #fe7e30;
+}
+.icon.blue {
+  background-color: #6fadfd;
+}
+.icon.green {
+  background-color: #21c198;
+}
+.icon.purple {
+  background-color: #9966e0;
+}
+.icon.red {
+  background-color: #fa5e76;
+}
+.icon.black {
+  background-color: #686662;
+}
+.item-title {
+  color: #666;
+}
+.item-detail {
+  color: #21c198;
+}
+.header {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+.header .weui-icon_msg {
+  margin-right: 10px;
+  font-size: 20px;
+}

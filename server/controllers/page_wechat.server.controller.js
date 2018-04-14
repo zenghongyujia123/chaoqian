@@ -259,6 +259,18 @@ exports.me_agent = function (req, res, next) {
   })
 };
 
+exports.me_query = function (req, res, next) {
+  var user = req.user;
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_query.client.view.html');
+  return res.render(filepath, {});
+};
+
+exports.me_query_detail = function (req, res, next) {
+  var user = req.user;
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_query_detail.client.view.html');
+  return res.render(filepath, {});
+};
+
 exports.me_achievement = function (req, res, next) {
   var user = req.user;
 
@@ -571,7 +583,7 @@ exports.invite_notice = function (req, res, next) {
 
 exports.page_image = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/page_image.client.view.html');
-  return res.render(filepath, { url: req.query.url ,title:req.query.title||''});
+  return res.render(filepath, { url: req.query.url, title: req.query.title || '' });
 };
 
 exports.me_share = function (req, res, next) {
@@ -581,7 +593,7 @@ exports.me_share = function (req, res, next) {
 
 exports.page_reward = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/reward/page_reward.client.view.html');
-  return res.render(filepath, { });
+  return res.render(filepath, {});
 }
 
 

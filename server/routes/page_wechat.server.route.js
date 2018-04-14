@@ -30,6 +30,9 @@ module.exports = function (app) {
   app.route('/page_wechat/me_vip').get(userFilter.requireUser, index.me_vip);
   app.route('/page_wechat/me_bill').get(userFilter.requireUser, index.me_bill);
   app.route('/page_wechat/me_agent').get(userFilter.requireUser, index.me_agent);
+  app.route('/page_wechat/me_query_detail').get(userFilter.requireUser, index.me_query_detail);
+  app.route('/page_wechat/me_query').get(userFilter.requireUser, index.me_query);
+
   app.route('/page_wechat/me_account').get(userFilter.requireUser, index.me_account);
   app.route('/page_wechat/me_achievement').get(userFilter.requireUser, index.me_achievement);
   app.route('/page_wechat/apply_third').get(userFilter.requireUser, index.apply_third);
