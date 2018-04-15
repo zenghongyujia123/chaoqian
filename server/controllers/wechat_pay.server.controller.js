@@ -85,22 +85,22 @@ exports.get_pre_pay_id = function (req, res, next) {
   };
 
   if (req.body.pay_type === 'vip_pay') {
-    detail.pay_price = 1;
+    detail.pay_price = 29900;
     detail.pay_title = '潮钱网充值中心-会员充值';
     detail.pay_type = 'vip_pay';
   }
   else if (req.body.pay_type === 'query_大数据') {
-    detail.pay_price = 1;
+    detail.pay_price = 1490;
     detail.pay_title = '潮钱网充值中心-网贷成功率查询';
     detail.pay_type = 'query_大数据';
   }
   else if (req.body.pay_type === 'query_黑中介') {
-    detail.pay_price = 1;
+    detail.pay_price = 99;
     detail.pay_title = '潮钱网充值中心-网贷黑中介查询';
     detail.pay_type = 'query_黑中介';
   }
   else if (req.body.pay_type === 'query_黑灰行为') {
-    detail.pay_price = 1;
+    detail.pay_price = 990;
     detail.pay_title = '潮钱网充值中心-网贷黑灰行为查询'
     detail.pay_type = 'query_黑灰行为';
   }
