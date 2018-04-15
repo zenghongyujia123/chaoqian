@@ -4,7 +4,6 @@
 var path = require('path');
 var productLogic = require('../logics/product');
 var userLogic = require('../logics/user');
-var wechatloigc = require('../logics/wechat');
 var wechatNewloigc = require('../logics/wechat_new');
 
 var creditPeopleLogic = require('../logics/credit_people');
@@ -14,14 +13,6 @@ var cookieLib = require('../../libraries/cookie');
 var cryptoLib = require('../../libraries/crypto');
 var agent = require('superagent').agent();
 var moment = require('moment');
-var access_token = '';
-
-// const VIP_PRICE = 9800;
-// const CREDIT198_PRICE = 6800;
-
-const VIP_PRICE = 1;
-const CREDIT198_PRICE = 1;
-
 
 var xml2js = require('xml2js');
 var parseString = xml2js.parseString;
@@ -60,11 +51,6 @@ exports.notify_url = function (req, res, next) {
       userLogic.updateVipPayedByOpenid(req.body.xml.openid[0], info, function () {
       });
     }
-    // else if (price == CREDIT198_PRICE) {// credit card agency
-    //   userLogic.updateCredit198PayedByOpenid(req.body.xml.openid[0], info, function () {
-    //   });
-    // }
-
   }
 
   var json = {
@@ -83,21 +69,6 @@ exports.token_verify = function (req, res, next) {
   console.log(req.body);
   return res.send(req.query.echostr);
 }
-
-// exports.getPrePayId4PayCredit = function (req, res, next) {
-//   var user = req.user;
-//   var product="代还信用卡服务费：198元";
-//   var price =CREDIT198_PRICE; // 19800;
-//   getPrePayId(product,price,req, user.openid, user._id.toString(), function (err, result) {
-//     if (err) {
-//       return next(err);
-//     }
-
-//     req.data = result;
-//     return next();
-//   });
-// }
-
 exports.getUserJsApiTicket = function (req, res, next) {
   wechatNewloigc.getUserJsApiTicket(req.body.url, function (err, result) {
     return res.send(result);

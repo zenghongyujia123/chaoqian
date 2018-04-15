@@ -11,7 +11,6 @@ var userLogic = require('../logics/user');
 var thirdQueryLogic = require('../logics/third_query');
 var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
-var wechatloigc = require('../logics/wechat');
 var provinces = require('../constants/city');
 var cookieLib = require('../../libraries/cookie');
 var agent = require('superagent').agent();
