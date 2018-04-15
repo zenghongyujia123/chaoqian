@@ -179,6 +179,7 @@ exports.page_query_list = function (req, res, next) {
 };
 
 exports.page_query_create = function (req, res, next) {
+  return res.send('');
   var filepath = path.join(__dirname, '../../web/c_wechat/views/page_query_create.client.view.html');
   return res.render(filepath, { type: req.query.type });
 };
