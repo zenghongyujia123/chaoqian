@@ -28,7 +28,11 @@ $(function () {
       },
       success: function (data) {
         console.log(data);
-        getPrePayId();
+        get_pre_pay_id(69,function(){
+          
+        })
+
+        // getPrePayId();
       }
     });
   });

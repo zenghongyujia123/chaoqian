@@ -5,7 +5,7 @@ var path = require('path');
 var productLogic = require('../logics/product');
 var userLogic = require('../logics/user');
 var wechatloigc = require('../logics/wechat');
-
+var wechatNewloigc = require('../logics/wechat_new');
 
 var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
@@ -209,7 +209,38 @@ exports.getPayPage = function (req, res, next) {
 }
 
 exports.getUserJsApiTicket = function (req, res, next) {
-  wechatloigc.getUserJsApiTicket(function (err, result) {
+  wechatNewloigc.getUserJsApiTicket(req.body.url,function (err, result) {
+    return res.send(result);
+  });
+}
+
+
+exports.get_pre_pay_id = function (req, res, next) {
+  var user = req.user;
+  var price,product;
+  if(req.bodyproduct==69){
+    product = '潮钱充值中心-会员充值';
+    price = 1;
+  }
+  if(req.body.product==198){
+    product = '代还信用卡服务费：198元';
+    price = 1;
+  }
+  wechatNewloigc.get_pre_pay_id(req, product,price,user.openid, user._id.toString(), function (err, result) {
+    if (err) {
+      return res.send(err);
+    }
+
+    return res.send(result);
+  });
+}
+
+exports.get_pre_pay_info = function (req, res, next) {
+  return res.send(wechatNewloigc.get_pre_pay_info(req.body.prepay_id));
+}
+
+exports.vip_pay_notify_url = function (req, res, next) {
+  wechatNewloigc.vip_pay_notify_url(req, function (result) {
     return res.send(result);
   });
 }
