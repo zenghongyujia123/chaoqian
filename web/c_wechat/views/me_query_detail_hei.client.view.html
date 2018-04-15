@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
+
+  <title>我的代理</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+  <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
+  <link rel="stylesheet" href="../c_wechat/css/me_query_detail.client.style.css" />
+  <script src="../libs/moment/min/moment.min.js"></script>
+  <script src="../libs/jquery/dist/jquery.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <i class="weui-icon-info weui-icon_msg"></i>注意：查询报告将在72小时后自动删除！
+  </div>
+  <div class="weui-media-box weui-media-box_appmsg">
+    <div class="weui-media-box__bd">
+      <div class="item-title">订单时间：
+        <span class="time"></span>
+      </div>
+      <div class="item-title">用户：**</div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="row">
+      <div class="title">黑名单类型统计</div>
+    </div>
+    <% for(var i=0; i<data.totalCounts.length; i++) {%>
+      <div class="row">
+        <div class="left">
+          <%= (data.totalCounts[i].blackType||'暂无数据') %>
+        </div>
+        <div class="right">
+          <%= (data.totalCounts[i].blackCount||'暂无数据') %>
+        </div>
+      </div>
+      <% } %>
+  </div>
+
+  <% for(var i=0; i<data.list.length; i++) {%>
+    <div class="item">
+      <div class="row">
+        <div class="title">结果列表 :
+          <%= i %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="left">
+          黑名单类型
+        </div>
+        <div class="right">
+          <%= data.list[i].blackRiskType %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="left">
+          黑名单事实类型
+        </div>
+        <div class="right">
+          <%= data.list[i].blackFactsType %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="left">
+          事件发生日期
+        </div>
+        <div class="right">
+          <%= data.list[i].blackHappenDate %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="left">
+          事件涉及金额
+        </div>
+        <div class="right">
+          <%= data.list[i].blackAmt %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="left">
+          黑名单事实
+        </div>
+        <div class="right">
+          <%= data.list[i].blackFacts %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="left">
+          信息来源
+        </div>
+        <div class="right">
+          <%= data.list[i].blackPublishSource %>
+        </div>
+      </div>
+    </div>
+
+    <% } %>
+</body>
+<script>
+  $(function () {
+    var third_query = '<%- JSON.stringify( third_query) %>';
+    third_query = JSON.parse(third_query);
+    console.log(third_query);
+
+    $('.time').text(moment(third_query.create_time).format('YYYY-MM-DD HH:mm'));
+  })
+</script>
+
+</html>

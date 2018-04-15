@@ -26,7 +26,16 @@
       <div class="item-title">用户：**</div>
     </div>
   </div>
- 
+  <div class="item">
+    <div class="row">
+      <div class="left">
+        是否命中黑中介
+      </div>
+      <div class="right">
+        <%= (data==='0'?'未命中':'命中') %>
+      </div>
+    </div>
+  </div>
 </body>
 <script>
   $(function () {

@@ -25,3 +25,28 @@ body {
   margin-right: 10px;
   font-size: 20px;
 }
+.item {
+  background-color: white;
+  margin-top: 10px;
+}
+.item .row {
+  padding: 0px 15px;
+  display: flex;
+  border-bottom: 0.5px solid #efefef;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.item .row .title {
+  color: #999;
+  line-height: 40px;
+}
+.item .row .left {
+  width: 50%;
+  line-height: 40px;
+}
+.item .row .right {
+  text-align: right;
+  width: 50%;
+}

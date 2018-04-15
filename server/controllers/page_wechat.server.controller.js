@@ -272,7 +272,18 @@ exports.me_query = function (req, res, next) {
 exports.me_query_detail = function (req, res, next) {
   var user = req.user;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/me_query_detail.client.view.html');
-  return res.render(filepath, { third_query: req.third_query });
+  if (req.third_query.type === '大') {
+    filepath = path.join(__dirname, '../../web/c_wechat/views/me_query_detail_miguan.client.view.html');
+  }
+  if (req.third_query.type === '黑') {
+    filepath = path.join(__dirname, '../../web/c_wechat/views/me_query_detail_hei.client.view.html');
+  }
+  if (req.third_query.type === '介') {
+    filepath = path.join(__dirname, '../../web/c_wechat/views/me_query_detail_jie.client.view.html');
+  }
+
+
+  return res.render(filepath, { third_query: req.third_query, data: req.third_query.result.result.data, });
 };
 
 exports.me_achievement = function (req, res, next) {

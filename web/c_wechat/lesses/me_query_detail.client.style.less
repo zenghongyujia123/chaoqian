@@ -3,29 +3,55 @@ body {
   -webkit-overflow-scrolling: touch;
   color: #333;
 }
-.weui-media-box{
+
+.weui-media-box {
   background-color: white;
 }
-.item-title{
-  color:#666;
-}
-.time{
-  color:#fe7e30;
+
+.item-title {
+  color: #666;
 }
 
-.header{
+.time {
+  color: #fe7e30;
+}
+
+.header {
   height: 40px;
   display: flex;
   flex-direction: row;
   align-content: center;
   align-items: center;
   justify-content: center;
-  color:#666;
-  .weui-icon_msg{
+  color: #666;
+  .weui-icon_msg {
     margin-right: 10px;
     font-size: 20px;
   }
 }
 
-
-
+.item {
+  background-color: white;
+  margin-top: 10px;
+  .row {
+    padding: 0px 15px;
+    display: flex;
+    border-bottom: 0.5px solid #efefef;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    .title {
+      color: #999;
+      line-height: 40px;
+    }
+    .left {
+      width:50%;
+      line-height: 40px;
+    }
+    .right {
+      text-align: right;
+      width:50%;
+    }
+  }
+}
