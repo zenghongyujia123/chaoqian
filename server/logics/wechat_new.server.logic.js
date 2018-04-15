@@ -129,7 +129,7 @@ exports.get_pre_pay_id = function (req, detail, openid, callback) {
       nonce_str: new Date().getTime().toString(),
       sign_type: 'MD5',
       body: detail.pay_title,
-      attach:JSON.stringify(detail),
+      attach: detail.pay_type,
       out_trade_no: new Date().getTime().toString(),
       fee_type: 'CNY',
       detail: JSON.stringify(detail),

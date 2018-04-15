@@ -331,15 +331,15 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
       }
       var real_name = ((user.real_name != '') ? user.real_name : user.wechat_info.nickname);
       userPay = new UserPay({
-        type: info.attach.pay_type,
+        type: info.attach,
         user_id: user._id,
         user_phone: user.username,
         user_real_name: user.wechat_info.nickname,
         content: info
       });
       userPay.save(function () {
-        user[info.attach.user_pay_status_field] = true;
-        user[info.attach.user_pay_status_field_time] = new Date();
+        user[info.attach+'ed'] = true;
+        user[info.attach+'ed_time'] = new Date();
         user.save(function (err) {
           return callback();
         });

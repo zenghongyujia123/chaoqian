@@ -56,8 +56,7 @@ exports.notify_url = function (req, res, next) {
     transaction_id: req.body.xml.transaction_id[0]
   }
   if (info && info.result_code == 'SUCCESS') {
-    info.attach = JSON.parse(info.attach);
-    if (info.attach.pay_type == 'vip_pay') {//vip 
+    if (info.attach == 'vip_pay') {//vip 
       userLogic.updateVipPayedByOpenid(req.body.xml.openid[0], info, function () {
       });
     }
