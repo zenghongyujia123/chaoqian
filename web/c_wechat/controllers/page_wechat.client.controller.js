@@ -88,7 +88,7 @@ function get_pre_pay_info(prepay_id,pay_type, callback) {
   });
 }
 
-function onBridgeReady(info, product, callback) {
+function onBridgeReady(info, pay_type, callback) {
   var payinfo = {
     "appId": info.appId,     //公众号名称，由商户传入     
     "timeStamp": info.timeStamp,         //时间戳，自1970年以来的秒数     
