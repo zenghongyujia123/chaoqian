@@ -8,12 +8,12 @@ var sysErr = require('./../errors/system');
 
 var that = exports;
 
-exports.insert_query_result = function (user, query_name,type, info, callback) {
+exports.insert_query_result = function (user, query_name, type, info, callback) {
   new ThirdQuery({
     query_name: query_name || '',
     result: info || {},
     user: user._id,
-    type:type,
+    type: type,
   }).save(function (err, result) {
     if (err || !result) {
       return callback({ err: sysErr.database_save_error });
@@ -27,12 +27,22 @@ exports.get_query_by_list = function (user, info, callback) {
   if (info.user_id) {
     query.user = info.user_id;
   }
-  ThirdQuery.find(query).select('-result').exec( function (err, result) {
+  ThirdQuery.find(query).select('-result').exec(function (err, result) {
     if (err || !result) {
-      return callback({ err: sysErr.database_save_error });
+      return callback({ err: sysErr.database_query_error });
     }
     return callback(null, result);
   });
 }
+
+exports.detail = function (detail_id, callback) {
+  ThirdQuery.findOne({ _id: detail_id }, function (err, result) {
+    if (err || !result) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, result);
+  });
+}
+
 
 

@@ -10,16 +10,27 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/me_query_detail.client.style.css" />
+  <script src="../libs/moment/min/moment.min.js"></script>
   <script src="../libs/jquery/dist/jquery.js"></script>
-  <script src="../libs/jquery-qrcode/dist/jquery.qrcode.js"></script>
 </head>
 
 <body>
   <div class="header">
-    <i class="weui-icon-info weui-icon_msg"></i>注意：查询报告将在72小时后自动删除！ </div>
+    <i class="weui-icon-info weui-icon_msg"></i>注意：查询报告将在72小时后自动删除！
+  </div>
+  <div class="weui-media-box weui-media-box_appmsg">
+    <div class="weui-media-box__bd">
+      <div class="item-title">订单时间：<span class="time"></span></div>
+      <div class="item-title">用户：**</div>
+    </div>
+  </div>
 </body>
 <script>
-
+  $(function () {
+    var third_query = '<%- JSON.stringify( third_query) %>';
+    third_query = JSON.parse(third_query);
+    $('.time').text(moment(third_query.create_time).format('YYYY-MM-DD HH:mm'));
+  })
 </script>
 
 </html>

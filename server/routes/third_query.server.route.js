@@ -4,6 +4,7 @@
 
 var thirdController = require('../controllers/third_query');
 var userFilter = require('../filters/user');
+var thirdQueryFilter = require('../filters/third_query');
 
 module.exports = function (app) {
   //蜜罐大数据

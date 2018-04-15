@@ -3,6 +3,15 @@ body {
   -webkit-overflow-scrolling: touch;
   color: #333;
 }
+.weui-media-box {
+  background-color: white;
+}
+.item-title {
+  color: #666;
+}
+.time {
+  color: #fe7e30;
+}
 .header {
   height: 40px;
   display: flex;

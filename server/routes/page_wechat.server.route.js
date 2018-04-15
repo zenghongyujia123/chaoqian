@@ -5,6 +5,9 @@
 var index = require('../controllers/page_wechat');
 var payController = require('../controllers/wechat_pay');
 var userFilter = require('../filters/user');
+var thirdQueryFilter = require('../filters/third_query');
+
+
 var creditPeopleFilter = require('../filters/credit_people');
 var cardFilter = require('../filters/card');
 
@@ -30,7 +33,7 @@ module.exports = function (app) {
   app.route('/page_wechat/me_vip').get(userFilter.requireUser, index.me_vip);
   app.route('/page_wechat/me_bill').get(userFilter.requireUser, index.me_bill);
   app.route('/page_wechat/me_agent').get(userFilter.requireUser, index.me_agent);
-  app.route('/page_wechat/me_query_detail').get(userFilter.requireUser, index.me_query_detail);
+  app.route('/page_wechat/me_query_detail').get(userFilter.requireUser,thirdQueryFilter.requireThirdQuery,  index.me_query_detail);
   app.route('/page_wechat/me_query').get(userFilter.requireUser, index.me_query);
 
   app.route('/page_wechat/me_account').get(userFilter.requireUser, index.me_account);

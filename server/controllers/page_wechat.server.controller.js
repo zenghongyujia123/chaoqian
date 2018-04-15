@@ -265,14 +265,14 @@ exports.me_query = function (req, res, next) {
 
   thirdQueryLogic.get_query_by_list(req.user, { user_id: user._id }, function (err, result) {
     var filepath = path.join(__dirname, '../../web/c_wechat/views/me_query.client.view.html');
-    return res.render(filepath, {list:result});
+    return res.render(filepath, { list: result });
   });
 };
 
 exports.me_query_detail = function (req, res, next) {
   var user = req.user;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/me_query_detail.client.view.html');
-  return res.render(filepath, {});
+  return res.render(filepath, { third_query: req.third_query });
 };
 
 exports.me_achievement = function (req, res, next) {
