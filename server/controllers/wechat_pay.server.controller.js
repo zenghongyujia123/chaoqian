@@ -47,10 +47,8 @@ exports.notify_url = function (req, res, next) {
     transaction_id: req.body.xml.transaction_id[0]
   }
   if (info && info.result_code == 'SUCCESS') {
-    if (info.attach == 'vip_pay'||info.attach==='query_大数据') {//vip 
-      userLogic.updateVipPayedByOpenid(req.body.xml.openid[0], info, function () {
-      });
-    }
+    userLogic.updateVipPayedByOpenid(req.body.xml.openid[0], info, function () {
+    });
   }
 
   var json = {
@@ -91,10 +89,20 @@ exports.get_pre_pay_id = function (req, res, next) {
     detail.pay_title = '潮钱网充值中心-会员充值';
     detail.pay_type = 'vip_pay';
   }
-  else if(req.body.pay_type === 'query_大数据'){
+  else if (req.body.pay_type === 'query_大数据') {
     detail.pay_price = 1;
     detail.pay_title = '潮钱网充值中心-网贷成功率查询';
     detail.pay_type = 'query_大数据';
+  }
+  else if (req.body.pay_type === 'query_黑中介') {
+    detail.pay_price = 1;
+    detail.pay_title = '潮钱网充值中心-网贷黑中介查询';
+    detail.pay_type = 'query_黑中介';
+  }
+  else if (req.body.pay_type === 'query_黑灰行为') {
+    detail.pay_price = 1;
+    detail.pay_title = '潮钱网充值中心-网贷黑灰行为查询'
+    detail.pay_type = 'query_黑灰行为';
   }
   else {
     return res.send({ err: { type: 'invalid_pay_type', message: '支付类型无效，请联系管理员！' } });
