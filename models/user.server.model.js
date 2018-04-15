@@ -237,7 +237,7 @@ module.exports = function (appDb) {
     },
     type: {
       type: String,
-      enum: ['vip_pay', 'credit198_pay']
+      enum: ['vip_pay', 'credit198_pay','query_大数据','query_黑灰行为','query_黑中介']
     },
     user_id: {
       type: String,
