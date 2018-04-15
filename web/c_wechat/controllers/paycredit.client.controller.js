@@ -17,24 +17,9 @@ $(function () {
 
   $('#buycode_btn').click(function () {
 //    alert("ok");
-    getPrePayId();
 
   });
  
 });
 
 
-function getPrePayId() {
-  $.ajax({
-    method: 'post',
-    url: '/page_wechat/getPrePayId4PayCredit',
-
-    success: function (data) {
-
-      if (data.prepay_id) {
-        window.location = '/page_wechat/getPayPage?product=198&prepay_id=' + data.prepay_id;
-      }
-      console.log(data);
-    }
-  });
-}

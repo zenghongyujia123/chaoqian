@@ -118,7 +118,7 @@ that.getAccessToken(function () {
   console.log(new Date(), 'get access token ,', access_token);
 });
 
-exports.get_pre_pay_id = function (req, product, price, openid, user_id, callback) {
+exports.get_pre_pay_id = function (req, detail, openid, callback) {
   // console.log('test  pay tEST ===============>');
 
   var jsonInfo = {
@@ -128,11 +128,12 @@ exports.get_pre_pay_id = function (req, product, price, openid, user_id, callbac
       device_info: 'web',
       nonce_str: new Date().getTime().toString(),
       sign_type: 'MD5',
-      body: product,
+      body: detail.pay_title,
+      attach:JSON.stringify(detail),
       out_trade_no: new Date().getTime().toString(),
       fee_type: 'CNY',
-      detail: user_id,
-      total_fee: price,
+      detail: JSON.stringify(detail),
+      total_fee: detail.pay_price,
       openid: openid,
       spbill_create_ip: getClientIp(req),
       notify_url: 'http://chaoqianwang.com/page_wechat/notify_url',

@@ -28,36 +28,12 @@ $(function () {
       },
       success: function (data) {
         console.log(data);
-        get_pre_pay_id(69,function(){
+        get_pre_pay_id('vip_pay',function(){
           
         })
-
-        // getPrePayId();
       }
     });
   });
-
-  function getPrePayId() {
-    $.ajax({
-      method: 'post',
-      url: '/page_wechat/getPrePayId',
-      
-      success: function (data) {
-        //Vincent testing the Pay component 12.23
-        //alert(JSON.stringify(data));
-        //存下VIP 资质认证开始时间，10天就过期
-        delCookie(VIP_auth_start_date);
-        setCookie(VIP_auth_start_date,10);
-
-        if (data.prepay_id) {
-          window.location = '/page_wechat/getPayPage?product=69&prepay_id=' + data.prepay_id;
-        }
-        console.log(data);
-      }
-    });
-  }
-
-
 });
 
 // c_anme : VIP 审核  VIP_auth_start_date , expiredays : 有效时间， 一般30天 。 

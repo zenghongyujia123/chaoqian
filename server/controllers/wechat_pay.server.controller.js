@@ -31,59 +31,6 @@ function getClientIp(req) {
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
 }
-function getPrePayId(product,price,req, openid, user_id, callback) {
-  // console.log('test  pay tEST ===============>');
-
-  var jsonInfo = {
-    xml: {
-      appid: 'wxf567e44e19240ae3',
-      mch_id: '1447454002',
-      device_info: 'web',
-      nonce_str: new Date().getTime().toString(),
-      sign_type: 'MD5',
-      body: product,// '潮钱充值中心-会员充值',
-      out_trade_no: new Date().getTime().toString(),
-      fee_type: 'CNY',
-      detail: user_id,
-      total_fee: price,//1,
-      openid: openid,
-      spbill_create_ip: getClientIp(req),
-      notify_url: 'http://chaoqianwang.com/page_wechat/notify_url',
-      trade_type: 'JSAPI',
-    }
-  };
-
-  var signArray = [];
-  for (var prop in jsonInfo.xml) {
-    signArray.push(prop + '=' + jsonInfo.xml[prop]);
-  }
-  signArray = signArray.sort();
-  signArray.push('key=' + 'kskjlskejki23456789kkksdjj22jjjj');
-  console.log(signArray.join('&'));
-  jsonInfo.xml.sign = cryptoLib.toMd5(signArray.join('&')).toUpperCase();
-
-  var builder = new xml2js.Builder();
-  var xml = builder.buildObject(jsonInfo);
-
-  console.log(xml);
-
-
-  agent.post('https://api.mch.weixin.qq.com/pay/unifiedorder')
-    .set('Content-Type', 'application/xml')
-    .send(xml)
-    .end(function (err, res) {
-      console.log('res.err =================================================================>');
-      console.log(err);
-      console.log('res.body =================================================================>');
-      console.log(res.text);
-
-      parseString(res.text, { explicitArray: false, ignoreAttrs: true }, function (err, data) {
-        return callback(null, data.xml);
-      });
-    });
-  // // var json = parser.toJson(xml);
-  // console.log("to json -> %s", json);
-};
 
 exports.notify_url = function (req, res, next) {
   console.log(' notify_url = {------------>');
@@ -97,6 +44,7 @@ exports.notify_url = function (req, res, next) {
     is_subscribe: req.body.xml.is_subscribe[0],
     mch_id: req.body.xml.mch_id[0],
     nonce_str: req.body.xml.nonce_str[0],
+    attach: req.body.xml.attach[0],
     openid: req.body.xml.openid[0],
     out_trade_no: req.body.xml.out_trade_no[0],
     result_code: req.body.xml.result_code[0],
@@ -108,15 +56,15 @@ exports.notify_url = function (req, res, next) {
     transaction_id: req.body.xml.transaction_id[0]
   }
   if (info && info.result_code == 'SUCCESS') {
-    var price = req.body.xml.total_fee[0];
-    if(price==VIP_PRICE) {//vip 
+    info.attach = JSON.parse(info.attach);
+    if (info.attach.pay_type == 'vip_pay') {//vip 
       userLogic.updateVipPayedByOpenid(req.body.xml.openid[0], info, function () {
       });
     }
-    else if (price==CREDIT198_PRICE){// credit card agency
-      userLogic.updateCredit198PayedByOpenid(req.body.xml.openid[0], info, function () {
-      });  
-    } 
+    // else if (price == CREDIT198_PRICE) {// credit card agency
+    //   userLogic.updateCredit198PayedByOpenid(req.body.xml.openid[0], info, function () {
+    //   });
+    // }
 
   }
 
@@ -136,24 +84,11 @@ exports.token_verify = function (req, res, next) {
   console.log(req.body);
   return res.send(req.query.echostr);
 }
-/*
-exports.getPrePayId = function (req, res, next) {
-  var user = req.user;
-  getPrePayId(req, user.openid, user._id.toString(), function (err, result) {
-    if (err) {
-      return next(err);
-    }
 
-    req.data = result;
-    return next();
-  });
-}
-*/
-
-// exports.getPrePayId = function (req, res, next) {
+// exports.getPrePayId4PayCredit = function (req, res, next) {
 //   var user = req.user;
-//   var product="潮钱充值中心-会员充值";
-//   var price =VIP_PRICE; //6900;
+//   var product="代还信用卡服务费：198元";
+//   var price =CREDIT198_PRICE; // 19800;
 //   getPrePayId(product,price,req, user.openid, user._id.toString(), function (err, result) {
 //     if (err) {
 //       return next(err);
@@ -164,52 +99,8 @@ exports.getPrePayId = function (req, res, next) {
 //   });
 // }
 
-exports.getPrePayId4PayCredit = function (req, res, next) {
-  var user = req.user;
-  var product="代还信用卡服务费：198元";
-  var price =CREDIT198_PRICE; // 19800;
-  getPrePayId(product,price,req, user.openid, user._id.toString(), function (err, result) {
-    if (err) {
-      return next(err);
-    }
-
-    req.data = result;
-    return next();
-  });
-}
-
-
-// exports.getPayPage = function (req, res, next) {
-//   var prepay_id = req.params.prepay_id || req.query.prepay_id;
-//   var product = req.params.product || req.query.product;
-
-//   console.log('prepay_id', prepay_id);
-
-//   var info = {
-//     appId: 'wxf567e44e19240ae3',
-//     timeStamp: new Date().getTime().toString(),
-//     nonceStr: new Date().getTime().toString(),
-//     package: 'prepay_id=' + prepay_id,
-//     signType: 'MD5',
-//   }
-
-//   var signArray = [];
-//   for (var prop in info) {
-//     signArray.push(prop + '=' + info[prop]);
-//   }
-//   signArray = signArray.sort();
-//   signArray.push('key=' + 'kskjlskejki23456789kkksdjj22jjjj');
-//   info.paySign = cryptoLib.toMd5(signArray.join('&')).toUpperCase();
-
-
-//   var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
-//   req.cookies.city = req.params.city || req.cookies.city || '';
-//   cookieLib.setCookie(res, 'city', req.cookies.city);
-//   return res.render(filepath, { city: req.cookies.city, info: info ,product: product});
-// }
-
 exports.getUserJsApiTicket = function (req, res, next) {
-  wechatNewloigc.getUserJsApiTicket(req.body.url,function (err, result) {
+  wechatNewloigc.getUserJsApiTicket(req.body.url, function (err, result) {
     return res.send(result);
   });
 }
@@ -217,16 +108,28 @@ exports.getUserJsApiTicket = function (req, res, next) {
 
 exports.get_pre_pay_id = function (req, res, next) {
   var user = req.user;
-  var price,product;
-  if(req.body.product==69){
-    product = '潮钱充值中心-会员充值';
-    price = 1;
+  var price, product;
+  var detail = {
+    pay_price: '',
+    pay_title: '',
+    pay_type: '',
+    pay_status: '',
+    pay_status_time: '',
+    user_id: user._id.toString()
+  };
+
+  if (req.body.pay_type === 'vip_pay') {
+    detail.pay_price = 1;
+    detail.pay_title = '潮钱网充值中心-会员充值';
+    detail.pay_type = 'vip_pay';
+    detail.user_pay_status_field = 'vip_payed';
+    detail.user_pay_status_field_time = 'vip_payed_time';
   }
-  if(req.body.product==198){
-    product = '代还信用卡服务费：198元';
-    price = 1;
+  else {
+    return res.send({ err: { type: 'invalid_pay_type', message: '支付类型无效，请联系管理员！' } });
   }
-  wechatNewloigc.get_pre_pay_id(req, product,price,user.openid, user._id.toString(), function (err, result) {
+
+  wechatNewloigc.get_pre_pay_id(req, detail, user.openid, function (err, result) {
     if (err) {
       return res.send(err);
     }

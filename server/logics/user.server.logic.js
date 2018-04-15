@@ -33,7 +33,7 @@ exports.signup = function (userInfo, callback) {
       openid: userInfo.openid,
       parent: userInfo.code || '',
       // vincent : check the topparent in signup step , and save in db
-      top_parent : userInfo.top_parent ||''
+      top_parent: userInfo.top_parent || ''
     });
     user.password = user.hashPassword(userInfo.password);
     user.save(function (err, saveUser) {
@@ -54,7 +54,7 @@ exports.signup = function (userInfo, callback) {
               });
             });
           });
-        
+
         });
       }
       else {
@@ -192,8 +192,8 @@ exports.requireByUsername = function (name1, callback) {
   });
 }
 
-  
- /********************************************************* */
+
+/********************************************************* */
 
 
 exports.saveCarrierToken = function (user, token, callback) {
@@ -287,10 +287,10 @@ exports.updateUserAuth1 = function (user, real_name, real_phone, id_card, callba
 }
 //updateCredit198PayedByOpenid
 exports.updateCredit198PayedByOpenid = function (openid, info, callback) {
-//  var user={};
+  //  var user={};
   User.findOne({ openid: openid }, function (err, user) {
     if (!user) {
- //     user=user;
+      //     user=user;
       return callback();
     }
 
@@ -298,12 +298,12 @@ exports.updateCredit198PayedByOpenid = function (openid, info, callback) {
       if (userPay) {
         return callback();
       }
-      var real_name = ((user.real_name!='')?user.real_name:user.wechat_info.nickname);
+      var real_name = ((user.real_name != '') ? user.real_name : user.wechat_info.nickname);
       userPay = new UserPay({
         type: 'credit198_pay',
         user_id: user._id,
-        user_phone:user.username,
-        user_real_name:user.wechat_info.nickname,
+        user_phone: user.username,
+        user_real_name: user.wechat_info.nickname,
         content: info
       });
       userPay.save(function () {
@@ -329,17 +329,17 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
       if (userPay) {
         return callback();
       }
-      var real_name = ((user.real_name!='')?user.real_name:user.wechat_info.nickname);
+      var real_name = ((user.real_name != '') ? user.real_name : user.wechat_info.nickname);
       userPay = new UserPay({
-        type: 'vip_pay',
+        type: info.attach.pay_type,
         user_id: user._id,
-        user_phone:user.username,
-        user_real_name:user.wechat_info.nickname,
+        user_phone: user.username,
+        user_real_name: user.wechat_info.nickname,
         content: info
       });
       userPay.save(function () {
-        user.vip_payed = true;
-        user.vip_payed_time = new Date();
+        user[info.attach.user_pay_status_field] = true;
+        user[info.attach.user_pay_status_field_time] = new Date();
         user.save(function (err) {
           return callback();
         });
@@ -384,7 +384,7 @@ exports.userList = function (callback) {
 
 //userListByCondition
 
-exports.userListByCondition = function (condition,sort,callback) {
+exports.userListByCondition = function (condition, sort, callback) {
   User.find(condition, function (err, users) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
@@ -408,7 +408,7 @@ exports.updateVipInfo = function (user, vip_info, callback) {
   user.vip_credit_starter = vip_info.vip_credit_starter;
   user.vip_report_url_text = vip_info.vip_report_url_text;
   user.vip_product_ids = vip_info.vip_product_ids;
-  user.vip_card_ids = vip_info.vip_card_ids||[];
+  user.vip_card_ids = vip_info.vip_card_ids || [];
 
   user.str1 = vip_info.str1;
   user.str2 = vip_info.str2;
@@ -417,7 +417,7 @@ exports.updateVipInfo = function (user, vip_info, callback) {
   user.str5 = vip_info.str5;
   user.str6 = vip_info.str6;
 
- // user.agent_rate = vip_info.agent_rate;
+  // user.agent_rate = vip_info.agent_rate;
 
   user.markModified('vip_product_ids');
   user.markModified('vip_card_ids');
@@ -445,14 +445,14 @@ exports.updateAddInfo = function (user, vip_info, callback) {
 }
 //updateAgentRate
 exports.updateAgentRate = function (user, info, callback) {
-    user.agent_rate = info.agent_rate;
-    user.save(function (err, savedUser) {
-      if (err) {
-        return callback({ err: sysErr.database_save_error });
-      }
-      return callback(null, savedUser);
-    });
-  }
+  user.agent_rate = info.agent_rate;
+  user.save(function (err, savedUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, savedUser);
+  });
+}
 
 
 exports.updateVipReportInfo = function (user, vip_report, callback) {

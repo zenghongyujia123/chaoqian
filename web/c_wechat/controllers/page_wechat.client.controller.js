@@ -54,17 +54,17 @@ function takeCamera(callback) {
 }
 
 
-function get_pre_pay_id(product, callback) {
+function get_pre_pay_id(pay_type, callback) {
   $.ajax({
     method: 'post',
     url: '/api_wechat_pay/payment/get_pre_pay_id',
     data:{
-      product:69
+      pay_type:pay_type
     },
     success: function (data) {
       if (data.prepay_id) {
-        get_pre_pay_info(data.prepay_id,product, function (info) {
-          onBridgeReady(info,product, function () {
+        get_pre_pay_info(data.prepay_id,pay_type, function (info) {
+          onBridgeReady(info,pay_type, function () {
 
           })
         })
@@ -74,7 +74,7 @@ function get_pre_pay_id(product, callback) {
   });
 }
 
-function get_pre_pay_info(prepay_id,product, callback) {
+function get_pre_pay_info(prepay_id,pay_type, callback) {
   $.ajax({
     method: 'post',
     url: '/api_wechat_pay/payment/get_pre_pay_info',
@@ -102,8 +102,8 @@ function onBridgeReady(info, product, callback) {
     'getBrandWCPayRequest', payinfo,
     function (res) {
       if (res.err_msg == "get_brand_wcpay_request:ok") {
-        if (product == 198) window.location = '/page_wechat/paycredit'
-        else if (product == 69) window.location = '/page_wechat/vip_auth_info';
+        if (pay_type == 198) window.location = '/page_wechat/paycredit'
+        else if (pay_type == 'vip_pay') window.location = '/page_wechat/vip_auth_info';
         else window.location = '/page_wechat/home';
         return callback();
       }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
