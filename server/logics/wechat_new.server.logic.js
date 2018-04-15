@@ -13,7 +13,7 @@ var userLogic = require('./user.server.logic');
 
 var appid = 'wxf567e44e19240ae3';
 var sk = 'fe0fad0d4eb9cedec995dbea06bd2f3b';
-var pay_sk = 'sdwewwwwdddddssss345444432wwwsss';
+var pay_sk = 'kskjlskejki23456789kkksdjj22jjjj';
 var mch_id = '1447454002';
 
 var xml2js = require('xml2js');
