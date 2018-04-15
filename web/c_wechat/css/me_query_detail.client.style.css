@@ -43,10 +43,10 @@ body {
   line-height: 40px;
 }
 .item .row .left {
-  width: 50%;
+  width: 60%;
   line-height: 40px;
 }
 .item .row .right {
   text-align: right;
-  width: 50%;
+  width: 40%;
 }
