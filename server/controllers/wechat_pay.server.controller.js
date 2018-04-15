@@ -150,19 +150,19 @@ exports.getPrePayId = function (req, res, next) {
 }
 */
 
-exports.getPrePayId = function (req, res, next) {
-  var user = req.user;
-  var product="潮钱充值中心-会员充值";
-  var price =VIP_PRICE; //6900;
-  getPrePayId(product,price,req, user.openid, user._id.toString(), function (err, result) {
-    if (err) {
-      return next(err);
-    }
+// exports.getPrePayId = function (req, res, next) {
+//   var user = req.user;
+//   var product="潮钱充值中心-会员充值";
+//   var price =VIP_PRICE; //6900;
+//   getPrePayId(product,price,req, user.openid, user._id.toString(), function (err, result) {
+//     if (err) {
+//       return next(err);
+//     }
 
-    req.data = result;
-    return next();
-  });
-}
+//     req.data = result;
+//     return next();
+//   });
+// }
 
 exports.getPrePayId4PayCredit = function (req, res, next) {
   var user = req.user;
@@ -179,34 +179,34 @@ exports.getPrePayId4PayCredit = function (req, res, next) {
 }
 
 
-exports.getPayPage = function (req, res, next) {
-  var prepay_id = req.params.prepay_id || req.query.prepay_id;
-  var product = req.params.product || req.query.product;
+// exports.getPayPage = function (req, res, next) {
+//   var prepay_id = req.params.prepay_id || req.query.prepay_id;
+//   var product = req.params.product || req.query.product;
 
-  console.log('prepay_id', prepay_id);
+//   console.log('prepay_id', prepay_id);
 
-  var info = {
-    appId: 'wxf567e44e19240ae3',
-    timeStamp: new Date().getTime().toString(),
-    nonceStr: new Date().getTime().toString(),
-    package: 'prepay_id=' + prepay_id,
-    signType: 'MD5',
-  }
+//   var info = {
+//     appId: 'wxf567e44e19240ae3',
+//     timeStamp: new Date().getTime().toString(),
+//     nonceStr: new Date().getTime().toString(),
+//     package: 'prepay_id=' + prepay_id,
+//     signType: 'MD5',
+//   }
 
-  var signArray = [];
-  for (var prop in info) {
-    signArray.push(prop + '=' + info[prop]);
-  }
-  signArray = signArray.sort();
-  signArray.push('key=' + 'kskjlskejki23456789kkksdjj22jjjj');
-  info.paySign = cryptoLib.toMd5(signArray.join('&')).toUpperCase();
+//   var signArray = [];
+//   for (var prop in info) {
+//     signArray.push(prop + '=' + info[prop]);
+//   }
+//   signArray = signArray.sort();
+//   signArray.push('key=' + 'kskjlskejki23456789kkksdjj22jjjj');
+//   info.paySign = cryptoLib.toMd5(signArray.join('&')).toUpperCase();
 
 
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
-  req.cookies.city = req.params.city || req.cookies.city || '';
-  cookieLib.setCookie(res, 'city', req.cookies.city);
-  return res.render(filepath, { city: req.cookies.city, info: info ,product: product});
-}
+//   var filepath = path.join(__dirname, '../../web/c_wechat/views/pay_test.client.view.html');
+//   req.cookies.city = req.params.city || req.cookies.city || '';
+//   cookieLib.setCookie(res, 'city', req.cookies.city);
+//   return res.render(filepath, { city: req.cookies.city, info: info ,product: product});
+// }
 
 exports.getUserJsApiTicket = function (req, res, next) {
   wechatNewloigc.getUserJsApiTicket(req.body.url,function (err, result) {
@@ -218,7 +218,7 @@ exports.getUserJsApiTicket = function (req, res, next) {
 exports.get_pre_pay_id = function (req, res, next) {
   var user = req.user;
   var price,product;
-  if(req.bodyproduct==69){
+  if(req.body.product==69){
     product = '潮钱充值中心-会员充值';
     price = 1;
   }
