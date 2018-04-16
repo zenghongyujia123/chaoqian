@@ -67,4 +67,5 @@ module.exports = function (app) {
   app.route('/page_wechat/invite_notice').get(userFilter.requireUser, index.invite_notice);
   app.route('/page_wechat/page_image').get( index.page_image);
   app.route('/page_wechat/page_reward').get( index.page_reward);
+  app.route('/page_wechat/page_refresh_reward').get( index.page_refresh_reward);
 };

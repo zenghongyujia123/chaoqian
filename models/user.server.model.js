@@ -31,6 +31,10 @@ module.exports = function (appDb) {
       type: Number,
       default: 0
     },
+    point:{
+      type:Number,
+      default:0
+    },
     username: {
       type: String,
       trim: true

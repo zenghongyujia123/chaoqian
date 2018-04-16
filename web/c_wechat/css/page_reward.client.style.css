@@ -7,6 +7,47 @@ body {
   top: 0px;
   -webkit-overflow-scrolling: touch;
 }
-body .back-header .header-center {
+body .back-body {
+  position: relative;
+}
+body .back-body .body-center {
+  top: 0px;
+  left: 0px;
   width: 100%;
+}
+body .back-body .receive-task {
+  position: absolute;
+  left: 20%;
+  top: 47%;
+  width: 28%;
+}
+body .back-body .refresh-task {
+  position: absolute;
+  left: 20%;
+  top: 51%;
+  width: 28%;
+}
+body .back-body .start-task {
+  position: absolute;
+  left: 36%;
+  top: 86%;
+  width: 28%;
+}
+body .back-body .main-question-mark {
+  width: 20px;
+  position: absolute;
+  right: 18%;
+  top: 17%;
+}
+body .back-body .question-mark {
+  width: 20px;
+  position: absolute;
+  right: 18%;
+  top: 69%;
+}
+body .back-body .exclamation-mark {
+  width: 20px;
+  position: absolute;
+  right: 18%;
+  top: 86%;
 }

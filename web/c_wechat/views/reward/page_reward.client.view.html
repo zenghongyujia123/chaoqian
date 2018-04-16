@@ -14,10 +14,22 @@
 </head>
 
 <body>
-  <div class="back-header">
-    <img class="header-center" src="../c_wechat/images/reward/common/空间限时任务.png">
-    <img class="header-center" src="../c_wechat/images/reward/common/标题辅助线.png">
+  <div class="back-body">
+    <img class="body-center" src="../c_wechat/images/reward/<%= color %>/主图.jpg">
+    <img class="receive-task" src="../c_wechat/images/reward/<%= color %>/承接任务按钮.png">
+    <img class="refresh-task" src="../c_wechat/images/reward/<%= color %>/任务刷新按钮.png">
+    <img class="start-task" src="../c_wechat/images/reward/<%= color %>/开始探宝按钮.png">
+    <img class="main-question-mark" src="../c_wechat/images/reward/<%= color %>/主问号.png">
+    <img class="question-mark" src="../c_wechat/images/reward/<%= color %>/问号.png">
+    <img class="exclamation-mark" src="../c_wechat/images/reward/<%= color %>/感叹号.png">
   </div>
 </body>
+<script>
+  $(function(){
+    $('.refresh-task').click(function(){
+      window.location ='/page_wechat/page_refresh_reward'
+    }); 
+  })
+</script>
 
 </html>

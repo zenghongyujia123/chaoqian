@@ -338,9 +338,9 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
         content: info
       });
       userPay.save(function () {
-        if(info.attach==='vip_pay'){
-          user[info.attach+'ed'] = true;
-          user[info.attach+'ed_time'] = new Date();
+        if (info.attach === 'vip_pay') {
+          user[info.attach + 'ed'] = true;
+          user[info.attach + 'ed_time'] = new Date();
         }
         user.save(function (err) {
           return callback();
@@ -474,5 +474,9 @@ exports.getUserShareUrl = function (username, callback) {
     .end(function (err, data) {
       return callback(err, data.body);
     });
+}
+
+exports.refresh_task = function (user, callback) {
+  
 }
 

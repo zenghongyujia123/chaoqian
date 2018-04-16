@@ -594,8 +594,15 @@ exports.me_share = function (req, res, next) {
 }
 
 exports.page_reward = function (req, res, next) {
+  var color = req.query.color;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/reward/page_reward.client.view.html');
-  return res.render(filepath, {});
+  return res.render(filepath, {color:color||'green'});
 }
 
+exports.page_refresh_reward = function (req, res, next) {
+  var colors = ['green','orange','red','blue','purple'];
+  var index = Math.floor(Math.random()*5);
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/reward/page_reward.client.view.html');
+  return res.render(filepath, {color:colors[index]});
+}
 
