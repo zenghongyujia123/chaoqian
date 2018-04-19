@@ -149,7 +149,7 @@ exports.result = function (req, res, next) {
 
   productLogic.productsByRiskCode(result.risk_codes, function (err, products) {
     cardLogic.cardList(function (err, cards) {
-      var filepath = path.join(__dirname, '../../web/c_wechat/views/result.client.view.html');
+      var filepath = path.join(__dirname, '../../web/c_wechat/views/question_result.client.view.html');
       return res.render(filepath, {
         city: req.cookies.city || '',
         text: result.text || '',

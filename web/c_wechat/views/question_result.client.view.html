@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
+
+  <title>推荐结果</title>
+  <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
+  <link rel="stylesheet" href="../c_wechat/css/question_result.client.style.css" />
+  <script src="../libs/jquery/dist/jquery.js"></script>
+  <meta name="baidu-site-verification" content="4hPH3hudxx" />
+</head>
+
+<body>
+  <div class="page-result-header">
+    <div class="header-left">
+      <div class="title">信用初值</div>
+      <div class="value">
+        <%=text%>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="title">信用估值（元）</div>
+      <div class="value">
+        <%=price%>
+      </div>
+    </div>
+  </div>
+  <div class="page-result-banner" style="color:#ffd481">
+    专业的信用状况调查及建议，请加入VIP还送100%下款通道哦！
+  </div>
+  <div class="page-result-center">
+    <div class="title">
+      强烈推荐您以下借款平台
+    </div>
+    <div class="center-list">
+
+      <% for(var i=0; i<products.length; i++) {%>
+
+        <a class="center-list-item" href="/page_wechat/product_detail?product_id=<%= products[i]._id %>">
+          <img src="<%= products[i].logo %>" class="icon"></img>
+          <div class="name">
+            <%= products[i].name %>
+          </div>
+        </a>
+        <% } %>      
+    </div>
+  </div>
+  <div class="page-result-panel">
+    <div class="panel-title">
+      依据您的资料，推荐您申请以下信用卡
+    </div>
+    <div class="panel-content">
+      <div class="icon"></div>
+      <div class="text">超高的渠道合作下卡率（低风控标准）</div>
+    </div>
+    <div class="panel-content">
+      <div class="icon"></div>
+      <div class="text">良好的银行信用交往历史记录将使您信用财富受益匪浅</div>
+    </div>
+    <div class="panel-content">
+      <div class="icon"></div>
+      <div class="text">申请下卡就可免费赠送养卡提额MOPS，联系客服即可获得</div>
+    </div>
+  </div>
+  <div class="page-result-list">
+
+    <% for(var i=0; i<3; i++) {%>
+        <% if(cards[i]){ %>
+          <div class="result-list-item">
+              <img src="<%= cards[i].logo %>" class="card-item"></img>
+              <div class="item-title">
+                <%= cards[i].name %>
+              </div>
+              <div class="item-content">
+                <%= cards[i].description %>
+              </div>
+            </div>
+        <% } %>
+     
+      <% } %>
+
+  </div>
+</body>
+
+</html>
