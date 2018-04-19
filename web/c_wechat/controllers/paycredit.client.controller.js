@@ -17,7 +17,7 @@ $(function () {
 
   $('#buycode_btn').click(function () {
     //    alert("ok");
-    get_pre_pay_id('vip_pay', function () {
+    get_pre_pay_id('postcode_pay', function () {
 
     });
   });
