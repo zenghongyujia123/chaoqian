@@ -50,6 +50,7 @@ exports.update_status = function (user, callback) {
     }
 
     postcode.user = user._id;
+    postcode.status = 'used';
     postcode.bind_time = new Date();
     postcode.save(function (err, result) {
       if (err) {
