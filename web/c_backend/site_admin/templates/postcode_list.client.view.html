@@ -8,6 +8,8 @@
   <div class="list-header">
     <div class="list-item" layout="row" layout-align="start center">
       <div class="column-item" flex="">code</div>
+      <div class="column-item" flex="">用户头像</div>
+      <div class="column-item" flex="">用户</div>
       <div class="column-item" flex="">用户手机</div>
       <div class="column-item" flex="">状态</div>
       <div class="column-item" flex="">支付时间</div>
@@ -17,6 +19,10 @@
   <div class="list-body">
     <div class="list-item" layout="row" layout-align="start center" ng-repeat=" card in postcode_list">
       <div class="column-item" flex="">{{card.number}}</div>
+      <div class="column-item" flex="">
+          <img ng-src="{{card.user.wechat_info.headimgurl}}"></img>
+        </div>
+      <div class="column-item" flex="">{{card.user.wechat_info.nickname}}</div>
       <div class="column-item" flex="">{{card.user.username}}</div>
       <div class="column-item" flex="">{{card.status}}</div>
       <div class="column-item" flex="">{{card.bind_time | date:'yyyy-MM-dd HH:mm:ss'}}</div>
