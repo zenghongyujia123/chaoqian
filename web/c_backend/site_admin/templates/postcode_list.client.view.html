@@ -10,7 +10,8 @@
       <div class="column-item" flex="">code</div>
       <div class="column-item" flex="">用户</div>
       <div class="column-item" flex="">状态</div>
-      <div class="column-item" flex="">时间</div>
+      <div class="column-item" flex="">支付时间</div>
+      <div class="column-item" flex="">创建时间</div>
     </div>
   </div>
   <div class="list-body">
@@ -18,6 +19,7 @@
       <div class="column-item" flex="">{{card.number}}</div>
       <div class="column-item" flex="">{{card.user}}</div>
       <div class="column-item" flex="">{{card.status}}</div>
+      <div class="column-item" flex="">{{card.bind_time  | date:'yyyy-MM-dd HH:mm:ss'}}</div>
       <div class="column-item" flex="">{{card.create_time  | date:'yyyy-MM-dd HH:mm:ss'}}</div>
     </div>
   </div>
