@@ -105,7 +105,7 @@ exports.get_pre_pay_id = function (req, res, next) {
     detail.pay_type = 'query_黑灰行为';
   }
   else if (req.body.pay_type === 'postcode_pay') {
-    detail.pay_price = 6800;
+    detail.pay_price = 1;
     detail.pay_title = '潮钱网充值中心-激活码'
     detail.pay_type = 'postcode_pay';
   }
