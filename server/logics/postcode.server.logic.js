@@ -32,7 +32,7 @@ exports.list = function (user, info, callback) {
   if (info.user_id) {
     query.user = info.user_id;
   }
-  Postcode.find(query, function (err, results) {
+  Postcode.find(query).populate('user').exec(function (err, results) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }
