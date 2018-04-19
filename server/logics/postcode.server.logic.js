@@ -10,11 +10,20 @@ var that = exports;
 
 
 exports.create_postcode = function (user, number, callback) {
-  new Postcode({ number: number }).save(function (err, result) {
+  Postcode.findOne({ number: number }, function (err, old) {
     if (err) {
-      return callback({ err: sysErr.database_save_error });
+      return callback({ err: sysErr.database_query_error });
     }
-    return callback(null, result);
+
+    if (old) {
+      return callback({ err: { type: 'code_exist', message: 'code已存在' } });
+    }
+    new Postcode({ number: number }).save(function (err, result) {
+      if (err) {
+        return callback({ err: sysErr.database_save_error });
+      }
+      return callback(null, result);
+    });
   });
 }
 

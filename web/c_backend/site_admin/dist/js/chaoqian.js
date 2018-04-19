@@ -22,6 +22,16 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     //   templateUrl: '/c_backend/site_admin/templates/home.client.view.html',
     //   controller: 'HomeController'
     // })
+    .state('postcode_list', {
+      url: '/postcode_list',
+      templateUrl: '/c_backend/site_admin/templates/postcode_list.client.view.html',
+      controller: 'PostCodeListController'
+    })
+    // .state('postcode_detail', {
+    //   url: '/postcode_detail',
+    //   templateUrl: '/c_backend/site_admin/templates/postcode_detail.client.view.html',
+    //   controller: 'PostCodeDetailController'
+    // })
     .state('product_list', {
       url: '/product_list',
       templateUrl: '/c_backend/site_admin/templates/product_list.client.view.html',
@@ -323,6 +333,20 @@ cSite.factory('Http',
         }
       };
 
+    }]);
+
+'use strict';
+cSite.factory('PostCodeNetwork',
+  ['Http', 'CommonHelper',
+    function (Http, CommonHelper) {
+      return {
+        create_postcode: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/postcode/create_postcode', params);
+        },
+        list: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/postcode/list', params);
+        }
+      };
     }]);
 
 'use strict';
@@ -1287,6 +1311,49 @@ cSite.controller('JietiaoListController', [
     };
 
     $scope.jietiaoList();
+  }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('PostCodeListController', [
+  '$rootScope', '$scope', '$state', '$stateParams', '$timeout', 'QiniuService', 'PostCodeNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, $timeout, QiniuService, PostCodeNetwork, CommonHelper) {
+    var name = ''
+    $scope.goDetail = function (id) {
+      // $state.go('product_detail', { product_id: id || '' });
+      name = prompt("输入code", "");
+      $scope.create_postcode(name);
+    }
+
+    $scope.postcode_list = [];
+    $scope.list = function () {
+      PostCodeNetwork.list($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.postcode_list = data;
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.create_postcode = function (name) {
+      if(name){
+        PostCodeNetwork.create_postcode($scope, {number:name}).then(function (data) {
+          console.log(data);
+          if (!data.err) {
+            $state.go('postcode_list', { }, { reload: true });
+          }
+        }, function (err) {
+          console.log(err);
+        });
+      }
+    }
+
+    $scope.list();
   }]);
 
 /**

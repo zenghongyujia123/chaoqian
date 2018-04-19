@@ -1,0 +1,24 @@
+<div class="page-body-view">
+  <div class="page-operation-view" layout="row" layout-align="space-between center">
+    <p class="title">postcode列表</p>
+    <!-- <md-button class="md-primary md-raised md-hue-2" ng-click="goSetting()">设置信用卡</md-button> -->
+    <md-button class="md-primary md-raised md-hue-2" ng-click="goDetail()">创建code</md-button>
+  </div>
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">code</div>
+      <div class="column-item" flex="">用户</div>
+      <div class="column-item" flex="">状态</div>
+      <div class="column-item" flex="">时间</div>
+    </div>
+  </div>
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" ng-repeat=" card in postcode_list">
+      <div class="column-item" flex="">{{card.number}}</div>
+      <div class="column-item" flex="">{{card.user}}</div>
+      <div class="column-item" flex="">{{card.status}}</div>
+      <div class="column-item" flex="">{{card.create_time  | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+    </div>
+  </div>
+</div>

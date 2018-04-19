@@ -22,6 +22,16 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     //   templateUrl: '/c_backend/site_admin/templates/home.client.view.html',
     //   controller: 'HomeController'
     // })
+    .state('postcode_list', {
+      url: '/postcode_list',
+      templateUrl: '/c_backend/site_admin/templates/postcode_list.client.view.html',
+      controller: 'PostCodeListController'
+    })
+    // .state('postcode_detail', {
+    //   url: '/postcode_detail',
+    //   templateUrl: '/c_backend/site_admin/templates/postcode_detail.client.view.html',
+    //   controller: 'PostCodeDetailController'
+    // })
     .state('product_list', {
       url: '/product_list',
       templateUrl: '/c_backend/site_admin/templates/product_list.client.view.html',

@@ -2,9 +2,9 @@
  * Created by zenghong on 2017/8/8.
  */
 
-var psotcodeController = require('../controllers/postcode');
+var postcodeController = require('../controllers/postcode');
 
 module.exports = function (app) {
-  app.route('/psotcode/create_postcode').post(psotcodeController.create_postcode);
-  app.route('/psotcode/list').post(psotcodeController.list);
+  app.route('/postcode/create_postcode').post(postcodeController.create_postcode);
+  app.route('/postcode/list').post(postcodeController.list);
 };
