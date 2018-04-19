@@ -271,6 +271,12 @@ exports.postcode_my_list = function (req, res, next) {
   });
 };
 
+exports.postcode_detail = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/postcode_detail.client.view.html');
+  return res.render(filepath, { number: req.query.number });
+};
+
+
 
 exports.me_query_detail = function (req, res, next) {
   var user = req.user;
