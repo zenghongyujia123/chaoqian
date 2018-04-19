@@ -6,11 +6,11 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
 
   <title>我的账户</title>
-  <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/me_account.client.style.css" />
   <script src="../libs/jquery/dist/jquery.js"></script>
-  <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
 
 <body>
@@ -50,7 +50,59 @@
     </div>
     <div class="buy-vip-btn">购买VIP会员</div>
   </div> -->
+  <% for(var i=0; i<pays.length; i++) {%>
+
+      <div class="weui-form-preview" style="margin-bottom: 10px;">
+          <div class="weui-form-preview__hd">
+            <label class="weui-form-preview__label">付款金额</label>
+            <em class="weui-form-preview__value">¥<%= (pays[i].content.total_fee/100) %></em>
+          </div>
+          <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+              <label class="weui-form-preview__label">商品</label>
+              <span class="weui-form-preview__value">电动打蛋机</span>
+            </div>
+            <div class="weui-form-preview__item">
+              <label class="weui-form-preview__label">标题标题</label>
+              <span class="weui-form-preview__value">名字名字名字</span>
+            </div>
+          </div>
+        </div>
+    <% } %>
   
+  
+  <div class="weui-form-preview" style="margin-bottom: 10px;">
+    <div class="weui-form-preview__hd">
+      <label class="weui-form-preview__label">付款金额</label>
+      <em class="weui-form-preview__value">¥2400.00</em>
+    </div>
+    <div class="weui-form-preview__bd">
+      <div class="weui-form-preview__item">
+        <label class="weui-form-preview__label">商品</label>
+        <span class="weui-form-preview__value">电动打蛋机</span>
+      </div>
+      <div class="weui-form-preview__item">
+        <label class="weui-form-preview__label">标题标题</label>
+        <span class="weui-form-preview__value">名字名字名字</span>
+      </div>
+    </div>
+  </div>
+  <div class="weui-form-preview" style="margin-bottom: 10px;">
+    <div class="weui-form-preview__hd">
+      <label class="weui-form-preview__label">付款金额</label>
+      <em class="weui-form-preview__value">¥2400.00</em>
+    </div>
+    <div class="weui-form-preview__bd">
+      <div class="weui-form-preview__item">
+        <label class="weui-form-preview__label">商品</label>
+        <span class="weui-form-preview__value">电动打蛋机</span>
+      </div>
+      <div class="weui-form-preview__item">
+        <label class="weui-form-preview__label">标题标题</label>
+        <span class="weui-form-preview__value">名字名字名字</span>
+      </div>
+    </div>
+  </div>
 
 
 </body>

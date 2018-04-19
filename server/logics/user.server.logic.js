@@ -338,7 +338,7 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
         content: info
       });
       userPay.save(function () {
-        if (info.attach === 'vip_pay') {
+        if (info.attach === 'vip_pay' || info.attach === 'postcode_pay') {
           user[info.attach + 'ed'] = true;
           user[info.attach + 'ed_time'] = new Date();
         }
@@ -477,6 +477,15 @@ exports.getUserShareUrl = function (username, callback) {
 }
 
 exports.refresh_task = function (user, callback) {
-  
+
+}
+
+exports.user_pays = function (user, callback) {
+  UserPay.find({ user_id: user._id }, function (err, results) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, results);
+  })
 }
 

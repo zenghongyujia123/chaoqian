@@ -31,9 +31,9 @@ module.exports = function (appDb) {
       type: Number,
       default: 0
     },
-    point:{
-      type:Number,
-      default:0
+    point: {
+      type: Number,
+      default: 0
     },
     username: {
       type: String,
@@ -139,6 +139,13 @@ module.exports = function (appDb) {
     credit198_payed_time: {
       type: Date
     },
+    postcode_payed: {
+      type: Boolean,
+      default: false
+    },
+    postcode_payed_time: {
+      type: Date
+    },
     vip_payed: {
       type: Boolean,
       default: false
@@ -241,7 +248,7 @@ module.exports = function (appDb) {
     },
     type: {
       type: String,
-      enum: ['vip_pay', 'credit198_pay','query_大数据','query_黑灰行为','query_黑中介']
+      enum: ['vip_pay', 'postcode_pay', 'credit198_pay', 'query_大数据', 'query_黑灰行为', 'query_黑中介']
     },
     user_id: {
       type: String,
@@ -255,6 +262,11 @@ module.exports = function (appDb) {
     content: {
       type: Schema.Types.Mixed
     }
+  });
+
+  UserPaySchema.plugin(timestamps, {
+    createdAt: 'create_time',
+    updatedAt: 'update_time'
   });
 
   var UserVipReportSchema = new Schema({

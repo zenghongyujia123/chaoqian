@@ -2,105 +2,114 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
 
-  <title>潮钱网</title>
-  <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../libs/Swiper/dist/css/swiper.min.css" />
-  <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
-  <link rel="stylesheet" href="../c_wechat/css/paycredit.client.style.css" />
-  <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-  <script src="../libs/jquery/dist/jquery.js"></script>
-  <script src="../libs/Swiper/dist/js/swiper.jquery.min.js"></script>
-  <script src="../c_wechat/controllers/paycredit.client.controller.js"></script>
+    <title>潮钱网</title>
+    <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../libs/Swiper/dist/css/swiper.min.css" />
+    <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
+    <link rel="stylesheet" href="../c_wechat/css/paycredit.client.style.css" />
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="../libs/jquery/dist/jquery.js"></script>
+    <script src="../libs/Swiper/dist/js/swiper.jquery.min.js"></script>
+    <script src="../c_wechat/controllers/paycredit.client.controller.js"></script>
 </head>
 
 <body>
     <div class='user' style="display:none">
     </div>
-  <div class="page-home">
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <a class="swiper-slide" href="">
-          <img src="../c_wechat/images/paycredit/ba1.png" />
-        </a>
-        <a class="swiper-slide" href="">
-          <img src="../c_wechat/images/paycredit/ba2.png" />
-        </a>      
-      </div>
-      <!-- 如果需要分页器 -->
-      <div class="swiper-pagination"></div>
-    </div>
-
-    <table align="center" cellspacing="1" class="style1">
-        <tr>
-            <td class="small">
-                <a href="../c_wechat/views/pc_introduction.client.view.html" >
-                  <img alt="" src="../c_wechat/images/paycredit/introduce.png" title="产品介绍" />
+    <div class="page-home" style="background-color: white;">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <a class="swiper-slide" href="">
+                    <img src="../c_wechat/images/paycredit/ba1.png" />
                 </a>
-            </td>    
-            <td class="small">
-                <a href="../c_wechat/views/pc_process.client.view.html" >
-                  <img alt="" src="../c_wechat/images/paycredit/process.png" title="使用流程"/>
-                </a>                        
-            </td>
-            <td class="small">
-                <a href="../c_wechat/views/pc_service.client.view.html" >
-                  <img alt="" src="../c_wechat/images/paycredit/service.png" title="客户服务"/>
-                </a>                        
-            </td>    
-            <td class="small">
-                <a href="../c_wechat/views/pc_questions.client.view.html" >
-                  <img alt="" src="../c_wechat/images/paycredit/questions.png" title="常见问题"/>
-                </a>                        
-            </td>              
-        </tr>
-        <tr>
-            <td class="style2">
-                产品介绍</td>
-            <td class="style2">
-                使用流程</td>
-            <td class="style2">
-                客户服务</td>
-            <td class="style2">
-                常见问题</td>
-        </tr>
-    </table>    
+                <a class="swiper-slide" href="">
+                    <img src="../c_wechat/images/paycredit/ba2.png" />
+                </a>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
 
-    <table  class="style1">
-        <tr>
+        <table align="center" cellspacing="1" class="style1">
+            <tr>
+                <td class="small">
+                    <a href="../c_wechat/views/pc_introduction.client.view.html">
+                        <img alt="" src="../c_wechat/images/paycredit/introduce.png" title="产品介绍" />
+                    </a>
+                </td>
+                <td class="small">
+                    <a href="../c_wechat/views/pc_process.client.view.html">
+                        <img alt="" src="../c_wechat/images/paycredit/process.png" title="使用流程" />
+                    </a>
+                </td>
+                <td class="small">
+                    <a href="../c_wechat/views/pc_service.client.view.html">
+                        <img alt="" src="../c_wechat/images/paycredit/service.png" title="客户服务" />
+                    </a>
+                </td>
+                <td class="small">
+                    <a href="../c_wechat/views/pc_questions.client.view.html">
+                        <img alt="" src="../c_wechat/images/paycredit/questions.png" title="常见问题" />
+                    </a>
+                </td>
+            </tr>
+            <tr>
                 <td class="style2">
-                        <a href="http://repay.olvip.vip/merchant/activate_ios?openId=otAbZst0K3UogVFz9GdwCC4Rs068&oemNo=100045" class="home-apply-btn">
-                                点击接受还卡服务
-                        </a>
+                    产品介绍</td>
+                <td class="style2">
+                    使用流程</td>
+                <td class="style2">
+                    客户服务</td>
+                <td class="style2">
+                    常见问题</td>
+            </tr>
+        </table>
+
+        <table class="style1">
+            <tr>
+                <td class="style2">
+                    <a href="http://repay.olvip.vip/merchant/activate_ios?openId=otAbZst0K3UogVFz9GdwCC4Rs068&oemNo=100045" class="home-apply-btn">
+                        点击接受还卡服务
+                    </a>
                 </td>
                 <td class="style2">
-                        <img alt="" src="../c_wechat/images/paycredit/paycredit.png"/>
+                    <img alt="" src="../c_wechat/images/paycredit/paycredit.png" />
                 </td>
-        </tr>
-        <tr>
+            </tr>
+            <tr>
                 <td class="style2">
-                        <div id="buycode_btn" class="home-apply-btn">
-                                点击购买激活码                            
-                        </div>
+                    <div id="buycode_btn" class="home-apply-btn">
+                        点击购买激活码
+                    </div>
                 </td>
                 <td class="style2">
-                        <img alt="" src="../c_wechat/images/paycredit/buycode.png"/>  
+                    <img alt="" src="../c_wechat/images/paycredit/buycode.png" />
                 </td>
-        </tr>
+            </tr>
+            <tr>
+                <td class="style2">
+                    <div id="buycode_btn" class="home-apply-btn">
+                        点击获取激活码
+                    </div>
+                </td>
+                <td class="style2">
+                    <img alt="" src="../c_wechat/images/paycredit/getcode.png" />
+                </td>
+            </tr>
+        </table>
 
-    </table>
 
+        <!-- <div class="bottom">
+            <a href="/page_wechat/home">
 
-    <div class="bottom">
-            <a href="/page_wechat/home" >
-             
-            <img src="../c_wechat/images/paycredit/ba3.png" class="item"/>
-        </a>
+                <img src="../c_wechat/images/paycredit/ba3.png" class="item" />
+            </a>
+        </div> -->
+
     </div>
-
-</div>
 
 </body>
 

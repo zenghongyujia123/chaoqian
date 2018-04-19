@@ -228,8 +228,13 @@ exports.me_vip = function (req, res, next) {
 
 exports.me_account = function (req, res, next) {
   var user = req.user;
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_account.client.view.html');
-  return res.render(filepath, { city: req.cookies.city, user: req.user });
+  userLogic.user_pays(req.user, function (err, results) {
+    if (err) {
+      return res.send(err);
+    }
+    var filepath = path.join(__dirname, '../../web/c_wechat/views/me_account.client.view.html');
+    return res.render(filepath, { city: req.cookies.city, user: req.user, pays: results });
+  });
 };
 
 exports.me_bill = function (req, res, next) {
@@ -596,13 +601,13 @@ exports.me_share = function (req, res, next) {
 exports.page_reward = function (req, res, next) {
   var color = req.query.color;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/reward/page_reward.client.view.html');
-  return res.render(filepath, {color:color||'green'});
+  return res.render(filepath, { color: color || 'green' });
 }
 
 exports.page_refresh_reward = function (req, res, next) {
-  var colors = ['green','orange','red','blue','purple'];
-  var index = Math.floor(Math.random()*5);
+  var colors = ['green', 'orange', 'red', 'blue', 'purple'];
+  var index = Math.floor(Math.random() * 5);
   var filepath = path.join(__dirname, '../../web/c_wechat/views/reward/page_reward.client.view.html');
-  return res.render(filepath, {color:colors[index]});
+  return res.render(filepath, { color: colors[index] });
 }
 
