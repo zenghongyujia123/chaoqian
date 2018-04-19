@@ -5,6 +5,8 @@ var mongoose = require('./../../libraries/mongoose');
 var appDb = mongoose.appDb;
 var User = appDb.model('User');
 var UserPay = appDb.model('UserPay');
+var postcodeLogic = require('../logics/postcode');
+
 var sysErr = require('./../errors/system');
 var agent = require('superagent').agent();
 
@@ -341,6 +343,13 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
         if (info.attach === 'vip_pay' || info.attach === 'postcode_pay') {
           user[info.attach + 'ed'] = true;
           user[info.attach + 'ed_time'] = new Date();
+
+          if (info.attach === 'postcode_pay') {
+            postcodeLogic.update_status(user, function (err, result) {
+              console.log('postcode bind err----', err);
+              console.log('postcode bind result----', result);
+            })
+          }
         }
         user.save(function (err) {
           return callback();

@@ -40,5 +40,26 @@ exports.list = function (user, info, callback) {
   });
 }
 
+exports.update_status = function (user, callback) {
+  Postcode.findOne({ status: 'un_used' }, function (err, postcode) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    if (!postcode) {
+      return callback(null, { err: { type: 'no_code', message: '没有code，请与管理员联系' } });
+    }
+
+    postcode.user = user._id;
+    postcode.bind_time = new Date();
+    postcode.save(function (err, result) {
+      if (err) {
+        return callback({ err: sysErr.database_save_error });
+      }/*  */
+      return callback(null, result);
+    });
+
+  });
+}
+
 
 

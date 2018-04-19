@@ -8,6 +8,7 @@ var cardLogic = require('../logics/card');
 
 var cblogic = require('../logics/customer_business');
 var userLogic = require('../logics/user');
+var postcodeLogic = require('../logics/postcode');
 var thirdQueryLogic = require('../logics/third_query');
 var creditPeopleLogic = require('../logics/credit_people');
 var productFilterloigc = require('../logics/product_filter');
@@ -260,6 +261,16 @@ exports.me_query = function (req, res, next) {
     return res.render(filepath, { list: result });
   });
 };
+
+exports.postcode_my_list = function (req, res, next) {
+  var user = req.user;
+  postcodeLogic.list(req.user, { user_id: user._id }, function (err, result) {
+    console.log(result);
+    var filepath = path.join(__dirname, '../../web/c_wechat/views/postcode_my_list.client.view.html');
+    return res.render(filepath, { list: result });
+  });
+};
+
 
 exports.me_query_detail = function (req, res, next) {
   var user = req.user;

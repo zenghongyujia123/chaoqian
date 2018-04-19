@@ -28,6 +28,9 @@ module.exports = function (appDb) {
       enum: ['un_used', 'used'],
       default: 'un_used'
     },
+    bind_time:{
+      type:Date,
+    }
   });
 
   PostcodeSchema.plugin(timestamps, {

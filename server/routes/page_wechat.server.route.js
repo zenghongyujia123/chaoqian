@@ -22,8 +22,8 @@ module.exports = function (app) {
   app.route('/page_wechat/home').get(index.home);
   app.route('/page_wechat/paycredit').get(userFilter.requireUser, index.paycredit);
   app.route('/page_wechat/page_query_main').get(userFilter.requireUser, index.page_query_main);
-  app.route('/page_wechat/page_query_create').get( index.page_query_create);
-  app.route('/page_wechat/page_query_create_result').get( index.page_query_create_result);
+  app.route('/page_wechat/page_query_create').get(index.page_query_create);
+  app.route('/page_wechat/page_query_create_result').get(index.page_query_create_result);
   app.route('/page_wechat/page_query_list').get(userFilter.requireUser, index.page_query_list);
   app.route('/page_wechat/me').get(userFilter.requireUser, index.me);
   app.route('/page_wechat/signin').get(index.signin);
@@ -33,7 +33,7 @@ module.exports = function (app) {
   app.route('/page_wechat/me_vip').get(userFilter.requireUser, index.me_vip);
   app.route('/page_wechat/me_bill').get(userFilter.requireUser, index.me_bill);
   app.route('/page_wechat/me_agent').get(userFilter.requireUser, index.me_agent);
-  app.route('/page_wechat/me_query_detail').get(userFilter.requireUser,thirdQueryFilter.requireThirdQuery,  index.me_query_detail);
+  app.route('/page_wechat/me_query_detail').get(userFilter.requireUser, thirdQueryFilter.requireThirdQuery, index.me_query_detail);
   app.route('/page_wechat/me_query').get(userFilter.requireUser, index.me_query);
 
   app.route('/page_wechat/me_account').get(userFilter.requireUser, index.me_account);
@@ -65,9 +65,8 @@ module.exports = function (app) {
   app.route('/page_wechat/vip_notice').get(userFilter.requireUser, index.vip_notice);
   app.route('/page_wechat/vip_result').get(userFilter.requireUser, index.vip_result);
   app.route('/page_wechat/invite_notice').get(userFilter.requireUser, index.invite_notice);
-  app.route('/page_wechat/page_image').get( index.page_image);
-  app.route('/page_wechat/page_reward').get( index.page_reward);
-  app.route('/page_wechat/page_refresh_reward').get( index.page_refresh_reward);
-
-  
+  app.route('/page_wechat/page_image').get(index.page_image);
+  app.route('/page_wechat/page_reward').get(index.page_reward);
+  app.route('/page_wechat/page_refresh_reward').get(index.page_refresh_reward);
+  app.route('/page_wechat/postcode_my_list').get(userFilter.requireUser, index.postcode_my_list);
 };
