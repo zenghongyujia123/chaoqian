@@ -29,54 +29,40 @@
       </select>
     </div>
     <div class="list">
-      <% for(var i=0; i<jietiaos.length; i++) {%>
-        <a href="javascript:void(0)" class="list-item">
-          <img class="photo" src="<%= jietiaos[i].logo %>" />
-          <div class="title">
-            <div class="title-left">
-              <%= jietiaos[i].name %>
-            </div>
-            <div class="title-right">
-              <span style="color:#F25167">
-                <%= jietiaos[i].require %>
-              </span> 分以上芝麻分
-            </div>
-          </div>
-          <div class="content">
 
-            <% for(var j=0; j<jietiaos[i].str1s.length; j++) { %>
-              <div class="content-item">
-                <div class="value">
-                  <%= jietiaos[i].str1s[j] %>
-                </div>
-              </div>
+      <a href="javascript:void(0)" class="list-item">
+        <img class="photo" src="" />
+        <div class="title">
+          <div class="title-left">
+            sdfa
+          </div>
+          <div class="title-right">
+            <span style="color:#F25167">
+              asdf
+            </span> 分以上芝麻分
+          </div>
+        </div>
+        <div class="content">
+          <div class="content-item">
+            <div class="value">
+              asdf
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="left">
+            <span class=" red-border">
+              asf
+            </span>
+          </div>
+          <div class="right">
+            <a class="apply" href="">点击申请</a>
+          </div>
+        </div>
+      </a>
 
-              <% if(j!=jietiaos[i].str1s.length-1) { %>
-                <div class="content-border "></div>
-                <% } %>
-                  <% } %>
-          </div>
-          <div class="bottom">
-            <div class="left">
-              <% for(var h=0; h<jietiaos[i].str2s.length; h++) { %>
-                <span class=" red-border">
-                  <%= jietiaos[i].str2s[h] %>
-                </span>
-                <% } %>
-            </div>
-            <div class="right">
-              <div class="apply" url="<%= jietiaos[i].url %>">点击申请</div>
-            </div>
-          </div>
-        </a>
-        <% } %>
     </div>
   </div>
 </body>
-<script>
-  $('.apply').click(function(){
-    window.location = $(this).attr('url');
-  });
-</script>
 
 </html>
