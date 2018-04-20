@@ -28,6 +28,7 @@
         <p class="weui-grid__label">
           网贷黑灰行为
         </p>
+        <img src="/c_wechat/images/query/hot.png" class="hot-icon"></img>
       </a>
       <a href="/page_wechat/page_query_create?type=介" class="weui-grid js_grid">
         <div class="weui-grid__icon">
@@ -44,8 +45,9 @@
         <p class="weui-grid__label">
           网贷成功率
         </p>
+        <img src="/c_wechat/images/query/hot.png" class="hot-icon"></img>
       </a>
-      <a href="" class="weui-grid js_grid">
+      <a href="javascript:;" class="weui-grid js_grid no_open">
         <div class="weui-grid__icon">
           <div class="big-data-icon purple">征</div>
         </div>
@@ -53,7 +55,7 @@
           人行征信
         </p>
       </a>
-      <a href="" class="weui-grid js_grid">
+      <a href="javascript:;" class="weui-grid js_grid no_open">
         <div class="weui-grid__icon">
           <div class="big-data-icon red">贷</div>
         </div>
@@ -61,7 +63,7 @@
           网贷产品详情
         </p>
       </a>
-      <a href="" class="weui-grid js_grid">
+      <a href="javascript:;" class="weui-grid js_grid no_open">
         <div class="weui-grid__icon">
           <div class="big-data-icon black">码</div>
         </div>
@@ -186,9 +188,10 @@
       });
     });
 
-
-
-  })
+    $('.no_open').click(function () {
+      $.alert("即将开放！");
+    });
+  });
 </script>
 
 </html>
