@@ -132,7 +132,7 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     .state('sold_record_detail', {
       url: '/sold_record_detail/:user_id',
       templateUrl: '/c_backend/site_admin/templates/sold_record_detail.client.view.html',
-      controller: 'soldRecordDetailController'
+      controller: 'SoldRecordDetailController'
     });;
 
   $urlRouterProvider.otherwise('/product_list');
