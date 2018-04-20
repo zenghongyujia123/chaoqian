@@ -37,7 +37,9 @@
               <%= jietiaos[i].name %>
             </div>
             <div class="title-right">
-             <span style="color:#F25167"><%= jietiaos[i].require %></span> 分以上芝麻分
+              <span style="color:#F25167">
+                <%= jietiaos[i].require %>
+              </span> 分以上芝麻分
             </div>
           </div>
           <div class="content">
@@ -69,9 +71,9 @@
           </div>
           <div class="bottom">
             <div class="left">
-              <span class=" red-border">法人贷</span>
-              <span class=" red-border">门店贷</span>
-              <span class=" red-border">小微企业贷</span>
+              <% for(var j=0; j<jietiaos[i].str2s.length; j++) {%>
+                <span class=" red-border"><%= jietiaos[i].str2s[j] %></span>
+                    <% } %>
             </div>
             <div class="right">
               <div class="apply">点击申请</div>
