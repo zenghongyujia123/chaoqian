@@ -259,6 +259,10 @@ module.exports = function (appDb) {
     user_phone: {
       type: String,
     },
+    admin_descript_1:{
+      type:String,
+      default:''
+    },
     content: {
       type: Schema.Types.Mixed
     }

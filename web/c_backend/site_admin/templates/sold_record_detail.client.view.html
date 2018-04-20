@@ -1,9 +1,9 @@
 <div class="page-body-view">
   <div class="page-operation-view" layout="row" layout-align="space-between center">
-    <p class="title">用户详情</p>
+    <p class="title">销售详情</p>
     <div layout="row">
 
-      <md-button class="md-primary md-raised md-hue-2" ng-click="updateVipInfo()">保存</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="update_sold_record()">保存</md-button>
     </div>
   </div>
 
@@ -44,4 +44,13 @@
       <div class="column-item" flex=""></div>
     </div>
   </div>
+
+  <md-content layout-padding>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>备注</label>
+        <input ng-model="sold_record.admin_descript_1||''" />
+      </md-input-container>
+    </div>
+  </md-content>
 </div>

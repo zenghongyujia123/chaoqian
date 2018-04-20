@@ -130,7 +130,7 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       controller: 'soldRecordController'
     })
     .state('sold_record_detail', {
-      url: '/sold_record_detail/:user_id',
+      url: '/sold_record_detail/:user_id/:sold_record_id',
       templateUrl: '/c_backend/site_admin/templates/sold_record_detail.client.view.html',
       controller: 'SoldRecordDetailController'
     });;
@@ -405,7 +405,9 @@ cSite.factory('RecordNetwork',
         },
         getRecordFilter: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/customer_business_filter/getFilter', params);
-        }
+        },
+
+
       };
     }]);
 
@@ -428,6 +430,12 @@ cSite.factory('SoldRecordNetwork',
         //       soldRecordListByCondition:function
         soldRecordListByCondition: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/sold_record/soldRecordListByCondition', params);
+        },
+        get_by_id: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/sold_record/get_by_id', params);
+        },
+        update_sold_record: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/sold_record/update_sold_record', params);
         }
       };
     }]);
@@ -1475,8 +1483,8 @@ cSite.controller('ProductListController', [
 cSite.controller('soldRecordController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'SoldRecordNetwork', 'UserNetwork',
   function ($rootScope, $scope, $state, $stateParams, SoldRecordNetwork, UserNetwork) {
-    $scope.goDetail = function (user_id) {
-      $state.go('sold_record_detail', { user_id: user_id });
+    $scope.goDetail = function (user_id, sold_record_id) {
+      $state.go('sold_record_detail', { user_id: user_id, sold_record_id: sold_record_id });
     }
     var soldRecordListByCondition = function (condition, sort) {
 
@@ -1565,7 +1573,7 @@ cSite.controller('soldRecordController', [
 
     $scope.soldRecordListByCondition = function (type) {
       $scope.sold_record_list = [];
-      SoldRecordNetwork.soldRecordListByCondition($scope, { 'condition': { type: type }, 'sort': { 'content.time_end': -1} }).then(function (data) {
+      SoldRecordNetwork.soldRecordListByCondition($scope, { 'condition': { type: type }, 'sort': { 'content.time_end': -1 } }).then(function (data) {
         console.log(data);
         if (!data.err) {
           $scope.sold_record_list = data;
@@ -1580,27 +1588,54 @@ cSite.controller('soldRecordController', [
 
 
 cSite.controller('SoldRecordDetailController', [
-  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork', 'ProductNetwork', 'CardNetwork',
-  function ($rootScope, $scope, $state, $stateParams, UserNetwork, ProductNetwork, CardNetwork) {
+  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork', 'ProductNetwork', 'CardNetwork', 'SoldRecordNetwork',
+  function ($rootScope, $scope, $state, $stateParams, UserNetwork, ProductNetwork, CardNetwork, SoldRecordNetwork) {
     // $scope.goDetail = function (id) {
     //     $state.go('product_detail', { product_id: id||'' });
     // }
 
     $scope.user = {};
+    $scope.sold_record = {};
 
     $scope.getUserById = function () {
       UserNetwork.getUserById($scope, { user_id: $stateParams.user_id }).then(function (data) {
         console.log(data);
         if (!data.err) {
           $scope.user = data;
-          $scope.selectedAgent_rate=$scope.user.agent_rate;
+          $scope.selectedAgent_rate = $scope.user.agent_rate;
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+    $scope.get_by_id = function () {
+      SoldRecordNetwork.get_by_id($scope, { detail_id: $stateParams.sold_record_id }).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.sold_record = data;
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+    $scope.update_sold_record = function () {
+      SoldRecordNetwork.update_sold_record($scope, {
+        detail_id: $stateParams.sold_record_id,
+        admin_descript_1: $scope.sold_record.admin_descript_1
+      }).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $state.go('sold_record_detail', null, { reload: true });
         }
       }, function (err) {
         console.log(err);
       });
     };
 
+
+
     $scope.getUserById();
+    $scope.get_by_id();
   }]);
 
 

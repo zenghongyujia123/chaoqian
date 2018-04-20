@@ -17,6 +17,8 @@ cSite.factory('RecordNetwork',
         },
         getRecordFilter: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/customer_business_filter/getFilter', params);
-        }
+        },
+
+
       };
     }]);

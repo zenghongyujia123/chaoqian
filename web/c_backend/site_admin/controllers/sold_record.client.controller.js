@@ -2,8 +2,8 @@
 cSite.controller('soldRecordController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'SoldRecordNetwork', 'UserNetwork',
   function ($rootScope, $scope, $state, $stateParams, SoldRecordNetwork, UserNetwork) {
-    $scope.goDetail = function (user_id) {
-      $state.go('sold_record_detail', { user_id: user_id });
+    $scope.goDetail = function (user_id, sold_record_id) {
+      $state.go('sold_record_detail', { user_id: user_id, sold_record_id: sold_record_id });
     }
     var soldRecordListByCondition = function (condition, sort) {
 
@@ -92,7 +92,7 @@ cSite.controller('soldRecordController', [
 
     $scope.soldRecordListByCondition = function (type) {
       $scope.sold_record_list = [];
-      SoldRecordNetwork.soldRecordListByCondition($scope, { 'condition': { type: type }, 'sort': { 'content.time_end': -1} }).then(function (data) {
+      SoldRecordNetwork.soldRecordListByCondition($scope, { 'condition': { type: type }, 'sort': { 'content.time_end': -1 } }).then(function (data) {
         console.log(data);
         if (!data.err) {
           $scope.sold_record_list = data;

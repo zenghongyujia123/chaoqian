@@ -17,6 +17,12 @@ cSite.factory('SoldRecordNetwork',
         //       soldRecordListByCondition:function
         soldRecordListByCondition: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/sold_record/soldRecordListByCondition', params);
+        },
+        get_by_id: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/sold_record/get_by_id', params);
+        },
+        update_sold_record: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/sold_record/update_sold_record', params);
         }
       };
     }]);
