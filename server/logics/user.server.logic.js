@@ -2,6 +2,7 @@
  * Created by zenghong on 2017/8/8.
  */
 var mongoose = require('./../../libraries/mongoose');
+var smsLib = require('./../../libraries/sms');
 var appDb = mongoose.appDb;
 var User = appDb.model('User');
 var UserPay = appDb.model('UserPay');
@@ -348,7 +349,8 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
             postcodeLogic.update_status(user, function (err, result) {
               console.log('postcode bind err----', err);
               console.log('postcode bind result----', result);
-            })
+            });
+            smsLib.sendPostCodePaySuccess(user.username,function(){});
           }
         }
         user.save(function (err) {
