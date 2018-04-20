@@ -107,7 +107,10 @@ function onBridgeReady(info, pay_type, callback) {
         else if (
           pay_type == 'query_大数据' ||
           pay_type == 'query_黑灰行为' ||
-          pay_type == 'query_黑中介') {
+          pay_type == 'query_黑中介' ||
+          pay_type == 'pos_suixingfu' ||
+          pay_type == 'pos_xinguodu'
+        ) {
           return callback();
         }
         else {
