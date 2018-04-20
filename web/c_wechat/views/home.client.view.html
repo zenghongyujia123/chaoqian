@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/home.client.style.css" />
   <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-  <script src="../libs/jquery/dist/jquery.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
   <script src="../libs/Swiper/dist/js/swiper.jquery.min.js"></script>
   <script src="../c_wechat/controllers/home.client.controller.js"></script>
 </head>
@@ -91,7 +92,7 @@
       <img src="../c_wechat/images/index/shopping.png" class="icon"></img>
       <div class="title">找钱</div>
     </a>
-    <a href="" class="footer-item">
+    <a href="javascript:;" class="footer-item no_open">
       <img src="../c_wechat/images/index/yen.png" class="icon"></img>
       <div class="title">福利</div>
     </a>
@@ -108,5 +109,12 @@
     </a>
   </div>
 </body>
+<script>
+  $(function () {
+    $('.no_open').click(function () {
+      $.alert("即将开放！");
+    });
+  });
+</script>
 
 </html>
