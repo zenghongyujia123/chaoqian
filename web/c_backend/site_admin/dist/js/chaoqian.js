@@ -1239,8 +1239,8 @@ cSite.controller('IndexController', [
 'use strict';
 
 cSite.controller('JietiaoDetailController', [
-  '$rootScope', '$scope', '$state', '$stateParams', '$timeout','QiniuService', 'ProductNetwork', 'CommonHelper',
-  function ($rootScope, $scope, $state, $stateParams, $timeout,QiniuService, ProductNetwork, CommonHelper) {
+  '$rootScope', '$scope', '$state', '$stateParams', '$timeout', 'QiniuService', 'ProductNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, $timeout, QiniuService, ProductNetwork, CommonHelper) {
     var qiniu = QiniuService.createUploader('qiniu-upload-test-button', function (info) {
       $timeout(function () {
         $scope.jietiao.logo = QiniuService.getQiniuImageSrc(info.key);
@@ -1255,6 +1255,7 @@ cSite.controller('JietiaoDetailController', [
       require: '',
       str1: '',
       str2: '',
+      url: '',
     };
 
     $scope.updateJietiao = function (event) {

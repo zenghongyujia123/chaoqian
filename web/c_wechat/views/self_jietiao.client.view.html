@@ -72,11 +72,13 @@
           <div class="bottom">
             <div class="left">
               <% for(var j=0; j<jietiaos[i].str2s.length; j++) {%>
-                <span class=" red-border"><%= jietiaos[i].str2s[j] %></span>
-                    <% } %>
+                <span class=" red-border">
+                  <%= jietiaos[i].str2s[j] %>
+                </span>
+                <% } %>
             </div>
             <div class="right">
-              <div class="apply">点击申请</div>
+              <a class="apply" href="<%= jietiaos[i].url %>">点击申请</a>
             </div>
           </div>
         </a>

@@ -26,6 +26,7 @@ exports.updateJietiao = function (jietiaoInfo, callback) {
     jietiao.name = jietiaoInfo.name;
     jietiao.logo = jietiaoInfo.logo;
     jietiao.require = jietiaoInfo.require;
+    jietiao.url = jietiaoInfo.url||'';
     jietiao.str1 = jietiaoInfo.str1 || '';
     jietiao.str1s = jietiaoInfo.str1.split(',');
     jietiao.str2 = jietiaoInfo.str2 || '';

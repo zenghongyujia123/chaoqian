@@ -24,6 +24,9 @@ module.exports = function (appDb) {
       type: String,
       require: true
     },
+    url: {
+      type: String,
+    },
     str1: {
       type: String,
       require: true
