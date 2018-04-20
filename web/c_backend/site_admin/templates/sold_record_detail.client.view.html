@@ -1,0 +1,133 @@
+<div class="page-body-view">
+  <div class="page-operation-view" layout="row" layout-align="space-between center">
+    <p class="title">用户详情</p>
+    <div layout="row">
+
+      <md-button class="md-primary md-raised md-hue-2" ng-click="updateAgentRate()">更新保存代理级别</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-disabled="user.vip_status==='passed'||user.vip_status==='un_submit'"
+        ng-click="verifyVip()">{{user.vip_status==='passed'?'vip已通过':'vip审核通过'}}</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="goNotifyPassed()">通过通知</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="goReport()">VIP报告编写</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="goCarrier()">通讯运营商详情查看</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="goPbc()">人行征信详情查看</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="updateVipInfo()">保存</md-button>
+    </div>
+  </div>
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">用户名</div>
+      <div class="column-item" flex="">用户姓名</div>
+      <div class="column-item" flex="">用户手机</div>
+      <div class="column-item" flex="">是否vip支付</div>
+      <div class="column-item" flex="">vip支付时间</div>
+      <div class="column-item" flex="">是否通讯运营商授权</div>
+      <div class="column-item" flex="">是否人行征信授权</div>
+      <div class="column-item" flex="">vip审核状态</div>
+    </div>
+  </div>
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" ng-if="user._id">
+      <div class="column-item" flex="">{{user.username}}</div>
+      <div class="column-item" flex="">{{user.real_name}}</div>
+      <div class="column-item" flex="">{{user.real_phone}}</div>
+      <div class="column-item" flex="">{{user.vip_payed?'已支付':'未支付'}}</div>
+      <div class="column-item" flex="">{{user.vip_payed?(user.vip_payed_time| date:"yyyy-MM-dd hh:mm:ss") :'-'}}</div>
+      <div class="column-item" flex="">{{user.carrier_token?'是':'否'}}</div>
+      <div class="column-item" flex="">{{user.pbc_token?'是':'否'}}</div>
+      <div class="column-item" flex="">{{getVipStatus(user.vip_status)}}</div>
+    </div>
+  </div>
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">用户身份证</div>
+      <div class="column-item" flex="">用户代理级别:</div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+    </div>
+  </div>
+
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" ng-if="user._id">
+      <div class="column-item" flex="">{{user.id_card}}</div>
+        <md-input-container class="md-block" flex-gt-sm>
+          代理级别设定
+          <select ng-model="$parent.selectedAgent_rate" ng-options="x for x in agent_rate">
+          </select>
+        </md-input-container> 
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+     
+    </div>
+  </div>
+
+  <md-content layout-padding>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>vip_信用评估</label>
+        <input ng-model="user.str1" />
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>vip_信用额度</label>
+        <input ng-model="user.str2" />
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>vip_授信周期</label>
+        <input ng-model="user.str3" />
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+          <label>vip_授信利率</label>
+          <input ng-model="user.str4" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>vip_返现额度</label>
+          <input ng-model="user.str5" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>vip_资金方</label>
+          <input ng-model="user.str6" />
+        </md-input-container>
+    </div>
+  </md-content>
+
+  <md-content layout-padding>
+    <div>已选产品（点击移除）</div>
+    <div layout="row">
+      <div class="user-detail-product-item" ng-repeat="product in select_product_list" ng-click="removeProduct(product)">
+        <img class="product-photo" ng-src="{{product.logo}}" />
+        <div class="product-name">{{$index+1}}--{{product.name}}</div>
+      </div>
+    </div>
+    <div>所有产品（点击添加）</div>
+    <div layout="row">
+      <div class="user-detail-product-item" ng-repeat="product in product_list" ng-click="clickProduct(product)">
+        <img class="product-photo" ng-src="{{product.logo}}" />
+        <div class="product-name">{{product.name}}</div>
+      </div>
+    </div>
+
+    <div>已选信用卡（点击移除）</div>
+    <div layout="row">
+      <div class="user-detail-product-item" ng-repeat="card in select_card_list" ng-click="removeCard(card)">
+        <img class="product-photo" ng-src="{{card.logo}}" />
+        <div class="product-name">{{$index+1}}--{{card.name}}</div>
+      </div>
+    </div>
+    <div>所有信用卡（点击添加）</div>
+    <div layout="row">
+      <div class="user-detail-product-item" ng-repeat="card in card_list" ng-click="clickCard(card)">
+        <img class="product-photo" ng-src="{{card.logo}}" />
+        <div class="product-name">{{card.name}}</div>
+      </div>
+    </div>
+  </md-content>
+</div>

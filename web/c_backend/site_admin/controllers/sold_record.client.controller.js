@@ -2,7 +2,9 @@
 cSite.controller('soldRecordController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'SoldRecordNetwork', 'UserNetwork',
   function ($rootScope, $scope, $state, $stateParams, SoldRecordNetwork, UserNetwork) {
-
+    $scope.goDetail = function (user_id) {
+      $state.go('sold_record_detail', { user_id: user_id });
+    }
     var soldRecordListByCondition = function (condition, sort) {
 
       SoldRecordNetwork.soldRecordListByCondition($scope, { 'condition': condition, 'sort': sort }).then(function (data) {

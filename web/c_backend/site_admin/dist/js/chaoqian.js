@@ -128,6 +128,11 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       url: '/sold_record',
       templateUrl: '/c_backend/site_admin/templates/sold_record_list.client.view.html',
       controller: 'soldRecordController'
+    })
+    .state('sold_record_detail', {
+      url: '/sold_record_detail/:user_id',
+      templateUrl: '/c_backend/site_admin/templates/sold_record_detail.client.view.html',
+      controller: 'soldRecordDetailController'
     });;
 
   $urlRouterProvider.otherwise('/product_list');
@@ -1470,7 +1475,9 @@ cSite.controller('ProductListController', [
 cSite.controller('soldRecordController', [
   '$rootScope', '$scope', '$state', '$stateParams', 'SoldRecordNetwork', 'UserNetwork',
   function ($rootScope, $scope, $state, $stateParams, SoldRecordNetwork, UserNetwork) {
-
+    $scope.goDetail = function (user_id) {
+      $state.go('sold_record_detail', { user_id: user_id });
+    }
     var soldRecordListByCondition = function (condition, sort) {
 
       SoldRecordNetwork.soldRecordListByCondition($scope, { 'condition': condition, 'sort': sort }).then(function (data) {
@@ -1570,6 +1577,39 @@ cSite.controller('soldRecordController', [
     }
   }]);
 
+
+
+cSite.controller('SoldRecordDetailController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'UserNetwork', 'ProductNetwork', 'CardNetwork',
+  function ($rootScope, $scope, $state, $stateParams, UserNetwork, ProductNetwork, CardNetwork) {
+    // $scope.goDetail = function (id) {
+    //     $state.go('product_detail', { product_id: id||'' });
+    // }
+
+    $scope.product_list = [];
+    $scope.select_product_list = [];
+    $scope.card_list = [];
+    $scope.select_card_list = [];
+    
+
+    $scope.user = {};
+
+    $scope.getUserById = function () {
+      UserNetwork.getUserById($scope, { user_id: $stateParams.user_id }).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.user = data;
+          $scope.productList();
+          $scope.cardList();
+          $scope.selectedAgent_rate=$scope.user.agent_rate;
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.getUserById();
+  }]);
 
 
 /**
