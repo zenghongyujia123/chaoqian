@@ -18,7 +18,7 @@ function sendTplSingleSms(mobile, tpl_id, tpl_value, callback) {
     })
     .end(function (err, result) {
       console.log('sms----err', err);
-      console.log('sms----result', result);
+      console.log('sms----result', result.text);
       return callback();
     });
 }
