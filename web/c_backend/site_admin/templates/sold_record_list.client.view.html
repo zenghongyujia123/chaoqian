@@ -2,6 +2,11 @@
   <div class="page-operation-view" layout="row" layout-align="space-between center">
     <p class="title">付款记录</p>
     <div layout="row">
+
+        
+        <md-button class="md-primary md-raised md-hue-2" ng-click="soldRecordListByCondition('postcode_pay')">postcode统计</md-button>
+
+
         <md-button class="md-primary md-raised md-hue-2" ng-click="record_by_username()">按用户统计</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-click="VIP_sold_record()">VIP购买统计</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-click="Credit198_sold_record()">信用卡代付统计</md-button>

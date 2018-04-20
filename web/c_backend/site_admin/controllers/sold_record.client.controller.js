@@ -88,7 +88,18 @@ cSite.controller('soldRecordController', [
 
     }
 
-
+    $scope.soldRecordListByCondition = function (type) {
+      $scope.sold_record_list = [];
+      SoldRecordNetwork.soldRecordListByCondition($scope, { 'condition': { type: type }, 'sort': { 'content.time_end': -1} }).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.sold_record_list = data;
+          //             alert(JSON.stringify(data));
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    }
   }]);
 
 
