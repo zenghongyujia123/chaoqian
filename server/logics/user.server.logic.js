@@ -353,6 +353,10 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
             smsLib.sendPostCodePaySuccess(user.username, function () { });
           }
         }
+
+        if (info.attach === 'pos_suixingfu' || info.attach === 'pos_xinguodu') {
+          smsLib.sendPostMachinePaySuccess(user.username, function () { });
+        }
         user.save(function (err) {
           return callback();
         });

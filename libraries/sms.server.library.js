@@ -26,3 +26,7 @@ function sendTplSingleSms(mobile, tpl_id, tpl_value, callback) {
 exports.sendPostCodePaySuccess = function (mobile, callback) {
   sendTplSingleSms(mobile, '2265338', '#name#=客户', callback)
 }
+
+exports.sendPostMachinePaySuccess = function (mobile, callback) {
+  sendTplSingleSms(mobile, '2266276', '#name#=客户', callback)
+}
