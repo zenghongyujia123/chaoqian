@@ -28,7 +28,7 @@
           网贷黑灰行为
         </p>
       </a>
-      <a href="/page_wechat/page_query_create?type=介"  class="weui-grid js_grid">
+      <a href="/page_wechat/page_query_create?type=介" class="weui-grid js_grid">
         <div class="weui-grid__icon">
           <div class="big-data-icon blue">介</div>
         </div>
@@ -36,7 +36,7 @@
           网贷黑中介
         </p>
       </a>
-      <a  href="/page_wechat/page_query_create?type=大"  class="weui-grid js_grid">
+      <a href="/page_wechat/page_query_create?type=大" class="weui-grid js_grid">
         <div class="weui-grid__icon">
           <div class="big-data-icon green">大</div>
         </div>
@@ -82,7 +82,7 @@
         <div class="weui-media-box__bd">
           <div class="title">随行付-央视冠名优质产品</div>
           <a href="javascript:;" class="tip open-popup about-1" data-target="about-1">购前须知</a>
-          <div class="btn">点击申请</div>
+          <div class="btn suixingfu-btn">点击申请</div>
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@
         <div class="weui-media-box__bd">
           <div class="title">新国都-上市公司品牌</div>
           <a href="javascript:;" class="tip open-popup about-2" data-target="about-2">购前须知</a>
-          <div class="btn">点击申请</div>
+          <div class="btn xinguodu-btn">点击申请</div>
         </div>
       </div>
     </div>
@@ -173,6 +173,21 @@
     $('.about-2').click(function () {
       $("#about-2").popup();
     });
+    $('.suixingfu-btn').click(function () {
+      get_pre_pay_id('pos_suixingfu', function () {
+
+      });
+
+    })
+    $('.xinguodu-btn').click(function () {
+      get_pre_pay_id('pos_xinguodu', function () {
+
+      });
+
+    })
+
+
+
   })
 </script>
 

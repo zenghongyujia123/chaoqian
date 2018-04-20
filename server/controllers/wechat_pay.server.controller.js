@@ -109,6 +109,16 @@ exports.get_pre_pay_id = function (req, res, next) {
     detail.pay_title = '潮钱网充值中心-激活码'
     detail.pay_type = 'postcode_pay';
   }
+  else if (req.body.pay_type === 'pos_suixingfu') {
+    detail.pay_price = 1;//12000
+    detail.pay_title = '潮钱网充值中心-随行付刷卡机'
+    detail.pay_type = 'pos_suixingfu';
+  }
+  else if (req.body.pay_type === 'pos_xinguodu') {
+    detail.pay_price = 1;//39900
+    detail.pay_title = '潮钱网充值中心-新国都刷卡机'
+    detail.pay_type = 'pos_xinguodu';
+  }
   else {
     return res.send({ err: { type: 'invalid_pay_type', message: '支付类型无效，请联系管理员！' } });
   }

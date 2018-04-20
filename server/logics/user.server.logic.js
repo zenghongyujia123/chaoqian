@@ -350,7 +350,7 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
               console.log('postcode bind err----', err);
               console.log('postcode bind result----', result);
             });
-            smsLib.sendPostCodePaySuccess(user.username,function(){});
+            smsLib.sendPostCodePaySuccess(user.username, function () { });
           }
         }
         user.save(function (err) {
