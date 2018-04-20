@@ -22,6 +22,7 @@
       <div class="column-item" flex="">购买金额</div>
       <div class="column-item" flex="">银行类别</div>
       <div class="column-item" flex="">币种</div>
+      <div class="column-item" flex="">备注</div>
       <div class="column-item" flex=""></div>
     </div>
   </div>
@@ -35,7 +36,8 @@
       <div class="column-item" flex="">{{record.content.total_fee/100}}</div>
       <div class="column-item" flex="">{{record.content.bank_type}}</div>
       <div class="column-item" flex="">{{record.content.fee_type}}</div>
-  
+      <div class="column-item" flex="">{{record.admin_descript_1}}</div>
+      
       <div class="column-item" flex="" layout="row" layout-align="start start">
         <md-button class="md-primary" ng-click="goDetail(record.user_id,record._id)">详情
         </md-button>
