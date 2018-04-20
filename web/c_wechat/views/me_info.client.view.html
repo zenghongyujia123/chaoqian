@@ -15,51 +15,53 @@
 </head>
 
 <body>
-    <div class="myuserid" style="display:none">
-        <%= (user._id) %>
-      </div>
+  <div class="myuserid" style="display:none">
+    <%= (user._id) %>
+  </div>
   <div class="page-me-info">
-    <div class="info-header">
-      <a class="info-item " href="/page_wechat/me_info">个人信息</a>
-    <!--select
-      <a class="info-item" href="/page_wechat/me_business">商务资料</a>
-    -->
-    </div>
     <div class="info-list">
       <div class="info-item">
         <div class="item-text">姓名</div>
-        <input class="item-value real_name" type="text" placeholder="<%= (user.real_name) %> "/>
+        <input class="item-value real_name" type="text" value="<%= (user.real_name) %> " />
       </div>
       <div class="info-item">
         <div class="item-text">预留手机</div>
-        <div class="item-value">  <%= (user.username) %>  </div>
+        <div class="item-value">
+          <%= (user.username) %>
+        </div>
       </div>
       <div class="info-item">
         <div class="item-text">用户微信</div>
-        <div class="item-value">  <%= user.wechat_info.openid %> </div>
+        <div class="item-value">
+          <%= user.wechat_info.openid %>
+        </div>
       </div>
       <div class="info-item">
         <div class="item-text">支付宝账号</div>
-        <input class="item-value alipay" type="text" placeholder="<%= (user.alipay_id) %> "/>
+        <input class="item-value alipay" type="text" value="<%= (user.alipay_id) %> " />
       </div>
       <div class="info-item">
         <div class="item-text">电子邮箱地址</div>
-        <input class="item-value email" type="text" placeholder="<%= (user.email) %> "/>
+        <input class="item-value email" type="text" value="<%= (user.email) %> " />
       </div>
       <div class="info-item">
         <div class="item-text">资料邮寄地址</div>
-        <input class="item-value adress" type="text" placeholder="<%= (user.adress) %>" />
+        <input class="item-value adress" type="text" value="<%= (user.adress) %>" />
       </div>
     </div>
     <div class="submit-btn">保存</div>
   </div>
-
-  <div class="home-bottom">
+  <!-- <div class="home-bottom">
     <a href="/page_wechat/banner?img=banner12.jpg" >
      
     <img src="../c_wechat/images/home/banner03.jpg" class="item_bottom"/>
     </a>
-  </div>    
+  </div>     -->
 </body>
+<script>
+  $(function () {
+
+  });
+</script>
 
 </html>
