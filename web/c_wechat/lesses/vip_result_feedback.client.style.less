@@ -7,7 +7,9 @@ body {
 .header {
   /* 标准的语法（必须放在最后） */
   overflow: hidden;
+  background-color: white;
   .header-detail {
+    box-shadow: 0px 5px 5px #efefef;
     background-color: white;
     border-radius: 10px;
     margin: 10px 20px;
@@ -15,58 +17,36 @@ body {
       padding: 10px;
       display: flex;
       flex-direction: row;
-      &:first-child {
-        border-bottom: 0.5px solid #efefef;
-      }
       .row-item {
         text-align: center;
         flex-grow: 1;
         .title {
-          color: #999;
           line-height: 50px;
-          font-size: 18px;
+          font-size: 20px;
         }
         .value {
           color: #fd7a00;
-          font-size: 20px;
+          font-size: 30px;
           line-height: 30px;
         }
-      }
-    }
-
-    .title{
-      text-align: center;
-      line-height: 40px;
-      font-size: 20px;
-    }
-    .plan-row{
-      color:#999;
-      display: flex;
-      flex-direction: row;
-      align-content: center;
-      align-items: center;
-      .plan-item{
-        padding:15px 30px;
-        width: 50%;
-        flex-grow: 1;
-        .key{
-
-        }
-        .value{
-
-        }
-        .price{
-          color:#fd7a00;
-          font-size: 20px;
+        .tip{
+          padding-top: 10px;
+          line-height: 20px;
+          color:#999;
+          border-top: 0.5px solid #efefef;
+          font-size: 12px;
         }
       }
     }
-    
-
-    
   }
 }
-
+.panel-title {
+  height: 40px;
+  color: #5408fb;
+  line-height: 40px;
+  text-align: center;
+  background-color: #f2f2f2;
+}
 .panel {
   padding: 15px 20px;
   background-color: white;
@@ -74,6 +54,7 @@ body {
   flex-direction: row;
   justify-content: space-around;
   margin-bottom: 10px;
+ 
   .report-btn {
     background: -webkit-linear-gradient(left, #fdb42a, #fd7a00);
     /* Safari 5.1 - 6.0 */
@@ -86,8 +67,9 @@ body {
     color: white;
     border-radius: 45px;
     text-align: center;
-    width: 60%;
-    line-height: 30px;
+    width: 80%;
+    line-height: 40px;
+    margin-top: 30px;
     &.left {
       margin-right: 10px;
     }
@@ -95,37 +77,27 @@ body {
       margin-left: 10px;
     }
   }
+ 
   &.column {
     flex-direction: column;
     align-items: center;
-    .panel-title {
-      height: 30px;
-      color: #a02de5;
-      font-size: 12px;
-      line-break: 20px;
-    }
-    .report-btn {
-      width: 100%;
-      background: -webkit-linear-gradient(left, #a02de5, #5408fb);
-      /* Safari 5.1 - 6.0 */
-      background: -o-linear-gradient(left, #a02de5, #5408fb);
-      /* Opera 11.1 - 12.0 */
-      background: -moz-linear-gradient(left, #a02de5, #5408fb);
-      /* Firefox 3.6 - 15 */
-      background: linear-gradient(left, #a02de5, #5408fb);
-      /* 标准的语法（必须放在最后） */
+
+    .report-text{
+      color:#999;
+      text-align: center;
+      width: 80%;
+      line-height: 40px;
+      border-bottom: 0.5px solid #efefef;
     }
   }
-
-
 }
 
 .page-result-panel {
-  padding: 0px 15px 15px 15px;
+  padding: 15px 15px 15px 15px;
   background-color: white;
-  &::before {
-    border-bottom: 0.5px solid #e5e5e5;
-  }
+  // &::before {
+  //   border-bottom: 0.5px solid #e5e5e5;
+  // }
   .panel-title {
     font-size: 14px;
     line-height: 40px;
@@ -180,4 +152,7 @@ body {
       }
     }
   }
+}
+.weui-panel{
+  margin-top: 0px;
 }

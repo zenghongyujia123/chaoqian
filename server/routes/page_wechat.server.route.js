@@ -64,6 +64,8 @@ module.exports = function (app) {
   app.route('/page_wechat/vip_auth_report').get(userFilter.requireUser, index.vip_auth_report);
   app.route('/page_wechat/vip_notice').get(userFilter.requireUser, index.vip_notice);
   app.route('/page_wechat/vip_result').get(userFilter.requireUser, index.vip_result);
+  app.route('/page_wechat/vip_result_feedback').get(userFilter.requireUser, index.vip_result_feedback);
+  
   app.route('/page_wechat/invite_notice').get(userFilter.requireUser, index.invite_notice);
   app.route('/page_wechat/page_image').get(index.page_image);
   app.route('/page_wechat/page_reward').get(index.page_reward);

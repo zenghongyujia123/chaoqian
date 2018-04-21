@@ -6,8 +6,10 @@ body {
 .header {
   /* 标准的语法（必须放在最后） */
   overflow: hidden;
+  background-color: white;
 }
 .header .header-detail {
+  box-shadow: 0px 5px 5px #efefef;
   background-color: white;
   border-radius: 10px;
   margin: 10px 20px;
@@ -17,43 +19,32 @@ body {
   display: flex;
   flex-direction: row;
 }
-.header .header-detail .detail-row:first-child {
-  border-bottom: 0.5px solid #efefef;
-}
 .header .header-detail .detail-row .row-item {
   text-align: center;
   flex-grow: 1;
 }
 .header .header-detail .detail-row .row-item .title {
-  color: #999;
   line-height: 50px;
-  font-size: 18px;
+  font-size: 20px;
 }
 .header .header-detail .detail-row .row-item .value {
   color: #fd7a00;
-  font-size: 20px;
+  font-size: 30px;
   line-height: 30px;
 }
-.header .header-detail .title {
-  text-align: center;
-  line-height: 40px;
-  font-size: 20px;
-}
-.header .header-detail .plan-row {
+.header .header-detail .detail-row .row-item .tip {
+  padding-top: 10px;
+  line-height: 20px;
   color: #999;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
+  border-top: 0.5px solid #efefef;
+  font-size: 12px;
 }
-.header .header-detail .plan-row .plan-item {
-  padding: 15px 30px;
-  width: 50%;
-  flex-grow: 1;
-}
-.header .header-detail .plan-row .plan-item .price {
-  color: #fd7a00;
-  font-size: 20px;
+.panel-title {
+  height: 40px;
+  color: #5408fb;
+  line-height: 40px;
+  text-align: center;
+  background-color: #f2f2f2;
 }
 .panel {
   padding: 15px 20px;
@@ -75,8 +66,9 @@ body {
   color: white;
   border-radius: 45px;
   text-align: center;
-  width: 60%;
-  line-height: 30px;
+  width: 80%;
+  line-height: 40px;
+  margin-top: 30px;
 }
 .panel .report-btn.left {
   margin-right: 10px;
@@ -88,29 +80,16 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.panel.column .panel-title {
-  height: 30px;
-  color: #a02de5;
-  font-size: 12px;
-  line-break: 20px;
-}
-.panel.column .report-btn {
-  width: 100%;
-  background: -webkit-linear-gradient(left, #a02de5, #5408fb);
-  /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(left, #a02de5, #5408fb);
-  /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(left, #a02de5, #5408fb);
-  /* Firefox 3.6 - 15 */
-  background: linear-gradient(left, #a02de5, #5408fb);
-  /* 标准的语法（必须放在最后） */
+.panel.column .report-text {
+  color: #999;
+  text-align: center;
+  width: 80%;
+  line-height: 40px;
+  border-bottom: 0.5px solid #efefef;
 }
 .page-result-panel {
-  padding: 0px 15px 15px 15px;
+  padding: 15px 15px 15px 15px;
   background-color: white;
-}
-.page-result-panel::before {
-  border-bottom: 0.5px solid #e5e5e5;
 }
 .page-result-panel .panel-title {
   font-size: 14px;
@@ -156,4 +135,7 @@ body {
 }
 .weui-panel__bd .weui-media-box__bd .card-footer .footer-right .number {
   color: #fd7a00;
+}
+.weui-panel {
+  margin-top: 0px;
 }

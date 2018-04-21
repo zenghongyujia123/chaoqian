@@ -562,6 +562,19 @@ exports.vip_result = function (req, res, next) {
   });
 };
 
+exports.vip_result_feedback = function (req, res, next) {
+  var user = req.user;
+  productLogic.productListByIds(user.vip_product_ids, function (err, products) {
+    cardLogic.cardListByIds(user.vip_card_ids, function (err, cards) {
+      filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result_feedback.client.view.html');
+      return res.render(filepath, { city: req.cookies.city, user: user, products: products, cards: cards });
+    });
+  });
+};
+
+
+
+
 
 exports.vip_auth_1 = function (req, res, next) {
   var user = req.user;
