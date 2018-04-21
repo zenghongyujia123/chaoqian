@@ -8,7 +8,7 @@ body {
   overflow: hidden;
 }
 .header .card-container {
-  margin: 20px;
+  margin: 10px 20px;
   position: relative;
 }
 .header .card-container .price {
