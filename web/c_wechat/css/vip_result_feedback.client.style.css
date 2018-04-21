@@ -12,7 +12,7 @@ body {
   box-shadow: 0px 2px 11px #999;
   background-color: white;
   border-radius: 10px;
-  margin: 10px 20px;
+  margin: 20px;
 }
 .header .header-detail .detail-row {
   padding: 10px;
@@ -29,8 +29,8 @@ body {
 }
 .header .header-detail .detail-row .row-item .value {
   color: #fd7a00;
-  font-size: 30px;
-  line-height: 30px;
+  font-size: 50px;
+  line-height: 70px;
 }
 .header .header-detail .detail-row .row-item .tip {
   padding-top: 10px;
