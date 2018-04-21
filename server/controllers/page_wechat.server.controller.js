@@ -547,6 +547,17 @@ exports.vip_auth_info = function (req, res, next) {
       });
     });
   }
+  else if (user.vip_status === 'giveup' || user.vip_status === 'refuse') {
+    return res.render(path.join(__dirname, '../../web/c_wechat/views/vip_result_refuse.client.view.html'), { city: req.cookies.city, user: user });
+  }
+  else if (user.vip_status === 'daikuan') {
+    productLogic.productListByIds(user.vip_product_ids, function (err, products) {
+      cardLogic.cardListByIds(user.vip_card_ids, function (err, cards) {
+        filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result_feedback.client.view.html');
+        return res.render(filepath, { city: req.cookies.city, user: user, products: products, cards: cards });
+      });
+    });
+  }
   else {
     return res.render(filepath, { city: req.cookies.city, user: user });
   }
@@ -564,18 +575,21 @@ exports.vip_result = function (req, res, next) {
 
 exports.vip_result_feedback = function (req, res, next) {
   var user = req.user;
-  productLogic.productListByIds(user.vip_product_ids, function (err, products) {
+  userLogic.update_vip_status(user, 'daikuan', function () {
     cardLogic.cardListByIds(user.vip_card_ids, function (err, cards) {
       filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result_feedback.client.view.html');
-      return res.render(filepath, { city: req.cookies.city, user: user, products: products, cards: cards });
+      return res.render(filepath, { city: req.cookies.city, user: user,  cards: cards });
     });
   });
 };
 
 exports.vip_result_refuse = function (req, res, next) {
   var user = req.user;
-  filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result_refuse.client.view.html');
-  return res.render(filepath, {});
+  userLogic.update_vip_status(user, 'giveup', function () {
+    filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result_refuse.client.view.html');
+    return res.render(filepath, {});
+  });
+
   // productLogic.productListByIds(user.vip_product_ids, function (err, products) {
   //     cardLogic.cardListByIds(user.vip_card_ids, function (err, cards) {
   //     });

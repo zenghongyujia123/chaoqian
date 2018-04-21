@@ -158,6 +158,10 @@ module.exports = function (appDb) {
       enum: ['un_submit', 'submit', 'passed', 'daikuan', 'giveup', 'refuse'],
       default: 'un_submit'
     },
+    vip_refund: {
+      type: Boolean,
+      default: false
+    },
     vip_status_submit_time: {
       type: Date
     },
@@ -202,6 +206,18 @@ module.exports = function (appDb) {
     location: {
       type: [Number],
       index: '2dsphere'
+    },
+    remark1: {
+      type: String,
+      default: ''
+    },
+    remark2: {
+      type: String,
+      default: ''
+    },
+    remark3: {
+      type: String,
+      default: ''
     },
     //信用评估
     str1: {

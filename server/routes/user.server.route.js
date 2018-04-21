@@ -22,4 +22,7 @@ module.exports = function (app) {
   ///user/updateAgentRate
   app.route('/user/updateAgentRate').post(userFilter.requireUserById, userController.updateAgentRate);
   app.route('/user/updateVipReportInfo').post(userFilter.requireUserById, userController.updateVipReportInfo);
+  app.route('/user/update_vip_status').post(userFilter.requireUserById, userController.update_vip_status);
+
+  
 };

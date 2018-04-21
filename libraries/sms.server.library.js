@@ -30,3 +30,9 @@ exports.sendPostCodePaySuccess = function (mobile, callback) {
 exports.sendPostMachinePaySuccess = function (mobile, callback) {
   sendTplSingleSms(mobile, '2266276', '#name#=客户', callback)
 }
+
+exports.sendVipPassedSuccess = function (mobile, callback) {
+  sendTplSingleSms(mobile, '2268458', '#name#=客户', callback)
+}
+
+

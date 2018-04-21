@@ -95,6 +95,15 @@ cSite.controller('UserListController', [
         'submit': {
           text: '已递交材料'
         },
+        'refuse': {
+          text: '已拒绝'
+        },
+        'giveup': {
+          text: '已放弃'
+        },
+        'daikuan': {
+          text: '接受贷款'
+        },
         'passed': {
           text: '审核通过'
         }

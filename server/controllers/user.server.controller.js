@@ -3,6 +3,7 @@
  */
 var userLogic = require('./../logics/user');
 var cookieLib = require('../../libraries/cookie');
+var smsLib = require('../../libraries/sms');
 var agent = require('superagent').agent();
 var async = require('async');
 
@@ -65,7 +66,7 @@ exports.userList = function (req, res, next) {
 }
 // add condition and query the database,  
 exports.userListByCondition = function (req, res, next) {
-  userLogic.userListByCondition(req.body.condition,req.body.sort,function (err, result) {
+  userLogic.userListByCondition(req.body.condition, req.body.sort, function (err, result) {
     if (err) {
       return next(err);
     }
@@ -77,7 +78,7 @@ exports.userListByCondition = function (req, res, next) {
 /**********************************/
 //requireByUsername= function (username, callback)
 exports.getUserByUsername = function (req, res, next) {
-  userLogic.requireByUsername(req.body.username,function (err, result) {
+  userLogic.requireByUsername(req.body.username, function (err, result) {
     if (err) {
       return next(err);
     }
@@ -156,10 +157,12 @@ exports.getUserById = function (req, res, next) {
 }
 
 exports.verifyVip = function (req, res, next) {
+
   userLogic.verifyVip(req.requireUserById, function (err, result) {
     if (err) {
       return next(err);
     }
+    smsLib.sendVipPassedSuccess(req.requireUserById.username, function () { });
     req.data = result;
     return next();
   });
@@ -186,6 +189,16 @@ exports.updateAgentRate = function (req, res, next) {
 }
 exports.updateAddInfo = function (req, res, next) {
   userLogic.updateAddInfo(req.requireUserById, req.body.user_info, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
+
+exports.update_vip_status = function (req, res, next) {
+  userLogic.update_vip_status(req.requireUserById, req.body.status, function (err, result) {
     if (err) {
       return next(err);
     }

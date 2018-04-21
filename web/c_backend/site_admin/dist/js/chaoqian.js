@@ -462,6 +462,9 @@ cSite.factory('UserNetwork',
         verifyVip: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/verifyVip', params);
         },
+        update_vip_status: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/update_vip_status', params);
+        },
         updateVipInfo: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/updateVipInfo', params);
         },
@@ -1729,7 +1732,7 @@ cSite.controller('UserDetailController', [
     $scope.select_product_list = [];
     $scope.card_list = [];
     $scope.select_card_list = [];
-    
+
     $scope.productList = function () {
       ProductNetwork.productList($scope, {}).then(function (data) {
         console.log(data);
@@ -1774,15 +1777,15 @@ cSite.controller('UserDetailController', [
           $scope.user = data;
           $scope.productList();
           $scope.cardList();
-          $scope.selectedAgent_rate=$scope.user.agent_rate;
+          $scope.selectedAgent_rate = $scope.user.agent_rate;
         }
       }, function (err) {
         console.log(err);
       });
     };
 
-    $scope.agent_rate=['一般代理','晋级代理','S级代理'];
-    $scope.vip_rate=['VIP会员','非VIP会员'];
+    $scope.agent_rate = ['一般代理', '晋级代理', 'S级代理'];
+    $scope.vip_rate = ['VIP会员', '非VIP会员'];
 
     $scope.verifyVip = function () {
       UserNetwork.verifyVip($scope, { user_id: $stateParams.user_id }).then(function (data) {
@@ -1795,13 +1798,13 @@ cSite.controller('UserDetailController', [
       //$state.go('user_vip_report', { user_id: $stateParams.user_id }, { reload: true });
       //alert('test button !')
 
-      var username = '';    
+      var username = '';
       var apikey = '1c18748ca1c51add4fcde413188c68b0';
-     // var x = document.getElementById("verify_button");
-          
+      // var x = document.getElementById("verify_button");
+
       // 指定发送模板的内容
       //【京呗互联】尊敬的#name#，您的VIP征资报告已经出具完毕，请进入软件内查看。
-      var tpl_value =  "#name#=";
+      var tpl_value = "#name#=";
       tpl_value += '客户';
 
       var user_test = $scope.user;
@@ -1815,27 +1818,27 @@ cSite.controller('UserDetailController', [
       $.ajax({
         url: 'https://sms.yunpian.com/v2/sms/tpl_single_send.json',
         method: 'post',
-        headers: {  
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'  
-      } ,
-        port: 443,  
-        data:{
-          'apikey': '1c18748ca1c51add4fcde413188c68b0' ,
-          'mobile':username,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        },
+        port: 443,
+        data: {
+          'apikey': '1c18748ca1c51add4fcde413188c68b0',
+          'mobile': username,
           'tpl_id': '2117718',
           'tpl_value': tpl_value,
         },
-        complete : function(XMLHttpRequest , textStatus){
+        complete: function (XMLHttpRequest, textStatus) {
           return alert('发送成功 !');
-        //  x.innerHTML = "重新发送";
+          //  x.innerHTML = "重新发送";
         },
         //error: erryFunction,  //错误执行方法    
         //success: succFunction, //成功执行方法
-      }); 
-  
-  
-  //    alert('随机码：' +  send_verify_code);
-    
+      });
+
+
+      //    alert('随机码：' +  send_verify_code);
+
     }
     $scope.goReport = function () {
       $state.go('user_vip_report', { user_id: $stateParams.user_id }, { reload: true });
@@ -1925,14 +1928,24 @@ cSite.controller('UserDetailController', [
           str6: $scope.user.str6,
           str7: $scope.user.str7,
           str8: $scope.user.str8,
-//          agent_rate: $scope.selectedAgent_rate
+          //          agent_rate: $scope.selectedAgent_rate
         }
       }).then(function (data) {
         console.log(data);
         $state.go('user_detail', null, { reload: true });
       });
     }
- 
+
+    $scope.update_vip_status = function (status) {
+      UserNetwork.update_vip_status($scope, {
+        user_id: $stateParams.user_id,
+        status: status
+      }).then(function (data) {
+        console.log(data);
+        $state.go('user_detail', null, { reload: true });
+      });
+    }
+
     $scope.updateAgentRate = function () {
       UserNetwork.updateAgentRate($scope, {
         user_id: $stateParams.user_id, vip_info: {
@@ -1940,7 +1953,7 @@ cSite.controller('UserDetailController', [
         }
       }).then(function (data) {
 
-  //      alert(JSON.stringify(data));
+        //      alert(JSON.stringify(data));
         $state.go('user_detail', null, { reload: true });
       });
     }
@@ -1956,12 +1969,21 @@ cSite.controller('UserDetailController', [
         },
         'passed': {
           text: '审核通过'
-        }
+        },
+        'refuse': {
+          text: '已拒绝'
+        },
+        'giveup': {
+          text: '已放弃'
+        },
+        'daikuan': {
+          text: '接受贷款'
+        },
       }
       return map[status].text;
     }
     $scope.getUserById();
-   
+
 
   }]);
 
@@ -2062,6 +2084,15 @@ cSite.controller('UserListController', [
         },
         'submit': {
           text: '已递交材料'
+        },
+        'refuse': {
+          text: '已拒绝'
+        },
+        'giveup': {
+          text: '已放弃'
+        },
+        'daikuan': {
+          text: '接受贷款'
         },
         'passed': {
           text: '审核通过'

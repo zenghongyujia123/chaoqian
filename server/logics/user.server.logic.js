@@ -410,6 +410,15 @@ exports.userListByCondition = function (condition, sort, callback) {
   }).sort(sort);
 }
 
+exports.update_vip_status = function (user, stauts,callback) {
+  user.vip_status = stauts;
+  user.save(function (err, savedUser) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, savedUser);
+  });
+}
 
 exports.verifyVip = function (user, callback) {
   user.vip_status = 'passed';
@@ -435,6 +444,9 @@ exports.updateVipInfo = function (user, vip_info, callback) {
   user.str6 = vip_info.str6;
   user.str7 = vip_info.str7;
   user.str8 = vip_info.str8;
+  user.remark1 = vip_info.remark1;
+  user.remark2 = vip_info.remark2;
+  user.remark3 = vip_info.remark3;
 
   // user.agent_rate = vip_info.agent_rate;
 

@@ -4,12 +4,12 @@
     <div layout="row">
 
       <md-button class="md-primary md-raised md-hue-2" ng-click="updateAgentRate()">更新保存代理级别</md-button>
-      <md-button class="md-primary md-raised md-hue-2" ng-disabled="user.vip_status==='passed'||user.vip_status==='un_submit'"
-        ng-click="verifyVip()">{{user.vip_status==='passed'?'vip已通过':'vip审核通过'}}</md-button>
-      <md-button class="md-primary md-raised md-hue-2" ng-click="goNotifyPassed()">通过通知</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-disabled="user.vip_status!=='submit'" ng-click="update_vip_status('refuse')">拒绝贷款</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-disabled="user.vip_status!=='submit'" ng-click="verifyVip()">{{user.vip_status==='passed'?'vip已通过':'vip审核通过'}}</md-button>
+      <!-- <md-button class="md-primary md-raised md-hue-2" ng-click="goNotifyPassed()">通过通知</md-button> -->
       <md-button class="md-primary md-raised md-hue-2" ng-click="goReport()">VIP报告编写</md-button>
-      <md-button class="md-primary md-raised md-hue-2" ng-click="goCarrier()">通讯运营商详情查看</md-button>
-      <md-button class="md-primary md-raised md-hue-2" ng-click="goPbc()">人行征信详情查看</md-button>
+      <!-- <md-button class="md-primary md-raised md-hue-2" ng-click="goCarrier()">通讯运营商详情查看</md-button> -->
+      <!-- <md-button class="md-primary md-raised md-hue-2" ng-click="goPbc()">人行征信详情查看</md-button> -->
       <md-button class="md-primary md-raised md-hue-2" ng-click="updateVipInfo()">保存</md-button>
     </div>
   </div>
