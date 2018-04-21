@@ -267,6 +267,9 @@ module.exports = function (appDb) {
     str12: {
       type: String
     },
+    str13: {
+      type: String
+    },
   });
 
   UserSchema.methods.hashPassword = function (password) {

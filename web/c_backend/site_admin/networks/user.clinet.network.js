@@ -33,6 +33,9 @@ cSite.factory('UserNetwork',
         },
         updateVipReportInfo: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/updateVipReportInfo', params);
-        }
+        },
+        rollback_vip_infos: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/rollback_vip_infos', params);
+        },
       };
     }]);

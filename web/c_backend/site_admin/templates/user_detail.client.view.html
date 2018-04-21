@@ -2,7 +2,8 @@
   <div class="page-operation-view" layout="row" layout-align="space-between center">
     <p class="title">用户详情</p>
     <div layout="row">
-
+        
+      <md-button class="md-primary md-raised md-hue-2" ng-click="rollback_vip_infos()">还原用户vip信息</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-click="updateAgentRate()">更新保存代理级别</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-disabled="user.vip_status!=='submit'" ng-click="update_vip_status('refuse')">拒绝贷款</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-disabled="user.vip_status!=='submit'" ng-click="verifyVip()">{{user.vip_status==='passed'?'vip已通过':'vip审核通过'}}</md-button>
@@ -110,16 +111,20 @@
   <md-content layout-padding>
     <div layout-gt-sm="row">
       <md-input-container class="md-block" flex-gt-sm>
-        <label>vip_实际放款时间</label>
+        <label>vip_标签9</label>
         <input ng-model="user.str9" />
       </md-input-container>
       <md-input-container class="md-block" flex-gt-sm>
-        <label>vip_实际还款时间</label>
+        <label>vip_标签10</label>
         <input ng-model="user.str10" />
       </md-input-container>
       <md-input-container class="md-block" flex-gt-sm>
-        <label>vip_实际退款时间</label>
+        <label>vip_标签11</label>
         <input ng-model="user.str11" />
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>vip_标签13</label>
+        <input ng-model="user.str13" />
       </md-input-container>
       <md-input-container class="md-block" flex-gt-sm>
         <label>vip_授信颜色(如：蓝色，绿色，红色，橙色，紫色)</label>

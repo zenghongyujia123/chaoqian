@@ -156,6 +156,16 @@ exports.getUserById = function (req, res, next) {
   });
 }
 
+exports.rollback_vip_infos = function (req, res, next) {
+  userLogic.rollback_vip_infos(req.requireUserById, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
+
 exports.verifyVip = function (req, res, next) {
 
   userLogic.verifyVip(req.requireUserById, function (err, result) {

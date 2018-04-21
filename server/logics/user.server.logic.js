@@ -410,7 +410,7 @@ exports.userListByCondition = function (condition, sort, callback) {
   }).sort(sort);
 }
 
-exports.update_vip_status = function (user, stauts,callback) {
+exports.update_vip_status = function (user, stauts, callback) {
   user.vip_status = stauts;
   user.save(function (err, savedUser) {
     if (err) {
@@ -429,6 +429,51 @@ exports.verifyVip = function (user, callback) {
     return callback(null, savedUser);
   });
 }
+exports.rollback_vip_infos = function (user, callback) {
+  user.vip_credit_assessment = '';
+  user.vip_credit_starter = '';
+  user.vip_report_url_text = '';
+  user.vip_product_ids = [];
+  user.vip_card_ids = [];
+  user.str1 = '';
+  user.str2 = '';
+  user.str3 = '';
+  user.str4 = '';
+  user.str5 = '';
+  user.str6 = '';
+  user.str7 = '';
+  user.str8 = '';
+  user.str9 = '';
+  user.str10 = '';
+  user.str11 = '';
+  user.str12 = '';
+  user.str13 = '';
+  user.remark1 = '';
+  user.remark2 = '';
+  user.remark3 = '';
+  user.carrier_detail = '';
+  user.carrier_token = '';
+  user.carrier_token_time = null;
+
+  user.pbc_detail = '';
+  user.pbc_token = '';
+  user.pbc_token_time = null;
+
+  user.has_read_vip_notice = false;
+  user.has_read_invite_notice = false;
+  user.vip_payed = false;
+  user.vip_payed_time = null;
+  user.vip_status = 'un_submit';
+  user.vip_refund = false;
+  user.vip_status_submit_time = null;
+  user.save(function (err, result) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, result);
+  });
+}
+
 exports.updateVipInfo = function (user, vip_info, callback) {
   user.vip_credit_assessment = vip_info.vip_credit_assessment;
   user.vip_credit_starter = vip_info.vip_credit_starter;
@@ -448,6 +493,7 @@ exports.updateVipInfo = function (user, vip_info, callback) {
   user.str10 = vip_info.str10;
   user.str11 = vip_info.str11;
   user.str12 = vip_info.str12;
+  user.str13 = vip_info.str13;
   user.remark1 = vip_info.remark1;
   user.remark2 = vip_info.remark2;
   user.remark3 = vip_info.remark3;

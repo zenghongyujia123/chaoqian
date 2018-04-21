@@ -230,11 +230,21 @@ cSite.controller('UserDetailController', [
           str10: $scope.user.str10,
           str11: $scope.user.str11,
           str12: $scope.user.str12,
+          str13: $scope.user.str13,
           remark1: $scope.user.remark1,
           remark2: $scope.user.remark2,
           remark3: $scope.user.remark3,
           //          agent_rate: $scope.selectedAgent_rate
         }
+      }).then(function (data) {
+        console.log(data);
+        $state.go('user_detail', null, { reload: true });
+      });
+    }
+
+    $scope.rollback_vip_infos = function () {
+      UserNetwork.rollback_vip_infos($scope, {
+        user_id: $stateParams.user_id,
       }).then(function (data) {
         console.log(data);
         $state.go('user_detail', null, { reload: true });
