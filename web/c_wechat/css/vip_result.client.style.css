@@ -8,6 +8,9 @@ body {
   overflow: hidden;
 }
 .header .header-detail {
+  -moz-box-shadow: 0px 1px 13px #999;
+  -webkit-box-shadow: 0px 1px 13px #999;
+  box-shadow: 0px 1px 13px #999;
   background-color: white;
   border-radius: 10px;
   margin: 10px 20px;
@@ -55,15 +58,14 @@ body {
   color: #fd7a00;
   font-size: 20px;
 }
-.panel {
+.footer {
   padding: 15px 20px;
-  background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-bottom: 10px;
 }
-.panel .report-btn {
+.footer .report-btn {
   background: -webkit-linear-gradient(left, #fdb42a, #fd7a00);
   /* Safari 5.1 - 6.0 */
   background: -o-linear-gradient(left, #fdb42a, #fd7a00);
@@ -76,13 +78,21 @@ body {
   border-radius: 45px;
   text-align: center;
   width: 60%;
-  line-height: 30px;
+  line-height: 40px;
 }
-.panel .report-btn.left {
+.footer .report-btn.left {
   margin-right: 10px;
 }
-.panel .report-btn.right {
+.footer .report-btn.right {
   margin-left: 10px;
+}
+.panel {
+  padding: 15px 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 10px;
 }
 .panel.column {
   flex-direction: column;
