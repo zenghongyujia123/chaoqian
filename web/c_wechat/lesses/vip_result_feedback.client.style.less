@@ -12,7 +12,7 @@ body {
     box-shadow: 0px 2px 11px #999;
     background-color: white;
     border-radius: 10px;
-    margin:  20px;
+    margin: 20px;
     .detail-row {
       padding: 10px;
       display: flex;
@@ -29,10 +29,10 @@ body {
           font-size: 50px;
           line-height: 70px;
         }
-        .tip{
+        .tip {
           padding-top: 10px;
           line-height: 20px;
-          color:#999;
+          color: #999;
           border-top: 0.5px solid #efefef;
           font-size: 12px;
         }
@@ -40,13 +40,24 @@ body {
     }
   }
 }
+
 .panel-title {
   height: 40px;
   color: #5408fb;
   line-height: 40px;
   text-align: center;
   background-color: #f2f2f2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
 }
+
 .panel {
   padding: 15px 20px;
   background-color: white;
@@ -54,7 +65,6 @@ body {
   flex-direction: row;
   justify-content: space-around;
   margin-bottom: 10px;
- 
   .report-btn {
     background: -webkit-linear-gradient(left, #fdb42a, #fd7a00);
     /* Safari 5.1 - 6.0 */
@@ -77,13 +87,11 @@ body {
       margin-left: 10px;
     }
   }
- 
   &.column {
     flex-direction: column;
     align-items: center;
-
-    .report-text{
-      color:#999;
+    .report-text {
+      color: #999;
       text-align: center;
       width: 80%;
       line-height: 40px;
@@ -93,11 +101,17 @@ body {
 }
 
 .page-result-panel {
-  padding: 15px 15px 15px 15px;
-  background-color: white;
-  // &::before {
+  position: relative;
+  padding: 30px 15px 15px 30px;
+  background-color: white; // &::before {
   //   border-bottom: 0.5px solid #e5e5e5;
   // }
+  img {
+    width: 50px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
   .panel-title {
     font-size: 14px;
     line-height: 40px;
@@ -153,6 +167,7 @@ body {
     }
   }
 }
-.weui-panel{
+
+.weui-panel {
   margin-top: 0px;
 }
