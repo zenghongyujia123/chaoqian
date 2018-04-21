@@ -572,6 +572,17 @@ exports.vip_result_feedback = function (req, res, next) {
   });
 };
 
+exports.vip_result_refuse = function (req, res, next) {
+  var user = req.user;
+  filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result_refuse.client.view.html');
+  return res.render(filepath, {});
+  // productLogic.productListByIds(user.vip_product_ids, function (err, products) {
+  //     cardLogic.cardListByIds(user.vip_card_ids, function (err, cards) {
+  //     });
+  //   });
+};
+
+
 
 
 

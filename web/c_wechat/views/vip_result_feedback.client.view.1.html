@@ -1,0 +1,97 @@
+refuse<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
+
+  <title>推荐结果</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+  <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
+  <link rel="stylesheet" href="../c_wechat/css/vip_result_feedback.client.style.css" />
+  <script src="../libs/jquery/dist/jquery.js"></script>
+  <meta name="baidu-site-verification" content="4hPH3hudxx" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-detail">
+      <div class="detail-row">
+        <div class="row-item">
+          <div class="title"><i style="font-size: 50px;margin-right: 20px;" class="weui-icon-success weui-icon_msg"></i>恭喜您，申请借款成功</div>
+          <div class="value">
+              ¥ <%=( user.str1|| '-') %>
+          </div>
+        </div>
+       
+      </div>
+      <div class="detail-row">
+          <div class="row-item">
+            <div class="tip">借款预计2小时内到达您的银行卡，具体请以银行卡到账时间为准</div>
+          </div>
+        </div>
+    </div>
+
+    <div class="panel column">
+      <dic class="report-text">还款日：<%=( user.str8|| '-') %></dic>
+      <dic class="report-text">还款金额：<%=( user.str7|| '-') %></dic>
+      <div class="report-btn">提前还款</div>
+    </div>
+    <div class="panel-title"><img src="/c_wechat/images/vip/紫色喇叭.png" />您获得额外返现额度，请点击进入寻宝领取</div>
+    
+    <div class="weui-panel weui-panel_access">
+      <div class="page-result-panel">
+        <img src="/c_wechat/images/vip/推荐.png" />
+        <div class="panel-content">
+          <div class="icon"></div>
+          <div class="text">官方绿色通道加权</div>
+        </div>
+        <div class="panel-content">
+          <div class="icon"></div>
+          <div class="text">精准推荐，下卡率大于90%</div>
+        </div>
+        <div class="panel-content">
+          <div class="icon"></div>
+          <div class="text">现在申请，附智能收款机，线上二维码随意刷，线下实体卡不限刷，5秒钟到账户，微乎其微的手续费，从此刷卡不求人</div>
+        </div>
+      </div>
+
+      <div class="weui-panel__bd">
+        <a href="javascript:void(0);">
+        </a>
+        <% for (var i = 0;i<cards.length;i++) { %>
+          <a href="<%= cards[i].organization_url %>" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="<%= cards[i].logo %>">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                <%= cards[i].name %>
+              </h4>
+              <p class="weui-media-box__desc">
+                <%= cards[i].description %>
+              </p>
+              <div class="card-footer">
+                <div class="footer-left">
+                  <% for (var j = 0;j<cards[i].str1s.length;j++) { %>
+                    <span class="left-item">
+                      <%=cards[i].str1s[j] %>
+                    </span>
+                    <% } %>
+
+                </div>
+                <div class="footer-right">
+                  <span class="number">
+                    <%=cards[i].int5 %>
+                  </span> 人已申请
+                </div>
+              </div>
+            </div>
+          </a>
+          <% } %>
+      </div>
+    </div>
+</body>
+
+</html>
