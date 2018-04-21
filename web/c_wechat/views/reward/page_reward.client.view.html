@@ -6,10 +6,12 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
 
   <title>悬赏空间</title>
-  <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/page_reward.client.style.css" />
-  <script src="../libs/jquery/dist/jquery.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
   <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
 
@@ -21,14 +23,27 @@
     <img class="start-task" src="../c_wechat/images/reward/<%= color %>/开始探宝按钮.png">
     <img class="main-question-mark" src="../c_wechat/images/reward/<%= color %>/主问号.png">
     <img class="question-mark" src="../c_wechat/images/reward/<%= color %>/问号.png">
-    <img class="exclamation-mark" src="../c_wechat/images/reward/<%= color %>/感叹号.png">
+    <!-- <img class="exclamation-mark" src="../c_wechat/images/reward/<%= color %>/感叹号.png"> -->
   </div>
 </body>
 <script>
-  $(function(){
-    $('.refresh-task').click(function(){
-      window.location ='/page_wechat/page_refresh_reward'
-    }); 
+  $(function () {
+    // $('.refresh-task').click(function () {
+    //   window.location = '/page_wechat/page_refresh_reward'
+    // });
+
+    $('.receive-task').click(tip);
+    $('.refresh-task').click(tip);
+
+    function tip(){
+      $.alert("即将开放！");
+    }
+
+    $('.start-task').click(function () {
+      window.location = 'http://www.baidu.com'
+    })
+
+
   })
 </script>
 
