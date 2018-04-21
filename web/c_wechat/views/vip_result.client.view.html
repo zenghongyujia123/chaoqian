@@ -16,6 +16,11 @@
 
 <body>
   <div class="header">
+    <div class="card-container">
+      <img src="/c_wechat/images/vip/<%=( user.str12|| '-') %>.png" style="width:100%;">
+      <div class="price"><%=( user.str1| '-') %></div>
+      <div class="code"><span> <%=( user._id||'-') %></span><a href="">（查看合同）</a></div>
+    </div>
     <div class="header-detail">
       <div class="detail-row">
         <div class="row-item">
@@ -72,7 +77,7 @@
         </div>
         <div class="plan-item">
           <span class="key">订单号：</span>
-          <span class="value">1231290319012</span>
+          <span class="value"><%=( user._id||'-') %></span>
         </div>
       </div>
       <div class="plan-row">

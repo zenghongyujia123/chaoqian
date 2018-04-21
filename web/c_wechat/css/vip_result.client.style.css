@@ -7,6 +7,30 @@ body {
   /* 标准的语法（必须放在最后） */
   overflow: hidden;
 }
+.header .card-container {
+  margin: 20px;
+  position: relative;
+}
+.header .card-container .price {
+  position: absolute;
+  top: 11%;
+  color: white;
+  font-size: 50px;
+  left: 3%;
+}
+.header .card-container .code {
+  position: absolute;
+  bottom: 14%;
+  color: white;
+  font-size: 18px;
+  left: 3%;
+}
+.header .card-container .code span {
+  opacity: .5;
+}
+.header .card-container .code a {
+  color: white;
+}
 .header .header-detail {
   -moz-box-shadow: 0px 1px 13px #999;
   -webkit-box-shadow: 0px 1px 13px #999;
