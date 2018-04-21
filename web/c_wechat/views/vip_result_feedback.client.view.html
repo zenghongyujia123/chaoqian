@@ -19,9 +19,9 @@
     <div class="header-detail">
       <div class="detail-row">
         <div class="row-item">
-          <div class="title">恭喜您，申请借款成功</div>
+          <div class="title"><i style="font-size: 30px" class="weui-icon-success weui-icon_msg"></i>恭喜您，申请借款成功</div>
           <div class="value">
-            ¥ 223232323
+              ¥ <%=( user.str1|| '-') %>
           </div>
         </div>
        
@@ -34,8 +34,8 @@
     </div>
 
     <div class="panel column">
-      <dic class="report-text">还款日：2018-2-2</dic>
-      <dic class="report-text">还款金额：2000元</dic>
+      <dic class="report-text">还款日：<%=( user.str8|| '-') %></dic>
+      <dic class="report-text">还款金额：<%=( user.str7|| '-') %></dic>
       <div class="report-btn">提前还款</div>
     </div>
     <div class="panel-title">您获得额外返现额度，请点击进入寻宝领取</div>

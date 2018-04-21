@@ -227,6 +227,14 @@ module.exports = function (appDb) {
     str6: {
       type: String
     },
+    //还款额度
+    str7: {
+      type: String
+    },
+    //还款日
+    str8: {
+      type: String
+    },
   });
 
   UserSchema.methods.hashPassword = function (password) {

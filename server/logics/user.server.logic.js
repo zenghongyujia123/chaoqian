@@ -433,6 +433,8 @@ exports.updateVipInfo = function (user, vip_info, callback) {
   user.str4 = vip_info.str4;
   user.str5 = vip_info.str5;
   user.str6 = vip_info.str6;
+  user.str7 = vip_info.str7;
+  user.str8 = vip_info.str8;
 
   // user.agent_rate = vip_info.agent_rate;
 

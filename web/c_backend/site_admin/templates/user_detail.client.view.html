@@ -55,18 +55,18 @@
   <div class="list-body">
     <div class="list-item" layout="row" layout-align="start center" ng-if="user._id">
       <div class="column-item" flex="">{{user.id_card}}</div>
-        <md-input-container class="md-block" flex-gt-sm>
-          代理级别设定
-          <select ng-model="$parent.selectedAgent_rate" ng-options="x for x in agent_rate">
-          </select>
-        </md-input-container> 
+      <md-input-container class="md-block" flex-gt-sm>
+        代理级别设定
+        <select ng-model="$parent.selectedAgent_rate" ng-options="x for x in agent_rate">
+        </select>
+      </md-input-container>
       <div class="column-item" flex=""></div>
       <div class="column-item" flex=""></div>
       <div class="column-item" flex=""></div>
       <div class="column-item" flex=""></div>
       <div class="column-item" flex=""></div>
       <div class="column-item" flex=""></div>
-     
+
     </div>
   </div>
 
@@ -85,17 +85,26 @@
         <input ng-model="user.str3" />
       </md-input-container>
       <md-input-container class="md-block" flex-gt-sm>
-          <label>vip_授信利率</label>
-          <input ng-model="user.str4" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>vip_返现额度</label>
-          <input ng-model="user.str5" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>vip_资金方</label>
-          <input ng-model="user.str6" />
-        </md-input-container>
+        <label>vip_授信利率</label>
+        <input ng-model="user.str4" />
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>vip_返现额度</label>
+        <input ng-model="user.str5" />
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>vip_资金方</label>
+        <input ng-model="user.str6" />
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>vip_还款金额</label>
+        <input ng-model="user.str7" />
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>vip_还款日</label>
+        <input ng-model="user.str8" />
+      </md-input-container>
+
     </div>
   </md-content>
 
