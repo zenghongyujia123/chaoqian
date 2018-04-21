@@ -2,13 +2,15 @@
   <div class="page-operation-view" layout="row" layout-align="space-between center">
     <p class="title">用户列表</p>
     <div layout="row">
-        <md-button class="md-primary md-raised md-hue-2" ng-click="remove_non_vip()" >只显示VIP用户
-        </md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="remove_non_vip()">通过审核vip用户
+      </md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="userListByConditionStatuses(['giveup','refuse'])">只显示拒绝vip用户
+      </md-button>
 
-        <md-button class="md-primary md-raised md-hue-2" ng-click="vip_sort()">VIP排序
-        </md-button>
-        <md-button class="md-primary md-raised md-hue-2" ng-click="all()">所有用户
-          </md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="vip_sort()">VIP排序
+      </md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="all()">所有用户
+      </md-button>
     </div>
   </div>
 
