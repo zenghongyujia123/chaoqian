@@ -447,6 +447,7 @@ exports.updateVipInfo = function (user, vip_info, callback) {
   user.str9 = vip_info.str9;
   user.str10 = vip_info.str10;
   user.str11 = vip_info.str11;
+  user.str12 = vip_info.str12;
   user.remark1 = vip_info.remark1;
   user.remark2 = vip_info.remark2;
   user.remark3 = vip_info.remark3;

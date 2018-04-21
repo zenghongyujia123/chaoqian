@@ -263,6 +263,10 @@ module.exports = function (appDb) {
     str11: {
       type: String
     },
+    //vip授信颜色
+    str12: {
+      type: String
+    },
   });
 
   UserSchema.methods.hashPassword = function (password) {

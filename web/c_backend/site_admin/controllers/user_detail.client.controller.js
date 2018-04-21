@@ -229,6 +229,7 @@ cSite.controller('UserDetailController', [
           str9: $scope.user.str9,
           str10: $scope.user.str10,
           str11: $scope.user.str11,
+          str12: $scope.user.str12,
           remark1: $scope.user.remark1,
           remark2: $scope.user.remark2,
           remark3: $scope.user.remark3,
