@@ -251,6 +251,18 @@ module.exports = function (appDb) {
     str8: {
       type: String
     },
+    //实际放款时间
+    str9: {
+      type: String
+    },
+    //实际还款时间
+    str10: {
+      type: String
+    },
+    //返现退款时间
+    str11: {
+      type: String
+    },
   });
 
   UserSchema.methods.hashPassword = function (password) {

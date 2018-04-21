@@ -107,7 +107,23 @@
 
     </div>
   </md-content>
-
+  <md-content layout-padding>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>vip_实际放款时间</label>
+          <input ng-model="user.str9" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>vip_实际还款时间</label>
+          <input ng-model="user.str10" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>vip_实际退款时间</label>
+          <input ng-model="user.str11" />
+        </md-input-container>
+      </div>
+    </md-content>
+  
   <md-content layout-padding>
     <div>已选产品（点击移除）</div>
     <div layout="row">

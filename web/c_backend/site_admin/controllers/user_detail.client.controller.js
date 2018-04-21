@@ -226,6 +226,12 @@ cSite.controller('UserDetailController', [
           str6: $scope.user.str6,
           str7: $scope.user.str7,
           str8: $scope.user.str8,
+          str9: $scope.user.str9,
+          str10: $scope.user.str10,
+          str11: $scope.user.str11,
+          remark1: $scope.user.remark1,
+          remark2: $scope.user.remark2,
+          remark3: $scope.user.remark3,
           //          agent_rate: $scope.selectedAgent_rate
         }
       }).then(function (data) {
