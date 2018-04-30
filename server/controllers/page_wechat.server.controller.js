@@ -578,7 +578,7 @@ exports.vip_result_feedback = function (req, res, next) {
   userLogic.update_vip_status(user, 'daikuan', function () {
     cardLogic.cardListByIds(user.vip_card_ids, function (err, cards) {
       filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result_feedback.client.view.html');
-      return res.render(filepath, { city: req.cookies.city, user: user,  cards: cards });
+      return res.render(filepath, { city: req.cookies.city, user: user, cards: cards });
     });
   });
 };
@@ -620,7 +620,7 @@ exports.vip_auth_3 = function (req, res, next) {
 
 exports.vip_notice = function (req, res, next) {
   var user = req.user;
-  if (user.has_read_vip_notice) {
+  if (user.has_read_vip_notice && user.vip_payed) {
     return res.redirect('/page_wechat/vip_auth_info');
   }
   var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_notice.client.view.html');
