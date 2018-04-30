@@ -46,7 +46,7 @@
       $.ajax({
         url: '/credit_people/nearCreditPeopleList',
         method: 'post',
-        data: location,
+        data: { location: location },
         success: function (result) {
           result.forEach(function (item) {
             appendCreditPeople(item);
