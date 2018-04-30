@@ -52,7 +52,7 @@ function getWaitingtime(c_name)
  // alert("startdate="+vip_start_date.toString()+"currentdate="+current_date.getTime().toLocaleString());     
   //alert();
   // 以13小时为审批承诺时间，再改为36小时 
-  date3= 36 * 3600 * 1000 -date3;
+  date3= 24 * 3600 * 1000 -date3;
 
     //计算出相差天数  
     var days=Math.floor(date3/(24*3600*1000))  ;

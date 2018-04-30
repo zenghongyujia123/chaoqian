@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
 
-  <title>推荐结果</title>
+  <title>审核授信</title>
   <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
   <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
@@ -18,7 +18,7 @@
   <div class="header">
     <div class="card-container">
       <img src="/c_wechat/images/vip/<%=( user.str12|| '-') %>.png" style="width:100%;">
-      <div class="price"><%=( user.str1| '-') %></div>
+      <div class="price"><%=( user.str2| '-') %></div>
       <div class="code"><span> <%= (new Date().getTime()||'-') %></span><a href="">（查看合同）</a></div>
     </div>
     <div class="header-detail">
@@ -72,7 +72,7 @@
         <div class="plan-item">
           <span class="key">授信额度：</span>
           <span class="value price">
-            <%=( user.str1|| '-') %>
+            <%=( user.str2|| '-') %>
           </span>
         </div>
         <div class="plan-item">

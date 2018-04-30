@@ -28,8 +28,9 @@ $(function () {
       },
       success: function (data) {
         console.log(data);
-        get_pre_pay_id('vip_pay',function(){
-          
+        get_pre_pay_id('vip_pay', function () {
+          delCookie(VIP_auth_start_date);
+          setCookie(VIP_auth_start_date, 10);
         })
       }
     });
@@ -38,43 +39,37 @@ $(function () {
 
 // c_anme : VIP 审核  VIP_auth_start_date , expiredays : 有效时间， 一般30天 。 
 //效时间已经超过30天，就删掉COOKIE
-function setCookie(c_name,expiredays)  
-{
-    var current_date=new Date();
-    var exdate=new Date();
-    var mytime=current_date.getTime().toString();   //获取当前日期与时间 , VIP 审核开始时间
-    exdate.setDate(current_date.getDate()+expiredays);
-    
-    //alert(mytime);
-    document.cookie=c_name+ "=" +mytime+((expiredays==null) ? "" : ";expires="+exdate.toLocaleString())+";";
+function setCookie(c_name, expiredays) {
+  var current_date = new Date();
+  var exdate = new Date();
+  var mytime = current_date.getTime().toString();   //获取当前日期与时间 , VIP 审核开始时间
+  exdate.setDate(current_date.getDate() + expiredays);
+
+  //alert(mytime);
+  document.cookie = c_name + "=" + mytime + ((expiredays == null) ? "" : ";expires=" + exdate.toLocaleString()) + ";";
 }
 
 //删除cookies 
-function delCookie(name) 
-{ 
-    var exp = new Date(); 
-    exp.setTime(exp.getTime() - 1); 
-    var cval=getCookie(name); 
-    if(cval!=null) 
-        document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
+function delCookie(name) {
+  var exp = new Date();
+  exp.setTime(exp.getTime() - 1);
+  var cval = getCookie(name);
+  if (cval != null)
+    document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 }
 
-function getCookie(c_name)
-  {
-   // var c_name="startime";
-  if (document.cookie.length>0)
-    {
-      c_start=document.cookie.indexOf(c_name + "=")
-      if (c_start!=-1)
-        { 
-        c_start=c_start + c_name.length+1 
-        c_end=document.cookie.indexOf(";",c_start)
-        if (c_end==-1) c_end=document.cookie.length
-        return unescape(document.cookie.substring(c_start,c_end))
-        } 
+function getCookie(c_name) {
+  // var c_name="startime";
+  if (document.cookie.length > 0) {
+    c_start = document.cookie.indexOf(c_name + "=")
+    if (c_start != -1) {
+      c_start = c_start + c_name.length + 1
+      c_end = document.cookie.indexOf(";", c_start)
+      if (c_end == -1) c_end = document.cookie.length
+      return unescape(document.cookie.substring(c_start, c_end))
     }
-  else
-    {
+  }
+  else {
     return "";
-   }
+  }
 }
