@@ -46,7 +46,7 @@ exports.updateCreditPeople = function (info, callback) {
     }
     else {
       creditPeople.business_description_list = []
-    }  
+    }
     creditPeople.company_type = info.company_type;
     creditPeople.location = info.location;
 
@@ -71,7 +71,7 @@ exports.creditPeopleList = function (callback) {
 
 exports.nearCreditPeopleList = function (location, callback) {
   var point = { type: "Point", coordinates: location || [0, 0] };
-  CreditPeople.geoNear(point, { spherical: true }, function (err, creditPeoples) {
+  CreditPeople.geoNear(point, { spherical: true, distanceMultiplier: 0.001 }, function (err, creditPeoples) {
     if (err) {
       console.log(err);
       return callback({ err: sysErr.database_query_error });

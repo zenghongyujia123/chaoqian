@@ -79,12 +79,22 @@ a {
   font-size: 16px;
   margin-bottom: 15px;
   line-height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.page-self-local .list .list-item .title .title-left {
   margin-bottom: 5px;
 }
-.page-self-local .list .list-item .title span {
+.page-self-local .list .list-item .title .title-left span {
   margin-left: 20px;
   color: #999;
   font-size: 12px;
+}
+.page-self-local .list .list-item .title .title-right {
+  font-size: 14px;
 }
 .page-self-local .list .list-item .content {
   color: #999;

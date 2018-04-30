@@ -35,10 +35,15 @@
           <img src="<%= credit_people_list[i].obj.photo %>" class="photo">
           </img>
           <div class="title">
-            <%= credit_people_list[i].obj.name %>
-              <span>
-                <%= credit_people_list[i].obj.company_type %>
-              </span>
+            <div class="title-left">
+              <%= credit_people_list[i].obj.name %>
+                <span>
+                  <%= credit_people_list[i].obj.company_type %>
+                </span>
+            </div>
+            <div class="title-right">
+              <%= (( credit_people_list[i].dis||0).toFixed(1)) %>公里
+            </div>
           </div>
           <div class="content">
             <%= credit_people_list[i].obj.personal_description %>

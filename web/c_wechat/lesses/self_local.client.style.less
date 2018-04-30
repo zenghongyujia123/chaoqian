@@ -84,12 +84,22 @@ a {
         font-size: 16px;
         margin-bottom: 15px;
         line-height: 20px;
-        span {
-          margin-left: 20px;
-          color: #999;
-          font-size: 12px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        .title-left {
+          span {
+            margin-left: 20px;
+            color: #999;
+            font-size: 12px;
+          }
+          margin-bottom: 5px;
         }
-        margin-bottom: 5px;
+        .title-right{
+          font-size: 14px;
+        }
       }
       .content {
         color: #999;
