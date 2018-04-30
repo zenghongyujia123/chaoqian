@@ -67,11 +67,10 @@ a {
   position: relative;
 }
 .page-self-local .list .list-item .item-left {
-  background-color: rebeccapurple;
   width: 50px;
   position: absolute;
   left: 15px;
-  top: 5px;
+  top: 15px;
   height: 50px;
 }
 .page-self-local .list .list-item .item-left .photo {
