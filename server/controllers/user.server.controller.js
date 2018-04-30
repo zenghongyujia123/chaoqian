@@ -209,6 +209,10 @@ exports.updateAddInfo = function (req, res, next) {
 }
 
 exports.update_vip_status = function (req, res, next) {
+  if(req.body.status==='refuse'){
+    smsLib.juJueVip(req.requireUserById.username, function () { });
+  }
+
   userLogic.update_vip_status(req.requireUserById, req.body.status, function (err, result) {
     if (err) {
       return next(err);

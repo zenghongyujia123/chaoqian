@@ -26,7 +26,8 @@ exports.updateJietiao = function (jietiaoInfo, callback) {
     jietiao.name = jietiaoInfo.name;
     jietiao.logo = jietiaoInfo.logo;
     jietiao.require = jietiaoInfo.require;
-    jietiao.url = jietiaoInfo.url||'';
+    jietiao.require_number = jietiaoInfo.require_number || 0;
+    jietiao.url = jietiaoInfo.url || '';
     jietiao.str1 = jietiaoInfo.str1 || '';
     jietiao.str1s = jietiaoInfo.str1.split(',');
     jietiao.str2 = jietiaoInfo.str2 || '';
@@ -45,15 +46,15 @@ exports.updateJietiao = function (jietiaoInfo, callback) {
 exports.jietiaoList = function (info, callback) {
   var query = {};
   var sort = {};
-  if (info.sort_key) {
-    sort[info.sort_key] = info.sort_value || 1;
-  }
+  // if (info.sort_key) {
+  //   sort[info.sort_key] = info.sort_value || 1;
+  // }
 
-  if (info.query_key) {
-    query[info.query_key] = info.query_value;
-  }
+  // if (info.query_key) {
+  //   query[info.query_key] = info.query_value;
+  // }
 
-  JieTiao.find(query).sort(sort).exec(function (err, jietiaos) {
+  JieTiao.find({}).sort({ require_number: 1 }).exec(function (err, jietiaos) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }

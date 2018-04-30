@@ -47,6 +47,10 @@ module.exports = function (appDb) {
       type: String,
       require: true
     },
+    require_number: {
+      type: Number,
+      require: true
+    },
     description: {
       type: String
     }

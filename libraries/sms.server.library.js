@@ -39,6 +39,10 @@ exports.sendWoYaoJieKuan = function (mobile, callback) {
   sendTplSingleSms(mobile, '2268538', '#name#=客户', callback)
 }
 
+exports.juJueVip = function (mobile, callback) {
+  sendTplSingleSms(mobile, '2268458', '#name#=客户', callback)
+}
+
 
 
 
