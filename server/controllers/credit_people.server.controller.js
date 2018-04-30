@@ -29,7 +29,8 @@ exports.creditPeopleDetail = function (req, res, next) {
 };
 
 exports.nearCreditPeopleList = function (req, res, next) {
-  creditPeopleLogic.nearCreditPeopleList(req.body.location, function (err, result) {
+  var location = req.body.location;
+  creditPeopleLogic.nearCreditPeopleList([parseFloat(location[0]), parseFloat(location[1])], function (err, result) {
     if (err) {
       return next(err);
     }
