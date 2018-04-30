@@ -30,17 +30,17 @@
     </div>
     <div class="list">
 
-     
+
     </div>
   </div>
 </body>
 <script>
   $(function () {
-    getLocation(function (result) {
-      nearCreditPeopleList([result.longitude, result.latitude]);
+    getUserJsApiTicket(window.location.href, function (data) {
+      getLocation(function (result) {
+        nearCreditPeopleList([result.longitude, result.latitude]);
+      });
     });
-      // nearCreditPeopleList([result.longitude, result.latitude]);
-
 
     function nearCreditPeopleList(location) {
       $.ajax({
