@@ -36,13 +36,13 @@
 </body>
 <script>
   $(function () {
-    // getUserJsApiTicket(window.location.href, function (data) {
-    //   getLocation(function (result) {
-    //     nearCreditPeopleList([result.longitude, result.latitude]);
-    //   });
-    // });
+    getUserJsApiTicket(window.location.href, function (data) {
+      getLocation(function (result) {
+        nearCreditPeopleList([result.longitude, result.latitude]);
+      });
+    });
 
-    nearCreditPeopleList([0, 0]);
+    // nearCreditPeopleList([0, 0]);
 
 
     function nearCreditPeopleList(location) {
