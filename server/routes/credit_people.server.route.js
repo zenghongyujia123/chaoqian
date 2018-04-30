@@ -9,4 +9,5 @@ module.exports = function (app) {
   app.route('/credit_people/updateCreditPeople').post(creditPeopleController.updateCreditPeople);
   app.route('/credit_people/creditPeopleList').post(creditPeopleController.creditPeopleList);
   app.route('/credit_people/creditPeopleDetail').post(creditPeopleFilter.requireCreditPeople, creditPeopleController.creditPeopleDetail);
+  app.route('/credit_people/nearCreditPeopleList').post(creditPeopleController.nearCreditPeopleList);
 };

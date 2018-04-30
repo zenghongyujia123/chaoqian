@@ -29,40 +29,62 @@
     </div>
     <div class="list">
 
-      <% for(var i=0; i<credit_people_list.length; i++) {%>
-
-        <a href="/page_wechat/credit_people_detail?credit_people_id=<%= credit_people_list[i].obj._id %>" class="list-item">
-          <img src="<%= credit_people_list[i].obj.photo %>" class="photo">
-          </img>
-          <div class="title">
-            <div class="title-left">
-              <%= credit_people_list[i].obj.name %>
-                <span>
-                  <%= credit_people_list[i].obj.company_type %>
-                </span>
-            </div>
-            <div class="title-right">
-              <%= (( credit_people_list[i].dis||0).toFixed(1)) %>公里
-            </div>
-          </div>
-          <div class="content">
-            <%= credit_people_list[i].obj.personal_description %>
-          </div>
-          <div class="tags">
-            <% for(var j=0; j<credit_people_list[i].obj.tag_list.length; j++) {%>
-
-              <span class="tag-item">
-                <%= credit_people_list[i].obj.tag_list[j] %>
-              </span>
-              <% } %>
-
-          </div>
-        </a>
-        <% } %>
-
+     
     </div>
   </div>
 </body>
+<script>
+  $(function () {
+    getLocation(function (result) {
+      nearCreditPeopleList([result.longitude, result.latitude]);
+    });
+      // nearCreditPeopleList([result.longitude, result.latitude]);
 
+
+    function nearCreditPeopleList(location) {
+      $.ajax({
+        url: '/credit_people/nearCreditPeopleList',
+        method: 'post',
+        data: location,
+        success: function (result) {
+          result.forEach(function (item) {
+            appendCreditPeople(item);
+          });
+        }
+      });
+    }
+
+    function appendCreditPeople(item) {
+      var str =
+        '   <a href="/page_wechat/credit_people_detail?credit_people_id=' + item.obj._id + '" class="list-item">' +
+        '     <img src="' + item.obj.photo + '" class="photo">' +
+        '     </img>' +
+        '     <div class="title">' +
+        '       <div class="title-left">' +
+        '         ' + item.obj.name +
+        '           <span>' +
+        '             ' + item.obj.company_type +
+        '           </span>' +
+        '       </div>' +
+        '       <div class="title-right">' +
+        '         ' + (item.dis || 0).toFixed(1) + '公里' +
+        '       </div>' +
+        '     </div>' +
+        '     <div class="content">' +
+        '       ' + item.obj.personal_description +
+        '     </div>' +
+        '     <div class="tags">';
+      for (var j = 0; j < item.obj.tag_list.length; j++) {
+        str += '<span class="tag-item">' + item.obj.tag_list[j] + '</span>'
+      }
+
+      str += '</div> </a>';
+      var obj = $(str);
+      $('.list').append(obj);
+    }
+  })
+
+
+</script>
 
 </html>
