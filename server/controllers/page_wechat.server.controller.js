@@ -5,6 +5,8 @@ var path = require('path');
 var productLogic = require('../logics/product');
 var jietiaoLogic = require('../logics/jietiao');
 var cardLogic = require('../logics/card');
+var smsLib = require('../../libraries/sms');
+
 
 var cblogic = require('../logics/customer_business');
 var userLogic = require('../logics/user');
@@ -577,6 +579,7 @@ exports.vip_result_feedback = function (req, res, next) {
   var user = req.user;
   userLogic.update_vip_status(user, 'daikuan', function () {
     cardLogic.cardListByIds(user.vip_card_ids, function (err, cards) {
+      smsLib.sendWoYaoJieKuan(user.username, function () { });
       filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result_feedback.client.view.html');
       return res.render(filepath, { city: req.cookies.city, user: user, cards: cards });
     });
