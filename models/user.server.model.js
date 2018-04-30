@@ -43,6 +43,10 @@ module.exports = function (appDb) {
       type: String,
       trim: true
     },
+    real_bank_number: {
+      type: String,
+      trim: true
+    },
     real_phone: {
       type: String,
       trim: true
@@ -297,6 +301,9 @@ module.exports = function (appDb) {
       type: String,
     },
     user_real_name: {
+      type: String,
+    },
+    user_bank_number: {
       type: String,
     },
     user_phone: {

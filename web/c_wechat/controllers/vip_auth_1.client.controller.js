@@ -2,6 +2,8 @@ $(function () {
 
   var VIP_auth_start_date = "VIP_auth_start_date";
   $('.submit-btn').click(function () {
+
+    var real_bank_number = $('.real_bank_number').val();
     var real_name = $('.real_name').val();
     var real_phone = $('.real_phone').val();
     var id_card = $('.id_card').val();
@@ -9,6 +11,11 @@ $(function () {
     if (!real_name) {
       return alert('请输入真实姓名');
     }
+
+    if (!real_bank_number) {
+      return alert('请输入银行卡号');
+    }
+
 
     if (real_phone.length != 11) {
       return alert('这个用户手机号不正确！');
@@ -24,7 +31,8 @@ $(function () {
       data: {
         real_name: real_name,
         real_phone: real_phone,
-        id_card: id_card
+        id_card: id_card,
+        real_bank_number: real_bank_number
       },
       success: function (data) {
         console.log(data);

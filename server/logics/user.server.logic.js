@@ -277,10 +277,11 @@ exports.updateInviceNotice = function (user, callback) {
 }
 
 
-exports.updateUserAuth1 = function (user, real_name, real_phone, id_card, callback) {
+exports.updateUserAuth1 = function (user, real_name, real_phone, id_card, real_bank_number, callback) {
   user.real_name = real_name;
   user.real_phone = real_phone;
   user.id_card = id_card;
+  user.real_bank_number = real_bank_number;
   user.save(function (err, savedUser) {
     if (err) {
       return callback({ err: sysErr.database_save_error });
@@ -516,6 +517,10 @@ exports.updateAddInfo = function (user, vip_info, callback) {
   user.alipay_id = vip_info.alipay_id;
   user.email = vip_info.email;
   user.adress = vip_info.adress;
+
+  if (vip_info.real_bank_number) {
+    user.real_bank_number = vip_info.real_bank_number;
+  }
 
   user.save(function (err, savedUser) {
     if (err) {

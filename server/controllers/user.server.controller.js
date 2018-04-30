@@ -34,9 +34,10 @@ exports.signin = function (req, res, next) {
 exports.updateUserAuth1 = function (req, res, next) {
   var user = req.user;
   var real_name = req.body.real_name;
+  var real_bank_number = req.body.real_bank_number;
   var real_phone = req.body.real_phone;
   var id_card = req.body.id_card;
-  userLogic.updateUserAuth1(user, real_name, real_phone, id_card, function (err, result) {
+  userLogic.updateUserAuth1(user, real_name, real_phone, id_card,real_bank_number, function (err, result) {
     if (err) {
       return next(err);
     }
