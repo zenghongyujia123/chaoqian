@@ -36,11 +36,14 @@
 </body>
 <script>
   $(function () {
-    getUserJsApiTicket(window.location.href, function (data) {
-      getLocation(function (result) {
-        nearCreditPeopleList([result.longitude, result.latitude]);
-      });
-    });
+    // getUserJsApiTicket(window.location.href, function (data) {
+    //   getLocation(function (result) {
+    //     nearCreditPeopleList([result.longitude, result.latitude]);
+    //   });
+    // });
+
+    nearCreditPeopleList([0, 0]);
+
 
     function nearCreditPeopleList(location) {
       $.ajax({
@@ -58,8 +61,8 @@
     function appendCreditPeople(item) {
       var str =
         '   <a href="/page_wechat/credit_people_detail?credit_people_id=' + item.obj._id + '" class="list-item">' +
-        '     <img src="' + item.obj.photo + '" class="photo">' +
-        '     </img>' +
+
+        '     <div class="item-left"> <img src="' + item.obj.photo + '" class="photo" /> <div class="text">'+ (item.dis || 0).toFixed(1) + '公里' +'</div>   </div>'+
         '     <div class="title">' +
         '       <div class="title-left">' +
         '         ' + item.obj.name +
@@ -67,9 +70,9 @@
         '             ' + item.obj.company_type +
         '           </span>' +
         '       </div>' +
-        '       <div class="title-right">' +
-        '         ' + (item.dis || 0).toFixed(1) + '公里' +
-        '       </div>' +
+        // '       <div class="title-right">' +
+        // '         ' 
+        // '       </div>' +
         '     </div>' +
         '     <div class="content">' +
         '       ' + item.obj.personal_description +

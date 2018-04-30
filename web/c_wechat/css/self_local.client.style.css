@@ -66,14 +66,22 @@ a {
   padding: 10px 15px 10px 80px;
   position: relative;
 }
-.page-self-local .list .list-item .photo {
+.page-self-local .list .list-item .item-left {
   background-color: rebeccapurple;
+  width: 50px;
+  position: absolute;
+  left: 15px;
+  top: 5px;
+  height: 50px;
+}
+.page-self-local .list .list-item .item-left .photo {
   width: 50px;
   height: 50px;
   border-radius: 90px;
-  position: absolute;
-  left: 15px;
-  top: 25px;
+}
+.page-self-local .list .list-item .item-left .text {
+  text-align: center;
+  font-size: 12px;
 }
 .page-self-local .list .list-item .title {
   font-size: 16px;
