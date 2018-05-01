@@ -94,4 +94,12 @@
     </div>
 </body>
 
+<script>
+  $(function(){
+    if('<%= user.str6 %>'==='个人'){
+      $('.report-btn').remove();
+      $('.tip').text('基于遵守政策， 放款资金由微信客服（jingbeikefu）添加您好友后，直接关联由个人资金方放款至您的账户内。');
+    }
+  });
+</script>
 </html>
