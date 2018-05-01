@@ -593,7 +593,7 @@ exports.vip_result_refuse = function (req, res, next) {
   userLogic.update_vip_status(user, 'giveup', function () {
     productLogic.productListByIds(user.vip_product_ids, function (err, products) {
       filepath = path.join(__dirname, '../../web/c_wechat/views/vip_result_refuse.client.view.html');
-      return res.render(filepath, { products: products });
+      return res.render(filepath, { products: products, user: user });
     });
   });
   // productLogic.productListByIds(user.vip_product_ids, function (err, products) {

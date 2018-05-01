@@ -411,8 +411,8 @@ exports.userListByCondition = function (condition, sort, callback) {
   }).sort(sort);
 }
 
-exports.update_vip_status = function (user, stauts, callback) {
-  user.vip_status = stauts;
+exports.update_vip_status = function (user, status, callback) {
+  user.vip_status = status;
   if(status==='refuse'){
     user.vip_refuse_time = new Date();
   }

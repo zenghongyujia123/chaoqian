@@ -66,7 +66,7 @@
         s = Math.floor(leftTime / 1000 % 60);
         //将倒计时赋值到div中  
         console.log(d, h, m, s);
-        $('#vip_waiting_time').text(h + ':' + m + ':' + s);
+        $('.time').text(d+'天'+h + '小时' + m + '分' + s+'秒');
         //递归每秒调用countTime方法，显示动态时间效果  
         setTimeout(countTime, 1000);
       }
