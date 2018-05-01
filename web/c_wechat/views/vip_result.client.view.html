@@ -18,8 +18,15 @@
   <div class="header">
     <div class="card-container">
       <img src="/c_wechat/images/vip/<%=( user.str12|| '-') %>.png" style="width:100%;">
-      <div class="price"><%=( user.str2| '-') %></div>
-      <div class="code"><span> <%= (new Date().getTime()||'-') %></span><a href="">（查看合同）</a></div>
+      <div class="price">
+        <%=( user.str2| '-') %>
+      </div>
+      <div class="code">
+        <span>
+          <%= (new Date().getTime()||'-') %>
+        </span>
+        <a href="/page_wechat/page_contract_list">（查看合同）</a>
+      </div>
     </div>
     <div class="header-detail">
       <div class="detail-row">
@@ -77,7 +84,9 @@
         </div>
         <div class="plan-item">
           <span class="key">订单号：</span>
-          <span class="value"><%=( new Date().getTime()||'-') %></span>
+          <span class="value">
+            <%=( new Date().getTime()||'-') %>
+          </span>
         </div>
       </div>
       <div class="plan-row">

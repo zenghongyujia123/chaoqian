@@ -654,6 +654,22 @@ exports.page_image = function (req, res, next) {
   return res.render(filepath, { url: req.query.url, title: req.query.title || '' });
 };
 
+exports.page_images = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/page_images.client.view.html');
+  return res.render(filepath, {type:req.query.type, title: req.query.title || '' });
+};
+
+
+exports.page_contract_list = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/page_contract_list.client.view.html');
+  return res.render(filepath, { list:[
+    '平台服务协议',
+    '借款协议',
+    '委托扣款协议'
+  ], title: req.query.title || '' });
+};
+
+
 exports.me_share = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/me_share.client.view.html');
   return res.render(filepath, { city: req.cookies.city, code: req.query.code || '' });

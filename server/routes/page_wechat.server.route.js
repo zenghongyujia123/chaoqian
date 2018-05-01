@@ -69,6 +69,8 @@ module.exports = function (app) {
   
   app.route('/page_wechat/invite_notice').get(userFilter.requireUser, index.invite_notice);
   app.route('/page_wechat/page_image').get(index.page_image);
+  app.route('/page_wechat/page_images').get(index.page_images);
+  app.route('/page_wechat/page_contract_list').get(index.page_contract_list);
   app.route('/page_wechat/page_reward').get(index.page_reward);
   app.route('/page_wechat/page_refresh_reward').get(index.page_refresh_reward);
   app.route('/page_wechat/postcode_my_list').get(userFilter.requireUser, index.postcode_my_list);

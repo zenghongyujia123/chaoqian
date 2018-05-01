@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
+
+    <title>潮钱网</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
+    <script src="../libs/moment/min/moment.min.js"></script>
+    <script src="../libs/jquery/dist/jquery.js"></script>
+    <script src="../c_wechat/controllers/page_wechat.client.controller.js"></script>
+</head>
+
+<body>
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__bd">
+        </div>
+    </div>
+</body>
+<script>
+    var list = '<%- JSON.stringify(list) %>';
+    list = JSON.parse(list);
+    $(function () {
+        list.forEach(function (item) {
+            $('.weui-panel__bd').append($(
+                '<a href="/page_wechat/page_images?type='+item+'" class="weui-media-box weui-media-box_appmsg">' +
+                '    <div class="weui-media-box__bd">' +
+                '        <h4 class="weui-media-box__title">' +
+                '           ' + item +
+                '        </h4>' +
+                '    </div>' +
+                '</a>'
+            ));
+        });
+    });
+</script>
+
+</html>
