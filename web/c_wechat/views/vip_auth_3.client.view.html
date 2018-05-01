@@ -38,7 +38,7 @@
     </div>
     <div class="auth-watting">
       <div id="vip_waiting_time" class="time">
-        24:59:60
+        23:59:60
       </div>
       <div class="title">Vip资质受理中...</div>
       <div class="description">正常不超过24小时反馈结果，具体依据您的排队情况及VIP用户的多寡，风控工程师审核结果将第一时间发短信到您的手机上作为通知，受理及工作时间：9:00-22:00 ，放款时间每天上午11点与下午6点两个批次
@@ -46,5 +46,40 @@
     </div>
   </div>
 </body>
+
+<script>
+  $(function () {
+    //设置截止时间  
+    var endDate = new Date('<%= user.vip_payed_time  %>');
+    endDate.setDate(endDate.getDate() + 1);
+    var end = endDate.getTime();
+    function countTime() {
+      //获取当前时间  
+      var date = new Date();
+      var now = date.getTime();
+
+
+      //时间差  
+      var leftTime = end - now;
+      //定义变量 d,h,m,s保存倒计时的时间  
+      var d, h, m, s;
+      if (leftTime >= 0) {
+        d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
+        h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
+        m = Math.floor(leftTime / 1000 / 60 % 60);
+        s = Math.floor(leftTime / 1000 % 60);
+        //将倒计时赋值到div中  
+        console.log(d, h, m, s);
+        $('#vip_waiting_time').text(h + ':' + m + ':' + s);
+        //递归每秒调用countTime方法，显示动态时间效果  
+        setTimeout(countTime, 1000);
+      }
+    }
+    countTime();
+
+  });
+
+
+</script>
 
 </html>
