@@ -7,17 +7,17 @@ body {
   background-color: white;
 }
 .page-result-center .title {
-  line-height: 60px;
+  line-height: 50px;
   font-size: 16px;
   border-bottom: 0.5px solid #efefef;
   position: relative;
-  padding-left: 55px;
+  padding-left: 40px;
 }
 .page-result-center .title img {
   position: absolute;
   left: 0px;
   top: 0px;
-  width: 60px;
+  width: 50px;
 }
 .page-result-center .center-list {
   overflow: hidden;
@@ -27,12 +27,12 @@ body {
   float: left;
   width: 25%;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 .page-result-center .center-list .center-list-item .icon {
   border-radius: 4px;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
 }
 .page-result-center .center-list .center-list-item .name {
   line-height: 30px;
