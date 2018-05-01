@@ -166,6 +166,9 @@ module.exports = function (appDb) {
       type: Boolean,
       default: false
     },
+    vip_refuse_time:{
+      type:Date
+    },
     vip_status_submit_time: {
       type: Date
     },

@@ -413,6 +413,9 @@ exports.userListByCondition = function (condition, sort, callback) {
 
 exports.update_vip_status = function (user, stauts, callback) {
   user.vip_status = stauts;
+  if(status==='refuse'){
+    user.vip_refuse_time = new Date();
+  }
   user.save(function (err, savedUser) {
     if (err) {
       return callback({ err: sysErr.database_save_error });
