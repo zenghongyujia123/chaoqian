@@ -550,7 +550,9 @@ exports.vip_auth_info = function (req, res, next) {
     });
   }
   else if (user.vip_status === 'giveup' || user.vip_status === 'refuse') {
-    return res.render(path.join(__dirname, '../../web/c_wechat/views/vip_result_refuse.client.view.html'), { city: req.cookies.city, user: user });
+    productLogic.productListByIds(user.vip_product_ids, function (err, products) {
+      return res.render(path.join(__dirname, '../../web/c_wechat/views/vip_result_refuse.client.view.html'), { city: req.cookies.city, user: user, products: products });
+    });
   }
   else if (user.vip_status === 'daikuan') {
     productLogic.productListByIds(user.vip_product_ids, function (err, products) {
