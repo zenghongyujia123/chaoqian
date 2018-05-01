@@ -85,12 +85,12 @@ exports.get_pre_pay_id = function (req, res, next) {
   };
 
   if (req.body.pay_type === 'vip_pay') {
-    detail.pay_price = 1;
+    detail.pay_price = 29900;
     detail.pay_title = '潮钱网充值中心-会员充值';
     detail.pay_type = 'vip_pay';
   }
   else if (req.body.pay_type === 'query_大数据') {
-    detail.pay_price = 1490;
+    detail.pay_price = 990;
     detail.pay_title = '潮钱网充值中心-网贷成功率查询';
     detail.pay_type = 'query_大数据';
   }
@@ -105,17 +105,17 @@ exports.get_pre_pay_id = function (req, res, next) {
     detail.pay_type = 'query_黑灰行为';
   }
   else if (req.body.pay_type === 'postcode_pay') {
-    detail.pay_price = 1;
+    detail.pay_price = 6900;
     detail.pay_title = '潮钱网充值中心-激活码'
     detail.pay_type = 'postcode_pay';
   }
   else if (req.body.pay_type === 'pos_suixingfu') {
-    detail.pay_price = 1;//12000
+    detail.pay_price = 12000;//12000
     detail.pay_title = '潮钱网充值中心-随行付刷卡机'
     detail.pay_type = 'pos_suixingfu';
   }
   else if (req.body.pay_type === 'pos_xinguodu') {
-    detail.pay_price = 1;//39900
+    detail.pay_price = 39900;//39900
     detail.pay_title = '潮钱网充值中心-新国都刷卡机'
     detail.pay_type = 'pos_xinguodu';
   }
