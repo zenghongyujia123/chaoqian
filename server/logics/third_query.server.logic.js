@@ -27,7 +27,7 @@ exports.get_query_by_list = function (user, info, callback) {
   if (info.user_id) {
     query.user = info.user_id;
   }
-  ThirdQuery.find(query).select('-result').exec(function (err, result) {
+  ThirdQuery.find(query).select('-result').sort({ create_time: -1 }).exec(function (err, result) {
     if (err || !result) {
       return callback({ err: sysErr.database_query_error });
     }
