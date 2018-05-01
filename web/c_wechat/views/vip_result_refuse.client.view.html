@@ -9,13 +9,38 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
   <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
-  <link rel="stylesheet" href="../c_wechat/css/vip_result_feedback.client.style.css" />
+  <link rel="stylesheet" href="../c_wechat/css/vip_result_refuse.client.style.css" />
   <script src="../libs/jquery/dist/jquery.js"></script>
-  <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
 
 <body>
-  <img src="/c_wechat/images/vip/申请失败拒绝页面.jpg" style="width:100%;" />
+  <img src="/c_wechat/images/vip/被拒页面_上半部分图_750x570.jpg" style="width:100%;" />
+  <div class="panel-title"><img src="/c_wechat/images/vip/紫色喇叭.png" />恭喜您，获得五颗克拉钻石补偿，已到您赏金空间账户</div>
+  
+  <div class="page-result-center">
+    <div class="title">
+      <img src="/c_wechat/images/vip/推荐.png" />
+      强烈推荐您以下借款平台
+    </div>
+    <div class="center-list">
+      <% for(var i=0; i<products.length; i++) {%>
+        <a class="center-list-item" href="/page_wechat/product_detail?product_id=<%= products[i]._id %>">
+          <img src="<%= products[i].logo %>" class="icon"></img>
+          <div class="name">
+            <%= products[i].name %>
+          </div>
+        </a>
+        <% } %>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="tip">
+      您下次可申请的时间：
+    </div>
+    <div class="time">
+      5天23小时21分12秒
+    </div>
+  </div>
 </body>
 
 </html>
