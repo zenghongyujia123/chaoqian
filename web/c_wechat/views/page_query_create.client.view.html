@@ -20,8 +20,8 @@
 <body>
   <div class="page-header">
     <div class="header-title">
-      <div class="icon orange">黑</div>
-      <div class="text">网贷黑灰行为</div>
+      <div class="icon"><%= type %></div>
+      <div class="text"></div>
     </div>
     <div class="header-tip">帮您寻找网贷过程中不规范导致的灰黑度因素</div>
   </div>
@@ -65,7 +65,7 @@
     <div class="agree-row">
       <input type="checkbox" checked="checked">
       <span> 我已阅读并统一</span>
-      <a>《潮钱网用户查询使用协议》</a>
+      <a href="/page_wechat/page_image?url=../c_wechat/images/query/用户查询使用协议.jpg&title=用户查询使用协议">《潮钱网用户查询使用协议》</a>
     </div>
     <a class="page-btn">同意协议，开始查询</a>
   </div>
@@ -91,16 +91,25 @@
         rowPhone.show();
         rowIdcard.show();
         rowName.show();
+        headerIcon.addClass('orange');
+        headerText.text('网贷黑灰行为');
+        headerTip.text('帮您查出过往申请过程中被认定为黑灰行为的因素');
         hander = ge_ren_hei_ming_dan;
         break;
       case '介':
         rowPhone.show();
+        headerText.text('网贷黑中介');
+        headerIcon.addClass('blue');
+        headerTip.text('是否被网络征信认定为欺诈类产业的中介行为属性');        
         hander = hei_zhong_jie;
         break;
       case '大':
         rowPhone.show();
         rowIdcard.show();
         rowName.show();
+        headerText.text('网贷成功率');
+        headerIcon.addClass('green');
+        headerTip.text('网贷行为中的过往数据变量及被查询和成功率关系');
         hander = mi_guan_da_shu_ju;
         break;
     }
