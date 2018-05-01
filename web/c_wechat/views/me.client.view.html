@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/me.client.style.css" />
-  <script src="../libs/jquery/dist/jquery.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
   <script src="../c_wechat/helpers/time.client.helper.js"></script>
   <script src="../c_wechat/controllers/me.client.controller.js"></script>
 </head>
@@ -41,33 +42,35 @@
 
   <div class="page-me-list">
     <a class="list-item" href="/page_wechat/me_info">
-      <img src="../c_wechat/images/me/my_info.png" class="item-icon"></img>
       <span class="item-text">个人资料</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
-    <a class="list-item" href="/page_wechat/me_achievement">
-      <img src="../c_wechat/images/me/my_achievement.png" class="item-icon"></img>
+    <!-- <a class="list-item" href="/page_wechat/me_achievement">
       <span class="item-text">我的业绩</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
-    </a>
-    <a class="list-item" href="/page_wechat/me_account">
-      <img src="../c_wechat/images/me/my_achievement.png" class="item-icon"></img>
-      <span class="item-text">我的消费</span>
+    </a> -->
+    <a class="list-item no_open" href="javascript:;">
+      <span class="item-text ">我的账单</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
-    <a class="list-item" href="/page_wechat/me_agent">
-      <img src="../c_wechat/images/me/my_agent.png" class="item-icon"></img>
-      <span class="item-text">我的代理</span>
+    <a class="list-item no_open" href="javascript:;">
+      <span class="item-text">我的赏金</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
     <a class="list-item" href="/page_wechat/me_query">
-      <img src="../c_wechat/images/me/my_agent.png" class="item-icon"></img>
-      <span class="item-text">我的查询</span>
+      <span class="item-text">查询结果</span>
+      <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
+    </a>
+    <a class="list-item no_open" href="javascript:;">
+      <span class="item-text">代理业绩</span>
+      <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
+    </a>
+    <a class="list-item" href="/page_wechat/me_account">
+      <span class="item-text">个人消费</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
     <a class="list-item" href="../c_wechat/views/WeiboKefu.html">
-      <img src="../c_wechat/images/me/my_help.png" class="item-icon"></img>
-      <span class="item-text">官方客服及微博</span>
+      <span class="item-text">联系我们</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
   </div>
@@ -88,5 +91,11 @@
 
 
 </body>
-
+<script>
+  $(function(){
+    $('.no_open').click(function(){
+      $.alert("即将开放！");
+    });
+  });
+</script>
 </html>
