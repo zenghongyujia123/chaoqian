@@ -3,6 +3,25 @@ body {
   -webkit-overflow-scrolling: touch;
   color: #333;
 }
+.card-header {
+  display: flex;
+  flex-direction: row;
+  background-color: #1B1A1F;
+  font-size: 18px;
+}
+.card-header .header-item {
+  display: blockl;
+  text-align: center;
+  line-height: 50px;
+  width: 50%;
+  opacity: 0.5;
+  color: white;
+  margin-bottom: 1px;
+}
+.card-header .header-item.select {
+  opacity: 1;
+  border-bottom: 4px solid white;
+}
 .page-me-achievement .list {
   padding-left: 15px;
 }
