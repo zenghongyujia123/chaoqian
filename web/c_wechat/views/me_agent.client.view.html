@@ -6,11 +6,14 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
 
   <title>我的代理</title>
-  <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/me_agent.client.style.css" />
+
   <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-  <script src="../libs/jquery/dist/jquery.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
   <script src="../libs/jquery-qrcode/dist/jquery.qrcode.js"></script>
   <script src="../c_wechat/controllers/page_wechat.client.controller.js"></script>
   <script src="../c_wechat/controllers/me_agent.client.controller.js"></script>
@@ -41,7 +44,7 @@
       </div>
     </div>
     <div class="agent-body">
-      <div class="body-title">点右上角分享到微信群，佣金直接到账支付宝</div>
+      <div class="body-title share-text" style="color:#f24659;">点击右上角分享后注册新用户产生业务，您可获得奖励？</div>
       <div class="body-code" id="qrcode"></div>
       <img class="body-code" id="imgcode" src="" />
       <div class="body-title">专属推广二维码 （长按保存）</div>
@@ -83,6 +86,15 @@
 
     var canvas = qrcode.find('canvas').get(0);
     $('#imgcode').attr('src', canvas.toDataURL('image/jpg'));
+
+    $('.share-text').click(function () {
+      $.alert(
+        "<div style='text-align:left'>购买VIP=25元直接支付到你支付宝</div>" +
+        "<div style='text-align:left'>购买信用卡代还=25元直接支付到你支付宝</div>" +
+        "<div style='text-align:left'>记得在个人资料内填写支付宝方便收钱（3小时内</div>"
+      );
+
+    });
 
     getUserJsApiTicket(window.location.href, function () {
       onMenuShareAppMessage(
