@@ -289,39 +289,6 @@ exports.updateUserAuth1 = function (user, real_name, real_phone, id_card, real_b
     return callback(null, savedUser);
   });
 }
-//updateCredit198PayedByOpenid
-exports.updateCredit198PayedByOpenid = function (openid, info, callback) {
-  //  var user={};
-  User.findOne({ openid: openid }, function (err, user) {
-    if (!user) {
-      //     user=user;
-      return callback();
-    }
-
-    UserPay.findOne({ 'content.transaction_id': info.transaction_id }, function (err, userPay) {
-      if (userPay) {
-        return callback();
-      }
-      var real_name = ((user.real_name != '') ? user.real_name : user.wechat_info.nickname);
-      userPay = new UserPay({
-        type: 'credit198_pay',
-        user_id: user._id,
-        user_phone: user.username,
-        user_real_name: user.wechat_info.nickname,
-        content: info
-      });
-      userPay.save(function () {
-        user.credit198_payed = true;
-        user.credit198_payed_time = new Date();
-        user.save(function (err) {
-          return callback();
-        });
-      })
-    });
-
-
-  });
-}
 
 exports.updateVipPayedByOpenid = function (openid, info, callback) {
   User.findOne({ openid: openid }, function (err, user) {

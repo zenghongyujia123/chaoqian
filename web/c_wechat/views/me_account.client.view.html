@@ -7,68 +7,77 @@
 
   <title>我的账户</title>
   <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
-<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/me_account.client.style.css" />
+  <script src="../libs/moment/min/moment.min.js"></script>
   <script src="../libs/jquery/dist/jquery.js"></script>
 </head>
 
 <body>
-  <!-- <div class="page-me-account">
-    <div class="header">
-      <div class="header-item">
-        <div class="title">可用额度（元）</div>
-        <div class="value">1500.00</div>
-      </div>
-      <div class="border"></div>
-      <div class="header-item">
-        <div class="title">总额度（元）</div>
-        <div class="value">2500.00</div>
-      </div>
-    </div>
-    <div class="body">
-      <div class="body-row">
-        <a href="/page_wechat/me_bill" class="row-item">
-          <img src="../c_wechat/images/me_account/bill.png" class="icon"></img>
-          <div class="title">我的账单</div>
-          <div class="content">七天内无应还金额</div>
-        </a>
-        <a class="row-item left-border">
-          <img src="../c_wechat/images/me_account/agent.png" class="icon"></img>
-          <div class="title">我的收款码</div>
-          <div class="content">点击上传二维码</div>
-        </a>
-      </div>
-      <div class="body-row">
-        <a class="row-item top-border">
-          <img src="../c_wechat/images/me_account/alipay.png" class="icon"></img>
-          <div class="title">我的账单</div>
-          <div class="content">七天内无应还金额</div>
-        </a>
-      </div>
 
-    </div>
-    <div class="buy-vip-btn">购买VIP会员</div>
-  </div> -->
-  <% for(var i=0; i<pays.length; i++) {%>
-
-      <div class="weui-form-preview" style="margin-bottom: 10px;">
-          <div class="weui-form-preview__hd">
-            <label class="weui-form-preview__label">付款金额</label>
-            <em class="weui-form-preview__value">¥<%= (pays[i].content.total_fee/100) %></em>
-          </div>
-          <div class="weui-form-preview__bd">
-            <div class="weui-form-preview__item">
-              <label class="weui-form-preview__label">商品</label>
-              <span class="weui-form-preview__value">电动打蛋机</span>
-            </div>
-            <div class="weui-form-preview__item">
-              <label class="weui-form-preview__label">标题标题</label>
-              <span class="weui-form-preview__value">名字名字名字</span>
-            </div>
-          </div>
-        </div>
-    <% } %>
 </body>
+<script>
+  $(function () {
+    var pays = '<%- JSON.stringify( pays) %>';
+    pays = JSON.parse(pays);
+
+    pays.forEach(function (item) {
+      $('body').append(
+
+
+        $(
+          '  <div class="weui-form-preview" style="margin-bottom: 10px;">' +
+          '  <div class="weui-form-preview__hd">' +
+          '    <label class="weui-form-preview__label">付款金额</label>' +
+          '    <em class="weui-form-preview__value">¥' +
+          '      ' + item.content.total_fee / 100 +
+          '    </em>' +
+          '  </div>' +
+          '  <div class="weui-form-preview__bd">' +
+          '    <div class="weui-form-preview__item">' +
+          '      <label class="weui-form-preview__label">商品</label>' +
+          '      <span class="weui-form-preview__value">' + getGoodsByType(item.type) + '</span>' +
+          '    </div>' +
+          '    <div class="weui-form-preview__item">' +
+          '      <label class="weui-form-preview__label">时间</label>' +
+          '      <span class="weui-form-preview__value">' + moment(item.create_time).format('YYYY-MM-DD HH:mm') + '</span>' +
+          '    </div>' +
+          '  </div>' +
+          '</div>')
+      );
+    });
+
+    function getGoodsByType(type) {
+      var text = '-';
+      'vip_pay', 'postcode_pay', '', 'pos_xinguodu', 'credit198_pay', 'query_大数据', 'query_黑灰行为', 'query_黑中介'
+      switch (type) {
+        case 'vip_pay':
+          text = 'vip充值';
+          break;
+        case 'postcode_pay':
+          text = 'pos机激活码';
+          break;
+        case 'pos_suixingfu':
+          text = '随行付';
+          break;
+        case 'pos_xinguodu':
+          text = '新国都';
+          break;
+        case 'query_大数据':
+          text = '大数据查询';
+          break;
+        case 'query_黑灰行为':
+          text = '黑灰行为查询';
+          break;
+        case 'query_黑中介':
+          text = '黑中介查询';
+          break;
+      }
+      return text;
+    }
+
+  });
+</script>
 
 </html>
