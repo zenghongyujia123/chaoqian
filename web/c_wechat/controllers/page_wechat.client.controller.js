@@ -153,11 +153,11 @@ function getUserJsApiTicket(url, callback) {
   });
 }
 
-function onMenuShareAppMessage() {
+function onMenuShareAppMessage(url) {
   wx.onMenuShareAppMessage({
     title: 'haha', // 分享标题
     desc: 'lalla', // 分享描述
-    link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
     imgUrl: '', // 分享图标
     success: function () {
       alert('haha')
@@ -165,7 +165,7 @@ function onMenuShareAppMessage() {
     },
     cancel: function () {
       alert('cancel')
-      
+
       // 用户取消分享后执行的回调函数
     }
   });
