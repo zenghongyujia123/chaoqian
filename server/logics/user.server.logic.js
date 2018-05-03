@@ -359,7 +359,7 @@ exports.updateUserLocation = function (user, lng, lat, callback) {
 }
 
 exports.userList = function (callback) {
-  User.find({}, function (err, users) {
+  User.find({}).sort({ create_time: -1 }).exec(function (err, users) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }
@@ -380,7 +380,7 @@ exports.userListByCondition = function (condition, sort, callback) {
 
 exports.update_vip_status = function (user, status, callback) {
   user.vip_status = status;
-  if(status==='refuse'){
+  if (status === 'refuse') {
     user.vip_refuse_time = new Date();
   }
   user.save(function (err, savedUser) {
