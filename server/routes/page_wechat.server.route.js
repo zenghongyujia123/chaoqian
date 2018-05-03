@@ -40,7 +40,7 @@ module.exports = function (app) {
   app.route('/page_wechat/me_achievement').get(userFilter.requireUser, index.me_achievement);
   app.route('/page_wechat/apply_third').get(userFilter.requireUser, index.apply_third);
 
-  app.route('/page_wechat/me_share').get(index.me_share);
+  app.route('/page_wechat/me_share/:code').get(index.me_share);
 
   app.route('/page_wechat/apply_third').get(userFilter.requireUser, index.apply_third);
   app.route('/page_wechat/card_home').get(userFilter.requireUser, index.card_home);

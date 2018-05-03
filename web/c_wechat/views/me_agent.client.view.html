@@ -84,7 +84,10 @@
     $('#imgcode').attr('src', canvas.toDataURL('image/jpg'));
 
     getUserJsApiTicket(window.location.href, function () {
-      onMenuShareAppMessage('http://' + window.location.host + '/page_wechat/me_share');
+      onMenuShareAppMessage(
+        '潮钱借款',
+        '玩个小游戏能拿红包还能获得授信额度？给就一定下款？没错，快注册碰下运气吧~寻宝满足你~每天都有，记住哦',
+        'http://' + window.location.host + '/page_wechat/me_share/' + '<%= user.username %>');
     })
   })
 </script>
