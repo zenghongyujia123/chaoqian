@@ -183,7 +183,21 @@ function onMenuShareTimeline(title, url, img, successText) {
       // 用户取消分享后执行的回调函数
     }
   });
+}
 
+function onMenuShareQQ(title, desc, url, img) {
+  wx.onMenuShareQQ({
+    title: title, // 分享标题
+    desc: desc, // 分享描述
+    link: url, // 分享链接
+    imgUrl: img, // 分享图标
+    success: function () {
+      // 用户确认分享后执行的回调函数
+    },
+    cancel: function () {
+      // 用户取消分享后执行的回调函数
+    }
+  });
 }
 
 
