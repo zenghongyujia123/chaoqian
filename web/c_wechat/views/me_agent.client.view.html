@@ -84,7 +84,7 @@
     $('#imgcode').attr('src', canvas.toDataURL('image/jpg'));
 
     getUserJsApiTicket(window.location.href,function(){
-      onMenuShareAppMessage();
+      onMenuShareAppMessage(window.location.href+'?type=share');
     })
   })
 </script>
