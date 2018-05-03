@@ -83,8 +83,8 @@
     var canvas = qrcode.find('canvas').get(0);
     $('#imgcode').attr('src', canvas.toDataURL('image/jpg'));
 
-    getUserJsApiTicket(window.location.href,function(){
-      onMenuShareAppMessage(window.location.href+'?type=share');
+    getUserJsApiTicket(window.location.href, function () {
+      onMenuShareAppMessage('http://' + window.location.host + '/me_share');
     })
   })
 </script>
