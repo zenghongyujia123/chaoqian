@@ -136,7 +136,7 @@ function getUserJsApiTicket(url, callback) {
         timestamp: data.timestamp, // 必填，生成签名的时间戳
         nonceStr: data.noncestr, // 必填，生成签名的随机串
         signature: data.signature,// 必填，签名，见附录1
-        jsApiList: ['getLocation', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'onMenuShareAppMessage','onMenuShareTimeline'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        jsApiList: ['getLocation', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'onMenuShareAppMessage', 'onMenuShareTimeline'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
       });
 
       wx.ready(function () {
@@ -153,14 +153,14 @@ function getUserJsApiTicket(url, callback) {
   });
 }
 
-function onMenuShareAppMessage(title, desc, url, img) {
+function onMenuShareAppMessage(title, desc, url, img, successText) {
   wx.onMenuShareAppMessage({
     title: title, // 分享标题
     desc: desc, // 分享描述
     link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
     imgUrl: encodeURI(img), // 分享图标
     success: function () {
-      alert('haha')
+      alert(successText);
       // 用户确认分享后执行的回调函数
     },
     cancel: function () {
@@ -170,12 +170,13 @@ function onMenuShareAppMessage(title, desc, url, img) {
     }
   });
 }
-function onMenuShareTimeline(title, url, img) {
+function onMenuShareTimeline(title, url, img, successText) {
   wx.onMenuShareTimeline({
     title: title, // 分享标题
     link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
     imgUrl: encodeURI(img), // 分享图标
     success: function () {
+      alert(successText);
       // 用户确认分享后执行的回调函数
     },
     cancel: function () {
