@@ -136,7 +136,7 @@ function getUserJsApiTicket(url, callback) {
         timestamp: data.timestamp, // 必填，生成签名的时间戳
         nonceStr: data.noncestr, // 必填，生成签名的随机串
         signature: data.signature,// 必填，签名，见附录1
-        jsApiList: ['getLocation', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        jsApiList: ['getLocation', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
       });
 
       wx.ready(function () {
@@ -152,5 +152,24 @@ function getUserJsApiTicket(url, callback) {
     }
   });
 }
+
+function onMenuShareAppMessage() {
+  wx.onMenuShareAppMessage({
+    title: 'haha', // 分享标题
+    desc: 'lalla', // 分享描述
+    link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    imgUrl: '', // 分享图标
+    success: function () {
+      alert('haha')
+      // 用户确认分享后执行的回调函数
+    },
+    cancel: function () {
+      alert('cancel')
+      
+      // 用户取消分享后执行的回调函数
+    }
+  });
+}
+
 
 
