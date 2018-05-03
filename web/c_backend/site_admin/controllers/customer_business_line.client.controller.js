@@ -193,8 +193,8 @@ cSite.controller('CustomerBusinessLineController', [
 
       $scope.parent_loan_award = ($scope.loan_num * p_ratio[get_index($scope.firstParent.agent_rate)].loan).toFixed(1);
       $scope.parent_credit_award = ($scope.credit_num * p_ratio[get_index($scope.firstParent.agent_rate)].credit).toFixed(1);
-      $scope.parent_pos_award = ($scope.pos_num * p_ratio[get_index($scope.firstParent.agent_rate)].pos).toFixed(1);
-      $scope.parent_vip_award = get_val((($scope.user.vip_payed) ? 69 : 0), p_ratio[get_index($scope.firstParent.agent_rate)].vip);
+      $scope.parent_pos_award = $scope.user.postcode_payed ? 25 : 0;// ($scope.pos_num * p_ratio[get_index($scope.firstParent.agent_rate)].pos).toFixed(1);
+      $scope.parent_vip_award = $scope.user.vip_payed ? 25 : 0;// get_val((($scope.user.vip_payed) ? 69 : 0), p_ratio[get_index($scope.firstParent.agent_rate)].vip);
       $scope.parent_money4agent_award = get_val($scope.money4agent, p_ratio[get_index($scope.firstParent.agent_rate)].agent);
       $scope.parent_money4Sagent_award = get_val($scope.money4Sagent, p_ratio[get_index($scope.firstParent.agent_rate)].sagent);
       $scope.parent_car_mgr_award = ($scope.car_mgr_num * p_ratio[get_index($scope.firstParent.agent_rate)].car_mgr).toFixed(1);
@@ -267,8 +267,8 @@ cSite.controller('CustomerBusinessLineController', [
           $state.go('recordList', {});
         }
       }, function (err) {
-          console.log(err);
-        });
+        console.log(err);
+      });
 
     };
 
