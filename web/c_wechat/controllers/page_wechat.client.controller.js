@@ -158,7 +158,7 @@ function onMenuShareAppMessage(url) {
     title: 'haha', // 分享标题
     desc: 'lalla', // 分享描述
     link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-    imgUrl: '', // 分享图标
+    imgUrl: 'http://img.taopic.com/uploads/allimg/121014/234931-1210140JK414.jpg', // 分享图标
     success: function () {
       alert('haha')
       // 用户确认分享后执行的回调函数
