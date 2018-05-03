@@ -31,31 +31,31 @@ cSite.controller('ProductDetailController', [
       organization_info: '',
       wechat_detail_info: '',
       risk_codes: '',
-      str1:'',
-      str2:'',
-      str3:'',
-      str4:'',
-      str5:'',
-      str6:'',
-      str7:'',
-      str8:'',
-      str9:'',
-      str10:'',
-      str11:'',
-      str12:'',
-      str13:0,
-      str14:0,
-      str15:0,
-      str16:0,
-      str17:0,
-      str18:0,
+      str1: '',
+      str2: '',
+      str3: '',
+      str4: '',
+      str5: '',
+      str6: '',
+      str7: '',
+      str8: '',
+      str9: '',
+      str10: '',
+      str11: '',
+      str12: '',
+      str13: 0,
+      str14: 0,
+      str15: 0,
+      str16: 0,
+      str17: 0,
+      str18: 0,
     };
 
     $scope.updateProduct = function (event) {
       ProductNetwork.updateProduct($scope, { product_info: $scope.product }).then(function (data) {
         if (!data.err) {
           CommonHelper.showConfirm($scope, null, '操作成功', function () {
-            $state.go('product_detail', null, { reload: true });
+            $state.go('product_detail', { product_id: data._id }, { reload: true });
           }, null, null, event);
         }
 
