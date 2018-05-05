@@ -45,7 +45,7 @@ exports.home = function (req, res, next) {
     var filepath = path.join(__dirname, '../../web/c_wechat/views/home.client.view.html');
     req.cookies.city = req.params.city || req.cookies.city || '';
     cookieLib.setCookie(res, 'city', req.cookies.city);
-    return res.render(filepath, { city: req.cookies.city });
+    return res.render(filepath, { city: req.cookies.city, device: req.query.device || '' });
   });
 };
 
