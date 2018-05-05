@@ -36,7 +36,7 @@
     </div>
     <div class="list">
       <% for(var i=0; i<products.length; i++) {%>
-        <a href="/page_wechat/product_detail?product_id=<%= products[i]._id %>" class="list-item">
+        <a onclick="goToWindow('/page_wechat/product_detail?product_id=<%= products[i]._id %>')" class="list-item">
           <img class="photo" src="<%= products[i].logo %>" />
           <div class="title">
             <%= products[i].name %>
@@ -67,5 +67,21 @@
     </div>
   </div>
 </body>
-
+<script>
+  function goToWindow(url) {
+    if ('<%= device  %>' === 'native') {
+      alert('native');
+      api.openWin({
+        name: 'page1',
+        url: 'widget://html/new_window.html',
+        pageParam: {
+          name: 'http://chaoqianwang.com' + url
+        }
+      });
+    }
+    else {
+      window.location = url;
+    }
+  }
+</script>
 </html>
