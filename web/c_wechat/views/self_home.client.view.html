@@ -67,7 +67,6 @@
 <script>
   function goToWindow(url) {
     if ('<%= device  %>' === 'native') {
-      alert('native');
       api.openWin({
         name: new Date().getTime().toString(),
         url: 'widget://html/new_window.html',
