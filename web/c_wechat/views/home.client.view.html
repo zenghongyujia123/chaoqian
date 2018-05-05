@@ -93,8 +93,7 @@
       <img src="../c_wechat/images/index/yen_select.png" class="icon"></img>
       <div class="title">贷款</div>
     </a>
-    <a href="javascript:;" class="footer-item 找钱" onclick="goToWindow('widget://html/self_home.html','/page_wechat/self_home?sort_key=create_time&sort_value=-1')" >
-        
+    <a href="javascript:;" class="footer-item 找钱" onclick="goToWindow('widget://html/self_home.html','/page_wechat/self_home?sort_key=create_time&sort_value=-1')">
       <img src="../c_wechat/images/index/shopping.png" class="icon"></img>
       <div class="title">找钱</div>
     </a>
@@ -123,24 +122,23 @@
       $.alert("即将开放！");
     });
 
-    function goToWindow(nativeUrl, url) {
-      if ('<%= device  %>' === 'native') {
-        alert('native');
-        api.openWin({
+
+  });
+  function goToWindow(nativeUrl, url) {
+    if ('<%= device  %>' === 'native') {
+      alert('native');
+      api.openWin({
         name: 'page1',
         url: nativeUrl,
         pageParam: {
           name: url
         }
       });
-
-      }
-      else {
-        window.location = url;
-      }
     }
-  });
-
+    else {
+      window.location = url;
+    }
+  }
 
 
 </script>
