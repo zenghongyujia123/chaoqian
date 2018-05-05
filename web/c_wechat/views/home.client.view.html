@@ -123,6 +123,7 @@
     });
     $('.找钱').click(function () {
       if ('<%= device  %>' === 'native') {
+        alert('native');
         api.openWin({
           name: 'page1',
           url: '/page_wechat/self_home?sort_key=create_time&sort_value=-1',
