@@ -126,14 +126,9 @@
         alert('native');
         api.openWin({
           name: 'page1',
-          url: '/page_wechat/self_home?sort_key=create_time&sort_value=-1',
+          url: 'widget://html/frame2.html',
           pageParam: {
             name: 'test'
-          },
-          animation: {
-            type: "push",                //动画类型（详见动画类型常量）
-            subType: "from_right",       //动画子类型（详见动画子类型常量）
-            duration: 2000
           }
         });
       }
