@@ -5,13 +5,10 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
 
   <title>潮钱网</title>
-  <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../libs/Swiper/dist/css/swiper.min.css" />
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/self_home.client.style.css" />
   <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
   <script src="../libs/jquery/dist/jquery.js"></script>
-  <script src="../libs/Swiper/dist/js/swiper.jquery.min.js"></script>
   <script src="../c_wechat/controllers/self_home.client.controller.js"></script>
   <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
@@ -72,7 +69,7 @@
     if ('<%= device  %>' === 'native') {
       alert('native');
       api.openWin({
-        name: new Date().getTime(),
+        name: new Date().getTime().toString(),
         url: 'widget://html/new_window.html',
         pageParam: {
           name: 'http://chaoqianwang.com' + url
