@@ -72,7 +72,7 @@
     if ('<%= device  %>' === 'native') {
       alert('native');
       api.openWin({
-        name: 'page1',
+        name: new Date().getTime(),
         url: 'widget://html/new_window.html',
         pageParam: {
           name: 'http://chaoqianwang.com' + url
