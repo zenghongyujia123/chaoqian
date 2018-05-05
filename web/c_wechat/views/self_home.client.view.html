@@ -68,7 +68,7 @@
   function goToWindow(url, name) {
     if ('<%= device  %>' === 'native') {
       api.openWin({
-        name: 'page1',
+        name: new Date().getTime().toString(),
         url: 'widget://html/new_window.html',
         pageParam: {
           url: 'http://chaoqianwang.com' + url,
