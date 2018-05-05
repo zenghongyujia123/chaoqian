@@ -3,11 +3,13 @@ body {
   -webkit-overflow-scrolling: touch;
   font-size: 14px;
   color: #333;
-  overflow: auto;
 }
 a {
   text-decoration: none;
   color: #333;
+}
+.page-self-home {
+  overflow: auto;
 }
 .page-self-home .card-header {
   display: flex;
