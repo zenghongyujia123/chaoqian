@@ -139,6 +139,16 @@
       window.location = url;
     }
   }
+  apiready = function () {
+    api.addEventListener({
+      name: 'keyback'
+    }, function (ret, err) {
+      api.closeWin();
+    });
+  }
+
+
+
 
 
 </script>
