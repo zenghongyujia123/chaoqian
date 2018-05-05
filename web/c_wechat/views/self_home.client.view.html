@@ -33,7 +33,7 @@
     </div>
     <div class="list">
       <% for(var i=0; i<products.length; i++) {%>
-        <a onclick="goToWindow('/page_wechat/product_detail?product_id=<%= products[i]._id %>')" class="list-item">
+        <a onclick="goToWindow('/page_wechat/product_detail?product_id=<%= products[i]._id %>','产品详情')" class="list-item">
           <img class="photo" src="<%= products[i].logo %>" />
           <div class="title">
             <%= products[i].name %>
@@ -65,13 +65,14 @@
   </div>
 </body>
 <script>
-  function goToWindow(url) {
+  function goToWindow(url, name) {
     if ('<%= device  %>' === 'native') {
       api.openWin({
-        name: new Date().getTime().toString(),
+        name: 'page1',
         url: 'widget://html/new_window.html',
         pageParam: {
-          name: 'http://chaoqianwang.com' + url
+          url: 'http://chaoqianwang.com' + url,
+          name: name || '标题'
         }
       });
     }
@@ -80,4 +81,5 @@
     }
   }
 </script>
+
 </html>
