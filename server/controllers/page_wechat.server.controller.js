@@ -470,7 +470,7 @@ exports.self_home = function (req, res, next) {
       city: req.cookies.city || '',
       products: products || [],
       cur_filter: info.query_key || info.sort_key || '',
-      device: req.cookies.city.device || ''
+      device: req.cookies.device || ''
     });
   });
 };
