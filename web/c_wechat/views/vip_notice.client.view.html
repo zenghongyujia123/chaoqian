@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
   <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/vip_notice.client.style.css" />
-  <script src="../libs/jquery/dist/jquery.js"></script>
-  <meta name="baidu-site-verification" content="4hPH3hudxx" />
+  <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+  <script src="../c_wechat/controllers/page_native.client.controller.js"></script>
 </head>
 
 <body>
@@ -32,25 +32,25 @@
       </div>
     </div> -->
     <div class="agree-row">
-      <input onclick="return false;"  type="checkbox" checked="checked">
+      <input onclick="return false;" type="checkbox" checked="checked">
       <span>我已阅读并同意</span>
-      <a href="/page_wechat/page_image?url=../c_wechat/images/vip/返现退款与还款协议用户须知.jpg&title=返现退款与还款协议用户须知">《返现退款与还款须知》</a>
+      <a href=javascript:; "" onclick="goToWindow('/page_wechat/page_image?url=../c_wechat/images/vip/返现退款与还款协议用户须知.jpg&title=返现退款与还款协议用户须知','《返现退款与还款须知》')">《返现退款与还款须知》</a>
     </div>
     <div class="agree-row">
-      <input  onclick="return false;"  type="checkbox" checked="checked">
+      <input onclick="return false;" type="checkbox" checked="checked">
       <span>我已阅读并同意</span>
-      <a href="/page_wechat/page_image?url=../c_wechat/images/vip/VIP通道协议.jpg&title=VIP通道协议">《潮钱网VIP通道协议》</a>
+      <a href=javascript:; "" onclick="goToWindow('/page_wechat/page_image?url=../c_wechat/images/vip/VIP通道协议.jpg&title=VIP通道协议','《潮钱网VIP通道协议》')">《潮钱网VIP通道协议》</a>
     </div>
     <div class="agree-row">
-        <input type="checkbox" checked="checked">
-        <span>我同意领取免费赠送保险服务，本人同意接受执牌保险公司后续的联系确认保险产品事宜，查看</span>
-        <a href="/page_wechat/page_image?url=../c_wechat/images/vip/VIP通道协议.jpg&title=VIP通道协议">《投保须知》（自由选择）</a>
-      </div>
+      <input type="checkbox" checked="checked">
+      <span>我同意领取免费赠送保险服务，本人同意接受执牌保险公司后续的联系确认保险产品事宜，查看</span>
+      <a href=javascript:; "" onclick="goToWindow('/page_wechat/page_image?url=../c_wechat/images/vip/VIP通道协议.jpg&title=VIP通道协议','《投保须知》')">《投保须知》（自由选择）</a>
+    </div>
 
-    
+
   </div>
   <div class="footer">
-    <a href="/page_wechat/vip_auth_info" class="notice-btn">
+    <a href="javascript:;" onclick="goToWindow('/page_wechat/vip_auth_info','VIP通道')" class="notice-btn">
       同意协议，开始申请
     </a>
 </body>
