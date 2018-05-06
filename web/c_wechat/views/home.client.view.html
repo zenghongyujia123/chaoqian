@@ -117,12 +117,21 @@
 </body>
 <script>
   $(function () {
-    localStorage.setItem('device',  '<%= device  %>');
+    localStorage.setItem('device', '<%= device  %>');
     $('.no_open').click(function () {
       $.alert("即将开放！");
     });
+
+    if (api && api.removeLaunchView) {
+      api.removeLaunchView({
+        animation: {
+          type: 'fade',
+          duration: 500
+        }
+      });
+    }
   });
-  
+
 </script>
 
 </html>
