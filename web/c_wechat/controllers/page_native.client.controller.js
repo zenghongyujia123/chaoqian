@@ -1,8 +1,7 @@
 function goToWindow(url, name) {
-  ;
   if (localStorage.getItem("device") === 'native') {
     api.openWin({
-      name: 'page1',
+      name: new Date().getDate().toString(),
       url: 'widget://html/new_window.html',
       pageParam: {
         url: 'http://chaoqianwang.com' + url,
