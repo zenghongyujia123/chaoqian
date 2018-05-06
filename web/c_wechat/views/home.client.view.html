@@ -15,6 +15,7 @@
   <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
   <script src="../libs/Swiper/dist/js/swiper.jquery.min.js"></script>
+  <script src="../c_wechat/controllers/page_native.client.controller.js"></script>
   <script src="../c_wechat/controllers/home.client.controller.js"></script>
 </head>
 
@@ -116,29 +117,12 @@
 </body>
 <script>
   $(function () {
-
-    var device = '<%= device  %>';
+    localStorage.setItem('device',  '<%= device  %>');
     $('.no_open').click(function () {
       $.alert("即将开放！");
     });
-
-
   });
-  function goToWindow(url, name) {
-    if ('<%= device  %>' === 'native') {
-      api.openWin({
-        name: 'page1',
-        url: 'widget://html/new_window.html',
-        pageParam: {
-          url: 'http://chaoqianwang.com' + url,
-          name: name || '标题'
-        }
-      });
-    }
-    else {
-      window.location = url;
-    }
-  }
+  
 </script>
 
 </html>
