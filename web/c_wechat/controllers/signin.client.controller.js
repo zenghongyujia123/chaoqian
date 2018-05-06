@@ -25,7 +25,7 @@ $(function () {
         }
         console.log(data);
         if (data.success) {
-          window.location = '/page_wechat/home';
+          signinSuccess();
         }
       }
     });

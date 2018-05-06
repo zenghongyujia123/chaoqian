@@ -13,3 +13,13 @@ function goToWindow(url, name) {
     window.location = url;
   }
 }
+
+function signinSuccess() {
+  if (localStorage.getItem("device") === 'native') {
+    api.closeWin({
+    });
+  }
+  else {
+    window.location = '/page_wechat/home';
+  }
+}
