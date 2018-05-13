@@ -4,7 +4,6 @@ var crypto = require('crypto');
 var fs = require('fs');
 var moment = require('moment');
 var agent = require('superagent').agent();
-var NodeRSA = require('node-rsa');
 var privateKey = fs.readFileSync('../keys/lianlian/rsa_private_key.pem').toString();
 // var privateKey = fs.readFileSync('../keys/lianlian/private_key.txt').toString();
 // var privateKey = fs.readFileSync('../keys/lianlian/private_key.txt').toString();
