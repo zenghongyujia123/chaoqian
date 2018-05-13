@@ -25,6 +25,16 @@ module.exports = function () {
 
   // Passing the request url to environment locals
   app.use(function (req, res, next) {
+    var reqData = [];
+    var size = 0;
+    req.on('data', function (data) {
+      console.log('>>>req on');
+      reqData.push(data);
+      size += data.length;
+    });
+    req.on('end', function () {
+      req.reqData = Buffer.concat(reqData, size);
+    });
     next();
   });
 
@@ -65,19 +75,6 @@ module.exports = function () {
     type: 'text/xml'
   }));
 
-app.use(function(req, res, next){
-    var reqData = [];
-    var size = 0;
-    req.on('data', function (data) {
-        console.log('>>>req on');
-       reqData.push(data);
-        size += data.length;
-    });
-    req.on('end', function () {
-        req.reqData = Buffer.concat(reqData, size);
-    });
-    next();
-});
   app.use(bodyParser.json({ limit: '100mb' }));
   app.use(methodOverride());
 
