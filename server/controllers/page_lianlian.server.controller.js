@@ -19,9 +19,12 @@ exports.page_lianlian = function (req, res, next) {
 exports.notify_url = function (req, res, next) {
   console.log(req.body);
   console.log(req.query);
+  console.log(req.params);
 }
 
 exports.url_return = function (req, res, next) {
   console.log(req.body);
   console.log(req.query);
+  console.log(req.params);
+  
 }
