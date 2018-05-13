@@ -4,6 +4,7 @@
 var path = require('path');
 var crypto = require('crypto');
 var cryptoLib = require('../../libraries/crypto');
+var lianlianLib = require('../../libraries/lianlian');
 var agent = require('superagent').agent();
 var moment = require('moment');
 var access_token = '';
