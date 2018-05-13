@@ -24,5 +24,7 @@ exports.notify_url = function (req, res, next) {
 
 exports.url_return = function (req, res, next) {
   console.log(JSON.parse( req.body.res_data));
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/lianlianpay/index.client.view.html');
   
+  return res.render(filepath)
 }
