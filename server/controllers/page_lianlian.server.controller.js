@@ -20,6 +20,7 @@ exports.notify_url = function (req, res, next) {
   console.log(req.body);
   console.log(req.query);
   console.log(req.params);
+  console.log(req);
 }
 
 exports.url_return = function (req, res, next) {
