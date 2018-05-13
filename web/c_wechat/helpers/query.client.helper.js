@@ -1,20 +1,24 @@
 function mi_guan_da_shu_ju(data, callback) {
-
-  get_pre_pay_id('query_大数据',function(){
-    $.ajax({
-      url: '/third_query/mi_guan_da_shu_ju',
-      method: 'post',
-      data: {
-        name: data.name,
-        idCard: data.idcard,
-        phone: data.phone
-      },
-      success: function (data) {
-        console.log(data);
-        return callback(data);
-      }
-    });  
-  })
+  if (localStorage.getItem("device") === 'native') {
+    window.location = '/lianlian_pay/page_lianlian';
+  }
+  else{
+    get_pre_pay_id('query_大数据',function(){
+      $.ajax({
+        url: '/third_query/mi_guan_da_shu_ju',
+        method: 'post',
+        data: {
+          name: data.name,
+          idCard: data.idcard,
+          phone: data.phone
+        },
+        success: function (data) {
+          console.log(data);
+          return callback(data);
+        }
+      });  
+    })
+  }
 }
 
 function ge_ren_hei_ming_dan(data, callback) {
