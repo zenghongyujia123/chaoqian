@@ -24,7 +24,7 @@ module.exports = function () {
   app.set('view engine', 'html');
 
   // Passing the request url to environment locals
-  app.use(function (req, res, next) {
+  app.use('/lianlian_pay/notify_url', function (req, res, next) {
     var reqData = [];
     var size = 0;
     req.on('data', function (data) {
