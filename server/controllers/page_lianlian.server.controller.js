@@ -23,8 +23,6 @@ exports.notify_url = function (req, res, next) {
 }
 
 exports.url_return = function (req, res, next) {
-  console.log(req.body);
-  console.log(req.query);
-  console.log(req.params);
+  console.log(JSON.parse( req.body.res_data));
   
 }
