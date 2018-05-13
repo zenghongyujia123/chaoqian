@@ -21,6 +21,11 @@ exports.notify_url = function (req, res, next) {
   console.log(req.query);
   console.log(req.params);
   console.log(req.reqData);
+  return res.send({
+    "ret_code": "0000",
+    "ret_msg": "交易成功"
+  }
+  )
 }
 
 exports.url_return = function (req, res, next) {

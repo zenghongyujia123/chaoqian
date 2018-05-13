@@ -34,8 +34,8 @@ module.exports = function () {
     });
     req.on('end', function () {
       req.reqData = Buffer.concat(reqData, size);
+      next();
     });
-    next();
   });
 
   // Should be placed before express.static
