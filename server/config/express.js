@@ -33,6 +33,8 @@ module.exports = function () {
       size += data.length;
     });
     req.on('end', function () {
+      console.log('>>>req end');
+
       req.reqData = Buffer.concat(reqData, size);
       next();
     });

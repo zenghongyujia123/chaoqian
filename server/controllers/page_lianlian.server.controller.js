@@ -20,7 +20,7 @@ exports.notify_url = function (req, res, next) {
   console.log(req.body);
   console.log(req.query);
   console.log(req.params);
-  console.log(req.reqData);
+  console.log(req.reqData.toString('utf8'));
   return res.send({
     "ret_code": "0000",
     "ret_msg": "交易成功"
