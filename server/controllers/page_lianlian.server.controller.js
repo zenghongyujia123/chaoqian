@@ -12,6 +12,16 @@ var lianlianLib = require('../../libraries/lianlian');
 
 exports.page_lianlian = function (req, res, next) {
   lianlianLib.get_lianlian_pay_data(function (result) {
-    return res.redirect('https://wap.lianlianpay.com/payment.htm?req_data='+result);
+    return res.redirect('https://wap.lianlianpay.com/payment.htm?req_data=' + result);
   })
+}
+
+exports.notify_url = function (req, res, next) {
+  console.log(req.body);
+  console.log(req.query);
+}
+
+exports.url_return = function (req, res, next) {
+  console.log(req.body);
+  console.log(req.query);
 }

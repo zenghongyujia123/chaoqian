@@ -4,12 +4,19 @@ var crypto = require('crypto');
 var fs = require('fs');
 var moment = require('moment');
 var agent = require('superagent').agent();
+var NodeRSA = require('node-rsa');
 var privateKey = fs.readFileSync('../keys/lianlian/rsa_private_key.pem').toString();
+// var privateKey = fs.readFileSync('../keys/lianlian/private_key.txt').toString();
+// var privateKey = fs.readFileSync('../keys/lianlian/private_key.txt').toString();
+// var priKey = new NodeRSA(privateKey, 'pkcs8-private');
+
 
 function lianlianSign(sortParams) {
-  var sign = crypto.createSign('RSA-SHA1').update(new Buffer( sortParams),'utf8').sign(privateKey, 'base64');
-  console.log(sign);
-  return sign;
+  var sign = crypto.createSign('md5WithRSAEncryption').update(sortParams);
+  return encodeURIComponent(sign.sign(privateKey, 'base64'));
+  // return priKey.sign(new Buffer(sortParams), 'base64', 'utf8');
+  // console.log(sign);
+  // return encodeURIComponent( sign);
 }
 
 function md5(str) {
@@ -33,7 +40,7 @@ exports.get_lianlian_pay_data = function (callback) {
     name_goods: '测试商品',
     info_order: '测试描述',
     money_order: '0.01',
-    notify_url: 'http://chaoqianwang.com',
+    notify_url: 'http://chaoqianwang.com/',
   };
 
   var datas = [];
@@ -49,16 +56,16 @@ exports.get_lianlian_pay_data = function (callback) {
   // var sign = md5(datas);
   var sign = lianlianSign(datas);
   data.sign = sign;
-  // return callback(JSON.stringify(data))
-  agent.get(url)
-    .query({ req_data: JSON.stringify(data) })
-    .end(function (err, result) {
-      console.log(err);
-      console.log(result.text);
-      // callback(result.text);
-    });
+  return callback(JSON.stringify(data))
+  // agent.get(url)
+  //   .query({ req_data: JSON.stringify(data) })
+  //   .end(function (err, result) {
+  //     console.log(err);
+  //     console.log(result.text);
+  //     // callback(result.text);
+  //   });
 }
 
-exports.get_lianlian_pay_data();
+// exports.get_lianlian_pay_data();
 
 
