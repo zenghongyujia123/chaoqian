@@ -11,7 +11,49 @@ var smsLib = require('../../libraries/sms');
 var lianlianLib = require('../../libraries/lianlian');
 
 exports.page_lianlian = function (req, res, next) {
-  lianlianLib.get_lianlian_pay_data(function (result) {
+  var detail = {};
+  var pay_type = req.query.pay_type || '';
+  if (pay_type === 'vip_pay') {
+    detail.pay_price = 299;
+    detail.pay_title = '潮钱网充值中心-会员充值';
+    detail.pay_type = 'vip_pay';
+  }
+  else if (pay_type === 'query_大数据') {
+    detail.pay_price = 9.9;
+    detail.pay_title = '潮钱网充值中心-网贷成功率查询';
+    detail.pay_type = 'query_大数据';
+  }
+  else if (pay_type === 'query_黑中介') {
+    detail.pay_price = 0.01;
+    // detail.pay_price = 0.99;
+    detail.pay_title = '潮钱网充值中心-网贷黑中介查询';
+    detail.pay_type = 'query_黑中介';
+  }
+  else if (pay_type === 'query_黑灰行为') {
+    detail.pay_price = 9.9;
+    detail.pay_title = '潮钱网充值中心-网贷黑灰行为查询'
+    detail.pay_type = 'query_黑灰行为';
+  }
+  else if (pay_type === 'postcode_pay') {
+    detail.pay_price = 69;
+    detail.pay_title = '潮钱网充值中心-激活码'
+    detail.pay_type = 'postcode_pay';
+  }
+  else if (pay_type === 'pos_suixingfu') {
+    detail.pay_price = 120;//12000
+    detail.pay_title = '潮钱网充值中心-随行付刷卡机'
+    detail.pay_type = 'pos_suixingfu';
+  }
+  else if (pay_type === 'pos_xinguodu') {
+    detail.pay_price = 399;//39900
+    detail.pay_title = '潮钱网充值中心-新国都刷卡机'
+    detail.pay_type = 'pos_xinguodu';
+  }
+  else {
+    return res.send({ err: { type: 'invalid_pay_type', message: '支付类型无效，请联系管理员！' } });
+  }
+
+  lianlianLib.get_lianlian_pay_data(req.user, detail, function (result) {
     return res.redirect('https://wap.lianlianpay.com/payment.htm?req_data=' + result);
   })
 }

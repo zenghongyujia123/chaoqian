@@ -22,7 +22,7 @@ function md5(str) {
   var decipher = crypto.createHash('md5').update(str).digest('hex');
   return decipher;
 }
-exports.get_lianlian_pay_data = function (callback) {
+exports.get_lianlian_pay_data = function (user,info,callback) {
 
   var user_info_dt_register = moment(new Date(1526192370760)).format('YYYYMMDDHHMMSS');
   var url = 'https://wap.lianlianpay.com/payment.htm';
@@ -30,14 +30,14 @@ exports.get_lianlian_pay_data = function (callback) {
     version: '1.0',
     oid_partner: '201805110001835179',
     platform: '201805110001835179',
-    user_id: '13472423583',
+    user_id: user._id.toString(),
     app_request: '3',
     sign_type: 'RSA',
     busi_partner: '101001',
     no_order: new Date().getTime().toString(),
     dt_order: moment(new Date()).format('YYYYMMDDHHMMSS'),
-    name_goods: '测试商品',
-    info_order: '测试描述',
+    name_goods: info.pay_title,
+    info_order: info.pay_type,
     money_order: '0.01',
     notify_url: 'http://chaoqianwang.com/lianlian_pay/notify_url',
     url_return: 'http://chaoqianwang.com/lianlian_pay/url_return',
