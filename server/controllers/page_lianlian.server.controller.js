@@ -12,13 +12,14 @@ var smsLib = require('../../libraries/sms');
 
 var lianlianLib = require('../../libraries/lianlian');
 
-exports.page_lianlian = function (req, res, next) {
+function getPayInfoDetailByType(pay_type) {
   var detail = {};
   var pay_type = req.query.pay_type || '';
   if (pay_type === 'vip_pay') {
     detail.pay_price = 299;
     detail.pay_title = '潮钱网充值中心-会员充值';
     detail.pay_type = 'vip_pay';
+    detail.url_return_view = ''
   }
   else if (pay_type === 'query_大数据') {
     detail.pay_price = 9.9;
@@ -52,6 +53,16 @@ exports.page_lianlian = function (req, res, next) {
     detail.pay_type = 'pos_xinguodu';
   }
   else {
+    return null;
+  }
+  return detail;
+}
+
+
+exports.page_lianlian = function (req, res, next) {
+  var detail = getPayInfoDetailByType(req.query.pay_type || '');
+
+  if (!detail) {
     return res.send({ err: { type: 'invalid_pay_type', message: '支付类型无效，请联系管理员！' } });
   }
 
@@ -72,7 +83,7 @@ exports.notify_url = function (req, res, next) {
   var info = JSON.parse(req.reqData.toString('utf8'));
   soldRecordLogic.update_by_lianlianpay(info, function (err, userPay) {
     if (userPay) {
-     userLogic.updateVipPayedByOpenid({user_id:userPay.user_id},info,function(){})
+      userLogic.updateVipPayedByOpenid({ user_id: userPay.user_id }, info, function () { })
     }
     return res.send({
       "ret_code": "0000",
@@ -83,7 +94,6 @@ exports.notify_url = function (req, res, next) {
 }
 
 exports.url_return = function (req, res, next) {
-
   if (req.body.res_data)
     console.log(JSON.parse(req.body.res_data));
   var filepath = path.join(__dirname, '../../web/c_wechat/views/lianlianpay/index.client.view.html');

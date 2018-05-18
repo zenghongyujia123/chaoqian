@@ -1,5 +1,5 @@
 function mi_guan_da_shu_ju(data, callback) {
-  if (localStorage.getItem("device") === 'native') {
+  if (typeof(api)!=='undefined') {
     return window.location = '/lianlian_pay/page_lianlian?pay_type=query_大数据';
   }
   else {
@@ -22,7 +22,7 @@ function mi_guan_da_shu_ju(data, callback) {
 }
 
 function ge_ren_hei_ming_dan(data, callback) {
-  if (localStorage.getItem("device") === 'native') {
+  if (typeof(api)!=='undefined') {
     return window.location = '/lianlian_pay/page_lianlian?pay_type=query_黑灰行为';
   }
   else {
@@ -47,7 +47,7 @@ function ge_ren_hei_ming_dan(data, callback) {
 }
 
 function hei_zhong_jie(data, callback) {
-  if (api) {
+  if (typeof(api)!=='undefined') {
     return window.location = '/lianlian_pay/page_lianlian?pay_type=query_黑中介';
   }
   else {
