@@ -41,3 +41,30 @@ exports.update_sold_record = function (info, callback) {
     return callback(null, result);
   })
 }
+
+exports.new_sold_record = function (user, pay_type, callback) {
+  new SoldRecord({
+    user_id: user._id,
+    type: pay_type,
+    user_real_name: user.wechat_info.nickname,
+    user_phone: user.username
+  }).save(function (err, result) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(err, result);
+  });
+}
+
+exports.update_by_lianlianpay = function (info, callback) {
+  SoldRecord.findOne({ _id: info.no_order }, function (err, result) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    result.content = info;
+    result.markModified('content')
+    result.content.total_fee = parseFloat(info.money_order) * 100;
+    result.save();
+    return callback();
+  })
+}

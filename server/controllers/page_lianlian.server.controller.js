@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var productLogic = require('../logics/product');
+var soldRecordLogic = require('../logics/sold_record');
 var jietiaoLogic = require('../logics/jietiao');
 var cardLogic = require('../logics/card');
 var smsLib = require('../../libraries/sms');
@@ -53,19 +54,28 @@ exports.page_lianlian = function (req, res, next) {
     return res.send({ err: { type: 'invalid_pay_type', message: '支付类型无效，请联系管理员！' } });
   }
 
-  lianlianLib.get_lianlian_pay_data(req.user, detail, function (result) {
-    return res.redirect('https://wap.lianlianpay.com/payment.htm?req_data=' + result);
-  })
+  soldRecordLogic.new_sold_record(req.user, detail.pay_type, function (err, result) {
+    if (err) {
+      return res.send(err);
+    }
+    detail.no_order = result._id.toString();
+    lianlianLib.get_lianlian_pay_data(req.user, detail, function (result) {
+      return res.redirect('https://wap.lianlianpay.com/payment.htm?req_data=' + result);
+    })
+  });
 }
 
 exports.notify_url = function (req, res, next) {
   console.log(req.reqData.toString('utf8'));
   console.log(JSON.parse(req.reqData.toString('utf8')).oid_partner);
-  return res.send({
-    "ret_code": "0000",
-    "ret_msg": "交易成功"
-  }
-  )
+
+  soldRecordLogic.update_by_lianlianpay(JSON.parse(req.reqData.toString('utf8')), function () {
+    return res.send({
+      "ret_code": "0000",
+      "ret_msg": "交易成功"
+    }
+    )
+  })
 }
 
 exports.url_return = function (req, res, next) {

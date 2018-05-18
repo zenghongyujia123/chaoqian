@@ -27,7 +27,6 @@ exports.lianlianVerify = function (sign) {
 }
 
 exports.get_lianlian_pay_data = function (user, info, callback) {
-
   var user_info_dt_register = moment(new Date(1526192370760)).format('YYYYMMDDHHMMSS');
   var url = 'https://wap.lianlianpay.com/payment.htm';
   var data = {
@@ -38,11 +37,11 @@ exports.get_lianlian_pay_data = function (user, info, callback) {
     app_request: '3',
     sign_type: 'RSA',
     busi_partner: '101001',
-    no_order: new Date().getTime().toString(),
+    no_order: info.no_order,
     dt_order: moment(new Date()).format('YYYYMMDDHHMMSS'),
     name_goods: info.pay_title,
     info_order: info.pay_type,
-    money_order: '0.01',
+    money_order: info.pay_price,
     notify_url: 'http://www.chaoqianwang.com/lianlian_pay/notify_url',
     url_return: 'http://www.chaoqianwang.com/lianlian_pay/url_return',
   };
