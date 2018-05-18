@@ -37,8 +37,6 @@ $(function () {
       success: function (data) {
         console.log(data);
         get_pre_pay_id('vip_pay', function () {
-          delCookie(VIP_auth_start_date);
-          setCookie(VIP_auth_start_date, 10);
         })
       }
     });

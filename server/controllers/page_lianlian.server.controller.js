@@ -18,10 +18,11 @@ var lianlianLib = require('../../libraries/lianlian');
 function getPayInfoDetailByType(pay_type) {
   var detail = {};
   if (pay_type === 'vip_pay') {
-    detail.pay_price = 299;
+    detail.pay_price = 299;//
+    detail.pay_price = 0.01;
     detail.pay_title = '潮钱网充值中心-会员充值';
     detail.pay_type = 'vip_pay';
-    detail.redirect = 'http://chaoqianwang.com/page_wechat/page_query_main'
+    detail.redirect = 'http://chaoqianwang.com/page_wechat/vip_auth_info'
   }
   else if (pay_type === 'query_大数据') {
     detail.pay_price = 0.01;
@@ -102,7 +103,7 @@ exports.notify_url = function (req, res, next) {
         .end(function (err, res) {
           console.log(res.text);
           console.log(res.body);
-        })
+        });
     }
     return res.send({
       "ret_code": "0000",
