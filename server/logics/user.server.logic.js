@@ -299,12 +299,11 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
   }
 
   if (idInfo.user_id) {
-    query.user_id = idInfo.user_id;
+    query._id = idInfo.user_id;
     userPayQuery = { _id: info.no_order };
   }
 
   var pay_type = info.attach || info.info_order
-
   User.findOne(query, function (err, user) {
     if (!user) {
       return callback();
