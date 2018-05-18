@@ -22,6 +22,7 @@ function lianlianVerify(sign) {
 
 exports.lianlianVerify = function (sign) {
   var result =  lianlianVerify(sign);
+  console.log(result);
   return result;
 }
 
