@@ -29,7 +29,7 @@ exports.get_lianlian_pay_data = function (user,info,callback) {
   var data = {
     version: '1.0',
     oid_partner: '201805110001835179',
-    platform: '201805110001835179',
+    // platform: '201805110001835179',
     user_id: user._id.toString(),
     app_request: '3',
     sign_type: 'RSA',
