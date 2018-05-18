@@ -4,7 +4,7 @@ function goToWindow(url, name) {
       name: new Date().getTime().toString(),
       url: 'widget://html/new_window.html',
       pageParam: {
-        url: 'http://chaoqianwang.com' + url,
+        url: 'http://www.chaoqianwang.com' + url,
         name: name || '标题'
       }
     });
