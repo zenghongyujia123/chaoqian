@@ -312,11 +312,7 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
     }
 
     UserPay.findOne(userPayQuery, function (err, userPay) {
-      if (userPay) {
-        return callback();
-      }
       var real_name = ((user.real_name != '') ? user.real_name : user.wechat_info.nickname);
-
       if (!userPay) {
         userPay = new UserPay({
           type: pay_type,
@@ -324,9 +320,9 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
           user_phone: user.username,
           user_real_name: user.wechat_info.nickname,
           content: info,
+          valid:true
         });
       }
-      userPay.valid = true;
       userPay.save(function () {
         if (pay_type === 'vip_pay' || pay_type === 'postcode_pay') {
           user[pay_type + 'ed'] = true;
