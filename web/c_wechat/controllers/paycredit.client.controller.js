@@ -17,9 +17,14 @@ $(function () {
 
   $('#buycode_btn').click(function () {
     //    alert("ok");
-    get_pre_pay_id('postcode_pay', function () {
+    if (typeof (api) !== 'undefined') {
+      return window.location = '/lianlian_pay/page_lianlian?pay_type=postcode_pay' ;
+    }
+    else{
+      get_pre_pay_id('postcode_pay', function () {
 
-    });
+      });
+    }
   });
 
 });
