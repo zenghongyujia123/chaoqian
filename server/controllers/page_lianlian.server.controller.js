@@ -97,7 +97,9 @@ exports.url_return = function (req, res, next) {
     var data = JSON.parse(req.body.res_data);
     soldRecordLogic.get_by_id({ detail_id: data.no_order }, function (err, result) {
       var filepath = path.join(__dirname, '../../web/c_wechat/views/lianlianpay/index.client.view.html');
-      return res.redirect(getPayInfoDetailByType(result.type).redirect)
+      var url = getPayInfoDetailByType(result.type).redirect;
+      console.log(url)
+      return res.redirect(url)
     })
   }
   else {
