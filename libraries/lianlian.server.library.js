@@ -39,8 +39,8 @@ exports.get_lianlian_pay_data = function (user,info,callback) {
     name_goods: info.pay_title,
     info_order: info.pay_type,
     money_order: '0.01',
-    notify_url: 'http://chaoqianwang.com/lianlian_pay/notify_url',
-    url_return: 'http://chaoqianwang.com/lianlian_pay/url_return',
+    notify_url: 'http://www.chaoqianwang.com/lianlian_pay/notify_url',
+    url_return: 'http://www.chaoqianwang.com/lianlian_pay/url_return',
   };
 
   var datas = [];
