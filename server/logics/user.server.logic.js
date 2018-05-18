@@ -554,7 +554,7 @@ exports.refresh_task = function (user, callback) {
 }
 
 exports.user_pays = function (user, callback) {
-  UserPay.find({ user_id: user._id }, function (err, results) {
+  UserPay.find({ user_id: user._id ,valid:true}, function (err, results) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }
