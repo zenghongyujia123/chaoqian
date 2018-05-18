@@ -323,15 +323,16 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
           user_id: user._id,
           user_phone: user.username,
           user_real_name: user.wechat_info.nickname,
-          content: info
+          content: info,
         });
       }
+      userPay.valid = true;
       userPay.save(function () {
         if (pay_type === 'vip_pay' || pay_type === 'postcode_pay') {
           user[pay_type + 'ed'] = true;
-          user[pay_type+ 'ed_time'] = new Date();
+          user[pay_type + 'ed_time'] = new Date();
 
-          if (pay_type=== 'postcode_pay') {
+          if (pay_type === 'postcode_pay') {
             postcodeLogic.update_status(user, function (err, result) {
               console.log('postcode bind err----', err);
               console.log('postcode bind result----', result);
@@ -340,7 +341,7 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
           }
         }
 
-        if (pay_type=== 'pos_suixingfu' || pay_type=== 'pos_xinguodu') {
+        if (pay_type === 'pos_suixingfu' || pay_type === 'pos_xinguodu') {
           smsLib.sendPostMachinePaySuccess(user.username, function () { });
         }
         user.save(function (err) {

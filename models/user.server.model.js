@@ -316,6 +316,10 @@ module.exports = function (appDb) {
       type: String,
       default: ''
     },
+    valid:{
+      type:Boolean,
+      default:false
+    },
     content: {
       type: Schema.Types.Mixed
     }
