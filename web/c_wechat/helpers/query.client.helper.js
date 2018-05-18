@@ -25,7 +25,7 @@ function ge_ren_hei_ming_dan(data, callback) {
   if (localStorage.getItem("device") === 'native') {
     return window.location = '/lianlian_pay/page_lianlian?pay_type=query_黑灰行为';
   }
-  else{
+  else {
     get_pre_pay_id('query_黑灰行为', function () {
       $.ajax({
         url: '/third_query/ge_ren_hei_ming_dan',
@@ -43,16 +43,14 @@ function ge_ren_hei_ming_dan(data, callback) {
       });
     });
   }
-  
+
 }
 
 function hei_zhong_jie(data, callback) {
-
-  return window.location = '/lianlian_pay/page_lianlian?pay_type=query_黑中介';
-  
   if (localStorage.getItem("device") === 'native') {
+    return window.location = '/lianlian_pay/page_lianlian?pay_type=query_黑中介';
   }
-  else{
+  else {
     get_pre_pay_id('query_黑中介', function () {
       $.ajax({
         url: '/third_query/hei_zhong_jie',
@@ -67,7 +65,7 @@ function hei_zhong_jie(data, callback) {
       });
     });
   }
- 
+
 }
 
 
