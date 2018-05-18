@@ -18,7 +18,6 @@ function getPayInfoDetailByType(pay_type) {
     detail.pay_price = 299;
     detail.pay_title = '潮钱网充值中心-会员充值';
     detail.pay_type = 'vip_pay';
-    detail.redirect = 'http://chaoqianwang.com/page_wechat/page_query_main'
   }
   else if (pay_type === 'query_大数据') {
     detail.pay_price = 9.9;
@@ -30,6 +29,7 @@ function getPayInfoDetailByType(pay_type) {
     // detail.pay_price = 0.99;
     detail.pay_title = '潮钱网充值中心-网贷黑中介查询';
     detail.pay_type = 'query_黑中介';
+    detail.redirect = 'http://chaoqianwang.com/page_wechat/page_query_main'
   }
   else if (pay_type === 'query_黑灰行为') {
     detail.pay_price = 9.9;
