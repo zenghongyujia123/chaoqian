@@ -7,7 +7,9 @@ var userLogic = require('../logics/user');
 var soldRecordLogic = require('../logics/sold_record');
 var jietiaoLogic = require('../logics/jietiao');
 var cardLogic = require('../logics/card');
+
 var smsLib = require('../../libraries/sms');
+var cookieLib = require('../../libraries/cookie');
 
 
 var lianlianLib = require('../../libraries/lianlian');
@@ -99,6 +101,7 @@ exports.url_return = function (req, res, next) {
       var filepath = path.join(__dirname, '../../web/c_wechat/views/lianlianpay/index.client.view.html');
       var url = getPayInfoDetailByType(result.type).redirect;
       console.log(url)
+      cookieLib.setCookie(res, 'user_id', result.user_id);
       return res.redirect(url)
     })
   }
