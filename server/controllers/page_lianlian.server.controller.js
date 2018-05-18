@@ -19,7 +19,7 @@ function getPayInfoDetailByType(pay_type) {
     detail.pay_price = 299;
     detail.pay_title = '潮钱网充值中心-会员充值';
     detail.pay_type = 'vip_pay';
-    detail.url_return_view = ''
+    detail.redirect = 'http://chaoqianwang.com/page_wechat/page_query_main'
   }
   else if (pay_type === 'query_大数据') {
     detail.pay_price = 9.9;
@@ -94,9 +94,15 @@ exports.notify_url = function (req, res, next) {
 }
 
 exports.url_return = function (req, res, next) {
-  if (req.body.res_data)
-    console.log(JSON.parse(req.body.res_data));
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/lianlianpay/index.client.view.html');
-
-  return res.render(filepath)
+  if (req.body.res_data) {
+    var data = JSON.parse(req.body.res_data);
+    soldRecordLogic.get_by_id({ detail_id: data.no_order }, function (err, result) {
+      var filepath = path.join(__dirname, '../../web/c_wechat/views/lianlianpay/index.client.view.html');
+      return res.redirect(getPayInfoDetailByType(result.type).redirect)
+    })
+  }
+  else {
+    var filepath = path.join(__dirname, '../../web/c_wechat/views/lianlianpay/index.client.view.html');
+    return res.render(filepath)
+  }
 }
