@@ -26,12 +26,6 @@ exports.lianlianVerify = function (sign) {
   return result;
 }
 
-
-
-function md5(str) {
-  var decipher = crypto.createHash('md5').update(str).digest('hex');
-  return decipher;
-}
 exports.get_lianlian_pay_data = function (user, info, callback) {
 
   var user_info_dt_register = moment(new Date(1526192370760)).format('YYYYMMDDHHMMSS');

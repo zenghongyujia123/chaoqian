@@ -60,7 +60,7 @@ exports.page_lianlian = function (req, res, next) {
 
 exports.notify_url = function (req, res, next) {
   console.log(req.reqData.toString('utf8'));
-  lianlianLib.lianlianVerify(JSON.parse(req.reqData.toString('utf8')).sign);
+  console.log(JSON.parse(req.reqData.toString('utf8')).oid_partner);
   return res.send({
     "ret_code": "0000",
     "ret_msg": "交易成功"
