@@ -5,6 +5,7 @@ var fs = require('fs');
 var moment = require('moment');
 var agent = require('superagent').agent();
 var privateKey = fs.readFileSync('../keys/lianlian/rsa_private_key.pem').toString();
+var publicKey = fs.readFileSync('../keys/lianlian/llpay_public_key.pem').toString();
 // var privateKey = fs.readFileSync('../keys/lianlian/private_key.txt').toString();
 // var privateKey = fs.readFileSync('../keys/lianlian/private_key.txt').toString();
 // var priKey = new NodeRSA(privateKey, 'pkcs8-private');
@@ -13,16 +14,24 @@ var privateKey = fs.readFileSync('../keys/lianlian/rsa_private_key.pem').toStrin
 function lianlianSign(sortParams) {
   var sign = crypto.createSign('md5WithRSAEncryption').update(sortParams);
   return encodeURIComponent(sign.sign(privateKey, 'base64'));
-  // return priKey.sign(new Buffer(sortParams), 'base64', 'utf8');
-  // console.log(sign);
-  // return encodeURIComponent( sign);
 }
+
+function lianlianVerify(sign) {
+  return crypto.createVerify('md5WithRSAEncryption').verify(publicKey, sign, 'hex');
+}
+
+exports.lianlianVerify = function (sign) {
+  var result =  lianlianVerify(sign);
+  return result;
+}
+
+
 
 function md5(str) {
   var decipher = crypto.createHash('md5').update(str).digest('hex');
   return decipher;
 }
-exports.get_lianlian_pay_data = function (user,info,callback) {
+exports.get_lianlian_pay_data = function (user, info, callback) {
 
   var user_info_dt_register = moment(new Date(1526192370760)).format('YYYYMMDDHHMMSS');
   var url = 'https://wap.lianlianpay.com/payment.htm';
@@ -58,15 +67,6 @@ exports.get_lianlian_pay_data = function (user,info,callback) {
   data.sign = sign;
   console.log(data);
   return callback(JSON.stringify(data))
-  // agent.get(url)
-  //   .query({ req_data: JSON.stringify(data) })
-  //   .end(function (err, result) {
-  //     console.log(err);
-  //     console.log(result.text);
-  //     // callback(result.text);
-  //   });
 }
-
-// exports.get_lianlian_pay_data();
 
 
