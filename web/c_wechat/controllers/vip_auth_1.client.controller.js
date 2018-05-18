@@ -36,8 +36,12 @@ $(function () {
       },
       success: function (data) {
         console.log(data);
-        get_pre_pay_id('vip_pay', function () {
-        })
+        if (typeof (api) !== 'undefined') {
+          return window.location = '/lianlian_pay/page_lianlian?pay_type=vip_pay';
+        }else{
+          get_pre_pay_id('vip_pay', function () {
+          })
+        }
       }
     });
   });
