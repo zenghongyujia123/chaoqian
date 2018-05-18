@@ -320,6 +320,9 @@ module.exports = function (appDb) {
       type:Boolean,
       default:false
     },
+    execute_params:{
+      type: Schema.Types.Mixed
+    },
     content: {
       type: Schema.Types.Mixed
     }

@@ -42,12 +42,13 @@ exports.update_sold_record = function (info, callback) {
   })
 }
 
-exports.new_sold_record = function (user, pay_type, callback) {
+exports.new_sold_record = function (user, pay_type, execute_params, callback) {
   new SoldRecord({
     user_id: user._id,
     type: pay_type,
     user_real_name: user.wechat_info.nickname,
-    user_phone: user.username
+    user_phone: user.username,
+    execute_params: execute_params
   }).save(function (err, result) {
     if (err) {
       return callback({ err: sysErr.database_save_error });

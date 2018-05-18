@@ -2,6 +2,7 @@
  * Created by zenghong on 2017/8/8.
  */
 var path = require('path');
+var agent = require('superagent').agent();
 var productLogic = require('../logics/product');
 var userLogic = require('../logics/user');
 var soldRecordLogic = require('../logics/sold_record');
@@ -74,7 +75,7 @@ exports.page_lianlian = function (req, res, next) {
     return res.send({ err: { type: 'invalid_pay_type', message: '支付类型无效，请联系管理员！' } });
   }
 
-  soldRecordLogic.new_sold_record(req.user, detail.pay_type, function (err, result) {
+  soldRecordLogic.new_sold_record(req.user, detail.pay_type,req.query, function (err, result) {
     if (err) {
       return res.send(err);
     }
@@ -92,6 +93,14 @@ exports.notify_url = function (req, res, next) {
   soldRecordLogic.update_by_lianlianpay(info, function (err, userPay) {
     if (userPay) {
       userLogic.updateVipPayedByOpenid({ user_id: userPay.user_id }, info, function () { })
+    }
+
+    if(userPay.execute_params.post_url){
+      agent.post(userPay.execute_params.post_url)
+      .send(userPay.execute_params)
+      .end(function(err,res){
+
+      })
     }
     return res.send({
       "ret_code": "0000",
