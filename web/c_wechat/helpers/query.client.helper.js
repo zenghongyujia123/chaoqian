@@ -68,7 +68,7 @@ function hei_zhong_jie(data, callback) {
       'mobile=' + data.phone,
       'post_url=/third_query/hei_zhong_jie'
     ]
-    return window.location = '/lianlian_pay/page_lianlian?pay_type=query_黑中介';
+    return window.location = '/lianlian_pay/page_lianlian?'+params.join('&');
   }
   else {
     get_pre_pay_id('query_黑中介', function () {
