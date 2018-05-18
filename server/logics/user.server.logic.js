@@ -305,7 +305,7 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
 
   var pay_type = info.attach || info.info_order
 
-
+  console.log(query);
   User.findOne(query, function (err, user) {
     if (!user) {
       return callback();
