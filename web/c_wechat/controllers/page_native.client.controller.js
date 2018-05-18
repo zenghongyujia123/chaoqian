@@ -1,5 +1,5 @@
 function goToWindow(url, name) {
-  if (localStorage.getItem("device") === 'native') {
+  if (api) {
     api.openWin({
       name: new Date().getTime().toString(),
       url: 'widget://html/new_window.html',
@@ -15,7 +15,7 @@ function goToWindow(url, name) {
 }
 
 function signinSuccess() {
-  if (localStorage.getItem("device") === 'native') {
+  if (api) {
     api.closeWin({
     });
   }
