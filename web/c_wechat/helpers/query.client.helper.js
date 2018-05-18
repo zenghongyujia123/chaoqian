@@ -47,7 +47,7 @@ function ge_ren_hei_ming_dan(data, callback) {
 }
 
 function hei_zhong_jie(data, callback) {
-  if (localStorage.getItem("device") === 'native') {
+  if (api) {
     return window.location = '/lianlian_pay/page_lianlian?pay_type=query_黑中介';
   }
   else {
