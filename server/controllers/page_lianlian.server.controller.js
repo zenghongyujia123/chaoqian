@@ -46,9 +46,11 @@ function getPayInfoDetailByType(pay_type) {
     detail.redirect = 'http://chaoqianwang.com/page_wechat/page_query_main'
   }
   else if (pay_type === 'postcode_pay') {
-    detail.pay_price = 69;
+    // detail.pay_price = 69;
+    detail.pay_price = 0.01;
     detail.pay_title = '潮钱网充值中心-激活码'
     detail.pay_type = 'postcode_pay';
+    detail.redirect = 'http://chaoqianwang.com/page_wechat/paycredit'
   }
   else if (pay_type === 'pos_suixingfu') {
     detail.pay_price = 120;//12000
