@@ -53,7 +53,7 @@ function getPayInfoDetailByType(pay_type) {
     detail.pay_price = 120;//12000
     detail.pay_title = '潮钱网充值中心-随行付刷卡机'
     detail.pay_type = 'pos_suixingfu';
-    detail.redirect = 'http://chaoqianwang.com/page_wechat/page_query_main'    
+    detail.redirect = 'http://chaoqianwang.com/page_wechat/page_query_main'
   }
   else if (pay_type === 'pos_xinguodu') {
     detail.pay_price = 399;//39900
@@ -75,7 +75,7 @@ exports.page_lianlian = function (req, res, next) {
     return res.send({ err: { type: 'invalid_pay_type', message: '支付类型无效，请联系管理员！' } });
   }
 
-  soldRecordLogic.new_sold_record(req.user, detail.pay_type,req.query, function (err, result) {
+  soldRecordLogic.new_sold_record(req.user, detail.pay_type, req.query, function (err, result) {
     if (err) {
       return res.send(err);
     }
@@ -95,12 +95,14 @@ exports.notify_url = function (req, res, next) {
       userLogic.updateVipPayedByOpenid({ user_id: userPay.user_id }, info, function () { })
     }
 
-    if(userPay.execute_params.post_url){
+    if (userPay.execute_params.post_url) {
       agent.post(userPay.execute_params.post_url)
-      .send(userPay.execute_params)
-      .end(function(err,res){
-
-      })
+        .set('Cookie', 'user_id=' + userPay.user_id)
+        .send(userPay.execute_params)
+        .end(function (err, res) {
+          console.log(res.text);
+          console.log(res.body);
+        })
     }
     return res.send({
       "ret_code": "0000",
