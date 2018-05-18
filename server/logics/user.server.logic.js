@@ -290,30 +290,48 @@ exports.updateUserAuth1 = function (user, real_name, real_phone, id_card, real_b
   });
 }
 
-exports.updateVipPayedByOpenid = function (openid, info, callback) {
-  User.findOne({ openid: openid }, function (err, user) {
+exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
+  var query = {};
+  var userPayQuery;
+  if (idInfo.openid) {
+    query.openid = idInfo.openid;
+    userPayQuery = { 'content.transaction_id': info.transaction_id };
+  }
+
+  if (idInfo.user_id) {
+    query.user_id = idInfo.user_id;
+    userPayQuery = { _id: info.no_order };
+  }
+
+  var pay_type = info.attach || info.info_order
+
+
+  User.findOne(query, function (err, user) {
     if (!user) {
       return callback();
     }
 
-    UserPay.findOne({ 'content.transaction_id': info.transaction_id }, function (err, userPay) {
+    UserPay.findOne(userPayQuery, function (err, userPay) {
       if (userPay) {
         return callback();
       }
       var real_name = ((user.real_name != '') ? user.real_name : user.wechat_info.nickname);
-      userPay = new UserPay({
-        type: info.attach,
-        user_id: user._id,
-        user_phone: user.username,
-        user_real_name: user.wechat_info.nickname,
-        content: info
-      });
-      userPay.save(function () {
-        if (info.attach === 'vip_pay' || info.attach === 'postcode_pay') {
-          user[info.attach + 'ed'] = true;
-          user[info.attach + 'ed_time'] = new Date();
 
-          if (info.attach === 'postcode_pay') {
+      if (!userPay) {
+        userPay = new UserPay({
+          type: pay_type,
+          user_id: user._id,
+          user_phone: user.username,
+          user_real_name: user.wechat_info.nickname,
+          content: info
+        });
+      }
+      userPay.save(function () {
+        if (pay_type === 'vip_pay' || pay_type === 'postcode_pay') {
+          user[pay_type + 'ed'] = true;
+          user[pay_type+ 'ed_time'] = new Date();
+
+          if (pay_type=== 'postcode_pay') {
             postcodeLogic.update_status(user, function (err, result) {
               console.log('postcode bind err----', err);
               console.log('postcode bind result----', result);
@@ -322,7 +340,7 @@ exports.updateVipPayedByOpenid = function (openid, info, callback) {
           }
         }
 
-        if (info.attach === 'pos_suixingfu' || info.attach === 'pos_xinguodu') {
+        if (pay_type=== 'pos_suixingfu' || pay_type=== 'pos_xinguodu') {
           smsLib.sendPostMachinePaySuccess(user.username, function () { });
         }
         user.save(function (err) {

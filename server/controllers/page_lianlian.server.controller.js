@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var productLogic = require('../logics/product');
+var userLogic = require('../logics/user');
 var soldRecordLogic = require('../logics/sold_record');
 var jietiaoLogic = require('../logics/jietiao');
 var cardLogic = require('../logics/card');
@@ -68,8 +69,11 @@ exports.page_lianlian = function (req, res, next) {
 exports.notify_url = function (req, res, next) {
   console.log(req.reqData.toString('utf8'));
   console.log(JSON.parse(req.reqData.toString('utf8')).oid_partner);
-
-  soldRecordLogic.update_by_lianlianpay(JSON.parse(req.reqData.toString('utf8')), function () {
+  var info = JSON.parse(req.reqData.toString('utf8'));
+  soldRecordLogic.update_by_lianlianpay(info, function (err, userPay) {
+    if (userPay) {
+     userLogic.updateVipPayedByOpenid({user_id:userPay.user_id},info,function(){})
+    }
     return res.send({
       "ret_code": "0000",
       "ret_msg": "交易成功"

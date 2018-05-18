@@ -47,7 +47,7 @@ exports.notify_url = function (req, res, next) {
     transaction_id: req.body.xml.transaction_id[0]
   }
   if (info && info.result_code == 'SUCCESS') {
-    userLogic.updateVipPayedByOpenid(req.body.xml.openid[0], info, function () {
+    userLogic.updateVipPayedByOpenid({openid:req.body.xml.openid[0]}, info, function () {
     });
   }
 

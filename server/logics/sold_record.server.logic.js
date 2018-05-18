@@ -65,6 +65,6 @@ exports.update_by_lianlianpay = function (info, callback) {
     result.markModified('content')
     result.content.total_fee = parseFloat(info.money_order) * 100;
     result.save();
-    return callback();
+    return callback(err,result);
   })
 }
