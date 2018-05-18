@@ -293,7 +293,7 @@ exports.me_query_detail = function (req, res, next) {
     filepath = path.join(__dirname, '../../web/c_wechat/views/me_query_detail_jie.client.view.html');
   }
 
-  return res.render(filepath, { third_query: req.third_query, data: req.third_query.result.result.data });
+  return res.render(filepath, { third_query: req.third_query, data: req.third_query.result.result.data||{} });
 };
 
 exports.me_achievement = function (req, res, next) {
