@@ -56,6 +56,7 @@ exports.get_lianlian_pay_data = function (user,info,callback) {
   // var sign = md5(datas);
   var sign = lianlianSign(datas);
   data.sign = sign;
+  console.log(data);
   return callback(JSON.stringify(data))
   // agent.get(url)
   //   .query({ req_data: JSON.stringify(data) })
