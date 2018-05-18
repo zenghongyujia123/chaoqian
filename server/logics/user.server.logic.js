@@ -305,7 +305,6 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
 
   var pay_type = info.attach || info.info_order
 
-  console.log(query);
   User.findOne(query, function (err, user) {
     if (!user) {
       return callback();
@@ -320,10 +319,12 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
           user_phone: user.username,
           user_real_name: user.wechat_info.nickname,
           content: info,
-          valid:true
+          valid: true
         });
       }
       userPay.save(function () {
+        console.log(pay_type);
+
         if (pay_type === 'vip_pay' || pay_type === 'postcode_pay') {
           user[pay_type + 'ed'] = true;
           user[pay_type + 'ed_time'] = new Date();
@@ -550,7 +551,7 @@ exports.refresh_task = function (user, callback) {
 }
 
 exports.user_pays = function (user, callback) {
-  UserPay.find({ user_id: user._id ,valid:true}, function (err, results) {
+  UserPay.find({ user_id: user._id, valid: true }, function (err, results) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }
