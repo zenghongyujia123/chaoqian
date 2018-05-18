@@ -14,7 +14,6 @@ var lianlianLib = require('../../libraries/lianlian');
 
 function getPayInfoDetailByType(pay_type) {
   var detail = {};
-  var pay_type = req.query.pay_type || '';
   if (pay_type === 'vip_pay') {
     detail.pay_price = 299;
     detail.pay_title = '潮钱网充值中心-会员充值';
