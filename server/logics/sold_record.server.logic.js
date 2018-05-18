@@ -10,7 +10,7 @@ var that = exports;
 
 
 exports.soldRecordListByCondition = function (condition, sort, callback) {
-  SoldRecord.find(condition, function (err, sold_records) {
+  SoldRecord.find(condition).sort({ create_time: -1 }).exec(function (err, sold_records) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }
@@ -65,6 +65,6 @@ exports.update_by_lianlianpay = function (info, callback) {
     result.markModified('content')
     result.content.total_fee = parseFloat(info.money_order) * 100;
     result.save();
-    return callback(err,result);
+    return callback(err, result);
   })
 }
