@@ -18,36 +18,36 @@ var lianlianLib = require('../../libraries/lianlian');
 function getPayInfoDetailByType(pay_type) {
   var detail = {};
   if (pay_type === 'vip_pay') {
-    // detail.pay_price = 299;//
-    detail.pay_price = 0.01;
+    detail.pay_price = 299;//
+    // detail.pay_price = 0.01;
     detail.pay_title = '潮钱网充值中心-会员充值';
     detail.pay_type = 'vip_pay';
     detail.redirect = 'http://www.chaoqianwang.com/page_wechat/vip_auth_info'
   }
   else if (pay_type === 'query_大数据') {
-    detail.pay_price = 0.01;
-    // detail.pay_price = 9.9;
+    // detail.pay_price = 0.01;
+    detail.pay_price = 9.9;
     detail.pay_title = '潮钱网充值中心-网贷成功率查询';
     detail.pay_type = 'query_大数据';
     detail.redirect = 'http://www.chaoqianwang.com/page_wechat/page_query_main'
   }
   else if (pay_type === 'query_黑中介') {
-    detail.pay_price = 0.01;
-    // detail.pay_price = 0.99;
+    // detail.pay_price = 0.01;
+    detail.pay_price = 0.99;
     detail.pay_title = '潮钱网充值中心-网贷黑中介查询';
     detail.pay_type = 'query_黑中介';
     detail.redirect = 'http://www.chaoqianwang.com/page_wechat/page_query_main'
   }
   else if (pay_type === 'query_黑灰行为') {
-    detail.pay_price = 0.01;
-    // detail.pay_price = 9.9;
+    // detail.pay_price = 0.01;
+    detail.pay_price = 9.9;
     detail.pay_title = '潮钱网充值中心-网贷黑灰行为查询'
     detail.pay_type = 'query_黑灰行为';
     detail.redirect = 'http://www.chaoqianwang.com/page_wechat/page_query_main'
   }
   else if (pay_type === 'postcode_pay') {
-    // detail.pay_price = 69;
-    detail.pay_price = 0.01;
+    detail.pay_price = 69;
+    // detail.pay_price = 0.01;
     detail.pay_title = '潮钱网充值中心-激活码'
     detail.pay_type = 'postcode_pay';
     detail.redirect = 'http://www.chaoqianwang.com/page_wechat/paycredit'
