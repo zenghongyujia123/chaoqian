@@ -16,18 +16,7 @@ function lianlianSign(sortParams) {
   return encodeURIComponent(sign.sign(privateKey, 'base64'));
 }
 
-function lianlianVerify(sign) {
-  return crypto.createVerify('md5WithRSAEncryption').verify(publicKey, sign, 'hex');
-}
-
-exports.lianlianVerify = function (sign) {
-  var result =  lianlianVerify(sign);
-  console.log(result);
-  return result;
-}
-
 exports.get_lianlian_pay_data = function (user, info, callback) {
-  var user_info_dt_register = moment(new Date(1526192370760)).format('YYYYMMDDHHMMSS');
   var url = 'https://wap.lianlianpay.com/payment.htm';
   var data = {
     version: '1.0',
@@ -38,7 +27,7 @@ exports.get_lianlian_pay_data = function (user, info, callback) {
     sign_type: 'RSA',
     busi_partner: '101001',
     no_order: info.no_order,
-    dt_order: moment(new Date()).format('YYYYMMDDHHMMSS'),
+    dt_order: moment(new Date()).format('YYYYMMDDHHMMss'),
     name_goods: info.pay_title,
     info_order: info.pay_type,
     money_order: info.pay_price,
