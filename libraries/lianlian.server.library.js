@@ -31,6 +31,12 @@ exports.get_lianlian_pay_data = function (user, info, callback) {
     name_goods: info.pay_title,
     info_order: info.pay_type,
     money_order: info.pay_price,
+    risk_item: JSON.stringify({
+      frms_ware_category: '1008',
+      user_info_mercht_userno: user._id.toString(),
+      user_info_dt_register: moment(user.create_time).format('YYYYMMDDHHMMss'),
+      user_info_bind_phone:user.username
+    }),
     notify_url: 'http://www.chaoqianwang.com/lianlian_pay/notify_url',
     url_return: 'http://www.chaoqianwang.com/lianlian_pay/url_return',
   };
