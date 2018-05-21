@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
 
-  <title>我的账户</title>
+  <title>个人消费</title>
   <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
   <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
@@ -33,6 +33,10 @@
           '    </em>' +
           '  </div>' +
           '  <div class="weui-form-preview__bd">' +
+          '    <div class="weui-form-preview__item">' +
+          '      <label class="weui-form-preview__label">订单号</label>' +
+          '      <span class="weui-form-preview__value">' + item._id+ '</span>' +
+          '    </div>' +
           '    <div class="weui-form-preview__item">' +
           '      <label class="weui-form-preview__label">商品</label>' +
           '      <span class="weui-form-preview__value">' + getGoodsByType(item.type) + '</span>' +
