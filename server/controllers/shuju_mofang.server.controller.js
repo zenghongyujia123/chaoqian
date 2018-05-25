@@ -15,8 +15,8 @@ exports.shuju_mofang_taobao = function (req, res, next) {
 
 exports.shuju_mofang_callback_taobao = function (req, res, next) {
   console.log(req.query);
-  shujuMofangLogic.shuju_mofang_callback_update(req, query.passback_params, 'taobao_info', req.query, function () {
-    return res.redirect('/page_wechat/vip_auth_info?user_id=' + query.passback_params);
+  shujuMofangLogic.shuju_mofang_callback_update(req.query.passback_params, 'taobao_info', req.query, function () {
+    return res.redirect('/page_wechat/vip_auth_info?user_id=' + req.query.passback_params);
   })
 
   // return res.redirect('/page_wechat/vip_auth_info?user_id=' + req.body.passback_params);
