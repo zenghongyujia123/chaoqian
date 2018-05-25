@@ -155,6 +155,21 @@
         saveToPhotoAlbum: false
       }, function (ret, err) {
         if (ret) {
+          var obj = api.require('qiniuUpfile');
+          obj.upfile({
+            file: ret.data,
+            name: new Date().getTime().toString()
+          }, function (ret, err) {
+            if (ret.status) {
+              if (ret.oper == "complete") {
+                //上传成功后组装访问路径，或直接访问文档
+                $api.text(b, baseUrl + ret.info.key);
+              } else if (ret.oper == "progress") {
+                //上传过程中获取进度数据
+                $api.text(a, ret.percent);
+              }
+            }
+          });
           alert(JSON.stringify(ret));
         } else {
           alert(JSON.stringify(err));
