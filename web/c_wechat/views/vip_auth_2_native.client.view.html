@@ -141,7 +141,18 @@
         }
       });
     });
+    var token = '';
+    function getToken() {
+      $.ajax({
+        url: '/token/qiniu/uptoken',
+        method: 'get',
+        success: function (data) {
+          token = data.uptoken;
+        }
+      });
+    };
 
+    getToken();
     $('.weui-uploader__input').click(function () {
       api.getPicture({
         sourceType: 'camera',
@@ -155,22 +166,28 @@
         saveToPhotoAlbum: false
       }, function (ret, err) {
         if (ret) {
-          var obj = api.require('qiniuUpfile');
-          obj.upfile({
+          alert(JSON.stringify(ret));
+          var qn = api.require('qn');
+          qn.start({
             file: ret.data,
-            name: new Date().getTime().toString()
+            token: 'token',
+            key: new Date().getTime().toString() + '.jpg'
           }, function (ret, err) {
-            if (ret.status) {
-              if (ret.oper == "complete") {
-                //上传成功后组装访问路径，或直接访问文档
-                $api.text(b, baseUrl + ret.info.key);
-              } else if (ret.oper == "progress") {
-                //上传过程中获取进度数据
-                $api.text(a, ret.percent);
+            if (ret) {
+              if (ret.status) {
+                alert('上传成功');
               }
+              if (ret.progress) {
+                api.toast({
+                  msg: "上传进度：" + ret.progress * 100,
+                  duration: 2000,
+                  location: 'bottom'
+                });
+              }
+            } else {
+              alert(JSON.stringify(err));
             }
           });
-          alert(JSON.stringify(ret));
         } else {
           alert(JSON.stringify(err));
         }
