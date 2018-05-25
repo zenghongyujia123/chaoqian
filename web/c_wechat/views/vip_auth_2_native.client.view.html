@@ -66,18 +66,18 @@
 
 
       <div class="list-item id_front">
-        <div class="title">上传身份证正面</div>
-        <img src="" style="width:70px;height: 70px; visibility: hidden;">
+        <div class="title">请上传身份证正面照片</div>
+        <img src="" style="width:70px;height: 70px;margin:10px; visibility: hidden;">
         </img>
       </div>
       <div class="list-item id_back">
-        <div class="title">上传身份证背面面</div>
-        <img src="" style="width:70px;height: 70px; visibility: hidden;">
+        <div class="title">请上传身份证背面照片</div>
+        <img src="" style="width:70px;height: 70px;margin:10px; visibility: hidden;">
         </img>
       </div>
       <div class="list-item id_man">
-        <div class="title">上传人和身份证</div>
-        <img src="" style="width:70px;height: 70px; visibility: hidden;">
+        <div class="title">请上传手持身份证照片</div>
+        <img src="" style="width:70px;height: 70px; margin:10px;visibility: hidden;">
         </img>
       </div>
 
@@ -122,36 +122,13 @@
   var pbc_token = "<%= (user.pbc_token?'已授权':'授权查询') %>";
 
   $(function () {
-    $('.submit-btn').click(function () {
-      if (!carrier_token) {
-        return alert('请通讯运营商授权');
-      }
-      if (!pbc_token) {
-        return alert('请通人行征信授权');
-      }
-      $.ajax({
-        method: 'post',
-        url: '/user/updateUserAuth2',
-        success: function (data) {
 
+    var user = '<%- JSON.stringify(user) %>'
+    user = JSON.parse(user);
 
-          console.log(data);
-          if (!data.err) {
-            window.location = window.location;
-          }
-        }
-      });
-    });
-    var token = '';
-    function getToken() {
-      $.ajax({
-        url: '/token/qiniu/uptoken',
-        method: 'get',
-        success: function (data) {
-          token = data.uptoken;
-        }
-      });
-    };
+    var id_front,
+      id_back,
+      id_man;
 
     getToken();
 
@@ -197,9 +174,6 @@
       });
     }
 
-    var id_front,
-      id_back,
-      id_man;
 
     $('.id_front').click(function () {
       var that = this;
@@ -225,6 +199,56 @@
         // $('.weui-uploader__files').append('<li class="weui-uploader__file"><img src="http://ouv4j9a7a.bkt.clouddn.com/' + key + '" style="width:100%;height: 100%;" /></li>');
       })
     });
+
+
+    $('.submit-btn').click(function () {
+      if (!user.jingdong_info || !user.jingdong_info.task_id) {
+        return alert('请京东授权');
+      }
+      if (!user.taobao_info || !user.taobao_info.task_id) {
+        return alert('请淘宝授权');
+      }
+
+
+      if (!id_front) {
+        return alert('请上传身份证正面照片');
+      }
+      if (!id_back) {
+        return alert('请上传身份证背面照片');
+      }
+      if (!id_man) {
+        return alert('请上传手持身份证照片');
+      }
+
+
+
+
+      $.ajax({
+        method: 'post',
+        url: '/user/updateUserAuth2',
+        data: {
+          id_front: id_front,
+          id_back: id_back,
+          id_man: id_man
+        },
+        success: function (data) {
+          console.log(data);
+          if (!data.err) {
+            window.location = window.location;
+          }
+        }
+      });
+    });
+    var token = '';
+    function getToken() {
+      $.ajax({
+        url: '/token/qiniu/uptoken',
+        method: 'get',
+        success: function (data) {
+          token = data.uptoken;
+        }
+      });
+    };
 
   });
 

@@ -350,9 +350,18 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
   });
 }
 
-exports.updateUserAuth2 = function (user, callback) {
+exports.updateUserAuth2 = function (user, info, callback) {
   user.vip_status = 'submit';
   user.vip_status_submit_time = new Date();
+  if (info.id_front) {
+    user.id_front = info.id_front || '';
+  }
+  if (info.id_back) {
+    user.id_back = info.id_back || '';
+  }
+  if (info.id_man) {
+    user.id_man = info.id_man || '';
+  }
   user.save(function (err, savedUser) {
     if (err) {
       return callback({ err: sysErr.database_save_error });

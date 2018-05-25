@@ -47,7 +47,7 @@ exports.updateUserAuth1 = function (req, res, next) {
 }
 
 exports.updateUserAuth2 = function (req, res, next) {
-  userLogic.updateUserAuth2(req.user, function (err, result) {
+  userLogic.updateUserAuth2(req.user,req.body, function (err, result) {
     if (err) {
       return next(err);
     }
