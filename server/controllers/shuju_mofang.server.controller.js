@@ -1,7 +1,7 @@
 /**
  * Created by zenghong on 2017/8/8.
  */
-var userLogic = require('./../logics/user');
+var shujuMofangLogic = require('./../logics/shuju_mofang');
 var path = require('path');
 var agent = require('superagent').agent();
 
@@ -15,9 +15,10 @@ exports.shuju_mofang_taobao = function (req, res, next) {
 
 exports.shuju_mofang_callback_taobao = function (req, res, next) {
   console.log(req.query);
-  console.log(req.body);
-  console.log(req.params);
-  return redirect('/page_wechat/vip_auth_info');
+  shujuMofangLogic.shuju_mofang_callback_update(req, query.passback_params, 'taobao_info', req.query, function () {
+    return res.redirect('/page_wechat/vip_auth_info?user_id=' + query.passback_params);
+  })
+
   // return res.redirect('/page_wechat/vip_auth_info?user_id=' + req.body.passback_params);
 };
 
