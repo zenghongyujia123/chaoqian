@@ -45,6 +45,4 @@ exports.shuju_mofang_page_jingdong = function (req, res, next) {
 
 
 
-jingdong_info
-
 
