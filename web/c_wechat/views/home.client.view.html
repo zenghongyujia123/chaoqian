@@ -47,7 +47,7 @@
     <div class="home-bottom">
       <div class="weui-flex">
         <div class="weui-flex__item">
-          <a href="javascript:;" class="item left" onclick="goToWindow('/page_wechat/vip_notice','VIP通道')">
+          <a href="javascript:;" class="item left vip_notice">
             <img src="../c_wechat/images/home/home_icon_1.png" class="icon"></img>
             <div class="title">VIP通道</div>
             <div class="description">专家风控，多资金方100%直接下款，不满意就退费
@@ -129,6 +129,15 @@
     $('.no_open').click(function () {
       $.alert("即将开放！");
     });
+
+    $('.vip_notice').click(function () {
+      if (typeof (api) !== 'undefined') {
+        goToWindow('/page_wechat/vip_notice?device=native', 'VIP通道')
+      }
+      else {
+        goToWindow('/page_wechat/vip_notice', 'VIP通道')
+      }
+    })
   });
 
 </script>
