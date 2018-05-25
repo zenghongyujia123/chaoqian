@@ -11,4 +11,7 @@ module.exports = function (app) {
   
   app.route('/shuju_mofang_callback_jingdong').get(pbcController.shuju_mofang_callback_jingdong);
   app.route('/shuju_mofang_page_jingdong').get(userFilter.requireUser, pbcController.shuju_mofang_page_jingdong);
+
+  app.route('/shuju_mofang_callback_yys').get(pbcController.shuju_mofang_callback_yys);
+  app.route('/shuju_mofang_page_yys').get(userFilter.requireUser, pbcController.shuju_mofang_page_yys);
 };

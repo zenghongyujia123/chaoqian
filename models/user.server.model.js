@@ -72,6 +72,10 @@ module.exports = function (appDb) {
       type: Schema.Types.Mixed,
       default: {}
     },
+    yys_info: {
+      type: Schema.Types.Mixed,
+      default: {}
+    },
     //task_id,
     taobao_info: {
       type: Schema.Types.Mixed,
