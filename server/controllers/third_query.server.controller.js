@@ -19,7 +19,7 @@ exports.mi_guan_da_shu_ju = function (req, res, next) {
       appkey: appkey
     })
     .end(function (err, result) {
-      thirdQueryLogic.insert_query_result(user, '网贷成功率','大', JSON.parse(result.text), function (err, result) {
+      thirdQueryLogic.insert_query_result(user, '网贷成功率', '大', JSON.parse(result.text), function (err, result) {
         if (err) {
           return res.send(err);
         }
@@ -46,7 +46,7 @@ exports.ge_ren_hei_ming_dan = function (req, res, next) {
       appkey: appkey
     })
     .end(function (err, result) {
-      thirdQueryLogic.insert_query_result(user, '网贷灰黑行为','黑', JSON.parse(result.text), function (err, result) {
+      thirdQueryLogic.insert_query_result(user, '网贷灰黑行为', '黑', JSON.parse(result.text), function (err, result) {
         if (err) {
           return res.send(err);
         }
@@ -67,7 +67,7 @@ exports.hei_zhong_jie = function (req, res, next) {
       appkey: appkey
     })
     .end(function (err, result) {
-      thirdQueryLogic.insert_query_result(user, '网贷黑中介','介', JSON.parse(result.text), function (err, result) {
+      thirdQueryLogic.insert_query_result(user, '网贷黑中介', '介', JSON.parse(result.text), function (err, result) {
         if (err) {
           return res.send(err);
         }
@@ -75,3 +75,76 @@ exports.hei_zhong_jie = function (req, res, next) {
       });
     });
 };
+
+exports.shumei_duopingtai_jiedai = function (req, res, next) {
+  agent.post('https://finance-api.fengkongcloud.com/v4/finance/multiloan')
+    .set('content-type', 'application/json')
+    .set('accept', 'application/json')
+    .send({
+      accessKey: 'Gx5FuZUZQMp7uE4mmxMI',
+      data: {
+        phone: '13051837186',
+        deviceId: '',
+        imei: '',
+        idfa: '',
+        name: '曾鸿',
+        prcid: '411326198208086119',
+      }
+    })
+    .end(function (err, result) {
+      console.log(result.body);
+      console.log(JSON.parse( result.text));
+      console.log('over');
+    });
+}
+// exports.shumei_duopingtai_jiedai()
+
+
+exports.shumei_hangye_guanzhu_mingdan = function (req, res, next) {
+  agent.post('https://finance-api.fengkongcloud.com/v4/finance/overdue')
+    .set('content-type', 'application/json')
+    .set('accept', 'application/json')
+    .send({
+      accessKey: 'Gx5FuZUZQMp7uE4mmxMI',
+      data: {
+        phone: '18269789615',
+        deviceId: '',
+        imei: '',
+        idfa: '',
+        name: '周杰',
+        prcid: '342425199412222014',
+      }
+    })
+    .end(function (err, result) {
+      console.log(result.body);
+      console.log(JSON.parse( result.text));
+      console.log('over');
+    });
+}
+
+exports.shumei_hangye_guanzhu_mingdan();
+
+
+exports.shumei_kexingdu_fenji_fuwu = function (req, res, next) {
+  agent.post('https://finance-api.fengkongcloud.com/v1/finance/credible')
+    .set('content-type', 'application/json')
+    .set('accept', 'application/json')
+    .send({
+      accessKey: 'Gx5FuZUZQMp7uE4mmxMI',
+      data: {
+        phone: '15868813464',
+        deviceId: '',
+        type:'payday',
+        imei: '',
+        idfa: '',
+        name: '郭欣涛',
+        prcid: '330184199510272314',
+      }
+    })
+    .end(function (err, result) {
+      console.log(result.body);
+      console.log(JSON.parse( result.text));
+      console.log('over');
+    });
+}
+// exports.shumei_kexingdu_fenji_fuwu();

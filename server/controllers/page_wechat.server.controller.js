@@ -293,7 +293,7 @@ exports.me_query_detail = function (req, res, next) {
     filepath = path.join(__dirname, '../../web/c_wechat/views/me_query_detail_jie.client.view.html');
   }
 
-  return res.render(filepath, { third_query: req.third_query, data: req.third_query.result.result.data||{} });
+  return res.render(filepath, { third_query: req.third_query, data: req.third_query.result.result.data || {} });
 };
 
 exports.me_achievement = function (req, res, next) {
@@ -534,7 +534,12 @@ exports.vip_auth_info = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_1.client.view.html');
 
   if (user.vip_payed) {
-    filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_2.client.view.html');
+    if (req.query.device === 'native') {
+      filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_2_native.client.view.html');
+    }
+    else {
+      filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_2.client.view.html');
+    }
   }
 
   if (user.vip_status === 'submit') {
@@ -615,7 +620,13 @@ exports.vip_auth_1 = function (req, res, next) {
 
 exports.vip_auth_2 = function (req, res, next) {
   var user = req.user;
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_2.client.view.html');
+  var filepath;
+  if (req.query.device === 'native') {
+    filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_2_native.client.view.html');
+  }
+  else {
+    filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_2.client.view.html');
+  }
   return res.render(filepath, { city: req.cookies.city, user: user });
 };
 

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
+  <title>资料录入</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+  <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
+  <link rel="stylesheet" href="../c_wechat/css/vip_auth_1.client.style.css" />
+  <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+  <script src="../c_wechat/controllers/vip_auth_2.client.controller.js"></script>
+  <script src="../c_wechat/controllers/vip_auth_2.client.controller.js"></script>
+  <meta name="baidu-site-verification" content="4hPH3hudxx" />
+</head>
+
+<body>
+  <div class="page-vip-auth">
+    <div class="auth-progress">
+      <div class="progress-border"></div>
+      <div class="progress-item">
+        <img src="../c_wechat/images/vip/ensure_pay.png" class="icon select"></img>
+        <div class="text">确认支付</div>
+      </div>
+      <div class="progress-item">
+        <img src="../c_wechat/images/vip/has_input.png" class="icon"></img>
+        <div class="text">资料录入</div>
+      </div>
+      <div class="progress-item">
+        <img src="../c_wechat/images/vip/un_verified.png" class="icon"></img>
+        <div class="text">报告结果</div>
+      </div>
+    </div>
+    <div class="input-list">
+      <a href="/carrier/page_carrier_url" class="list-item">
+        <div class="title">通讯运营商</div>
+        <div class="content">
+          <%= (user.carrier_token?'已授权':'授权查询') %>
+        </div>
+        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
+      </a>
+      <a href="/pbc/page_pbc_url" class="list-item">
+        <div class="title">人行征信账号</div>
+        <div class="content">
+          <%= (user.pbc_token?'已授权':'授权查询') %>
+        </div>
+
+        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
+      </a>
+
+      <a class="list-item">
+        <div class="title">上传身份证正面</div>
+        <div class="content">
+        </div>
+        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
+      </a>
+    </div>
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <div class="weui-uploader">
+            <div class="weui-uploader__bd">
+              <ul class="weui-uploader__files" id="uploaderFiles">
+                <li class="weui-uploader__file" style="background-image:url(./images/pic_160.png)"></li>
+                <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
+                  <div class="weui-uploader__file-content">
+                    <i class="weui-icon-warn"></i>
+                  </div>
+                </li>
+                <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
+                  <div class="weui-uploader__file-content">50%</div>
+                </li>
+              </ul>
+              <div class="weui-uploader__input-box">
+                <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="descript-list">
+      <div class="list-item">
+        <div class="icon"></div>
+        <div class="text">依据您的资质状况决定填写资料的智能匹配;</div>
+      </div>
+      <div class="list-item">
+        <div class="icon"></div>
+        <div class="text">首次贷款必须要填写人行征信信息（80天循环查询一次）;</div>
+      </div>
+      <div class="list-item">
+        <div class="icon"></div>
+        <div class="text">通讯运营商填写使用12个月以上常用号码（小号新号会增加拒绝率）;</div>
+      </div>
+      <div class="list-item">
+        <div class="icon"></div>
+        <div class="text">如没填写完整相关信息，请不要提交资料，
+          <a style="color:#F25167" href="https://mp.weixin.qq.com/s/iTDPPK8vKWetGSv4d6ssVw">如何获得人行身份验证码;</a>
+        </div>
+      </div>
+      <div class="list-item">
+        <div class="icon"></div>
+        <div class="text">如有疑问请联系微信客服：jingbeikefu;</div>
+      </div>
+    </div>
+    <div class="ensure-content">
+    </div>
+    <div class="ensure">
+      <div class="submit-btn">提交材料</div>
+    </div>
+    <div class="footer">
+      <div class="icon"></div>
+      <div class="footer-content">以上资料经技术加密处理，可联系客服修改，涉及隐私信息一律隐蔽处理，资料关系个人福利及资质，请认证填写并提交</div>
+    </div>
+  </div>
+</body>
+<script>
+  var carrier_token = "<%= (user.pbc_token?'已授权':'授权查询') %>";
+  var pbc_token = "<%= (user.pbc_token?'已授权':'授权查询') %>";
+
+  $(function () {
+    $('.submit-btn').click(function () {
+      if (!carrier_token) {
+        return alert('请通讯运营商授权');
+      }
+      if (!pbc_token) {
+        return alert('请通人行征信授权');
+      }
+      $.ajax({
+        method: 'post',
+        url: '/user/updateUserAuth2',
+        success: function (data) {
+
+
+          console.log(data);
+          if (!data.err) {
+            window.location = window.location;
+          }
+        }
+      });
+    });
+
+    $('.weui-uploader__input').click(function () {
+      api.getPicture({
+        sourceType: 'camera',
+        encodingType: 'jpg',
+        mediaValue: 'pic',
+        destinationType: 'url',
+        allowEdit: true,
+        quality: 50,
+        targetWidth: 100,
+        targetHeight: 100,
+        saveToPhotoAlbum: false
+      }, function (ret, err) {
+        if (ret) {
+          alert(JSON.stringify(ret));
+        } else {
+          alert(JSON.stringify(err));
+        }
+      });
+    });
+
+  });
+
+  // vincent added for the VIP waiting time , save the current date and time in cookie
+
+
+</script>
+
+</html>
