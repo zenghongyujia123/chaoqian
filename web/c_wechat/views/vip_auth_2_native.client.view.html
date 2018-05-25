@@ -46,9 +46,24 @@
         <div class="content">
           <%= (user.pbc_token?'已授权':'授权查询') %>
         </div>
-
         <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
       </a>
+
+      <a href="" class="list-item">
+        <div class="title">淘宝认证</div>
+        <div class="content">
+          <%= (user.pbc_token?'已授权':'授权查询') %>
+        </div>
+        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
+      </a>
+      <a href="/pbc/page_pbc_url" class="list-item">
+        <div class="title">京东认证</div>
+        <div class="content">
+          <%= (user.pbc_token?'已授权':'授权查询') %>
+        </div>
+        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
+      </a>
+
 
       <div class="list-item id_front">
         <div class="title">上传身份证正面</div>
