@@ -531,7 +531,14 @@ exports.vip_auth_info = function (req, res, next) {
     userLogic.updateVipNotice(user, function (err, result) {
     });
   }
+
+
+  //带删除
   var filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_1.client.view.html');
+  filepath = path.join(__dirname, '../../web/c_wechat/views/vip_auth_2_native.client.view.html');
+  return res.render(filepath, { city: req.cookies.city, user: user });
+
+
 
   if (user.vip_payed) {
     if (req.query.device === 'native') {
