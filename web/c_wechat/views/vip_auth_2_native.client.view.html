@@ -60,6 +60,11 @@
     <div class="weui-cells weui-cells_form">
       <div class="weui-cell">
         <div class="weui-cell__bd">
+          <ul class="weui-uploader__files" id="uploaderFiles">
+            <li class="weui-uploader__file">
+              <img src="" style="width:100%;height: 100%;" />
+            </li>
+          </ul>
           <div class="weui-uploader">
             <div class="weui-uploader__bd">
               <div class="weui-uploader__input-box">
@@ -188,7 +193,8 @@
     }
     $('.weui-uploader__input').click(function () {
       getPicture(function (key) {
-        $('.weui-uploader__input').append('<img style="width:100%;height:100%;" src="http://ouv4j9a7a.bkt.clouddn.com/' + key + '" />');
+        alert(key);
+        $('.weui-uploader__files').append('<li class="weui-uploader__file"><img src="http://ouv4j9a7a.bkt.clouddn.com/' + key + '" style="width:100%;height: 100%;" /></li>');
       })
     });
 
