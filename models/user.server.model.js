@@ -55,6 +55,15 @@ module.exports = function (appDb) {
       type: String,
       trim: true
     },
+    id_front: {
+      type: String,
+    },
+    id_back: {
+      type: String,
+    },
+    id_man: {
+      type: String,
+    },
     openid: {
       type: String,
       trim: true
@@ -175,8 +184,8 @@ module.exports = function (appDb) {
       type: Boolean,
       default: false
     },
-    vip_refuse_time:{
-      type:Date
+    vip_refuse_time: {
+      type: Date
     },
     vip_status_submit_time: {
       type: Date
@@ -325,11 +334,11 @@ module.exports = function (appDb) {
       type: String,
       default: ''
     },
-    valid:{
-      type:Boolean,
-      default:false
+    valid: {
+      type: Boolean,
+      default: false
     },
-    execute_params:{
+    execute_params: {
       type: Schema.Types.Mixed
     },
     content: {
