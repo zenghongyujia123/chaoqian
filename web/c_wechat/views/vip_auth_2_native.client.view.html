@@ -188,7 +188,7 @@
     }
     $('.weui-uploader__input').click(function () {
       getPicture(function (key) {
-        $(this).append('<img src="http://ouv4j9a7a.bkt.clouddn.com/' + key + '" />');
+        $('.weui-uploader__input').append('<img src="http://ouv4j9a7a.bkt.clouddn.com/' + key + '" />');
       })
     });
 
