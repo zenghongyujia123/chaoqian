@@ -2,7 +2,7 @@
   <div class="page-operation-view" layout="row" layout-align="space-between center">
     <p class="title">用户详情</p>
     <div layout="row">
-        
+
       <md-button class="md-primary md-raised md-hue-2" ng-click="rollback_vip_infos()">还原用户vip信息</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-click="updateAgentRate()">更新保存代理级别</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-disabled="user.vip_status!=='submit'" ng-click="update_vip_status('refuse')">拒绝贷款</md-button>
@@ -44,11 +44,11 @@
     <div class="list-item" layout="row" layout-align="start center">
       <div class="column-item" flex="">用户身份证</div>
       <div class="column-item" flex="">用户代理级别:</div>
-      <div class="column-item" flex=""></div>
-      <div class="column-item" flex=""></div>
-      <div class="column-item" flex=""></div>
-      <div class="column-item" flex=""></div>
-      <div class="column-item" flex=""></div>
+      <div class="column-item" flex="">身份证正面</div>
+      <div class="column-item" flex="">身份证背面</div>
+      <div class="column-item" flex="">手持身份证</div>
+      <div class="column-item" flex="">淘宝task_id</div>
+      <div class="column-item" flex="">京东task_id</div>
       <div class="column-item" flex=""></div>
     </div>
   </div>
@@ -61,11 +61,21 @@
         <select ng-model="$parent.selectedAgent_rate" ng-options="x for x in agent_rate">
         </select>
       </md-input-container>
-      <div class="column-item" flex=""></div>
-      <div class="column-item" flex=""></div>
-      <div class="column-item" flex=""></div>
-      <div class="column-item" flex=""></div>
-      <div class="column-item" flex=""></div>
+      <div class="column-item" flex="">
+        <img ng-src="{{user.id_front}" />
+      </div>
+      <div class="column-item" flex="">
+        <img ng-src="{{user.id_back}" />
+      </div>
+      <div class="column-item" flex="">
+        <img ng-src="{{user.id_man}" />
+      </div>
+      <div class="column-item" flex="">
+        {{user.taobao_info?user.taobao_info.task_id:''}}
+      </div>
+      <div class="column-item" flex="">
+        {{user.jingdong_info?user.jingdong_info.task_id:''}}
+      </div>
       <div class="column-item" flex=""></div>
 
     </div>
