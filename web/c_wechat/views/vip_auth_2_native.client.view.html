@@ -50,32 +50,22 @@
         <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
       </a>
 
-      <a class="list-item">
+      <div class="list-item id_front">
         <div class="title">上传身份证正面</div>
-        <div class="content">
-        </div>
-        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
-      </a>
-    </div>
-    <div class="weui-cells weui-cells_form">
-      <div class="weui-cell">
-        <div class="weui-cell__bd">
-          <ul class="weui-uploader__files" id="uploaderFiles">
-            <li class="weui-uploader__file">
-              <img src="" style="width:100%;height: 100%;" />
-            </li>
-          </ul>
-          <div class="weui-uploader">
-            <div class="weui-uploader__bd">
-              <div class="weui-uploader__input-box">
-                <div class="weui-uploader__input">
-                  <img src="" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img src="" style="width:70px;height: 70px; visibility: hidden;">
+        </img>
       </div>
+      <div class="list-item id_back">
+        <div class="title">上传身份证背面面</div>
+        <img src="" style="width:70px;height: 70px; visibility: hidden;">
+        </img>
+      </div>
+      <div class="list-item id_man">
+        <div class="title">上传人和身份证</div>
+        <img src="" style="width:70px;height: 70px; visibility: hidden;">
+        </img>
+      </div>
+
     </div>
     <div class="descript-list">
       <div class="list-item">
@@ -191,10 +181,33 @@
         }
       });
     }
-    $('.weui-uploader__input').click(function () {
+
+    var id_front,
+      id_back,
+      id_man;
+
+    $('.id_front').click(function () {
+      var that = this;
       getPicture(function (key) {
-        alert(key);
-        $('.weui-uploader__files').append('<li class="weui-uploader__file"><img src="http://ouv4j9a7a.bkt.clouddn.com/' + key + '" style="width:100%;height: 100%;" /></li>');
+        id_front = 'http://ouv4j9a7a.bkt.clouddn.com/' + key;
+        $('.id_front').find('img').attr('src', id_front).css('visibility', 'visibility');
+        // $('.weui-uploader__files').append('<li class="weui-uploader__file"><img src="http://ouv4j9a7a.bkt.clouddn.com/' + key + '" style="width:100%;height: 100%;" /></li>');
+      })
+    });
+    $('.id_back').click(function () {
+      var that = this;
+      getPicture(function (key) {
+        id_back = 'http://ouv4j9a7a.bkt.clouddn.com/' + key;
+        $('.id_back').find('img').attr('src', id_front).css('visibility', 'visibility');
+        // $('.weui-uploader__files').append('<li class="weui-uploader__file"><img src="http://ouv4j9a7a.bkt.clouddn.com/' + key + '" style="width:100%;height: 100%;" /></li>');
+      })
+    });
+    $('.id_man').click(function () {
+      var that = this;
+      getPicture(function (key) {
+        id_man = 'http://ouv4j9a7a.bkt.clouddn.com/' + key;
+        $('.id_man').find('img').attr('src', id_front).css('visibility', 'visibility');
+        // $('.weui-uploader__files').append('<li class="weui-uploader__file"><img src="http://ouv4j9a7a.bkt.clouddn.com/' + key + '" style="width:100%;height: 100%;" /></li>');
       })
     });
 

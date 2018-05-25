@@ -53,7 +53,7 @@ body {
   align-items: center;
   border-bottom: 1px solid #CFCED2;
   position: relative;
-  height: 40px;
+  min-height: 40px;
   padding: 0px 15px;
 }
 .page-vip-auth .input-list .list-item .title {
