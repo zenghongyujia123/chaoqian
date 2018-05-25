@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="input-list">
-      <a href="/carrier/page_carrier_url" class="list-item">
+      <!-- <a href="/carrier/page_carrier_url" class="list-item">
         <div class="title">通讯运营商</div>
         <div class="content">
           <%= (user.carrier_token?'已授权':'授权查询') %>
@@ -47,19 +47,19 @@
           <%= (user.pbc_token?'已授权':'授权查询') %>
         </div>
         <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
-      </a>
+      </a> -->
 
       <a href="/shuju_mofang_page_taobao" class="list-item">
         <div class="title">淘宝认证</div>
         <div class="content">
-          <%= (user.pbc_token?'已授权':'授权查询') %>
+          <%= ((user.taobao_info&&user.taobao_info.task_id)?'已授权':'授权查询') %>
         </div>
         <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
       </a>
       <a href="/shuju_mofang_page_jingdong" class="list-item">
         <div class="title">京东认证</div>
         <div class="content">
-          <%= (user.pbc_token?'已授权':'授权查询') %>
+          <%= ((user.jingdong_info&&user.jingdong_info.task_id)?'已授权':'授权查询') %>
         </div>
         <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
       </a>
