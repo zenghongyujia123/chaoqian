@@ -170,7 +170,7 @@
           var qn = api.require('qn');
           qn.start({
             file: ret.data,
-            token: 'token',
+            token: token,
             key: new Date().getTime().toString() + '.jpg'
           }, function (ret, err) {
             if (ret) {
