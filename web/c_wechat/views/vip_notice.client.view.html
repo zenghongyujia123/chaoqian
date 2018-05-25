@@ -50,9 +50,21 @@
 
   </div>
   <div class="footer">
-    <a href="javascript:;" onclick="goToWindow('/page_wechat/vip_auth_info','VIP通道')" class="notice-btn">
+    <a href="javascript:;" class="notice-btn">
       同意协议，开始申请
     </a>
 </body>
+<script>
+  $(function () {
+    $('.notice-btn').click(function () {
+      if (typeof (api) !== 'undefined') {
+        goToWindow('/page_wechat/vip_auth_info?device=native', 'VIP通道')
+      }
+      else {
+        goToWindow('/page_wechat/vip_auth_info', 'VIP通道')
+      }
+    });
+  })
+</script>
 
 </html>
