@@ -145,7 +145,6 @@
         saveToPhotoAlbum: false
       }, function (ret, err) {
         if (ret) {
-          alert(JSON.stringify(ret));
           var qn = api.require('qn');
           qn.start({
             file: ret.data,
