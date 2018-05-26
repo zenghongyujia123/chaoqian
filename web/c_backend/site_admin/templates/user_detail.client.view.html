@@ -47,9 +47,9 @@
       <div class="column-item" flex="">身份证正面</div>
       <div class="column-item" flex="">身份证背面</div>
       <div class="column-item" flex="">手持身份证</div>
-      <div class="column-item" flex="">淘宝task_id</div>
-      <div class="column-item" flex="">京东task_id</div>
-      <div class="column-item" flex="">运营商task_id</div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
+      <div class="column-item" flex=""></div>
     </div>
   </div>
 
@@ -71,13 +71,10 @@
         <img ng-click="showPhotos(user.id_man)" ng-src="{{user.id_man}}" />
       </div>
       <div class="column-item" flex="">
-        {{user.taobao_info?user.taobao_info.task_id:''}}
       </div>
       <div class="column-item" flex="">
-        {{user.jingdong_info?user.jingdong_info.task_id:''}}
       </div>
       <div class="column-item" flex="">
-        {{user.yys_info?user.yys_info.task_id:''}}
       </div>
 
     </div>
