@@ -72,6 +72,10 @@ module.exports = function (appDb) {
       type: Schema.Types.Mixed,
       default: {}
     },
+    wy_info: {
+      type: Schema.Types.Mixed,
+      default: {}
+    },
     eb_info: {
       type: Schema.Types.Mixed,
       default: {}

@@ -83,6 +83,37 @@
     </div>
   </div>
 
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">淘宝task_id</div>
+      <div class="column-item" flex="">京东task_id</div>
+      <div class="column-item" flex="">运营商task_id</div>
+      <div class="column-item" flex="">信用卡task_id</div>
+      <div class="column-item" flex="">网银task_id</div>
+    </div>
+  </div>
+
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" ng-if="user._id">
+      <div class="column-item" flex="">
+        {{user.taobao_info?user.taobao_info.task_id:''}}
+      </div>
+      <div class="column-item" flex="">
+        {{user.jingdong_info?user.jingdong_info.task_id:''}}
+      </div>
+      <div class="column-item" flex="">
+        {{user.yys_info?user.yys_info.task_id:''}}
+      </div>
+      <div class="column-item" flex="">
+        {{user.eb_info?user.eb_info.task_id:''}}
+      </div>
+      <div class="column-item" flex="">
+        {{user.wy_info?user.wy_info.task_id:''}}
+      </div>
+    </div>
+  </div>
+
   <md-content layout-padding>
     <div layout-gt-sm="row">
       <md-input-container class="md-block" flex-gt-sm>
