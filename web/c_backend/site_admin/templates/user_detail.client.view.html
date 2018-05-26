@@ -62,13 +62,13 @@
         </select>
       </md-input-container>
       <div class="column-item" flex="">
-        <img ng-src="{{user.id_front}}" />
+        <img ng-click="showPhotos(user.id_front)" ng-src="{{user.id_front}}" />
       </div>
       <div class="column-item" flex="">
-        <img ng-src="{{user.id_back}}" />
+        <img ng-click="showPhotos(user.id_back)"  ng-src="{{user.id_back}}" />
       </div>
       <div class="column-item" flex="">
-        <img ng-src="{{user.id_man}}" />
+        <img  ng-click="showPhotos(user.id_man)" ng-src="{{user.id_man}}" />
       </div>
       <div class="column-item" flex="">
         {{user.taobao_info?user.taobao_info.task_id:''}}

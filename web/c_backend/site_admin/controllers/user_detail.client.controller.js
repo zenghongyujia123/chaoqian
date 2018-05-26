@@ -298,7 +298,19 @@ cSite.controller('UserDetailController', [
       return map[status].text;
     }
     $scope.getUserById();
+    
+    $scope.photoConfig = {
+      curPhotoList: [],
+      showPhotoScan: false,
+      imgIndex: 0
+    };
 
+    $scope.showPhotos = function (path) {
+      $scope.photoConfig.curPhotoList = [{
+        url: path
+      }];
+      $scope.photoConfig.showPhotoScan = true;
+    };
 
   }]);
 
