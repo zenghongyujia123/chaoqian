@@ -62,6 +62,90 @@
     third_query = JSON.parse(third_query);
     console.log(third_query);
 
+    var data = '<%- JSON.stringify( data) %>';
+    data = JSON.parse(data);
+    data.list.forEach(function (item, i) {
+      var obj = $(
+        '<div class="item">' +
+        '  <div class="row">' +
+        '    <div class="title">结果列表 :' +
+        '      ' + (i + 1) +
+        '    </div>' +
+        '  </div>' +
+        '  <div class="row">' +
+        '    <div class="left">' +
+        '      黑名单事实类型' +
+        '    </div>' +
+        '    <div class="right">' +
+        '      <%= data.list[i].blackFactsType %>' +
+        '    </div>' +
+        '  </div>' +
+        '  <div class="row">' +
+        '    <div class="left">' +
+        '      黑名单事实' +
+        '    </div>' +
+        '    <div class="right">' +
+        '      ' + item.blackFacts +
+        '    </div>' +
+        '  </div>' +
+        '</div>'
+      );
+    })
+
+    function getText(type) {
+      var result = '';
+      switch (type) {
+        case 'A02':
+          result = '名下公司税务重大违法';
+          break;
+        case 'B01':
+          result = '失联';
+          break;
+        case 'B02':
+          result = '贷款不良（逾期90天以上未还）';
+          break;
+        case 'B03':
+          result = '短时逾期';
+          break;
+        case 'B04':
+          result = '逾期';
+          break;
+        case 'C01':
+          result = '失信被执行人';
+          break;
+        case 'C02':
+          result = '被执行人';
+          break;
+        case 'C03':
+          result = '裁判文书';
+          break;
+        case 'D01':
+          result = '疑似催收风险';
+          break;
+        case 'D02':
+          result = '名下公司存在违规行为（被税务局或者工商局公示）';
+          break;
+        case 'D03':
+          result = '来自信贷高风险区域';
+          break;
+        case 'D04':
+          result = '其他潜在风险';
+          break;
+        case 'E01':
+          result = '7天内多头借贷';
+          break;
+        case 'E02':
+          result = '1月内多头借贷';
+          break;
+        case 'E03':
+          result = '3月内多头借贷';
+          break;
+        case 'E04':
+          result = '疑似多头借贷';
+          break;
+      }
+    }
+
     $('.time').text(moment(third_query.create_time).format('YYYY-MM-DD HH:mm'));
 
     // function blackFactsTypeText(type) {
