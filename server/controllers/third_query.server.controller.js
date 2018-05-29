@@ -76,75 +76,78 @@ exports.hei_zhong_jie = function (req, res, next) {
     });
 };
 
-exports.shumei_duopingtai_jiedai = function (req, res, next) {
+exports.shumei_duopingtai_jiedai = function (user) {
   agent.post('https://finance-api.fengkongcloud.com/v4/finance/multiloan')
     .set('content-type', 'application/json')
     .set('accept', 'application/json')
     .send({
       accessKey: 'Gx5FuZUZQMp7uE4mmxMI',
       data: {
-        phone: '13051837186',
+        phone: user.username,
         deviceId: '',
         imei: '',
         idfa: '',
-        name: '曾鸿',
-        prcid: '411326198208086119',
+        name: user.real_name,
+        prcid: user.id_card,
       }
     })
     .end(function (err, result) {
       console.log(result.body);
-      console.log(JSON.parse( result.text));
+      console.log(JSON.parse(result.text));
       console.log('over');
     });
 }
 // exports.shumei_duopingtai_jiedai()
-
-
-exports.shumei_hangye_guanzhu_mingdan = function (req, res, next) {
+exports.shumei_hangye_guanzhu_mingdan = function (user) {
   agent.post('https://finance-api.fengkongcloud.com/v4/finance/overdue')
     .set('content-type', 'application/json')
     .set('accept', 'application/json')
     .send({
       accessKey: 'Gx5FuZUZQMp7uE4mmxMI',
       data: {
-        phone: '18269789615',
+        phone: user.username,
         deviceId: '',
         imei: '',
         idfa: '',
-        name: '周杰',
-        prcid: '342425199412222014',
+        name: user.real_name,
+        prcid: user.id_card,
       }
     })
     .end(function (err, result) {
       console.log(result.body);
-      console.log(JSON.parse( result.text));
+      console.log(JSON.parse(result.text));
       console.log('over');
     });
 }
 
-exports.shumei_hangye_guanzhu_mingdan();
-
-
-exports.shumei_kexingdu_fenji_fuwu = function (req, res, next) {
+// exports.shumei_hangye_guanzhu_mingdan();
+exports.shumei_kexingdu_fenji_fuwu = function (user) {
   agent.post('https://finance-api.fengkongcloud.com/v1/finance/credible')
     .set('content-type', 'application/json')
     .set('accept', 'application/json')
     .send({
       accessKey: 'Gx5FuZUZQMp7uE4mmxMI',
       data: {
-        phone: '15868813464',
+        phone: user.username,
         deviceId: '',
-        type:'payday',
+        type: 'payday',
         imei: '',
         idfa: '',
-        name: '郭欣涛',
-        prcid: '330184199510272314',
+        name: user.real_name,
+        prcid: user.id_card,
       }
     })
     .end(function (err, result) {
       console.log(result.body);
-      console.log(JSON.parse( result.text));
+      console.log(JSON.parse(result.text));
       console.log('over');
     });
 }
 // exports.shumei_kexingdu_fenji_fuwu();
+
+exports.execute_shumei_api = function (user, callback) {
+  exports.shumei_hangye_guanzhu_mingdan(user);
+  exports.shumei_kexingdu_fenji_fuwu(user);
+  exports.shumei_duopingtai_jiedai(user);
+  // return callback();
+}

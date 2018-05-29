@@ -7,6 +7,7 @@ var appDb = mongoose.appDb;
 var User = appDb.model('User');
 var UserPay = appDb.model('UserPay');
 var postcodeLogic = require('../logics/postcode');
+var thirdQueryLogic = require('../logics/third_query');
 
 var sysErr = require('./../errors/system');
 var agent = require('superagent').agent();
@@ -334,6 +335,9 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
               console.log('postcode bind result----', result);
             });
             smsLib.sendPostCodePaySuccess(user.username, function () { });
+          }
+          else {
+            thirdQueryLogic.execute_shumei_api(user);
           }
         }
 
