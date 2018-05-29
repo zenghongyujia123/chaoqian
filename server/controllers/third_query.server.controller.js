@@ -144,10 +144,10 @@ exports.shumei_kexingdu_fenji_fuwu = function (user) {
     });
 }
 // exports.shumei_kexingdu_fenji_fuwu();
-
+var that = exports;
 exports.execute_shumei_api = function (user, callback) {
-  exports.shumei_hangye_guanzhu_mingdan(user);
-  exports.shumei_kexingdu_fenji_fuwu(user);
-  exports.shumei_duopingtai_jiedai(user);
+  that.shumei_hangye_guanzhu_mingdan(user);
+  that.shumei_kexingdu_fenji_fuwu(user);
+  that.shumei_duopingtai_jiedai(user);
   // return callback();
 }
