@@ -1,0 +1,57 @@
+.h-auth-panel {
+  background-color: white;
+  width: 75%;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 1px 5px 6px 2px #e7e7e7;
+}
+.h-auth-panel h3 {
+  text-align: center;
+}
+.h-auth-panel .auth-row {
+  font-size: 12px;
+  margin: auto;
+  width: 95%;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid #f2f2f2;
+  margin-top: 20px;
+}
+.h-auth-panel .auth-row .auth-icon {
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+}
+.h-auth-panel .auth-row.has-verify .auth-input {
+  width: 69%;
+}
+.h-auth-panel .auth-row.has-verify .auth-verify {
+  width: 30%;
+  color: #32adff;
+  text-align: center;
+}
+.h-auth-panel .auth-row .auth-input {
+  border: 0px;
+  outline: none;
+  padding: 5px;
+  width: 75%;
+  font-size: 14px;
+}
+.h-auth-panel .auth-row .auth-input::-webkit-input-placeholder {
+  color: #999;
+}
+.h-auth-panel .auth-row-btn {
+  font-size: 12px;
+  margin: auto;
+  text-align: center;
+  color: white;
+  border-radius: 30px;
+  background-color: #32adff;
+  line-height: 42px;
+  margin-top: 20px;
+}
