@@ -8,4 +8,5 @@ var userFilter = require('../filters/user');
 module.exports = function (app) {
   app.route('/page_h5/page_signin').get(index.page_signin);
   app.route('/page_h5/page_signup').get(index.page_signup);
+  app.route('/page_h5/page_list_qq').get(index.page_list_qq);
 };
