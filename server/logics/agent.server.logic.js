@@ -3,6 +3,8 @@
  */
 var mongoose = require('./../../libraries/mongoose');
 var appDb = mongoose.appDb;
+
+var AgentHistory = appDb.model('AgentHistory');
 var Agent = appDb.model('Agent');
 var sysErr = require('./../errors/system');
 
@@ -58,6 +60,28 @@ exports.agent_detail = function (id, callback) {
       return callback({ err: sysErr.database_query_error });
     }
     return callback(null, result);
+  });
+}
+
+exports.update_history = function (user, agent, callback) {
+  AgentHistory.findOne({ user: user._id, type: agent.type }, function (err, result) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    if (result) {
+      return callback(null, result);
+    }
+
+    new AgentHistory({
+      type: agent.type,
+      user: user._id,
+      agent: agent._id
+    }).save(function (err, result) {
+      if (err) {
+        return callback({ err: sysErr.database_save_error });
+      }
+      return callback(null, result);
+    });
   });
 }
 

@@ -85,6 +85,12 @@ module.exports = function (appDb) {
       enum: ['qq_agent'],
       default: 'qq_agent'
     },
+    user:{
+      type: Schema.Types.ObjectId,
+    },
+    agent:{
+      type: Schema.Types.ObjectId,
+    },
     //名字
     str1: {
       type: String

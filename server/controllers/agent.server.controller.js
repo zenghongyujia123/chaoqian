@@ -28,3 +28,14 @@ exports.detail_agent = function (req, res, next) {
   return next();
 };
 
+
+exports.update_history = function (req, res, next) {
+  agentLogic.update_history(req.user, req.agent, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+};
+

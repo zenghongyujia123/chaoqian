@@ -14,7 +14,7 @@
 
 <body>
   <div class="weui-panel weui-panel_access">
-      <a href="mqqwpa://im/chat?chat_type=wpa&uin=3415265683&version=1&src_type=web&web_src=oicqzone.com">打开qq聊天框</a>
+    <!-- <a href="mqqwpa://im/chat?chat_type=wpa&uin=3415265683&version=1&src_type=web&web_src=oicqzone.com">打开qq聊天框</a> -->
   </div>
 </body>
 <script>
@@ -32,6 +32,21 @@
             data.forEach(function (item) {
               append_item(item);
             })
+          }
+        }
+      });
+    }
+    function update_history(item) {
+      $.ajax({
+        url: '/agent/update_history',
+        method: 'post',
+        data: {
+          detail_id: item._id
+        },
+        success: function (data) {
+          console.log(data);
+          if (!data.err) {
+            window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=' + item.str2 + '&version=1&src_type=web&web_src=oicqzone.com';
           }
         }
       });
@@ -54,6 +69,11 @@
         '  </div>' +
         '</a>'
       );
+
+      obj.find('.list-btn').click(function () {
+        update_history(item);
+      });
+
       $('.weui-panel').append(obj);
     }
 
