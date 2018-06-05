@@ -14,51 +14,51 @@
 
 <body>
   <div class="weui-panel weui-panel_access">
-    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-      <div class="weui-media-box__hd" style="background-color: #32adff">
-        <img class="weui-media-box__thumb" src="">
-      </div>
-      <div class="weui-media-box__bd">
-        <div class="weui-media-box__title">潮钱网初审
-          <span class="title-desc">20人已借款</span>
-        </div>
-        <span class="bd-tip">最高额度2000</span>
-      </div>
-      <div class="list-btn-area">
-        <div class="list-btn">立即申请</div>
-      </div>
-    </a>
-    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-      <div class="weui-media-box__hd" style="background-color: #32adff">
-        <img class="weui-media-box__thumb" src="">
-      </div>
-      <div class="weui-media-box__bd">
-        <div class="weui-media-box__title">潮钱网初审
-          <span class="title-desc">20人已借款</span>
-        </div>
-        <span class="bd-tip">最高额度2000</span>
-      </div>
-      <div class="list-btn-area">
-        <div class="list-btn">立即申请</div>
-      </div>
-    </a>
-    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-      <div class="weui-media-box__hd" style="background-color: #32adff">
-        <img class="weui-media-box__thumb" src="">
-      </div>
-      <div class="weui-media-box__bd">
-        <div class="weui-media-box__title">潮钱网初审
-          <span class="title-desc">20人已借款</span>
-        </div>
-        <span class="bd-tip">最高额度2000</span>
-      </div>
-      <div class="list-btn-area">
-        <div class="list-btn">立即申请</div>
-      </div>
-    </a>
+      <a href="mqqwpa://im/chat?chat_type=wpa&uin=479858761&version=1&src_type=web&web_src=oicqzone.com">打开qq聊天框</a>
   </div>
 </body>
 <script>
+  $(function () {
+    function list_agent() {
+      $.ajax({
+        url: '/agent/list_agent',
+        method: 'post',
+        data: {
+          type: 'qq_agent'
+        },
+        success: function (data) {
+          console.log(data);
+          if (!data.err) {
+            data.forEach(function (item) {
+              append_item(item);
+            })
+          }
+        }
+      });
+    }
+
+    function append_item(item) {
+      var obj = $(
+        '<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">' +
+        '  <div class="weui-media-box__hd" style="background-color: #32adff">' +
+        '    <img class="weui-media-box__thumb" src="">' +
+        '  </div>' +
+        '  <div class="weui-media-box__bd">' +
+        '    <div class="weui-media-box__title">' + item.str1 +
+        '      <span class="title-desc">' + item.str3 + '</span>' +
+        '    </div>' +
+        '    <span class="bd-tip">' + item.str4 + '</span>' +
+        '  </div>' +
+        '  <div class="list-btn-area">' +
+        '    <div class="list-btn">立即申请</div>' +
+        '  </div>' +
+        '</a>'
+      );
+      $('.weui-panel').append(obj);
+    }
+
+    list_agent();
+  })
 </script>
 
 </html>
