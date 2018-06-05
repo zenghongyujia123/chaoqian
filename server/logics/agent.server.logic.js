@@ -48,7 +48,7 @@ exports.list_agent = function (info, callback) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }
-    return callback(null, reuslt);
+    return callback(null, result);
   });
 }
 
@@ -57,7 +57,7 @@ exports.agent_detail = function (id, callback) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }
-    return callback(null, reuslt);
+    return callback(null, result);
   });
 }
 

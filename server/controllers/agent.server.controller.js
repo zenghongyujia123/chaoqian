@@ -22,3 +22,9 @@ exports.list_agent = function (req, res, next) {
     return next();
   });
 };
+
+exports.detail_agent = function (req, res, next) {
+  req.data = req.agent;
+  return next();
+};
+

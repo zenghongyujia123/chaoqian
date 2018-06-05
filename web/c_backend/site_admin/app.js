@@ -140,7 +140,7 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       controller: 'AgentListQQController'
     })
     .state('agent_detail_qq', {
-      url: '/agent_detail_qq',
+      url: '/agent_detail_qq/:detail_id',
       templateUrl: '/c_backend/site_admin/templates/agent_detail_qq.client.view.html',
       controller: 'AgentDetailQQController'
     });

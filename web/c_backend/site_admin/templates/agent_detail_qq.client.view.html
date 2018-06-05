@@ -1,0 +1,32 @@
+<div class="page-body-view">
+  <div class="page-operation-view" layout="row" layout-align="space-between center">
+    <div layout="row">
+      <p class="title">代理详情</p>
+    </div>
+    <div layout="row">
+      <md-button class="md-primary md-raised md-hue-2" ng-click="update_agent($event)">保存</md-button>
+    </div>
+  </div>
+
+  <div class="c-agent-detail-view">
+    <md-content layout-padding>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>名称</label>
+          <input ng-model="agent.str1" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>qq号</label>
+          <input ng-model="agent.str2" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>申请描述</label>
+          <input ng-model="agent.str3" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>额度描述</label>
+          <input ng-model="agent.str4" />
+        </md-input-container>
+      </div>
+  </div>
+</div>

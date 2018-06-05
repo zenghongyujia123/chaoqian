@@ -140,7 +140,7 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       controller: 'AgentListQQController'
     })
     .state('agent_detail_qq', {
-      url: '/agent_detail_qq',
+      url: '/agent_detail_qq/:detail_id',
       templateUrl: '/c_backend/site_admin/templates/agent_detail_qq.client.view.html',
       controller: 'AgentDetailQQController'
     });
@@ -193,6 +193,23 @@ cSite.constant('AddressConstant', {
   qiniuUploadFileUrl: 'https://up.qbox.me',
   password: 'jb1234'
 });
+
+'use strict';
+cSite.factory('AgentNetwork',
+  ['Http', 'CommonHelper',
+    function (Http, CommonHelper) {
+      return {
+        list_agent: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/agent/list_agent', params);
+        },
+        update_agent: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/agent/update_agent', params);
+        },
+        detail_agent: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/agent/detail_agent', params);
+        }
+      };
+    }]);
 
 'use strict';
 cSite.factory('CardNetwork',
@@ -805,6 +822,85 @@ cSite.directive('mPhotoScan', ['$document', function ($document) {
     }
   }
 }]);
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('AgentDetailQQController', [
+  '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'AgentNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, QiniuService, AgentNetwork, CommonHelper) {
+    $scope.agent = {
+      _id: $stateParams.detail_id,
+      type: 'qq_agent',
+      str1: '',
+      str2: '',
+      str3: '',
+      str4: '',
+      str5: '',
+      str6: '',
+      str7: '',
+      str8: '',
+      str9: '',
+      str10: '',
+      str11: '',
+    };
+
+    $scope.update_agent = function (event) {
+      AgentNetwork.update_agent($scope, $scope.agent).then(function (data) {
+        if (!data.err) {
+          CommonHelper.showConfirm($scope, null, '操作成功', function () {
+            $state.go('agent_detail_qq', { detail_id: data._id }, { reload: true });
+          }, null, null, event);
+        }
+        console.log(data);
+      }, function (err) {
+        console.log(err);
+      });;
+    }
+
+    function detail_agent() {
+      if ($scope.agent._id) {
+        AgentNetwork.detail_agent($scope, { detail_id: $scope.agent._id }).then(function (data) {
+          console.log(data);
+          if (!data.err) {
+            $scope.agent = data;
+          }
+        }, function (err) {
+          console.log(err);
+        });
+      }
+    }
+    detail_agent();
+  }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('AgentListQQController', [
+    '$rootScope', '$scope', '$state', '$stateParams', 'AgentNetwork',
+    function ($rootScope, $scope, $state, $stateParams, AgentNetwork) {
+        $scope.goDetail = function (item) {
+            item = item||{};
+            $state.go('agent_detail_qq', { detail_id: item._id || '' });
+        }
+        $scope.list = [];
+        $scope.list_agent = function () {
+            AgentNetwork.list_agent($scope, {type:'qq_agent'}).then(function (data) {
+                console.log(data);
+                if (!data.err) {
+                    $scope.list = data;
+                }
+            }, function (err) {
+                console.log(err);
+            });
+        };
+
+        $scope.list_agent();
+    }]);
+
 /**
  * Created by lance on 2016/11/17.
  */
