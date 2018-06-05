@@ -3,15 +3,20 @@
  */
 
 var userController = require('../controllers/user');
+var newUserController = require('../controllers/user_new');
 var userFilter = require('../filters/user');
 
 module.exports = function (app) {
   app.route('/user/signup').post(userController.signup);
   app.route('/user/signin').post(userController.signin);
+
+  app.route('/user_new/signin').post(newUserController.signin);
+  app.route('/user_new/signup').post(newUserController.signup);
+
   app.route('/user/userList').post(userController.userList);
   app.route('/user/userListByCondition').post(userController.userListByCondition);
   app.route('/user/getUserByUsername').post(userController.getUserByUsername);
- // getUserByUsername
+  // getUserByUsername
   app.route('/user/getUserById').post(userFilter.requireUserById, userController.getUserById);
   app.route('/user/updateUserAuth1').post(userFilter.requireUser, userController.updateUserAuth1);
   app.route('/user/updateUserAuth2').post(userFilter.requireUser, userController.updateUserAuth2);

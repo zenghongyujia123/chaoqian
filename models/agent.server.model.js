@@ -75,9 +75,56 @@ module.exports = function (appDb) {
   });
 
 
+  var AgentHistorySchema = new Schema({
+    object: {
+      type: String,
+      default: 'AgentHistory'
+    },
+    type: {
+      type: String,
+      enum: ['qq_agent'],
+      default: 'qq_agent'
+    },
+    //名字
+    str1: {
+      type: String
+    },
+    //描述
+    str2: {
+      type: String
+    },
+    //tip
+    str3: {
+      type: String
+    },
+    //url
+    str4: {
+      type: String
+    },
+    //
+    str5: {
+      type: String
+    },
+    //
+    str6: {
+      type: String
+    },
+    deleted_status: {
+      type: Boolean,
+      default: false
+    }
+  });
+
+  AgentHistorySchema.plugin(timestamps, {
+    createdAt: 'create_time',
+    updatedAt: 'update_time'
+  });
+
   AgentSchema.plugin(timestamps, {
     createdAt: 'create_time',
     updatedAt: 'update_time'
   });
+
   appDb.model('Agent', AgentSchema);
+  appDb.model('AgentHistory', AgentHistorySchema);
 };

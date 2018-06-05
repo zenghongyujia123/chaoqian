@@ -133,7 +133,18 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       url: '/sold_record_detail/:user_id/:sold_record_id',
       templateUrl: '/c_backend/site_admin/templates/sold_record_detail.client.view.html',
       controller: 'SoldRecordDetailController'
-    });;
+    })
+    .state('agent_list_qq', {
+      url: '/agent_list_qq',
+      templateUrl: '/c_backend/site_admin/templates/agent_list_qq.client.view.html',
+      controller: 'AgentListQQController'
+    })
+    .state('agent_detail_qq', {
+      url: '/agent_detail_qq',
+      templateUrl: '/c_backend/site_admin/templates/agent_detail_qq.client.view.html',
+      controller: 'AgentDetailQQController'
+    });
+
 
   $urlRouterProvider.otherwise('/product_list');
 }]);

@@ -49,5 +49,16 @@ exports.list_agent = function (info, callback) {
       return callback({ err: sysErr.database_query_error });
     }
     return callback(null, reuslt);
-  })
+  });
 }
+
+exports.agent_detail = function (id, callback) {
+  Agent.findOne({ _id: id }, function (err, result) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, reuslt);
+  });
+}
+
+

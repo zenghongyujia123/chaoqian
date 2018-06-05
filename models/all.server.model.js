@@ -3,6 +3,7 @@
  */
 module.exports = function (appDb) {
   require('./user')(appDb);
+  require('./user_new')(appDb);
   require('./third_query')(appDb);
   require('./product')(appDb);
   require('./jietiao')(appDb);
