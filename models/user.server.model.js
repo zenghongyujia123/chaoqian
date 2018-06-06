@@ -333,6 +333,9 @@ module.exports = function (appDb) {
     user_id: {
       type: String,
     },
+    user_parent: {
+      type: String
+    },
     user_real_name: {
       type: String,
     },

@@ -287,5 +287,52 @@
     </div>
   </div>
 </body>
+<script>
+  $(function () {
+    function parent_rewards() {
+      $.ajax({
+        url: '/user/parent_rewards',
+        method: 'post',
+        success: function (data) {
+
+        }
+      })
+    }
+
+    function append_item(item) {
+      var obj = $(
+        '<div class="list-item">' +
+        '  <div class="header">' +
+        '    <div class="type lightblue">聚合</div>' +
+        '    <div class="text">佣金：' +
+        '      ' + item.user_phone +
+        '    </div>' +
+        '  </div>' +
+        '  <div class="body">' +
+        '    <div class="body-item">' +
+        '      <div class="title">推荐用户尾号</div>' +
+        '      <div class="text">' +
+        '        ' + item.user_phone.substring(7, 11) +
+        '      </div>' +
+        '    </div>' +
+        '    <div class="border"></div>' +
+        '    <div class="body-item">' +
+        '      <div class="title">业务月份</div>' +
+        '      <div class="text">' +
+        '        <%= (record.record_date) %>' +
+        '      </div>' +
+        '    </div>' +
+        '    <div class="border"></div>' +
+        '    <div class="body-item">' +
+        '      <div class="title">支付时间</div>' +
+        '      <div class="text">月末</div>' +
+        '    </div>' +
+        '  </div>' +
+        '</div>'
+      )
+    }
+
+  })
+</script>
 
 </html>

@@ -44,7 +44,7 @@
   </div>
 
   <div class="auth-row">
-    <input class="auth-input parent" placeholder="请输入您的QQ号" value="<%= (parent||'') %>"></input>
+    <input class="auth-input parent" placeholder="请输入您的QQ号" value="<%= parent %>"></input>
   </div>
 
 </body>
@@ -52,7 +52,7 @@
   $(function () {
     var code = '';
     var send_code = $('.send_code');
-    var parent = $('parent').val();
+    var parent = $('.parent').val();
     var can_send_code = true;
     $('.send_code').click(function () {
       sendSmsVerifyCode();

@@ -37,7 +37,7 @@ exports.updateUserAuth1 = function (req, res, next) {
   var real_bank_number = req.body.real_bank_number;
   var real_phone = req.body.real_phone;
   var id_card = req.body.id_card;
-  userLogic.updateUserAuth1(user, real_name, real_phone, id_card,real_bank_number, function (err, result) {
+  userLogic.updateUserAuth1(user, real_name, real_phone, id_card, real_bank_number, function (err, result) {
     if (err) {
       return next(err);
     }
@@ -47,7 +47,7 @@ exports.updateUserAuth1 = function (req, res, next) {
 }
 
 exports.updateUserAuth2 = function (req, res, next) {
-  userLogic.updateUserAuth2(req.user,req.body, function (err, result) {
+  userLogic.updateUserAuth2(req.user, req.body, function (err, result) {
     if (err) {
       return next(err);
     }
@@ -209,7 +209,7 @@ exports.updateAddInfo = function (req, res, next) {
 }
 
 exports.update_vip_status = function (req, res, next) {
-  if(req.body.status==='refuse'){
+  if (req.body.status === 'refuse') {
     smsLib.juJueVip(req.requireUserById.username, function () { });
   }
 
@@ -242,6 +242,19 @@ exports.updateUserLocation = function (req, res, next) {
     return next();
   });
 }
+
+
+exports.parent_rewards = function (req, res, next) {
+  userLogic.parent_rewards(req.user, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
+
+
 
 
 

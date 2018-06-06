@@ -571,3 +571,12 @@ exports.user_pays = function (user, callback) {
   })
 }
 
+exports.parent_rewards = function (user, callback) {
+  UserPay.find({ user_parent: user.username, valid: true }).sort({ create_time: -1 }).exec(function (err, result) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, result);
+  })
+}
+

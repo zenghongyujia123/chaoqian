@@ -689,7 +689,7 @@ exports.page_contract_list = function (req, res, next) {
 
 exports.me_share = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_h5/views/page_signup.html');
-  return res.render(filepath, { parent: (req.params.parent || req.query.parent || '') });
+  return res.render(filepath, { parent: req.params.parent });
 }
 
 exports.page_reward = function (req, res, next) {
