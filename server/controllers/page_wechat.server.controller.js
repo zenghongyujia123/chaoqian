@@ -299,6 +299,10 @@ exports.me_query_detail = function (req, res, next) {
 exports.me_achievement = function (req, res, next) {
   var user = req.user;
 
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_achievement.client.view.html');
+  return res.render(filepath, { user: req.user });
+  
+
   var as_parent_record_list = [];
   var as_topparent_record_list = [];
   var sum1_parent_loan_award = 0;
