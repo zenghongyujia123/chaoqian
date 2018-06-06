@@ -50,21 +50,21 @@
         var obj = $(
           '<div class="list-item">' +
           '  <div class="header">' +
-          '    <div class="type lightblue">' + result.text + '</div>' +
+          '    <div class="type ' + result.color + '">' + result.text + '</div>' +
           '    <div class="text">佣金：¥' +
           '      ' + result.price +
           '    </div>' +
           '  </div>' +
           '  <div class="body">' +
           '    <div class="body-item">' +
-          '      <div class="title">推荐用户尾号</div>' +
+          '      <div class="title">推荐手机尾号</div>' +
           '      <div class="text">' +
           '        ' + result.number +
           '      </div>' +
           '    </div>' +
           '    <div class="border"></div>' +
           '    <div class="body-item">' +
-          '      <div class="title">业务月份</div>' +
+          '      <div class="title">业务日期</div>' +
           '      <div class="text">' +
           '         ' + result.time +
           '      </div>' +
@@ -85,29 +85,34 @@
 
     function getDiffText(item) {
       var result = {};
-      result.number = item.user_phone.substring(7, 11);
+      result.number = '*******' + item.user_phone.substring(7, 11);
       var date = new Date(item.create_time);
       result.time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
       switch (item.type) {
         case 'vip_pay':
+          result.color = 'yellow';
           result.text = 'vip充值';
           result.price = '50';
           break;
         case 'postcode_pay':
           result.text = '信用代还';
           result.price = '50';
+          result.color = 'blue';
           break;
         case 'pos_xinguodu':
           result.text = '新国东pos机';
           result.price = '80';
+          result.color = 'red';
           break;
         case 'query_大数据':
           result.text = '大数据查询';
           result.price = '5';
+          result.color = 'green';
           break;
         case 'query_黑灰行为':
           result.text = '黑灰行为查询';
           result.price = '5';
+          result.color = 'gray';
           break;
       }
       return result;

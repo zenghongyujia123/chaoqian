@@ -36,8 +36,7 @@ body {
   margin-bottom: 14px;
 }
 .page-me-achievement .list .list-item .header .type {
-  height: 20px;
-  width: 60px;
+  width: 100px;
   line-height: 20px;
   font-size: 12px;
   border-radius: 10px;
@@ -54,6 +53,14 @@ body {
 .page-me-achievement .list .list-item .header .type.red {
   color: white;
   background-color: #E7372D;
+}
+.page-me-achievement .list .list-item .header .type.green {
+  color: white;
+  background-color: green;
+}
+.page-me-achievement .list .list-item .header .type.gray {
+  color: white;
+  background-color: gray;
 }
 .page-me-achievement .list .list-item .header .text {
   font-size: 16px;
