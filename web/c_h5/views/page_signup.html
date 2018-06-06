@@ -17,7 +17,7 @@
   <div class="h-auth-panel">
     <!-- <h3>注册</h3> -->
     <div class="auth-row">
-      <input class="auth-input username" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"  placeholder="请输入手机号"></input>
+      <input class="auth-input username" onkeyup="value=value.replace(/[^1234567890-]+/g,'')" placeholder="请输入手机号"></input>
     </div>
     <div class="auth-row has-verify">
       <input class="auth-input input_code" onkeyup="value=value.replace(/[^1234567890-]+/g,'')" placeholder="请输入验证码"></input>
@@ -124,11 +124,11 @@
         success: function (data) {
           if (data && !data.err) {
             alert('注册成功！');
-            window.open('http://ouv4j9a7a.bkt.clouddn.com/chaoqianwang.apk');
           }
           else {
-            return alert(data.err.zh_message);
+            alert(data.err.zh_message);
           }
+          window.location.href = 'http://ouv4j9a7a.bkt.clouddn.com/chaoqianwang.apk';
         }
       });
     }
