@@ -52,6 +52,7 @@
   $(function () {
     var code = '';
     var send_code = $('.send_code');
+    var parent = $('parent').val();
     var can_send_code = true;
     $('.send_code').click(function () {
       sendSmsVerifyCode();
@@ -109,6 +110,26 @@
       if (!password) {
         return alert('请输入密码！');
       }
+
+      $.ajax({
+        url: '/user/signup',
+        method: 'post',
+        data: {
+          user_info: {
+            username: username,
+            password: password,
+            code: parent || ''
+          }
+        },
+        success: function (data) {
+          if (data && !data.err) {
+            alert('注册成功！');
+          }
+          else {
+            return alert(data.err.zh_message);
+          }
+        }
+      });
     }
 
     $('.signup').click(function () {
