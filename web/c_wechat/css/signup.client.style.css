@@ -19,7 +19,7 @@ body {
 }
 .page-signup .signup-row .row-title {
   display: inline-block;
-  width: 100px;
+  width: 70px;
 }
 .page-signup .signup-row .row-content {
   flex-grow: 1;
