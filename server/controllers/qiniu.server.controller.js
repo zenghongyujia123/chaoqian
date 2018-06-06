@@ -5,6 +5,8 @@
 var qiniu = require('qiniu');
 qiniu.conf.ACCESS_KEY = '2ZL-HVYMoDc9m-nCnr1J_QDIJNRN8nfi3JWvWhtL';
 qiniu.conf.SECRET_KEY = '7oeAB2iQIHovgxK4lNAaXhMEeqGWd3D-YigAkdlL';
+var smsLib = require('../../libraries/sms');
+
 
 var mac = new qiniu.auth.digest.Mac(qiniu.conf.ACCESS_KEY, qiniu.conf.SECRET_KEY);
 
@@ -17,4 +19,11 @@ exports.uptoken = function (req, res, next) {
     uptoken: new qiniu.rs.PutPolicy(options).uploadToken(mac)
   };
   return next();
+};
+
+exports.sendSmsVerifyCode = function (req, res, next) {
+  smsLib.sendSmsVerifyCode(req.body.username, function (err, code) {
+    req.data = { code: code };
+    return next();
+  })
 };

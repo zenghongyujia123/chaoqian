@@ -6,4 +6,5 @@ var qiniu = require('../controllers/qiniu');
 
 module.exports = function (app) {
   app.route('/token/qiniu/uptoken').get(qiniu.uptoken);
+  app.route('/token/sms/sendSmsVerifyCode').post(qiniu.sendSmsVerifyCode);
 };

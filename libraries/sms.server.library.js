@@ -19,9 +19,24 @@ function sendTplSingleSms(mobile, tpl_id, tpl_value, callback) {
     .end(function (err, result) {
       console.log('sms----err', err);
       console.log('sms----result', result.text);
-      return callback();
+      return callback(err, JSON.parse(result.text));
     });
 }
+
+function GetRandomNum(Min, Max) {
+  var Range = Max - Min;
+  var Rand = Math.random();
+  return (Min + Math.round(Rand * Range));
+};
+
+exports.sendSmsVerifyCode = function (mobile, callback) {
+  var code = GetRandomNum(1000, 9999);
+  var tpl_value = '#name#=客户&#code#=' + code + '&#hour#=20分钟';
+  sendTplSingleSms(mobile, '2072060', tpl_value, function (err, result) {
+  });
+  return callback(null, code);
+}
+
 //【潮钱网】亲爱的#name#，我们已经收到您的支付款项，您可以点击获得开户码功能进入查看您的二维码（长按保存，截图都可以）。
 exports.sendPostCodePaySuccess = function (mobile, callback) {
   sendTplSingleSms(mobile, '2265338', '#name#=客户', callback)

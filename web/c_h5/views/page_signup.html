@@ -13,36 +13,108 @@
 </head>
 
 <body>
+  <img class="h-auth-back" src="/c_h5/images/share_signup.jpeg" style="width:100%;height: 100%;">
   <div class="h-auth-panel">
-    <h3>注册</h3>
+    <!-- <h3>注册</h3> -->
     <div class="auth-row">
-      <input class="auth-input" onkeyup="value=value.replace(/[^1234567890-]+/g,'')" placeholder="请输入手机号"></input>
+      <input class="auth-input username" onkeyup="value=value.replace(/[^1234567890-]+/g,'')" value="13472423583" placeholder="请输入手机号"></input>
     </div>
     <div class="auth-row has-verify">
-      <input class="auth-input" onkeyup="value=value.replace(/[^1234567890-]+/g,'')" placeholder="请输入验证码"></input>
-      <div class="auth-verify">获取验证码</div>
+      <input class="auth-input input_code" onkeyup="value=value.replace(/[^1234567890-]+/g,'')" placeholder="请输入验证码"></input>
+      <div class="auth-verify send_code">获取验证码</div>
     </div>
     <div class="auth-row">
+      <input class="auth-input password" type="password" placeholder="请输入密码"></input>
+    </div>
+    <!-- <div class="auth-row">
       <input class="auth-input" placeholder="请输入您的姓名"></input>
-    </div>
-    <div class="auth-row">
-      <input class="auth-input" placeholder="请输入您的QQ号"></input>
     </div>
     <div class="auth-row">
       <input class="auth-input" placeholder="请输入您的身份证号码"></input>
     </div>
     <div class="auth-row">
       <input class="auth-input" placeholder="请输入您的芝麻分"></input>
+    </div> -->
+    <div class="auth-row-btn signup">
+      立即下载
     </div>
-    <div class="auth-row-btn">
-      注册
-    </div>
-    <div class="auth-row-btn">
+    <!-- <div class="auth-row-btn">
       已有账户去登陆
-    </div>
+    </div> -->
   </div>
+
+  <div class="auth-row">
+    <input class="auth-input parent" placeholder="请输入您的QQ号" value="<%= (parent||'') %>"></input>
+  </div>
+
 </body>
 <script>
+  $(function () {
+    var code = '';
+    var send_code = $('.send_code');
+    var can_send_code = true;
+    $('.send_code').click(function () {
+      sendSmsVerifyCode();
+    });
+
+    function sendSmsVerifyCode() {
+      if (!can_send_code) {
+        return;
+      }
+
+      can_send_code = false;
+
+
+      var username = $('.username').val();
+      $.ajax({
+        url: '/token/sms/sendSmsVerifyCode',
+        method: 'post',
+        data: { username: username },
+        success: function (data) {
+          if (!data.err) {
+            startCount(60);
+            code = data.code.toString();
+          }
+
+          console.log(data);
+        }
+      })
+    }
+
+    function startCount(time) {
+      if (time <= 0) {
+        can_send_code = true;
+        return send_code.text('重新获取');
+      }
+
+      send_code.text(time + '秒');
+
+      setTimeout(function () {
+        time -= 1;
+        startCount(time);
+      }, 1000)
+    }
+
+    function signup() {
+      var username = $('.username').val();
+      var input_code = $('.input_code').val();
+      var password = $('.password').val();
+      if (!username || username.length !== 11) {
+        return alert('请输入正确的手机号！');
+      }
+
+      if (!input_code || input_code !== code) {
+        return alert('请输入正确的验证码！');
+      }
+      if (!password) {
+        return alert('请输入密码！');
+      }
+    }
+
+    $('.signup').click(function () {
+      signup();
+    })
+  })
 </script>
 
 </html>
