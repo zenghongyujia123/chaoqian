@@ -49,3 +49,6 @@ body {
 .page-signup .signup-bottom a {
   color: #f24659;
 }
+.signup-verify-btn {
+  width: 70px;
+}
