@@ -42,6 +42,7 @@ body {
   border-radius: 10px;
   text-align: center;
   margin-right: 13px;
+  padding: 5px;
 }
 .page-me-achievement .list .list-item .header .type.yellow {
   background-color: #FED953;
