@@ -250,7 +250,7 @@ exports.me_agent = function (req, res, next) {
   var user = req.user;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/me_agent.client.view.html');
 
-  userLogic.getUserShareUrl(user.username, function (err, url_info) {
+  userLogic.getUserShareUrl(user.username, req.headers.host, function (err, url_info) {
     return res.render(filepath, { city: req.cookies.city, user: req.user, url_info: url_info || {} });
   })
 };
@@ -688,8 +688,8 @@ exports.page_contract_list = function (req, res, next) {
 
 
 exports.me_share = function (req, res, next) {
-  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_share.client.view.html');
-  return res.render(filepath, { city: req.cookies.city, code: (req.params.code || req.query.code || '') });
+  var filepath = path.join(__dirname, '../../web/c_h5/views/page_signup.html');
+  return res.render(filepath, { parent: (req.params.parent || req.query.parent || '') });
 }
 
 exports.page_reward = function (req, res, next) {

@@ -551,8 +551,8 @@ exports.updateVipReportInfo = function (user, vip_report, callback) {
   });
 }
 
-exports.getUserShareUrl = function (username, callback) {
-  agent.get('http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long=http://chaoqianwang.com/page_wechat/me_share?code=' + username)
+exports.getUserShareUrl = function (username, origin, callback) {
+  agent.get('http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long=http://' + origin + '/page_me_share/' + username)
     .end(function (err, data) {
       return callback(err, data.body);
     });
