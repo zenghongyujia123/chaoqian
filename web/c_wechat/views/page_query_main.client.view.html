@@ -106,7 +106,7 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>
 
   <div id="about-1" class="weui-popup__container">
     <div class="weui-popup__overlay"></div>
@@ -176,15 +176,23 @@
       $("#about-2").popup();
     });
     $('.suixingfu-btn').click(function () {
-      get_pre_pay_id('pos_suixingfu', function () {
-        window.location = window.location;
-      });
-
+      if (typeof (api) !== 'undefined') {
+        return window.location = '/lianlian_pay/page_lianlian?pay_type=pos_suixingfu';
+      } else {
+        get_pre_pay_id('pos_suixingfu', function () {
+          window.location = window.location;
+        });
+      }
     })
     $('.xinguodu-btn').click(function () {
-      get_pre_pay_id('pos_xinguodu', function () {
-        window.location = window.location;
-      });
+      if (typeof (api) !== 'undefined') {
+        return window.location = '/lianlian_pay/page_lianlian?pay_type=pos_xinguodu';
+      } else {
+        get_pre_pay_id('pos_xinguodu', function () {
+          window.location = window.location;
+        });
+
+      }
     });
 
     $('.no_open').click(function () {
