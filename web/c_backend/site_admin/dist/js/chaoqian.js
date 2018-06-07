@@ -479,7 +479,7 @@ cSite.factory('UserNetwork',
         ///user/userListByCondition
         userListByCondition: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/userListByCondition', params);
-        },        
+        },
         getUserById: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/getUserById', params);
         },
@@ -496,7 +496,7 @@ cSite.factory('UserNetwork',
         updateVipInfo: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/updateVipInfo', params);
         },
-//updateAgentRate  
+        //updateAgentRate  
         updateAgentRate: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/updateAgentRate', params);
         },
@@ -506,6 +506,9 @@ cSite.factory('UserNetwork',
         rollback_vip_infos: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/rollback_vip_infos', params);
         },
+        parent_rewards_by_user_id: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/parent_rewards_by_user_id', params);
+        }
       };
     }]);
 
@@ -2176,6 +2179,15 @@ cSite.controller('UserDetailController', [
       });
     }
 
+    $scope.parent_rewards_by_user_id = function(){
+      UserNetwork.parent_rewards_by_user_id($scope, {
+        user_id: $stateParams.user_id,
+      }).then(function (data) {
+        console.log(data);
+        $state.go('user_detail', null, { reload: true });
+      });
+    }
+
     $scope.update_vip_status = function (status) {
       UserNetwork.update_vip_status($scope, {
         user_id: $stateParams.user_id,
@@ -2236,6 +2248,8 @@ cSite.controller('UserDetailController', [
       }];
       $scope.photoConfig.showPhotoScan = true;
     };
+
+    $scope.parent_rewards_by_user_id();
 
   }]);
 

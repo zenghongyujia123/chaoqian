@@ -30,4 +30,5 @@ module.exports = function (app) {
   app.route('/user/update_vip_status').post(userFilter.requireUserById, userController.update_vip_status);
   app.route('/user/rollback_vip_infos').post(userFilter.requireUserById, userController.rollback_vip_infos);
   app.route('/user/parent_rewards').post(userFilter.requireUser, userController.parent_rewards);
+  app.route('/user/parent_rewards_by_user_id').post(userFilter.requireUserById, userController.parent_rewards);
 };
