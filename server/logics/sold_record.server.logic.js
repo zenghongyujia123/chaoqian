@@ -10,6 +10,7 @@ var that = exports;
 
 
 exports.soldRecordListByCondition = function (condition, sort, callback) {
+  condition.valid = true;
   SoldRecord.find(condition).sort({ create_time: -1 }).exec(function (err, sold_records) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
