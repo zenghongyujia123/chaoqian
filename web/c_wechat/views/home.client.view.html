@@ -83,7 +83,7 @@
     </div>
     <div class="weui-panel weui-panel_access">
       <div class="weui-panel__bd">
-        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg zixun">
           <div class="weui-media-box__bd">
             <h4 class="weui-media-box__title">P2P平台满标</h4>
             <p class="weui-media-box__desc">过风控就下款，资金方自己选</p>
@@ -141,6 +141,10 @@
         goToWindow('/page_wechat/vip_notice', 'VIP通道')
       }
     })
+
+    $('.zixun').click(function(){
+      window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=3415265683&version=1&src_type=web&web_src=oicqzone.com';
+    });
   });
 
 </script>
