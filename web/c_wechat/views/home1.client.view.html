@@ -18,77 +18,76 @@
 </head>
 
 <body>
-  <div class="header-row">
-    <img src="/c_wechat/images/home/卡.png" />
-    <div class="header-content">
-      <div class="content-row">
-        <div class="title">授信额度（元）</div>
-        <div class="price">0</div>
+  <div class="page-home">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <img src="../c_wechat/images/home/满标服务.jpg" />
+
+        <a class="swiper-slide" href="javascript:;">
+          <!-- <a class="swiper-slide" href="/page_wechat/banner?img=banner11.jpg"> -->
+          <img src="../c_wechat/images/home/banner00.jpg" />
+        </a>
+
+        <!-- <a class="swiper-slide" href="javascript:;"> -->
+        <!-- <a class="swiper-slide" href="/page_wechat/banner?img=banner13.jpg"> -->
+        <!-- <img src="../c_wechat/images/home/banner02.jpg" /> -->
+        <!-- </a> -->
+
+        <img class="swiper-slide" src="../c_wechat/images/home/banner01.jpg" />
+
       </div>
-      <div class="content-row">
-        <div class="title">总额度（元）</div>
-        <div class="price">5000</div>
-      </div>
+      <!-- 如果需要分页器 -->
+      <div class="swiper-pagination"></div>
     </div>
-    <div class="header-tip">按日计息，1000元借一天，利息最高0.5元</div>
-    <img src="/c_wechat/images/home/header_vip_icon.png" class="header-icon"></img>
-  </div>
-  <div class="tip-row vip_notice">
-    <img src="/c_wechat/images/home/喇叭.png" alt="">
-    <div>点击进入VIP快捷申请通道</div>
-    <div></div>
-  </div>
-  <div class="weui-panel weui-panel_access">
-    <div class="weui-panel__hd">VIP优势</div>
-    <div class="weui-panel__bd">
+    <!-- <a href="javascript:;" class="home-apply-btn no_open"> -->
+      <a href="javascript:;" class="home-apply-btn" onclick="goToWindow('/page_h5/page_list_qq','我要借款')">
+      我要借款
+    </a>
+    <div class="home-apply-text">大额20万长分期，执牌小贷资金方2小时直下款</div>
+    <div class="home-bottom">
       <div class="weui-flex">
         <div class="weui-flex__item">
-          <img src="/c_wechat/images/home/小图标01.png" alt="">
-          <div class="">多资金方</div>
+          <a href="javascript:;" class="item left vip_notice">
+            <img src="../c_wechat/images/home/home_icon_1.png" class="icon"></img>
+            <div class="title">VIP通道</div>
+            <div class="description">专家风控，多资金方100%直接下款，不满意就退费
+            </div>
+          </a>
         </div>
         <div class="weui-flex__item">
-          <img src="/c_wechat/images/home/小图标02.png" alt="">
-          <div class="">确保下款</div>
-        </div>
-        <div class="weui-flex__item">
-          <img src="/c_wechat/images/home/小图标03.png" alt="">
-          <div class="">无忧快退</div>
-        </div>
-        <div class="weui-flex__item">
-          <img src="/c_wechat/images/home/小图标04.png" alt="">
-          <div class="">高额返现</div>
+          <a href="javascript:;" class="item right" onclick="goToWindow('/page_wechat/question','AI智配')">
+            <img src="../c_wechat/images/home/home_icon_2.png" class="icon"></img>
+            <div class="title">AI智配</div>
+            <div class="description">风控模型，贴合您的需求，科技匹配下款服务</div>
+          </a>
         </div>
       </div>
     </div>
-  </div>
-  <div class="weui-panel weui-panel_access">
-    <div class="weui-panel__hd">服务推荐</div>
-    <div class="weui-panel__bd">
-      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-        <div class="weui-media-box__bd">
-          <h4 class="weui-media-box__title">自由借款</h4>
-          <p class="weui-media-box__desc">过风控就下款，资金方自己选</p>
+    <div class="home-bottom">
+      <div class="weui-flex">
+        <div class="weui-flex__item">
+          <a href="javascript:;" class="item left" onclick="goToWindow('/page_wechat/paycredit','还信用卡')">
+            <img src="../c_wechat/images/home/home_icon_3.png" class="icon"></img>
+            <div class="title">还信用卡</div>
+            <div class="description">智能还卡，空卡全额代还，无卡取款，超低手续费</div>
+          </a>
         </div>
-        <div class="go-btn" onclick="goToWindow('/page_h5/page_list_qq','自由借款')">接收服务</div>
-      </a>
-      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-        <div class="weui-media-box__bd">
-          <h4 class="weui-media-box__title">还信用卡</h4>
-          <p class="weui-media-box__desc">空卡代还，无卡取款，超低成本</p>
+        <!-- <div class="weui-flex__item">
+          <a href="/page_wechat/page_reward" class="item right">
+            <img src="../c_wechat/images/home/home_icon_4.png" class="icon"></img>
+            <div class="title">赏金空间</div>
+            <div class="description">富矿振金区，太空科技带给你的现实财富收获</div>
+          </a>
+        </div> -->
+
+        <div class="weui-flex__item">
+          <a href="javascript:;" class="item right no_open">
+            <img src="../c_wechat/images/home/home_icon_4.png" class="icon"></img>
+            <div class="title">天下有钱</div>
+            <div class="description">找钱需求发公单，合规机构来帮忙，大额服务满足您</div>
+          </a>
         </div>
-        <div class="go-btn" onclick="goToWindow('/page_wechat/paycredit','还信用卡')">接收服务</div>
-      </a>
-    </div>
-  </div>
-  <div class="weui-panel weui-panel_access">
-    <div class="weui-panel__bd">
-      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-        <div class="weui-media-box__bd">
-          <h4 class="weui-media-box__title">P2P平台满标</h4>
-          <p class="weui-media-box__desc">过风控就下款，资金方自己选</p>
-        </div>
-        <img class="right-img" src="/c_wechat/images/home/点击咨询体验.png" alt="">
-      </a>
+      </div>
     </div>
   </div>
   <div class="page-footer">
