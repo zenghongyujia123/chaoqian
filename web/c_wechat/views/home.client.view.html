@@ -34,13 +34,9 @@
       <div class="header-tip">按日计息，1000元借一天，利息最高0.5元</div>
       <img src="/c_wechat/images/home/header_vip_icon.png" class="header-icon"></img>
     </div>
-    <div class="tip-row vip_notice">
-      <img src="/c_wechat/images/home/喇叭.png" alt="">
-      <div>点击进入VIP快捷申请通道</div>
-      <div></div>
-    </div>
-    <div class="weui-panel weui-panel_access">
-      <div class="weui-panel__hd">VIP优势</div>
+
+    <div class="weui-panel weui-panel_access vip_notice" style="margin-top: 0px;">
+      <!-- <div class="weui-panel__hd">VIP优势</div> -->
       <div class="weui-panel__bd">
         <div class="weui-flex">
           <div class="weui-flex__item">
@@ -62,6 +58,11 @@
         </div>
       </div>
     </div>
+    <div class="tip-row vip_notice">
+        <img src="/c_wechat/images/home/喇叭.png" alt="">
+        <div>点击进入VIP快捷申请通道</div>
+        <div></div>
+      </div>
     <div class="weui-panel weui-panel_access">
       <div class="weui-panel__hd">服务推荐</div>
       <div class="weui-panel__bd">
@@ -142,7 +143,7 @@
       }
     })
 
-    $('.zixun').click(function(){
+    $('.zixun').click(function () {
       window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=3415265683&version=1&src_type=web&web_src=oicqzone.com';
     });
   });
