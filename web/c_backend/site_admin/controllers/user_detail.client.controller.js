@@ -256,7 +256,6 @@ cSite.controller('UserDetailController', [
         user_id: $stateParams.user_id,
       }).then(function (data) {
         console.log(data);
-        $state.go('user_detail', null, { reload: true });
       });
     }
 
