@@ -245,7 +245,7 @@ exports.updateUserLocation = function (req, res, next) {
 
 
 exports.parent_rewards = function (req, res, next) {
-  userLogic.parent_rewards(req.user, function (err, result) {
+  userLogic.parent_rewards(req.user || req.requireUserById, function (err, result) {
     if (err) {
       return next(err);
     }
