@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
+  <title>潮钱网</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+  <link rel="stylesheet" href="../c_h5/css/page_index.css" />
+  <link rel="stylesheet" href="../c_h5/css/page_signin.css" />
+  <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <img class="h-auth-back" src="/c_h5/images/share_signup.jpeg">
+  <div class="h-auth-panel">
+    <div class="tip" style="color:red;display: none">点击右上角选择“浏览器中打开”</div>
+    <div class="auth-row-btn download">
+      立即下载
+    </div>
+  </div>
+</body>
+<script>
+  $(function () {
+    $('.download').click(function () {
+      if (isWeixinBrowser()) {
+        $('.tip').show();
+      }
+      else {
+        window.location.href = 'http://ouv4j9a7a.bkt.clouddn.com/chaoqianwang.apk';
+      }
+    })
+  })
+
+  function isWeixinBrowser() {
+    var agent = navigator.userAgent.toLowerCase();
+    if (agent.match(/MicroMessenger/i) == "micromessenger") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+</script>
+
+</html>

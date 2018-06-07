@@ -696,6 +696,11 @@ exports.me_share = function (req, res, next) {
   return res.render(filepath, { parent: req.params.parent });
 }
 
+exports.page_download = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_h5/views/page_download.html');
+  return res.render(filepath, { parent: req.params.parent });
+}
+
 exports.page_reward = function (req, res, next) {
   var color = req.query.color;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/reward/page_reward.client.view.html');
