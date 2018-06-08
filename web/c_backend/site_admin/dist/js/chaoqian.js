@@ -906,7 +906,7 @@ cSite.controller('AchievementListController', [
           console.log(data);
           if (!data.err) {
             CommonHelper.showConfirm($scope, null, '操作成功', function () {
-              item = data;
+              pageConfig.parent_rewards_by_user_parent();
             }, null, null, event);
           }
         }, function (err) {
