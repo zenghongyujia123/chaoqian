@@ -31,8 +31,8 @@
       <div class="column-item" flex="">{{item.content.total_fee}}</div>
       <div class="column-item" flex="">{{item.user_phone}}</div>
       <div class="column-item" flex="">{{item.parent_reward}}</div>
-      <div class="column-item" flex="">{{item.create_time}}</div>
-      <div class="column-item" flex="">{{item.parent_reward_payed_time}}</div>
+      <div class="column-item" flex="">{{item.create_time| date:"yyyy-MM-dd hh:mm"}}</div>
+      <div class="column-item" flex="">{{item.parent_reward_payed?(item.parent_reward_payed_time| date:"yyyy-MM-dd hh:mm"):''}}</div>
       <div class="column-item" flex="">{{item.parent_reward_payed?'已支付':'未支付'}}</div>
     </div>
   </div>
