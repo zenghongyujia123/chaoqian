@@ -581,3 +581,19 @@ exports.parent_rewards = function (user, callback) {
   })
 }
 
+
+exports.parent_rewards_by_user_parent = function (info, callback) {
+  var query = {
+    valid: true
+  };
+  if (info.user_parent) {
+    query.user_parent = info.user_parent;
+  }
+  UserPay.find(query).sort({ create_time: -1 }).exec(function (err, result) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, result);
+  })
+}
+

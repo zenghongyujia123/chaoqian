@@ -143,7 +143,14 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       url: '/agent_detail_qq/:detail_id',
       templateUrl: '/c_backend/site_admin/templates/agent_detail_qq.client.view.html',
       controller: 'AgentDetailQQController'
-    });
+    })
+    .state('achievement_list', {
+      url: '/achievement_list',
+      templateUrl: '/c_backend/site_admin/templates/achievement_list.client.view.html',
+      controller: 'AchievementListController'
+    })
+
+    ;
 
 
   $urlRouterProvider.otherwise('/product_list');

@@ -39,6 +39,9 @@ cSite.factory('UserNetwork',
         },
         parent_rewards_by_user_id: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/user/parent_rewards_by_user_id', params);
-        }
+        },
+        parent_rewards_by_user_parent: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/user/parent_rewards_by_user_parent', params);
+        },
       };
     }]);

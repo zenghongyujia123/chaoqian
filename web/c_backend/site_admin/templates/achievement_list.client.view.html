@@ -1,0 +1,39 @@
+<div class="page-body-view">
+  <div class="page-operation-view" layout="row" layout-align="space-between center">
+    <p class="title">代理提成</p>
+    <!-- <md-button class="md-primary md-raised md-hue-2" ng-click="goSetting()">设置信用卡</md-button> -->
+    <!-- <md-button class="md-primary md-raised md-hue-2" ng-click="goDetail()">创建code</md-button> -->
+    <div layout="row" layout-align="start center">
+      <md-input-container style="margin-top:50px;" class="md-block  md-primary">
+        <label class="md-primary">手机号</label>
+        <input ng-model="pageConfig.keyword">
+      </md-input-container>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="pageConfig.search()">搜索</md-button>
+    </div>
+  </div>
+
+  <div class="list-header">
+    <div class="list-item" layout="row" layout-align="start center">
+      <div class="column-item" flex="">用户手机号</div>
+      <div class="column-item" flex="">项目名称</div>
+      <div class="column-item" flex="">项目金额</div>
+      <div class="column-item" flex="">项目用户</div>
+      <div class="column-item" flex="">提成金额</div>
+      <div class="column-item" flex="">项目时间</div>
+      <div class="column-item" flex="">提成支付时间</div>
+      <div class="column-item" flex="">状态</div>
+    </div>
+  </div>
+  <div class="list-body">
+    <div class="list-item" layout="row" layout-align="start center" ng-repeat="item in list">
+      <div class="column-item" flex="">{{item.user_parent}}</div>
+      <div class="column-item" flex="">{{item.type_text}}</div>
+      <div class="column-item" flex="">{{item.content.total_fee}}</div>
+      <div class="column-item" flex="">{{item.user_phone}}</div>
+      <div class="column-item" flex="">{{item.parent_reward}}</div>
+      <div class="column-item" flex="">{{item.create_time}}</div>
+      <div class="column-item" flex="">{{item.parent_reward_payed_time}}</div>
+      <div class="column-item" flex="">{{item.parent_reward_payed?'已支付':'未支付'}}</div>
+    </div>
+  </div>
+</div>
