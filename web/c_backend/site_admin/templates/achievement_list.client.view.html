@@ -29,7 +29,7 @@
     <div class="list-item" layout="row" layout-align="start center" ng-repeat="item in pageConfig.list">
       <div class="column-item" flex="">{{item.user_parent}}</div>
       <div class="column-item" flex="">{{item.type_text}}</div>
-      <div class="column-item" flex="">{{item.content.total_fee}}</div>
+      <div class="column-item" flex="">{{item.content.total_fee/100}}</div>
       <div class="column-item" flex="">{{item.user_phone}}</div>
       <div class="column-item" flex="">{{item.parent_reward}}</div>
       <div class="column-item" flex="">{{item.create_time| date:"yyyy-MM-dd hh:mm"}}</div>
