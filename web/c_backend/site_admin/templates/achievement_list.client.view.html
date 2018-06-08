@@ -6,7 +6,7 @@
     <div layout="row" layout-align="start center">
       <md-input-container style="margin-top:50px;" class="md-block  md-primary">
         <label class="md-primary">手机号</label>
-        <input ng-model="pageConfig.keyword">
+        <input ng-model="pageConfig.user_parent">
       </md-input-container>
       <md-button class="md-primary md-raised md-hue-2" ng-click="pageConfig.search()">搜索</md-button>
     </div>
@@ -25,7 +25,7 @@
     </div>
   </div>
   <div class="list-body">
-    <div class="list-item" layout="row" layout-align="start center" ng-repeat="item in list">
+    <div class="list-item" layout="row" layout-align="start center" ng-repeat="item in pageConfig.list">
       <div class="column-item" flex="">{{item.user_parent}}</div>
       <div class="column-item" flex="">{{item.type_text}}</div>
       <div class="column-item" flex="">{{item.content.total_fee}}</div>
