@@ -359,6 +359,9 @@ module.exports = function (appDb) {
     content: {
       type: Schema.Types.Mixed
     },
+    parent_reward_payed_time: {
+      type: Date
+    },
     parent_reward_payed: {
       type: Boolean,
       default: false
