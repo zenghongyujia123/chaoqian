@@ -33,7 +33,7 @@
       <div class="column-item" flex="">{{item.parent_reward}}</div>
       <div class="column-item" flex="">{{item.create_time| date:"yyyy-MM-dd hh:mm"}}</div>
       <div class="column-item" flex="">{{item.parent_reward_payed?(item.parent_reward_payed_time| date:"yyyy-MM-dd hh:mm"):''}}</div>
-      <div class="column-item" flex="">{{item.parent_reward_payed?'已支付':'未支付'}}</div>
+      <div class="column-item" flex="">{{item.parent_reward_payed?'已结算':'未结算'}}</div>
     </div>
   </div>
 </div>
