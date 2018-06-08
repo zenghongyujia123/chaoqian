@@ -597,3 +597,15 @@ exports.parent_rewards_by_user_parent = function (info, callback) {
   })
 }
 
+exports.update_parent_rewards_status = function (userpay_id, callback) {
+  var set = {
+    $set: { parent_reward_payed: true, parent_reward_payed_time: new Date() }
+  }
+  UserPay.update({ _id: userpay_id }, set, function (err, result) {
+    if (err) {
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, result);
+  });
+}
+

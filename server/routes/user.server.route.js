@@ -32,4 +32,5 @@ module.exports = function (app) {
   app.route('/user/parent_rewards').post(userFilter.requireUser, userController.parent_rewards);
   app.route('/user/parent_rewards_by_user_id').post(userFilter.requireUserById, userController.parent_rewards);
   app.route('/user/parent_rewards_by_user_parent').post(userController.parent_rewards_by_user_parent);
+  app.route('/user/update_parent_rewards_status').post(userController.update_parent_rewards_status);
 };

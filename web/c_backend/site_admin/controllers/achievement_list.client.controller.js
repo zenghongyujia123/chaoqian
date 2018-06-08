@@ -26,6 +26,18 @@ cSite.controller('AchievementListController', [
           console.log(err);
         });
       },
+      update_parent_rewards_status: function (item) {
+        UserNetwork.update_parent_rewards_status($scope, { userpay_id: item._id }).then(function (data) {
+          console.log(data);
+          if (!data.err) {
+            CommonHelper.showConfirm($scope, null, '操作成功', function () {
+              item = data;
+            }, null, null, event);
+          }
+        }, function (err) {
+          console.log(err);
+        });
+      },
       search: function () {
         pageConfig.parent_rewards_by_user_parent();
       }

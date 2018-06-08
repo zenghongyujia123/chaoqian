@@ -34,6 +34,10 @@
       <div class="column-item" flex="">{{item.create_time| date:"yyyy-MM-dd hh:mm"}}</div>
       <div class="column-item" flex="">{{item.parent_reward_payed?(item.parent_reward_payed_time| date:"yyyy-MM-dd hh:mm"):''}}</div>
       <div class="column-item" flex="">{{item.parent_reward_payed?'已结算':'未结算'}}</div>
+      <div class="column-item" flex="" layout="row" layout-align="start start">
+        <md-button class="md-primary" ng-click="pageConfig.update_parent_rewards_status(item)" ng-show="item.parent_reward_payed">设为结算
+        </md-button>
+      </div>
     </div>
   </div>
 </div>
