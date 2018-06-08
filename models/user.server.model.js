@@ -358,12 +358,62 @@ module.exports = function (appDb) {
     },
     content: {
       type: Schema.Types.Mixed
+    },
+    parent_reward: {
+      type: Number
+    },
+    type_text: {
+      type: String
     }
   });
 
   UserPaySchema.plugin(timestamps, {
     createdAt: 'create_time',
     updatedAt: 'update_time'
+  });
+
+  function getParentRewardInfo(type) {
+    var result = {};
+    switch (type) {
+      case 'vip_pay':
+        result.parent_reward = 50;
+        result.type_text = 'vip充值';
+        break;
+      case 'postcode_pay':
+        result.type_text = '信用代还';
+        result.parent_reward = 38;
+        break;
+      case 'pos_xinguodu':
+        result.type_text = '新国东pos机';
+        result.parent_reward = 80;
+        break;
+      case 'pos_suixingfu':
+        result.type_text = '随性付pos机';
+        result.parent_reward = 0;
+        break;
+      case 'query_大数据':
+        result.type_text = '大数据查询';
+        result.parent_reward = 5;
+        break;
+      case 'query_黑灰行为':
+        result.type_text = '黑灰行为查询';
+        result.parent_reward = 5;
+        break;
+      case 'query_黑中介':
+        result.type_text = '黑中介查询';
+        result.parent_reward = 0;
+        break;
+    }
+    return result;
+  }
+
+  UserPaySchema.pre('save', function (next) {
+    if (this.type) {
+      var result = getParentRewardInfo(this.type);
+      this.parent_reward = result.parent_reward;
+      this.type_text = result.type_text;
+    }
+    next();
   });
 
   var UserVipReportSchema = new Schema({

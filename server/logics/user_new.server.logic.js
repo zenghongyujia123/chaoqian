@@ -5,7 +5,6 @@ var mongoose = require('./../../libraries/mongoose');
 var smsLib = require('./../../libraries/sms');
 var appDb = mongoose.appDb;
 var UserNew = appDb.model('UserNew');
-var UserPay = appDb.model('UserPay');
 var postcodeLogic = require('../logics/postcode');
 var thirdQueryCtr = require('../controllers/third_query');
 
