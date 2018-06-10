@@ -589,6 +589,11 @@ exports.parent_rewards_by_user_parent = function (info, callback) {
   if (info.user_parent) {
     query.user_parent = info.user_parent;
   }
+
+  if (info.top_user_parent) {
+    query.top_user_parent = info.top_user_parent;
+  }
+
   UserPay.find(query).sort({ create_time: -1 }).exec(function (err, result) {
     if (err) {
       return callback({ err: sysErr.database_query_error });

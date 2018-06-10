@@ -740,26 +740,6 @@ cSite.factory('QiniuService', [
 
     }]);
 
-'use strict';
-
-cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper', function ($rootScope, GlobalEvent, CommonHelper) {
-  return {
-    restrict: 'E',
-    templateUrl: '/c_backend/site_admin/directive/dialog_loading_box/dialog_loading_box.client.view.html',
-    replace: true,
-    scope: {},
-    controller: function ($scope, $element) {
-      $scope.dialogInfo = {
-        isShow: false
-      };
-
-      $rootScope.$on(GlobalEvent.onShowLoading, function (event, isLoading) {
-        $scope.dialogInfo.isShow = isLoading;
-      });
-    }
-  };
-}]);
-
 /**
  * 货物照片预览
  * author: louisha
@@ -873,6 +853,26 @@ cSite.directive('mPhotoScan', ['$document', function ($document) {
     }
   }
 }]);
+'use strict';
+
+cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper', function ($rootScope, GlobalEvent, CommonHelper) {
+  return {
+    restrict: 'E',
+    templateUrl: '/c_backend/site_admin/directive/dialog_loading_box/dialog_loading_box.client.view.html',
+    replace: true,
+    scope: {},
+    controller: function ($scope, $element) {
+      $scope.dialogInfo = {
+        isShow: false
+      };
+
+      $rootScope.$on(GlobalEvent.onShowLoading, function (event, isLoading) {
+        $scope.dialogInfo.isShow = isLoading;
+      });
+    }
+  };
+}]);
+
 /**
  * Created by lance on 2016/11/17.
  */
@@ -889,10 +889,17 @@ cSite.controller('AchievementListController', [
     // }
 
     var pageConfig = {
-      user_parent: '',
+      show_type: 'user_parent',//top_user_parent
+      keyword: '',
       list: [],
+      change_type: function (type) {
+        pageConfig.show_type = type;
+        pageConfig.parent_rewards_by_user_parent();
+      },
       parent_rewards_by_user_parent: function () {
-        UserNetwork.parent_rewards_by_user_parent($scope, { user_parent: pageConfig.user_parent }).then(function (data) {
+        var query = {};
+        query[pageConfig.show_type] = pageConfig.user_parent;
+        UserNetwork.parent_rewards_by_user_parent($scope, query).then(function (data) {
           console.log(data);
           if (!data.err) {
             pageConfig.list = data;
@@ -914,6 +921,9 @@ cSite.controller('AchievementListController', [
         });
       },
       search: function () {
+        if (!pageConfig.keyword) {
+          return;
+        }
         pageConfig.parent_rewards_by_user_parent();
       }
     };

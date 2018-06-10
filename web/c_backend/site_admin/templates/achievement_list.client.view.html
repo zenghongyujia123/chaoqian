@@ -1,12 +1,13 @@
 <div class="page-body-view">
   <div class="page-operation-view" layout="row" layout-align="space-between center">
     <p class="title">代理提成</p>
-    <!-- <md-button class="md-primary md-raised md-hue-2" ng-click="goSetting()">设置信用卡</md-button> -->
-    <!-- <md-button class="md-primary md-raised md-hue-2" ng-click="goDetail()">创建code</md-button> -->
     <div layout="row" layout-align="start center">
+      <md-button class="md-raised md-hue-2" ng-class="{'md-primary':pageConfig.show_type==='user_parent'}" ng-click="pageConfig.change_type('user_parent')">一级代理提成</md-button>
+      <md-button class="md-raised md-hue-2" ng-class="{'md-primary':pageConfig.show_type==='top_user_parent'}" ng-click="pageConfig.change_type('top_user_parent')">二级代理提成</md-button>
+
       <md-input-container style="margin-top:50px;" class="md-block  md-primary">
         <label class="md-primary">手机号</label>
-        <input ng-model="pageConfig.user_parent">
+        <input ng-model="pageConfig.keyword">
       </md-input-container>
       <md-button class="md-primary md-raised md-hue-2" ng-click="pageConfig.search()">搜索</md-button>
     </div>

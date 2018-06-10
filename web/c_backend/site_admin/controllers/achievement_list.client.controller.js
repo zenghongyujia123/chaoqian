@@ -14,10 +14,17 @@ cSite.controller('AchievementListController', [
     // }
 
     var pageConfig = {
-      user_parent: '',
+      show_type: 'user_parent',//top_user_parent
+      keyword: '',
       list: [],
+      change_type: function (type) {
+        pageConfig.show_type = type;
+        pageConfig.parent_rewards_by_user_parent();
+      },
       parent_rewards_by_user_parent: function () {
-        UserNetwork.parent_rewards_by_user_parent($scope, { user_parent: pageConfig.user_parent }).then(function (data) {
+        var query = {};
+        query[pageConfig.show_type] = pageConfig.user_parent;
+        UserNetwork.parent_rewards_by_user_parent($scope, query).then(function (data) {
           console.log(data);
           if (!data.err) {
             pageConfig.list = data;
@@ -39,6 +46,9 @@ cSite.controller('AchievementListController', [
         });
       },
       search: function () {
+        if (!pageConfig.keyword) {
+          return;
+        }
         pageConfig.parent_rewards_by_user_parent();
       }
     };

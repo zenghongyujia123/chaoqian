@@ -336,6 +336,29 @@ module.exports = function (appDb) {
     user_parent: {
       type: String
     },
+    parent_reward_payed_time: {
+      type: Date
+    },
+    parent_reward_payed: {
+      type: Boolean,
+      default: false
+    },
+    parent_reward: {
+      type: Number
+    },
+    top_parent_reward_payed_time: {
+      type: Date
+    },
+    top_parent_reward_payed: {
+      type: Boolean,
+      default: false
+    },
+    top_parent_reward: {
+      type: Number
+    },
+    user_top_parent: {
+      type: String
+    },
     user_real_name: {
       type: String,
     },
@@ -359,16 +382,7 @@ module.exports = function (appDb) {
     content: {
       type: Schema.Types.Mixed
     },
-    parent_reward_payed_time: {
-      type: Date
-    },
-    parent_reward_payed: {
-      type: Boolean,
-      default: false
-    },
-    parent_reward: {
-      type: Number
-    },
+
     type_text: {
       type: String
     }
@@ -383,32 +397,39 @@ module.exports = function (appDb) {
     var result = {};
     switch (type) {
       case 'vip_pay':
-        result.parent_reward = 50;
+        result.parent_reward = 40;
+        result.top_parent_reward = 10;
         result.type_text = 'vip充值';
         break;
       case 'postcode_pay':
         result.type_text = '信用代还';
-        result.parent_reward = 38;
+        result.top_parent_reward = 30;
+        result.parent_reward = 10;
         break;
       case 'pos_xinguodu':
         result.type_text = '新国东pos机';
         result.parent_reward = 80;
+        result.top_parent_reward = 10;
         break;
       case 'pos_suixingfu':
         result.type_text = '随性付pos机';
         result.parent_reward = 0;
+        result.top_parent_reward = 0;
         break;
       case 'query_大数据':
         result.type_text = '大数据查询';
-        result.parent_reward = 5;
+        result.parent_reward = 4;
+        result.top_parent_reward = 2;
         break;
       case 'query_黑灰行为':
         result.type_text = '黑灰行为查询';
-        result.parent_reward = 5;
+        result.parent_reward = 4;
+        result.top_parent_reward = 2;
         break;
       case 'query_黑中介':
         result.type_text = '黑中介查询';
         result.parent_reward = 0;
+        result.top_parent_reward = 0;
         break;
     }
     return result;
@@ -418,6 +439,7 @@ module.exports = function (appDb) {
     if (this.type) {
       var result = getParentRewardInfo(this.type);
       this.parent_reward = result.parent_reward;
+      this.top_parent_reward = result.top_parent_reward;
       this.type_text = result.type_text;
     }
     next();
