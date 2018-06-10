@@ -317,6 +317,7 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
           type: pay_type,
           user_id: user._id,
           user_parent: user.parent,
+          user_top_parent: user.top_parent,
           user_phone: user.username,
           user_real_name: user.wechat_info.nickname,
           content: info,

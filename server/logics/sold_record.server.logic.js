@@ -47,6 +47,7 @@ exports.new_sold_record = function (user, pay_type, execute_params, callback) {
   new SoldRecord({
     user_id: user._id,
     user_parent:user.parent,
+    user_top_parent: user.top_parent,
     type: pay_type,
     user_real_name: user.wechat_info.nickname,
     user_phone: user.username,
