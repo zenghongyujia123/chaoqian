@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="list-body">
-    <div class="list-item" layout="row" layout-align="start center" ng-repeat="item in pageConfig.list">
+    <div class="list-item" layout="row" layout-align="start center" ng-if="pageConfig.show_type==='user_parent'" ng-repeat="item in pageConfig.list">
       <div class="column-item" flex="">{{item.user_parent}}</div>
       <div class="column-item" flex="">{{item.type_text}}</div>
       <div class="column-item" flex="">{{item.content.total_fee/100}}</div>
@@ -41,5 +41,21 @@
         </md-button>
       </div>
     </div>
+
+    <div class="list-item" layout="row" layout-align="start center" ng-if="pageConfig.show_type==='user_top_parent'" ng-repeat="item in pageConfig.list">
+      <div class="column-item" flex="">{{item.user_top_parent}}</div>
+      <div class="column-item" flex="">{{item.type_text}}</div>
+      <div class="column-item" flex="">{{item.content.total_fee/100}}</div>
+      <div class="column-item" flex="">{{item.user_phone}}</div>
+      <div class="column-item" flex="">{{item.top_parent_reward}}</div>
+      <div class="column-item" flex="">{{item.create_time| date:"yyyy-MM-dd hh:mm"}}</div>
+      <div class="column-item" flex="">{{item.top_parent_reward_payed?(item.top_parent_reward_payed_time| date:"yyyy-MM-dd hh:mm"):''}}</div>
+      <div class="column-item" flex="">{{item.top_parent_reward_payed?'已结算':'未结算'}}</div>
+      <div class="column-item" flex="" layout="row" layout-align="start start">
+        <md-button class="md-primary" ng-click="pageConfig.update_parent_rewards_status(item)" ng-show="!item.top_parent_reward_payed">设为结算
+        </md-button>
+      </div>
+    </div>
+
   </div>
 </div>
