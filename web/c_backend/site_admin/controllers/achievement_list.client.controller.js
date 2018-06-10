@@ -23,7 +23,7 @@ cSite.controller('AchievementListController', [
       },
       parent_rewards_by_user_parent: function () {
         var query = {};
-        query[pageConfig.show_type] = pageConfig.user_parent;
+        query[pageConfig.show_type] = pageConfig.keyword;
         UserNetwork.parent_rewards_by_user_parent($scope, query).then(function (data) {
           console.log(data);
           if (!data.err) {
