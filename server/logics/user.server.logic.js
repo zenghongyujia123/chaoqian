@@ -591,8 +591,8 @@ exports.parent_rewards_by_user_parent = function (info, callback) {
     query.user_parent = info.user_parent;
   }
 
-  if (info.top_user_parent) {
-    query.top_user_parent = info.top_user_parent;
+  if (info.user_top_parent) {
+    query.user_top_parent = info.user_top_parent;
   }
 
   UserPay.find(query).sort({ create_time: -1 }).exec(function (err, result) {
@@ -603,11 +603,18 @@ exports.parent_rewards_by_user_parent = function (info, callback) {
   })
 }
 
-exports.update_parent_rewards_status = function (userpay_id, callback) {
+exports.update_parent_rewards_status = function (info, callback) {
   var set = {
-    $set: { parent_reward_payed: true, parent_reward_payed_time: new Date() }
   }
-  UserPay.update({ _id: userpay_id }, set, function (err, result) {
+
+  if (info.parent_type === 'user_parent') {
+    set = { $set: { parent_reward_payed: true, parent_reward_payed_time: new Date() } }
+  }
+  if (info.parent_type === 'user_top_parent') {
+    set = { $set: { top_parent_reward_payed: true, top_parent_reward_payed_time: new Date() } }
+  }
+
+  UserPay.update({ _id: info.userpay_id }, set, function (err, result) {
     if (err) {
       return callback({ err: sysErr.database_save_error });
     }

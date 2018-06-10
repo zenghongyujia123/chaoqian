@@ -740,26 +740,6 @@ cSite.factory('QiniuService', [
 
     }]);
 
-'use strict';
-
-cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper', function ($rootScope, GlobalEvent, CommonHelper) {
-  return {
-    restrict: 'E',
-    templateUrl: '/c_backend/site_admin/directive/dialog_loading_box/dialog_loading_box.client.view.html',
-    replace: true,
-    scope: {},
-    controller: function ($scope, $element) {
-      $scope.dialogInfo = {
-        isShow: false
-      };
-
-      $rootScope.$on(GlobalEvent.onShowLoading, function (event, isLoading) {
-        $scope.dialogInfo.isShow = isLoading;
-      });
-    }
-  };
-}]);
-
 /**
  * 货物照片预览
  * author: louisha
@@ -873,6 +853,26 @@ cSite.directive('mPhotoScan', ['$document', function ($document) {
     }
   }
 }]);
+'use strict';
+
+cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper', function ($rootScope, GlobalEvent, CommonHelper) {
+  return {
+    restrict: 'E',
+    templateUrl: '/c_backend/site_admin/directive/dialog_loading_box/dialog_loading_box.client.view.html',
+    replace: true,
+    scope: {},
+    controller: function ($scope, $element) {
+      $scope.dialogInfo = {
+        isShow: false
+      };
+
+      $rootScope.$on(GlobalEvent.onShowLoading, function (event, isLoading) {
+        $scope.dialogInfo.isShow = isLoading;
+      });
+    }
+  };
+}]);
+
 /**
  * Created by lance on 2016/11/17.
  */
@@ -889,7 +889,7 @@ cSite.controller('AchievementListController', [
     // }
 
     var pageConfig = {
-      show_type: 'user_parent',//top_user_parent
+      show_type: 'user_parent',//user_top_parent
       keyword: '',
       list: [],
       change_type: function (type) {
@@ -909,7 +909,7 @@ cSite.controller('AchievementListController', [
         });
       },
       update_parent_rewards_status: function (item) {
-        UserNetwork.update_parent_rewards_status($scope, { userpay_id: item._id }).then(function (data) {
+        UserNetwork.update_parent_rewards_status($scope, { parent_type: pageConfig.show_type, userpay_id: item._id }).then(function (data) {
           console.log(data);
           if (!data.err) {
             CommonHelper.showConfirm($scope, null, '操作成功', function () {

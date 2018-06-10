@@ -264,7 +264,7 @@ exports.parent_rewards_by_user_parent = function (req, res, next) {
   });
 }
 exports.update_parent_rewards_status = function (req, res, next) {
-  userLogic.update_parent_rewards_status(req.body.userpay_id, function (err, result) {
+  userLogic.update_parent_rewards_status(req.body, function (err, result) {
     if (err) {
       return next(err);
     }
