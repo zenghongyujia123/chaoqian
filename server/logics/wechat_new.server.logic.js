@@ -257,7 +257,7 @@ exports.downloadImageFromWechatToQiniu = function (serverId, callback) {
     .set('Authorization', 'QBox ' + accessToken)
     .send()
     .end(function (err, res) {
-      console.log('qiniu fetch res . body');
+      console.log('qiniu fetch res.body', res.body);
       callback(err, res.body);
     });
 }
