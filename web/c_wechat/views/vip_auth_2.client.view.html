@@ -123,7 +123,7 @@
     var wechat_server_ids = [];
 
     function appendImage(localIds) {
-      if (localIds.length) {
+      if (localIds.length === 0) {
         return;
       }
       uploadImage(localIds[0], function (res) {
