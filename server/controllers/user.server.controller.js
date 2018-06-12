@@ -2,6 +2,7 @@
  * Created by zenghong on 2017/8/8.
  */
 var userLogic = require('./../logics/user');
+var wechatLogic = require('./../logics/wechat_new');
 var cookieLib = require('../../libraries/cookie');
 var smsLib = require('../../libraries/sms');
 var agent = require('superagent').agent();
@@ -47,13 +48,40 @@ exports.updateUserAuth1 = function (req, res, next) {
 }
 
 exports.updateUserAuth2 = function (req, res, next) {
-  userLogic.updateUserAuth2(req.user, req.body, function (err, result) {
-    if (err) {
-      return next(err);
-    }
-    req.data = result;
-    return next();
-  });
+  var info = req.body;
+  if (info.is_wechat) {
+    wechatLogic.downloadImageFromWechatToQiniu(info.id_front, function (err, imageResult) {
+      if (!err) {
+        info.id_front = 'http://ouv4j9a7a.bkt.clouddn.com/' + imageResult.key;
+      }
+      wechatLogic.downloadImageFromWechatToQiniu(info.id_back, function (err, imageResult) {
+        if (!err) {
+          info.id_back = 'http://ouv4j9a7a.bkt.clouddn.com/' + imageResult.key;
+        }
+        wechatLogic.downloadImageFromWechatToQiniu(info.id_man, function (err, imageResult) {
+          if (!err) {
+            info.id_man = 'http://ouv4j9a7a.bkt.clouddn.com/' + imageResult.key;
+          }
+          userLogic.updateUserAuth2(req.user, info, function (err, result) {
+            if (err) {
+              return next(err);
+            }
+            req.data = result;
+            return next();
+          });
+        });
+      });
+    });
+  }
+  else {
+    userLogic.updateUserAuth2(req.user, req.body, function (err, result) {
+      if (err) {
+        return next(err);
+      }
+      req.data = result;
+      return next();
+    });
+  }
 }
 
 exports.userList = function (req, res, next) {

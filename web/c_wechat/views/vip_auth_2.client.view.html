@@ -127,7 +127,7 @@
           return;
         }
         uploadImage(localIds[0], function (res) {
-          id_front = 'http://ouv4j9a7a.bkt.clouddn.com/' + res.serverId;
+          id_front = res.serverId;
           wechat_server_ids.push(res.serverId);
           $('.id_front').find('img').attr('src', localIds[0]);
         })
@@ -140,7 +140,7 @@
           return;
         }
         uploadImage(localIds[0], function (res) {
-          id_back = 'http://ouv4j9a7a.bkt.clouddn.com/' + res.serverId;
+          id_back = res.serverId;
           wechat_server_ids.push(res.serverId);
           $('.id_back').find('img').attr('src', localIds[0]);
         })
@@ -153,7 +153,7 @@
           return;
         }
         uploadImage(localIds[0], function (res) {
-          id_man = 'http://ouv4j9a7a.bkt.clouddn.com/' + res.serverId;
+          id_man = res.serverId;
           wechat_server_ids.push(res.serverId);
           $('.id_man').find('img').attr('src', localIds[0]);
         })
@@ -162,15 +162,25 @@
 
 
     $('.submit-btn').click(function () {
-      if (!carrier_token) {
-        return alert('请通讯运营商授权');
+      if (!id_front) {
+        return alert('请上传身份证正面照片');
       }
-      if (!pbc_token) {
-        return alert('请通人行征信授权');
+      if (!id_back) {
+        return alert('请上传身份证背面照片');
       }
+      if (!id_man) {
+        return alert('请上传手持身份证照片');
+      }
+
       $.ajax({
         method: 'post',
         url: '/user/updateUserAuth2',
+        data: {
+          is_wechat: true,
+          id_front: id_front,
+          id_back: id_back,
+          id_man: id_man
+        },
         success: function (data) {
           console.log(data);
           if (!data.err) {

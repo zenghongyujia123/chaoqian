@@ -235,6 +235,33 @@ exports.vip_pay_notify_url = function (req, callback) {
   return callback(xml);
 }
 
+exports.downloadImageFromWechatToQiniu = function (serverId, callback) {
+  var qiniu_a_key = '2ZL-HVYMoDc9m-nCnr1J_QDIJNRN8nfi3JWvWhtL';
+  var qiniu_s_key = '7oeAB2iQIHovgxK4lNAaXhMEeqGWd3D-YigAkdlL';
+
+  var fileUrl = 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=' + access_token + '&media_id=' + serverId;
+  console.log('fileUrl ' + fileUrl);
+
+  var qiniuUrlPath = cryptoLib.toBase64(fileUrl).replace(/\+/g, '-').replace(/\//g, '_') + '/to/' + cryptoLib.toBase64('maicai:' + serverId).replace(/\+/g, '-').replace(/\//g, '_');
+  var sigingStr = '/fetch/' + qiniuUrlPath + '\n';
+  var signBinary = crypto.createHmac('sha1', qiniu_s_key).update(sigingStr).digest();
+  var base64Str = signBinary.toString('base64').replace(/\+/g, '-').replace(/\//g, '_');
+  var accessToken = qiniu_a_key + ':' + base64Str;
+
+  console.log('qiniu accessToken: ' + accessToken);
+
+  var url = 'http://iovip.qbox.me/fetch/' + qiniuUrlPath;
+
+  agent.post(url)
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    .set('Authorization', 'QBox ' + accessToken)
+    .send()
+    .end(function (err, res) {
+      console.log('qiniu fetch res . body');
+      callback(err, res.body);
+    });
+}
+
 
 
 

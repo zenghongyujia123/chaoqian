@@ -5,3 +5,4 @@ var _ = require('lodash'),
 qiniu.conf.ACCESS_KEY = config.qiniu_a_key;
 qiniu.conf.SECRET_KEY = config.qiniu_s_key;
 exports = _.extend(exports, qiniu);
+
