@@ -110,6 +110,27 @@
   $(function () {
     getUserJsApiTicket(window.location.href, function () { });
 
+    $('.id_front').click(function () {
+      var that = this;
+      takeCamera(function (localIds) {
+        appendImage(localIds);
+      });
+    });
+
+
+    var id_front;
+    var wechat_server_ids = [];
+
+    function appendImage(localIds) {
+      if (localIds.length) {
+        return;
+      }
+      uploadImage(localIds[0], function (res) {
+        id_front = 'http://ouv4j9a7a.bkt.clouddn.com/' + res.serverId;
+        wechat_server_ids.push(res.serverId)
+        $('.id_front').find('img').attr('src', id_front).css('visibility', 'visibility');
+      })
+    }
     $('.submit-btn').click(function () {
       if (!carrier_token) {
         return alert('请通讯运营商授权');
