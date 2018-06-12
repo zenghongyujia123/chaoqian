@@ -31,21 +31,14 @@
   </div>
   <div class="list-header">
       <div class="list-item" layout="row" layout-align="start center">
-        <div class="column-item" flex="">创建时间</div>
-        <div class="column-item" flex="">名称</div>
-        <div class="column-item" flex="">qq号</div>
-        <div class="column-item" flex="">申请描述</div>
-        <div class="column-item" flex="">额度描述</div>
-        <div class="column-item" flex="">操作</div>
+        <div class="column-item" flex="">首次访问时间</div>
+        <div class="column-item" flex="">手机号</div>
       </div>
     </div>
     <div class="list-body">
       <div class="list-item" layout="row" layout-align="start center" ng-repeat=" item in history_list">
         <div class="column-item" flex="">{{item.create_time| date:"yyyy-MM-dd hh:mm"}}</div>
-        <div class="column-item" flex="">{{item.str1}}</div>
-        <div class="column-item" flex="">{{item.str2}}</div>
-        <div class="column-item" flex="">{{item.str3}}</div>
-        <div class="column-item" flex="">{{item.str4}}</div>
+        <div class="column-item" flex="">{{item.user.username}}</div>
         <div class="column-item" flex="" layout="row" layout-align="start start">
           <md-button class="md-primary" ng-click="goDetail(item)">详情
           </md-button>

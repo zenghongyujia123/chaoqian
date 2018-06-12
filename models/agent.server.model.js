@@ -86,9 +86,11 @@ module.exports = function (appDb) {
       default: 'qq_agent'
     },
     user:{
+      ref:'User',
       type: Schema.Types.ObjectId,
     },
     agent:{
+      ref:'Agent',
       type: Schema.Types.ObjectId,
     },
     //名字
