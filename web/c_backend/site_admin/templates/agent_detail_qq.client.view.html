@@ -39,10 +39,6 @@
       <div class="list-item" layout="row" layout-align="start center" ng-repeat=" item in history_list">
         <div class="column-item" flex="">{{item.create_time| date:"yyyy-MM-dd hh:mm"}}</div>
         <div class="column-item" flex="">{{item.user.username}}</div>
-        <div class="column-item" flex="" layout="row" layout-align="start start">
-          <md-button class="md-primary" ng-click="goDetail(item)">详情
-          </md-button>
-        </div>
       </div>
     </div>
 </div>
