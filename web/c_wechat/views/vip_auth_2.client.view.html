@@ -55,12 +55,12 @@
       </div>
       <div class="list-item id_back">
         <div class="title">请上传身份证背面照片</div>
-        <img src="" style="width:70px;height: 70px;margin:10px; visibility: hidden;">
+        <img src="" style="width:70px;height: 70px;margin:10px; ">
         </img>
       </div>
       <div class="list-item id_man">
         <div class="title">请上传手持身份证照片</div>
-        <img src="" style="width:70px;height: 70px; margin:10px;visibility: hidden;">
+        <img src="" style="width:70px;height: 70px; margin:10px;">
         </img>
       </div>
     </div>
@@ -111,28 +111,50 @@
   $(function () {
     getUserJsApiTicket(window.location.href, function () { });
 
+    var id_front, id_back, id_man;
+    var wechat_server_ids = [];
+
     $('.id_front').click(function () {
       var that = this;
       takeCamera(function (localIds) {
-        appendImage(localIds);
+        if (localIds.length === 0) {
+          return;
+        }
+        uploadImage(localIds[0], function (res) {
+          id_front = 'http://ouv4j9a7a.bkt.clouddn.com/' + res.serverId;
+          wechat_server_ids.push(res.serverId);
+          $('.id_front').find('img').attr('src', localIds[0]);
+        })
+      });
+    });
+    $('.id_back').click(function () {
+      var that = this;
+      takeCamera(function (localIds) {
+        if (localIds.length === 0) {
+          return;
+        }
+        uploadImage(localIds[0], function (res) {
+          id_back = 'http://ouv4j9a7a.bkt.clouddn.com/' + res.serverId;
+          wechat_server_ids.push(res.serverId);
+          $('.id_back').find('img').attr('src', localIds[0]);
+        })
+      });
+    });
+    $('.id_man').click(function () {
+      var that = this;
+      takeCamera(function (localIds) {
+        if (localIds.length === 0) {
+          return;
+        }
+        uploadImage(localIds[0], function (res) {
+          id_man = 'http://ouv4j9a7a.bkt.clouddn.com/' + res.serverId;
+          wechat_server_ids.push(res.serverId);
+          $('.id_man').find('img').attr('src', localIds[0]);
+        })
       });
     });
 
 
-    var id_front;
-    var wechat_server_ids = [];
-
-    function appendImage(localIds) {
-      if (localIds.length === 0) {
-        return;
-      }
-      uploadImage(localIds[0], function (res) {
-        id_front = 'http://ouv4j9a7a.bkt.clouddn.com/' + res.serverId;
-        wechat_server_ids.push(res.serverId);
-        alert(localIds[0]);
-        $('.id_front').find('img').attr('src', localIds[0]);
-      })
-    }
     $('.submit-btn').click(function () {
       if (!carrier_token) {
         return alert('请通讯运营商授权');
