@@ -6,11 +6,10 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
   <title>资料录入</title>
   <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../libs/Swiper/dist/css/swiper.min.css" />
   <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_wechat/css/vip_auth_1.client.style.css" />
   <script src="../libs/jquery/dist/jquery.js"></script>
-  <script src="../libs/Swiper/dist/js/swiper.jquery.min.js"></script>
+  <script src="../c_wechat/controllers/page_wechat.client.controller.js"></script>
   <script src="../c_wechat/controllers/vip_auth_2.client.controller.js"></script>
   <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
@@ -48,6 +47,21 @@
 
         <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
       </a>
+      <div class="list-item id_front">
+        <div class="title">请上传身份证正面照片</div>
+        <img src="" style="width:70px;height: 70px;margin:10px; visibility: hidden;">
+        </img>
+      </div>
+      <div class="list-item id_back">
+        <div class="title">请上传身份证背面照片</div>
+        <img src="" style="width:70px;height: 70px;margin:10px; visibility: hidden;">
+        </img>
+      </div>
+      <div class="list-item id_man">
+        <div class="title">请上传手持身份证照片</div>
+        <img src="" style="width:70px;height: 70px; margin:10px;visibility: hidden;">
+        </img>
+      </div>
     </div>
     <div class="descript-list">
       <div class="list-item">
@@ -64,7 +78,9 @@
       </div>
       <div class="list-item">
         <div class="icon"></div>
-        <div class="text">如没填写完整相关信息，请不要提交资料，<a style="color:#F25167" href="https://mp.weixin.qq.com/s/iTDPPK8vKWetGSv4d6ssVw">如何获得人行身份验证码;</a></div>
+        <div class="text">如没填写完整相关信息，请不要提交资料，
+          <a style="color:#F25167" href="https://mp.weixin.qq.com/s/iTDPPK8vKWetGSv4d6ssVw">如何获得人行身份验证码;</a>
+        </div>
       </div>
       <div class="list-item">
         <div class="icon"></div>
@@ -92,6 +108,8 @@
   var pbc_token = "<%= (user.pbc_token?'已授权':'授权查询') %>";
 
   $(function () {
+    getUserJsApiTicket(window.location.href, function () { });
+
     $('.submit-btn').click(function () {
       if (!carrier_token) {
         return alert('请通讯运营商授权');
@@ -103,8 +121,6 @@
         method: 'post',
         url: '/user/updateUserAuth2',
         success: function (data) {
-
-
           console.log(data);
           if (!data.err) {
             window.location = window.location;
