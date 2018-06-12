@@ -86,6 +86,10 @@ module.exports = function (appDb) {
     organization_info: {
       type: Schema.Types.Mixed
     },
+    shart_url_short:{
+      type: String,
+      default: ''
+    },
     //跳转连接
     organization_url: {
       type: String,

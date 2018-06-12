@@ -30,6 +30,7 @@ cSite.controller('ProductDetailController', [
       organization_url: '',
       organization_info: '',
       wechat_detail_info: '',
+      shart_url_short:'',
       risk_codes: '',
       str1: '',
       str2: '',

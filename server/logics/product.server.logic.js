@@ -4,9 +4,19 @@
 var mongoose = require('./../../libraries/mongoose');
 var appDb = mongoose.appDb;
 var Product = appDb.model('Product');
+var agent = require('superagent').agent();
 var sysErr = require('./../errors/system');
 
 var that = exports;
+
+
+exports.getProductShareUrl = function (url, callback) {
+  var url = 'http://www.chaoqianwang.com/page_h5/third_page?url=' + url;
+  agent.get('http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long=' + url)
+    .end(function (err, data) {
+      return callback(err, data.body);
+    });
+}
 
 exports.updateProduct = function (productInfo, callback) {
 
@@ -23,6 +33,7 @@ exports.updateProduct = function (productInfo, callback) {
       product = new Product({});
     }
 
+    product.shart_url_short = productInfo.shart_url_short;
     product.name = productInfo.name;
     product.logo = productInfo.logo;
     product.description = productInfo.description;
@@ -66,7 +77,7 @@ exports.updateProduct = function (productInfo, callback) {
     product.str17 = productInfo.str17;
     product.str18 = productInfo.str18;
 
- //   product.ma
+    //   product.ma
     product.save(function (err, savedProduct) {
       if (err) {
         return callback({ err: sysErr.database_save_error });

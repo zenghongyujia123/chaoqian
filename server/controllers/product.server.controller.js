@@ -4,12 +4,15 @@
 var productLogic = require('./../logics/product');
 
 exports.updateProduct = function (req, res, next) {
-  productLogic.updateProduct(req.body.product_info, function (err, result) {
-    if (err) {
-      return next(err);
-    }
-    req.data = result;
-    return next();
+  productLogic.getProductShareUrl(req.body.product_info.organization_url, function (err,url_info) {
+    req.body.product_info.shart_url_short = url_info[0].url_short;
+    productLogic.updateProduct(req.body.product_info, function (err, result) {
+      if (err) {
+        return next(err);
+      }
+      req.data = result;
+      return next();
+    });
   });
 };
 
