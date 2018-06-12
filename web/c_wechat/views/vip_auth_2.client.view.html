@@ -129,7 +129,7 @@
       uploadImage(localIds[0], function (res) {
         id_front = 'http://ouv4j9a7a.bkt.clouddn.com/' + res.serverId;
         wechat_server_ids.push(res.serverId)
-        $('.id_front').find('img').attr('src', id_front).css('visibility', 'visibility');
+        $('.id_front').find('img').attr('src', localIds[0]).css('visibility', 'visibility');
       })
     }
     $('.submit-btn').click(function () {
