@@ -21,7 +21,7 @@ function getWechatUserInfo(openid, user_access_token, callback) {
 exports.requireUser = function (req, res, next) {
   var cookie = cookieLib.getCookie(req);
   console.log('cookie:', cookie);
-
+  var user_id = cookie.user_id || req.query.user_id || '';
   userLogic.requireByUserId(cookie.user_id, function (err, user) {
     if (err) {
       return next(err);
