@@ -17,3 +17,8 @@ exports.page_list_qq = function (req, res, next) {
   var filepath = path.join(__dirname, '../../web/c_h5/views/page_list_qq.html');
   return res.render(filepath, {});
 }
+
+exports.third_page = function (req, res, next) {
+  var url = req.query.url;
+  return res.redirect(url);
+}
