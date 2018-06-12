@@ -48,9 +48,9 @@ cSite.controller('AgentDetailQQController', [
       }
     }
 
-    function history_list() {
+    function list_history() {
       if ($scope.agent._id) {
-        AgentNetwork.history_list($scope, { detail_id: $scope.agent._id }).then(function (data) {
+        AgentNetwork.list_history($scope, { detail_id: $scope.agent._id }).then(function (data) {
           console.log(data);
           if (!data.err) {
             $scope.history_list = data;
@@ -61,5 +61,5 @@ cSite.controller('AgentDetailQQController', [
       }
     }
     detail_agent();
-    history_list();
+    list_history();
   }]);
