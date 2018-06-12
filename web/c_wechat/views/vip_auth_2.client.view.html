@@ -33,6 +33,35 @@
       </div>
     </div>
     <div class="input-list">
+      <a href="/shuju_mofang_page_wy" class="list-item">
+        <div class="title">工资卡认证</div>
+        <div class="content">
+          <%= ((user.wy_info&&user.wy_info.task_id)?'已授权':'授权查询') %>
+        </div>
+        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
+      </a>
+      <a href="/shuju_mofang_page_yys" class="list-item">
+        <div class="title">运营商认证</div>
+        <div class="content">
+          <%= ((user.yys_info&&user.yys_info.task_id)?'已授权':'授权查询') %>
+        </div>
+        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
+      </a>
+      <a href="/shuju_mofang_page_taobao" class="list-item">
+        <div class="title">淘宝认证</div>
+        <div class="content">
+          <%= ((user.taobao_info&&user.taobao_info.task_id)?'已授权':'授权查询') %>
+        </div>
+        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
+      </a>
+      <a href="/shuju_mofang_page_jingdong" class="list-item">
+        <div class="title">京东认证</div>
+        <div class="content">
+          <%= ((user.jingdong_info&&user.jingdong_info.task_id)?'已授权':'授权查询') %>
+        </div>
+        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
+      </a>
+
       <a href="/carrier/page_carrier_url" class="list-item">
         <div class="title">通讯运营商</div>
         <div class="content">
@@ -89,11 +118,6 @@
       </div>
     </div>
     <div class="ensure-content">
-      <!--
-      <input class="radio" checked type="radio" />
-      <span class="title">我已阅读并同意</span>
-      <span class="text">征信报告授权协议</span>
-    -->
     </div>
     <div class="ensure">
       <div class="submit-btn">提交材料</div>
@@ -105,8 +129,6 @@
   </div>
 </body>
 <script>
-  var carrier_token = "<%= (user.pbc_token?'已授权':'授权查询') %>";
-  var pbc_token = "<%= (user.pbc_token?'已授权':'授权查询') %>";
 
   $(function () {
     getUserJsApiTicket(window.location.href, function () { });

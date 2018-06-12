@@ -34,21 +34,6 @@
       </div>
     </div>
     <div class="input-list">
-      <!-- <a href="/carrier/page_carrier_url" class="list-item">
-        <div class="title">通讯运营商</div>
-        <div class="content">
-          <%= (user.carrier_token?'已授权':'授权查询') %>
-        </div>
-        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
-      </a>
-      <a href="/pbc/page_pbc_url" class="list-item">
-        <div class="title">人行征信账号</div>
-        <div class="content">
-          <%= (user.pbc_token?'已授权':'授权查询') %>
-        </div>
-        <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
-      </a> -->
-
       <a href="/shuju_mofang_page_wy" class="list-item">
         <div class="title">工资卡认证</div>
         <div class="content">
@@ -132,9 +117,6 @@
   </div>
 </body>
 <script>
-  var carrier_token = "<%= (user.pbc_token?'已授权':'授权查询') %>";
-  var pbc_token = "<%= (user.pbc_token?'已授权':'授权查询') %>";
-
   $(function () {
 
     var user = '<%- JSON.stringify(user) %>'
