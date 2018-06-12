@@ -39,3 +39,14 @@ exports.update_history = function (req, res, next) {
   });
 };
 
+
+exports.list_history = function (req, res, next) {
+  agentLogic.list_history(req.agent, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+};
+

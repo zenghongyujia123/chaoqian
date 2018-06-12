@@ -214,6 +214,9 @@ cSite.factory('AgentNetwork',
         },
         detail_agent: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/agent/detail_agent', params);
+        },
+        list_history: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/agent/list_history', params);
         }
       };
     }]);
@@ -953,7 +956,7 @@ cSite.controller('AgentDetailQQController', [
       str10: '',
       str11: '',
     };
-
+     
     $scope.update_agent = function (event) {
       AgentNetwork.update_agent($scope, $scope.agent).then(function (data) {
         if (!data.err) {
@@ -979,7 +982,21 @@ cSite.controller('AgentDetailQQController', [
         });
       }
     }
+
+    function history_list() {
+      if ($scope.agent._id) {
+        AgentNetwork.history_list($scope, { detail_id: $scope.agent._id }).then(function (data) {
+          console.log(data);
+          if (!data.err) {
+            $scope.history_list = data;
+          }
+        }, function (err) {
+          console.log(err);
+        });
+      }
+    }
     detail_agent();
+    history_list();
   }]);
 
 /**

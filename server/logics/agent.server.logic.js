@@ -64,7 +64,7 @@ exports.agent_detail = function (id, callback) {
 }
 
 exports.update_history = function (user, agent, callback) {
-  AgentHistory.findOne({ user: user._id, type: agent.type }, function (err, result) {
+  AgentHistory.findOne({ user: user._id, agent: agent._id, type: agent.type }, function (err, result) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }
@@ -83,6 +83,15 @@ exports.update_history = function (user, agent, callback) {
       return callback(null, result);
     });
   });
+}
+
+exports.list_history = function (agent, callback) {
+  AgentHistory.find({ agent: agent._id }).populate('user').exec(function (err, results) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, results)
+  })
 }
 
 

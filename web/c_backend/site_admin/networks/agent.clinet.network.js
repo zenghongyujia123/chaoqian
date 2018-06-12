@@ -11,6 +11,9 @@ cSite.factory('AgentNetwork',
         },
         detail_agent: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/agent/detail_agent', params);
+        },
+        list_history: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/agent/list_history', params);
         }
       };
     }]);
