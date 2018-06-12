@@ -50,7 +50,7 @@
       </a>
       <div class="list-item id_front">
         <div class="title">请上传身份证正面照片</div>
-        <img src="" style="width:70px;height: 70px;margin:10px; visibility: hidden;">
+        <img src="" style="width:70px;height: 70px;margin:10px;">
         </img>
       </div>
       <div class="list-item id_back">
@@ -130,7 +130,7 @@
         id_front = 'http://ouv4j9a7a.bkt.clouddn.com/' + res.serverId;
         wechat_server_ids.push(res.serverId);
         alert(localIds[0]);
-        $('.id_front').find('img').attr('src', localIds[0]).css('visibility', 'visibility');
+        $('.id_front').find('img').attr('src', localIds[0]);
       })
     }
     $('.submit-btn').click(function () {
