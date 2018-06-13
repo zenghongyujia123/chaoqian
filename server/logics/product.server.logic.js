@@ -28,7 +28,7 @@ exports.product_history_list_by_name = function (name, callback) {
     },
     {
       $group: {
-        _id: { date: '$date', ip: $ip },
+        _id: { date: '$date', ip: '$ip' },
         click_count: { $sum: 1 },
         date: { $first: '$date' }
       }
