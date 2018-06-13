@@ -20,7 +20,9 @@
 <body>
   <div class="page-header">
     <div class="header-title">
-      <div class="icon"><%= type %></div>
+      <div class="icon">
+        <%= type %>
+      </div>
       <div class="text"></div>
     </div>
     <div class="header-tip">帮您寻找网贷过程中不规范导致的灰黑度因素</div>
@@ -69,7 +71,7 @@
     </div>
     <a class="page-btn">同意协议，开始查询</a>
   </div>
-
+  <img src="../c_wechat/images/query/查询页banner.jpeg" style="width:100%;margin-top: 20px;" />
 </body>
 <script>
   $(function () {
@@ -100,7 +102,7 @@
         rowPhone.show();
         headerText.text('网贷黑中介');
         headerIcon.addClass('blue');
-        headerTip.text('是否被网络征信认定为欺诈类产业的中介行为属性');        
+        headerTip.text('是否被网络征信认定为欺诈类产业的中介行为属性');
         hander = hei_zhong_jie;
         break;
       case '大':
