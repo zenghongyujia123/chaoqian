@@ -24,6 +24,7 @@ exports.product_history_list = function (callback) {
     {
       $group: {
         _id: '$name',
+        name: { $first: '$name' },
         click_count: { $sum: '$click_count' },
         ip_count: { $sum: 1 }
       }

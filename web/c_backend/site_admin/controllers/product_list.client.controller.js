@@ -10,11 +10,14 @@ cSite.controller('ProductListController', [
             $state.go('product_detail', { product_id: id || '' });
         }
         $scope.product_list = [];
-        $scope.productList = function () {
+        $scope.productList = function (callback) {
             ProductNetwork.productList($scope, {}).then(function (data) {
                 console.log(data);
                 if (!data.err) {
                     $scope.product_list = data;
+                }
+                if (callback) {
+                    return callback();
                 }
             }, function (err) {
                 console.log(err);
@@ -24,13 +27,20 @@ cSite.controller('ProductListController', [
         $scope.product_history_list = function () {
             ProductNetwork.product_history_list($scope, {}).then(function (data) {
                 console.log(data);
+                $scope.product_list.forEach(function (product) {
+                    data.forEach(function (history) {
+                        if (product.name === history.name) {
+                            product.click_count = history.click_count;
+                            product.ip_count = history.ip_count;
+                        }
+                    })
+                })
             }, function (err) {
                 console.log(err);
             });
         };
 
-
-
-        $scope.product_history_list();
-        $scope.productList();
+        $scope.productList(function () {
+            $scope.product_history_list();
+        });
     }]);
