@@ -71,7 +71,7 @@
     </div>
     <a class="page-btn">同意协议，开始查询</a>
   </div>
-  <img src="../c_wechat/images/query/查询页banner.jpeg" style="width:100%;margin-top: 20px;" />
+  <img class="banner" src="../c_wechat/images/query/查询页banner.jpeg" style="width:100%;margin-top: 20px;display: none" />
 </body>
 <script>
   $(function () {
@@ -79,6 +79,7 @@
     var headerIcon = $('.icon');
     var headerText = $('.text');
     var headerTip = $('.header-tip');
+    var banner = $('.banner');
 
 
     var rowBancknumber = $('.banknumber-row');
@@ -89,6 +90,7 @@
 
     switch (type) {
       case '黑':
+        banner.show();
         rowBancknumber.show();
         rowPhone.show();
         rowIdcard.show();
@@ -106,6 +108,7 @@
         hander = hei_zhong_jie;
         break;
       case '大':
+        banner.show();
         rowPhone.show();
         rowIdcard.show();
         rowName.show();
