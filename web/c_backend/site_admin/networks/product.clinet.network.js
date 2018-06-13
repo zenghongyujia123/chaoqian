@@ -15,6 +15,9 @@ cSite.factory('ProductNetwork',
         product_history_list: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/product/product_history_list', params);
         },
+        product_history_list_by_name: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/product/product_history_list_by_name', params);
+        },
         udpateProductFilter: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/product_filter/updateFilter', params);
         },

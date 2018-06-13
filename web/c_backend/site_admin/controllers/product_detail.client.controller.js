@@ -30,7 +30,7 @@ cSite.controller('ProductDetailController', [
       organization_url: '',
       organization_info: '',
       wechat_detail_info: '',
-      shart_url_short:'',
+      shart_url_short: '',
       risk_codes: '',
       str1: '',
       str2: '',
@@ -79,5 +79,18 @@ cSite.controller('ProductDetailController', [
         });
       }
     }
+
+    function product_history_list_by_name() {
+      if ($scope.product._id) {
+        ProductNetwork.product_history_list_by_name($scope, { name: $scope.product.name }).then(function (data) {
+          console.log(data);
+          if (!data.err) {
+          }
+        }, function (err) {
+          console.log(err);
+        });
+      }
+    }
     productDetail();
+    product_history_list_by_name();
   }]);

@@ -12,6 +12,43 @@ var sysErr = require('./../errors/system');
 
 var that = exports;
 
+exports.product_history_list_by_name = function (name, callback) {
+  ProductHistory.aggregate([
+    {
+      $match: {
+        name: name
+      }
+    },
+    {
+      $project: {
+        date: { $dateToString: { format: "%Y-%m-%d", date: "$create_time" } },
+        ip: '$ip',
+        name: '$name'
+      }
+    },
+    {
+      $group: {
+        _id: { date: '$date', ip: $ip },
+        click_count: { $sum: 1 },
+        date: { $first: '$date' }
+      }
+    },
+    {
+      $group: {
+        _id: '$date',
+        date: { $first: 1 },
+        click_count: { $sum: '$click_count' },
+        ip_count: { $sum: 1 }
+      }
+    }
+  ]).exec(function (err, results) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, results);
+  });
+}
+
 exports.product_history_list = function (callback) {
   ProductHistory.aggregate([
     {

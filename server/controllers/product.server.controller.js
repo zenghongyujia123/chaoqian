@@ -40,3 +40,14 @@ exports.product_history_list = function (req, res, next) {
     return next();
   });
 };
+
+
+exports.product_history_list_by_name = function (req, res, next) {
+  productLogic.product_history_list_by_name(req.body.name, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+};
