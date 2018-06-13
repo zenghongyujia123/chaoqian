@@ -19,7 +19,7 @@ exports.product_list = function (req, res, next) {
     if (err) {
       return next(next);
     }
-    var filepath = path.join(__dirname, '../../web/c_platform/vi  ews/product_list.client.view.html');
+    var filepath = path.join(__dirname, '../../web/c_platform/views/product_list.client.view.html');
     console.log(filters);
     return res.render(filepath, { city: req.cookies.city || '', filters: filters });
   });
