@@ -4,11 +4,23 @@
 var mongoose = require('./../../libraries/mongoose');
 var appDb = mongoose.appDb;
 var Product = appDb.model('Product');
+var ProductHistory = appDb.model('ProductHistory');
+
+
 var agent = require('superagent').agent();
 var sysErr = require('./../errors/system');
 
 var that = exports;
 
+exports.update_product_history = function (user_id, name, ip, callback) {
+  new ProductHistory({
+    name: name,
+    user: user_id,
+    ip: ip
+  }).save(function () {
+    return callback();
+  })
+}
 
 exports.getProductShareUrl = function (productInfo, callback) {
 

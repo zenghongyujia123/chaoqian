@@ -86,7 +86,7 @@ module.exports = function (appDb) {
     organization_info: {
       type: Schema.Types.Mixed
     },
-    shart_url_short:{
+    shart_url_short: {
       type: String,
       default: ''
     },
@@ -208,9 +208,32 @@ module.exports = function (appDb) {
   });
 
 
+  var ProductHistorySchema = new Schema({
+    object: {
+      type: String,
+      default: 'ProductHistory'
+    },
+    name: {
+      type: String,
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    ip: {
+      type: String,
+    }
+  });
+
+
+  ProductHistorySchema.plugin(timestamps, {
+    createdAt: 'create_time',
+    updatedAt: 'update_time'
+  });
   ProductSchema.plugin(timestamps, {
     createdAt: 'create_time',
     updatedAt: 'update_time'
   });
+  appDb.model('ProductHistory', ProductHistorySchema);
   appDb.model('Product', ProductSchema);
 };
