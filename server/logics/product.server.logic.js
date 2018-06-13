@@ -43,6 +43,7 @@ exports.product_history_list_by_name = function (name, callback) {
     }
   ]).exec(function (err, results) {
     if (err) {
+      console.log(JSON.stringify(err));
       return callback({ err: sysErr.database_query_error });
     }
     return callback(null, results);
