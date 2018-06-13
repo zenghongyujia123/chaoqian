@@ -7,7 +7,7 @@ cSite.controller('ProductListController', [
     '$rootScope', '$scope', '$state', '$stateParams', 'ProductNetwork',
     function ($rootScope, $scope, $state, $stateParams, ProductNetwork) {
         $scope.goDetail = function (id) {
-            $state.go('product_detail', { product_id: id||'' });
+            $state.go('product_detail', { product_id: id || '' });
         }
         $scope.product_list = [];
         $scope.productList = function () {
@@ -21,5 +21,16 @@ cSite.controller('ProductListController', [
             });
         };
 
+        $scope.product_history_list = function () {
+            ProductNetwork.product_history_list($scope, {}).then(function (data) {
+                console.log(data);
+            }, function (err) {
+                console.log(err);
+            });
+        };
+
+
+
+        $scope.product_history_list();
         $scope.productList();
     }]);

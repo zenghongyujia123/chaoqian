@@ -12,6 +12,9 @@ cSite.factory('ProductNetwork',
         productDetail: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/product/productDetail', params);
         },
+        product_history_list: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/product/product_history_list', params);
+        },
         udpateProductFilter: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/product_filter/updateFilter', params);
         },
@@ -27,5 +30,7 @@ cSite.factory('ProductNetwork',
         jietiaoDetail: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/jietiao/jietiaoDetail', params);
         },
+
+        
       };
     }]);

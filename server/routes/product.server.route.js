@@ -8,5 +8,6 @@ var productFilter = require('../filters/product');
 module.exports = function (app) {
   app.route('/product/updateProduct').post(productController.updateProduct);
   app.route('/product/productList').post(productController.productList);
-  app.route('/product/productDetail').post(productFilter.requireProduct,productController.productDetail);
+  app.route('/product/product_history_list').post(productController.product_history_list);
+  app.route('/product/productDetail').post(productFilter.requireProduct, productController.productDetail);
 };
