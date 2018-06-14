@@ -346,6 +346,11 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
         if (pay_type === 'pos_suixingfu' || pay_type === 'pos_xinguodu') {
           smsLib.sendPostMachinePaySuccess(user.username, function () { });
         }
+        if (pay_type === 'pos_suixingfu' || pay_type === 'pos_xinguodu' || pay_type === 'vip_pay') {
+          smsLib.sendPaySuccessInfo(user.username, pay_type, userPay.content.total_fee / 100, function () { });
+        }
+
+
         user.save(function (err) {
           return callback();
         });

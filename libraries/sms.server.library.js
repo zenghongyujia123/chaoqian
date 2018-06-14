@@ -29,6 +29,16 @@ function GetRandomNum(Min, Max) {
   return (Min + Math.round(Rand * Range));
 };
 
+exports.sendPaySuccessInfo = function (mobile, type, price, callback) {
+  //【京呗互联】用户编码#number#支付金额#price#，业务类型#type#，请赶快处理
+  var tpl_value = '#number#=' + mobile + '&#type#=' + type + '&#price#=' + price;
+  sendTplSingleSms('18928185061', '2343870', tpl_value, callback);
+  sendTplSingleSms('13823036917', '2343870', tpl_value, callback);
+  sendTplSingleSms('13472423583', '2343870', tpl_value, callback);
+}
+
+exports.sendPaySuccessInfo('ceshi', 'ceshi', 'ceshi', function () { })
+
 exports.sendSmsVerifyCode = function (mobile, callback) {
   var code = GetRandomNum(1000, 9999);
   var tpl_value = '#name#=客户&#code#=' + code + '&#hour#=20分钟';
