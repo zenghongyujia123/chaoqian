@@ -27,7 +27,7 @@ cSite.controller('JietiaoDetailController', [
       ProductNetwork.updateJietiao($scope, { jietiao_info: $scope.jietiao }).then(function (data) {
         if (!data.err) {
           CommonHelper.showConfirm($scope, null, '操作成功', function () {
-            $state.go('jietiao_detail', null, { reload: true });
+            $state.go('jietiao_detail', { jietiao_id: data._id }, { reload: true });
           }, null, null, event);
         }
 
