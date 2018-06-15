@@ -1735,10 +1735,19 @@ cSite.controller('PostCodeListController', [
 'use strict';
 
 cSite.controller('ProductDetailController', [
-  '$rootScope', '$scope', '$state', '$stateParams', 'QiniuService', 'ProductNetwork', 'CommonHelper',
-  function ($rootScope, $scope, $state, $stateParams, QiniuService, ProductNetwork, CommonHelper) {
-    var qiniu = QiniuService.createUploader('qiniu-upload-test-button', function (info) {
-      $scope.product.logo = QiniuService.getQiniuImageSrc(info.key);
+  '$rootScope', '$scope', '$state', '$stateParams', '$timeout', 'QiniuService', 'ProductNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, $timeout, QiniuService, ProductNetwork, CommonHelper) {
+    QiniuService.createUploader('qiniu-upload-test-button', function (info) {
+      $timeout(function () {
+        $scope.product.logo = QiniuService.getQiniuImageSrc(info.key);
+      }, 100)
+      console.log('upload successs : ---- ', info);
+    });
+
+    QiniuService.createUploader('qiniu-upload-gonglue-button', function (info) {
+      $timeout(function () {
+        $scope.product.gong_lue_img = QiniuService.getQiniuImageSrc(info.key);
+      }, 100)
       console.log('upload successs : ---- ', info);
     });
 
@@ -1763,6 +1772,7 @@ cSite.controller('ProductDetailController', [
       wechat_detail_info: '',
       shart_url_short: '',
       risk_codes: '',
+      gong_lue_img:'',
       str1: '',
       str2: '',
       str3: '',

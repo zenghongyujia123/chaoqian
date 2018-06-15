@@ -20,6 +20,9 @@
       <div class="header-content">
         <div class="title">
           <%= product.name||'--' %>
+            <% if(product.gong_lue_img){ %>
+              <a href="/page_wechat/page_image?url=<%= product.gong_lue_img||'--' %>&title=攻略" style="color:red;float:right">查看攻略</a>
+              <% } %>
         </div>
         <div class="content">
           <div class="content">

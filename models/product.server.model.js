@@ -24,6 +24,9 @@ module.exports = function (appDb) {
       type: String,
       require: true
     },
+    gong_lue_img: {
+      type: String,
+    },
     description: {
       type: String
     },

@@ -37,6 +37,9 @@
           <img class="photo" src="<%= products[i].logo %>" />
           <div class="title">
             <%= products[i].name %>
+              <% if(products[i].gong_lue_img){ %>
+                <span style="color:red">（内含攻略）</span>
+                <% } %>
           </div>
           <div class="content">
             <div class="content-item">
@@ -81,4 +84,5 @@
     }
   }
 </script>
+
 </html>

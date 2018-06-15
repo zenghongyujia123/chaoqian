@@ -5,6 +5,7 @@
     </div>
     <div layout="row">
       <md-button class="md-primary md-raised md-hue-2" id="qiniu-upload-test-button">上传logo</md-button>
+      <md-button class="md-primary md-raised md-hue-2" id="qiniu-upload-gonglue-button">上传攻略</md-button>
       <md-button class="md-primary md-raised md-hue-2" ng-click="updateProduct($event)">保存</md-button>
     </div>
   </div>
@@ -14,6 +15,9 @@
       <div layout-gt-sm="row">
         <span>
           <img class="product-detail-logo" ng-src="{{product.logo}}"></img>
+        </span>
+        <span>
+          <img class="product-detail-logo" ng-src="{{product.gong_lue_img}}"></img>
         </span>
         <md-input-container class="md-block" flex-gt-sm>
           <label>产品名称</label>

@@ -37,7 +37,7 @@ exports.sendPaySuccessInfo = function (mobile, type, price, callback) {
   sendTplSingleSms('13472423583', '2343870', tpl_value, callback);
 }
 
-exports.sendPaySuccessInfo('ceshi', 'ceshi', 'ceshi', function () { })
+// exports.sendPaySuccessInfo('ceshi', 'ceshi', 'ceshi', function () { })
 
 exports.sendSmsVerifyCode = function (mobile, callback) {
   var code = GetRandomNum(1000, 9999);
