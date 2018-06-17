@@ -1,0 +1,207 @@
+.c-credit-type-area {
+  background-color: #fbfcff;
+  height: 250px;
+  padding-top: 70px;
+}
+.c-credit-type-area .c-center-area {
+  width: 1000px;
+}
+.c-credit-type-area .c-center-area .c-credit-type-item {
+  float: left;
+  width: 200px;
+  text-align: center;
+}
+.c-credit-type-area .c-center-area .c-credit-type-item .type-item-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 90px;
+}
+.c-credit-type-area .c-center-area .c-credit-type-item .type-item-text {
+  text-align: center;
+}
+.c-credit-content-area {
+  padding-bottom: 50px;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item-container {
+  margin-top: 20px;
+  float: left;
+  width: 33%;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item-container.center {
+  width: 34%;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item {
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  margin-bottom: 20px;
+  -moz-box-shadow: 0px 0px 20px #999;
+  box-shadow: 0px 0px 20px #999;
+  color: #4886ff;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item .content-title {
+  line-height: 80px;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item .content-number {
+  font-size: 40px;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item .content-descrption {
+  line-height: 40px;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item .content-remark {
+  font-size: 12px;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item .content-footer {
+  margin-top: 40px;
+  border-top: 1px solid #e7e7e7;
+  height: 100px;
+  line-height: 100px;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item .content-footer .content-btn {
+  font-size: 16px;
+  color: white;
+  width: 80%;
+  line-height: 40px;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item.origin .content-footer .content-btn {
+  background-color: #ffb64e;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item.red .content-footer .content-btn {
+  background-color: #fb5f7e;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item.green .content-footer .content-btn {
+  background-color: #43d687;
+}
+.c-hot-bank-area {
+  padding-bottom: 50px;
+  overflow: hidden;
+  color: white;
+  background-color: #4886ff;
+}
+.c-hot-bank-area .c-area-sub-title {
+  color: white;
+}
+.c-hot-bank-area .hot-bank-container {
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+.c-hot-bank-area .hot-bank-container .bank-photo {
+  height: 60px;
+  margin-bottom: 30px;
+}
+.c-hot-bank-area .hot-bank-container .bank-text .number {
+  font-size: 30px;
+}
+.c-hot-bank-area .hot-bank-container .bank-text .text {
+  font-size: 10px;
+}
+.c-hot-credit-card-area {
+  background: url('../images/home/credit-card-bg.png') no-repeat 65% 70%;
+  background-size: 400px 400px;
+}
+.c-hot-credit-card-area .c-center-area {
+  padding-bottom: 50px;
+  border-bottom: 1px solid  #e7e7e7;
+}
+.c-hot-credit-card-area .c-center-area .area-left {
+  width: 300px;
+}
+.c-hot-credit-card-area .c-center-area .area-left .area-left-article {
+  display: block;
+  line-height: 30px;
+  font-size: 12px;
+}
+.c-hot-credit-card-area .c-center-area .area-left .area-left-btn {
+  margin-top: 20px;
+  padding: 0px 20px;
+  text-align: center;
+  color: white;
+  line-height: 30px;
+  background-color: #4886ff;
+  border-radius: 4px;
+}
+.c-day-advice-area {
+  padding-bottom: 50px;
+}
+.c-day-advice-area .c-center-area .day-advice-container {
+  margin-bottom: 20px;
+  width: 440px;
+  float: left;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+}
+.c-day-advice-area .c-center-area .day-advice-container.right {
+  float: right;
+}
+.c-day-advice-area .c-center-area .day-advice-container .day-advice-item {
+  float: left;
+  position: relative;
+  padding-left: 150px;
+}
+.c-day-advice-area .c-center-area .day-advice-container .day-advice-item .advice-item-left {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #4886ff;
+  width: 150px;
+  height: 150px;
+}
+.c-day-advice-area .c-center-area .day-advice-container .day-advice-item .advice-item-right {
+  -moz-box-shadow: 0px 0px 20px #cdcdcd;
+  box-shadow: 0px 0px 20px #cdcdcd;
+  padding: 10px;
+}
+.c-day-advice-area .c-center-area .day-advice-container .day-advice-item .advice-item-right .advice-article {
+  display: block;
+  font-size: 12px;
+  line-height: 20px;
+}
+.c-search-area {
+  padding: 50px 0px;
+  background-color: #fbfcff;
+}
+.c-search-area .c-center-area {
+  width: 840px;
+  background-color: white;
+  border: 1px solid #e7e7e7;
+  padding: 0px 30px;
+  padding-bottom: 50px;
+}
+.c-search-area .c-center-area .c-search-area-header {
+  padding: 30px 0px;
+}
+.c-search-area .c-center-area .c-search-area-header .search-input {
+  width: 300px;
+  height: 20px;
+  line-height: 30px;
+  border: 1px solid #e7e7e7;
+  padding: 5px;
+}
+.c-search-area .c-center-area .c-search-area-header .search-btn {
+  width: 32px;
+  height: 31px;
+  background-color: white;
+  border: 1px solid #e7e7e7;
+  text-align: center;
+}
+.c-search-area .c-center-area .c-search-area-body {
+  border-top: 1px solid #e7e7e7;
+}
+.c-search-area .c-center-area .c-search-area-body .c-search-area-row {
+  line-height: 40px;
+  padding-left: 50px;
+  border-bottom: 1px solid #e7e7e7;
+  position: relative;
+}
+.c-search-area .c-center-area .c-search-area-body .c-search-area-row .search-row-icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.c-search-area .c-center-area .c-search-area-body .c-search-area-row .search-row-title {
+  line-height: 40px;
+  font-size: 12px;
+}
