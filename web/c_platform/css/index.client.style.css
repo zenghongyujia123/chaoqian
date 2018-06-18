@@ -92,7 +92,7 @@ select {
   margin-right: 20px;
 }
 .c-header-area .c-title {
-  padding-left: 50px;
+  margin-left: 50px;
   float: right;
 }
 .c-footer-area {
