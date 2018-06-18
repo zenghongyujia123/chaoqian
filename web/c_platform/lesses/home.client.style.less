@@ -7,6 +7,7 @@
       width: 25%;
     }
     .c-credit-content-item {
+      cursor: pointer;
       text-align: center;
       margin: auto;
       width: 80%;
@@ -14,8 +15,16 @@
       -moz-box-shadow: 0px 0px 20px #999;
       box-shadow: 0px 0px 20px #999;
       color: #999;
+
+      &:hover{
+      .content-logo {
+        .qrcode {
+          visibility: visible;
+        }
+      }
+      }
       .content-title {
-        color:#333;
+        color: #333;
         line-height: 40px;
         margin-bottom: 0px;
       }
@@ -23,15 +32,26 @@
         font-size: 40px;
       }
       .content-logo {
+        margin:auto;
+        width: 120px;
+        position: relative;
         img {
+          width: 120px;
+          height: 120px;
+        }
+        .qrcode {
+          visibility: hidden;
+          position: absolute;
+          left: 0px;
+          top: 0px;
           width: 120px;
           height: 120px;
         }
       }
       .content-descrption {
         line-height: 40px;
-        .price{
-          color:#fb5f7e;
+        .price {
+          color: #fb5f7e;
           font-size: 16px;
         }
       }
@@ -58,7 +78,7 @@
         .content-footer {
           .content-btn {
             background-color: #4886ff;
-            &.red{
+            &.red {
               background-color: #fb5f7e;
             }
           }

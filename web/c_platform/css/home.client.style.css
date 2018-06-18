@@ -7,6 +7,7 @@
   width: 25%;
 }
 .c-credit-content-area .c-center-area .c-credit-content-item {
+  cursor: pointer;
   text-align: center;
   margin: auto;
   width: 80%;
@@ -14,6 +15,9 @@
   -moz-box-shadow: 0px 0px 20px #999;
   box-shadow: 0px 0px 20px #999;
   color: #999;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item:hover .content-logo .qrcode {
+  visibility: visible;
 }
 .c-credit-content-area .c-center-area .c-credit-content-item .content-title {
   color: #333;
@@ -23,7 +27,20 @@
 .c-credit-content-area .c-center-area .c-credit-content-item .content-number {
   font-size: 40px;
 }
+.c-credit-content-area .c-center-area .c-credit-content-item .content-logo {
+  margin: auto;
+  width: 120px;
+  position: relative;
+}
 .c-credit-content-area .c-center-area .c-credit-content-item .content-logo img {
+  width: 120px;
+  height: 120px;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item .content-logo .qrcode {
+  visibility: hidden;
+  position: absolute;
+  left: 0px;
+  top: 0px;
   width: 120px;
   height: 120px;
 }

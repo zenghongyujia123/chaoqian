@@ -10,11 +10,13 @@
   <link rel="stylesheet" href="../c_platform/css/index.client.style.css" />
   <link rel="stylesheet" href="../c_platform/css/home.client.style.css" />
   <script src="../libs/jquery/dist/jquery.js"></script>
+  <script src="https://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
   <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
 
 <body>
   <% include ../../c_platform/views/header.client.view.html %>
+
     <div class="c-credit-content-area">
       <div class="c-area-title">贷款专区</div>
       <div class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</div>
@@ -27,11 +29,17 @@
                 <%= products[i].name %>
               </h4>
               <div class="content-logo">
+                <span class="shart_url_short" style="display: none">
+                  <%= products[i].shart_url_short %>
+                </span>
+                <div class="qrcode"></div>
                 <img src="<%= products[i].logo %>">
               </div>
               <div class="content-descrption">
-                <span class="price"><%= (products[i].str4||'-') %></span> 利率
-                  <%= (products[i].fee_cost_per_day||'-') %>%</div>
+                <span class="price">
+                  <%= (products[i].str4||'-') %>
+                </span> 利率
+                <%= (products[i].fee_cost_per_day||'-') %>%</div>
               <% for(var j =0;j<4;j++){ %>
                 <% if( products[i].str3s[j]){ %>
                   <span class="content-remark">
@@ -48,6 +56,31 @@
           <% } %>
       </div>
     </div>
+    <div id="qrcode"></div>
 </body>
+<script>
+  $(function () {
+
+    $(function () {
+
+      $('.c-credit-content-item').hover(function () {
+        if ($(this).find('.qrcode').attr('has_qrcode') === 'true') {
+          return;
+        }
+
+        $(this).find('.qrcode').qrcode({
+          render: "table",
+          text: $(this).find('.shart_url_short').text(),
+          width: 120,
+          height: 120,
+          foreground: "#C00",
+          background: "#FFF",
+        });
+        
+        $(this).find('.qrcode').attr('has_qrcode', 'true');
+      })
+    });
+  })
+</script>
 
 </html>
