@@ -87,7 +87,7 @@ exports.update_product_history = function (user_id, name, ip, callback) {
 
 exports.getProductShareUrl = function (productInfo, callback) {
 
-  var url = 'http://www.chaoqianwang.com/page_h5/third_page?url=' + productInfo.organization_url + '&product_name=' + productInfo.name;
+  var url = 'http://www.chaoqianwang.com/page_h5/third_page?url=' + encodeURI(productInfo.organization_url) + '&product_name=' + productInfo.name;
   agent.get('http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long=' + encodeURIComponent(url))
     .end(function (err, data) {
       return callback(err, data.body);
