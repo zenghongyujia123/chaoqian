@@ -149,15 +149,16 @@
           <input ng-model="product.str18" />
         </md-input-container>
       </div>
+      <md-input-container class="md-block" flex-gt-sm>
+        <div>产品攻略</div>
+        <div text-angular ng-model="product.apply_info"></div>
+      </md-input-container>
       <!-- <div layout-gt-sm="row">
         <md-input-container class="md-block" flex-gt-sm>
           <div>费用说明</div>
           <div text-angular ng-model="product.fee_info"></div>
         </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <div>申请要求</div>
-          <div text-angular ng-model="product.apply_info"></div>
-        </md-input-container>
+       
         <md-input-container class="md-block" flex-gt-sm>
           <div>其他说明</div>
           <div text-angular ng-model="product.other_info"></div>
@@ -179,3 +180,7 @@
     </md-content>
   </div>
 </div>
+
+
+
+
