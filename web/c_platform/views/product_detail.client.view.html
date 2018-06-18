@@ -6,95 +6,28 @@
   <title>【全国贷款】全国贷款公司_全国银行贷款_全国个人贷款-潮钱网</title>
   <meta name="keywords" content="全国贷款,全国贷款公司,全国个人贷款,全国银行贷款">
   <meta name="description" content="潮钱网提供专业的全国贷款，全国个人贷款,全国银行贷款等贷款服务。找全国贷款，全国贷款公司，全国个人贷款、全国银行贷款信息就到潮钱网。">
-
-  <link rel="stylesheet" href="../libs/bootstrap/dist/bootstrap.min.css" />
+  <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../c_platform/css/index.client.style.css" />
-  <link rel="stylesheet" href="../c_platform/css/product_detail.client.style.css" />
+  <link rel="stylesheet" href="../c_platform/css/home.client.style.css" />
   <script src="../libs/jquery/dist/jquery.js"></script>
-  <script src="../c_platform/controllers/product_detail.client.controller.js"></script>
+  <script src="https://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+  <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
 
-<script >
-  var fee_info =  '<%=product.fee_info%>';
-  var other_info =  '<%=product.other_info%>';
-  var apply_info =  '<%=product.apply_info%>';
-  var apply_strategy = '<%=product.apply_strategy%>';
-</script>
 <body>
   <% include ../../c_platform/views/header.client.view.html %>
-
-    <div class="c-banner-area">
-      <div class="c-center-area">
+    <div class="c-credit-content-area">
+      <div class="c-area-title"><%= product.name||'' %> -贷款攻略</div>
+      <div class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</div>
+      <div class="c-center-area" style="text-align: center">
+        <img src="<%= product.gong_lue_img||'' %>">
       </div>
     </div>
-
-    <div class="c-center-area c-detail-area">
-      <div class="c-detail-header">产品详情</div>
-      <div class="c-detail-body">
-        <div class="body-header">
-          <div class="body-header-icon">
-            <img class="body-header-icon" src="<%=product.logo%>"></img>
-          </div>
-          <div class="body-header-title">
-            <%=product.name%>
-          </div>
-        </div>
-        <div class="body-description">
-          <%=product.description%>
-        </div>
-        <div class="body-summary">
-          <div class="summary-row">
-            <span class="summary-key">申请成功率：</span>
-            <span class="summary-value"><%=product.apply_success_percent%>%</span>
-          </div>
-          <div class="summary-row">
-            <span class="summary-key">申请人数：</span>
-            <span class="summary-value"><%=product.apply_people_count%>人</span>
-          </div>
-          <div class="summary-row">
-            <span class="summary-key">最长下款时间：</span>
-            <span class="summary-value"><%=product.longest_time%>天</span>
-          </div>
-        </div>
-      </div>
-      <div class="c-detail-footer">
-        <div class="detail-input-area">
-          <input class="detail-input input-price" type="number" placeholder="请输入金额" />
-          <input class="detail-input input-day" type="number" placeholder="请输入天数" />
-          <button class="calculate-btn">计算</button>
-        </div>
-        <div class="detail-input-area">
-          <span class="calculate-key">利息和费用：</span>
-          <span class="calculate-value">403元</span>
-          <span class="calculate-key">每日费用：</span>
-          <span class="calculate-value">30元</span>
-        </div>
-      </div>
-    </div>
-    <div class="c-center-area c-detail-area">
-      <div class="c-detail-header">
-        <div class="c-detail-headr-title fee_info">费用说明</div>
-        <div class="c-detail-headr-title apply_info">申请要求</div>
-        <div class="c-detail-headr-title other_info">其他要求</div>
-      </div>
-      <div class="c-detail-body">
-        <div class="c-fee-explain-panel">
-          <div class="fee-header" id="fee_info">
-          </div>
-          <div class="fee-header" id="apply_info">
-          </div>
-          <div class="fee-header" id="other_info">
-          </div>
-          <div class="fee-body" id="apply_strategy">
-          </div>
-        </div>
-        <div class="c-apply-panel"></div>
-        <div class="c-other-panel"></div>
-      </div>
-    </div>
-
-    <% include ../../c_platform/views/footer.client.view.html %>
 </body>
+<script>
+  $(function () {
 
+  })
+</script>
 
 </html>
