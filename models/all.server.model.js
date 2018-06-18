@@ -13,4 +13,5 @@ module.exports = function (appDb) {
   require('./customer_business')(appDb);
   require('./postcode')(appDb);
   require('./agent')(appDb);
+  require('./article')(appDb);
 };
