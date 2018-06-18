@@ -13,9 +13,10 @@
   margin-bottom: 20px;
   -moz-box-shadow: 0px 0px 20px #999;
   box-shadow: 0px 0px 20px #999;
-  color: #4886ff;
+  color: #999;
 }
 .c-credit-content-area .c-center-area .c-credit-content-item .content-title {
+  color: #333;
   line-height: 50px;
 }
 .c-credit-content-area .c-center-area .c-credit-content-item .content-number {
@@ -28,20 +29,27 @@
 .c-credit-content-area .c-center-area .c-credit-content-item .content-descrption {
   line-height: 40px;
 }
+.c-credit-content-area .c-center-area .c-credit-content-item .content-descrption .price {
+  color: #fb5f7e;
+  font-size: 16px;
+}
 .c-credit-content-area .c-center-area .c-credit-content-item .content-remark {
   font-size: 12px;
 }
 .c-credit-content-area .c-center-area .c-credit-content-item .content-footer {
-  margin-top: 40px;
+  margin-top: 20px;
   border-top: 1px solid #e7e7e7;
-  height: 100px;
-  line-height: 100px;
+  height: 80px;
+  line-height: 80px;
 }
 .c-credit-content-area .c-center-area .c-credit-content-item .content-footer .content-btn {
   font-size: 16px;
   color: white;
   width: 80%;
   line-height: 40px;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item.blue .content-footer .content-btn {
+  background-color: #4886ff;
 }
 .c-credit-content-area .c-center-area .c-credit-content-item.origin .content-footer .content-btn {
   background-color: #ffb64e;

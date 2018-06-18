@@ -22,17 +22,15 @@
 
         <% for(var i =0;i<products.length;i++){ %>
           <div class="c-credit-content-item-container">
-            <div class="c-credit-content-item origin">
+            <div class="c-credit-content-item blue">
               <div class="content-title">
                 <%= products[i].name %>
               </div>
               <div class="content-logo">
                 <img src="<%= products[i].logo %>">
-
-
               </div>
               <div class="content-descrption">
-                <%= (products[i].str4||'-') %> 利率
+                <span class="price"><%= (products[i].str4||'-') %></span> 利率
                   <%= (products[i].fee_cost_per_day||'-') %>%</div>
               <% for(var j =0;j<4;j++){ %>
                 <% if( products[i].str3s[j]){ %>
@@ -42,7 +40,7 @@
                   <% } %>
                     <% } %>
                       <div class="content-footer">
-                        <button class="content-btn">产品攻略</button>
+                        <button class="content-btn">查看攻略</button>
                       </div>
             </div>
           </div>
