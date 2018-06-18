@@ -18,9 +18,11 @@
   <% include ../../c_platform/views/header.client.view.html %>
 
     <div class="c-credit-content-area">
-      <div class="c-area-title">贷款专区</div>
-      <div class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</div>
       <div class="c-center-area">
+        <div class="c-area-title">贷款专区
+          <span class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</span>
+        </div>
+
 
         <% for(var i =0;i<products.length;i++){ %>
           <div class="c-credit-content-item-container">
@@ -33,7 +35,7 @@
                   <%= products[i].shart_url_short %>
                 </span>
                 <div class="qrcode">
-                  
+
                 </div>
                 <img src="<%= products[i].logo %>">
               </div>
