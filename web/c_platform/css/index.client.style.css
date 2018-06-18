@@ -78,6 +78,9 @@ select {
   line-height: 75px;
   color: #757575;
 }
+.c-header-area .c-center-area {
+  padding: 0px 30px;
+}
 .c-header-area .c-logo-image {
   float: left;
   margin-right: 20px;
