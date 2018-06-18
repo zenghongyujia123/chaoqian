@@ -17,7 +17,8 @@
 }
 .c-credit-content-area .c-center-area .c-credit-content-item .content-title {
   color: #333;
-  line-height: 50px;
+  line-height: 40px;
+  margin-bottom: 0px;
 }
 .c-credit-content-area .c-center-area .c-credit-content-item .content-number {
   font-size: 40px;
