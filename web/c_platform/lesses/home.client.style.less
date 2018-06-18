@@ -41,12 +41,16 @@
       .content-footer {
         margin-top: 20px;
         border-top: 1px solid #e7e7e7;
-        height: 80px;
-        line-height: 80px;
+        padding: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
         .content-btn {
           font-size: 16px;
           color: white;
-          width: 80%;
+          width: 45%;
           line-height: 40px;
         }
       }
@@ -54,6 +58,9 @@
         .content-footer {
           .content-btn {
             background-color: #4886ff;
+            &.red{
+              background-color: #fb5f7e;
+            }
           }
         }
       }
