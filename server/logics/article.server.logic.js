@@ -23,7 +23,7 @@ exports.updateArticle = function (info, callback) {
     }
 
     if (!article) {
-      article = new article({});
+      article = new Article({});
     }
 
     article.title = info.title;
@@ -46,7 +46,7 @@ exports.updateArticle = function (info, callback) {
 
 exports.articleList = function (info, callback) {
   var query = {}
-  article.find(query).sort({ create_time: -1 }).exec(function (err, articles) {
+  Article.find(query).sort({ create_time: -1 }).exec(function (err, articles) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }
@@ -55,7 +55,7 @@ exports.articleList = function (info, callback) {
 };
 
 exports.articleDetail = function (articleId, callback) {
-  article.findOne({ _id: articleId }, function (err, article) {
+  Article.findOne({ _id: articleId }, function (err, article) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
     }

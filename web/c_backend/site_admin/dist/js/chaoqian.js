@@ -57,6 +57,16 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',
       controller: 'ProductDetailController'
     })
+    .state('article_list', {
+      url: '/article_list',
+      templateUrl: '/c_backend/site_admin/templates/article_list.client.view.html',
+      controller: 'ArticleListController'
+    })
+    .state('article_detail', {
+      url: '/article_detail/:article_id',
+      templateUrl: '/c_backend/site_admin/templates/article_detail.client.view.html',
+      controller: 'ArticleDetailController'
+    })
     .state('jietiao_detail', {
       url: '/jietiao_detail/:jietiao_id',
       templateUrl: '/c_backend/site_admin/templates/jietiao_detail.client.view.html',
@@ -218,6 +228,23 @@ cSite.factory('AgentNetwork',
         list_history: function (scope, params) {
           return Http.postRequestWithCheck(scope, '/agent/list_history', params);
         }
+      };
+    }]);
+
+'use strict';
+cSite.factory('ArticleNetwork',
+  ['Http', 'CommonHelper',
+    function (Http, CommonHelper) {
+      return {
+        updateArticle: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/article/updateArticle', params);
+        },
+        articleList: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/article/articleList', params);
+        },
+        articleDetail: function (scope, params) {
+          return Http.postRequestWithCheck(scope, '/article/articleDetail', params);
+        },
       };
     }]);
 
@@ -1032,6 +1059,92 @@ cSite.controller('AgentListQQController', [
         };
 
         $scope.list_agent();
+    }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('ArticleDetailController', [
+  '$rootScope', '$scope', '$state', '$stateParams', '$timeout', 'QiniuService', 'ArticleNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, $timeout, QiniuService, ArticleNetwork, CommonHelper) {
+    QiniuService.createUploader('qiniu-upload-test-button', function (info) {
+      $timeout(function () {
+        $scope.article.image = QiniuService.getQiniuImageSrc(info.key);
+      }, 100)
+      console.log('upload successs : ---- ', info);
+    });
+
+    $scope.article = {
+      _id: $stateParams.article_id,
+      title: '',
+      image: '',
+      content: '',
+      description: '',
+      tag_string: '',
+      tag_array: ''
+    };
+
+    $scope.updateArticle = function (event) {
+      ArticleNetwork.updateArticle($scope, $scope.article).then(function (data) {
+        if (!data.err) {
+          CommonHelper.showConfirm($scope, null, '操作成功', function () {
+            $state.go('article_detail', { article_id: data._id }, { reload: true });
+          }, null, null, event);
+        }
+
+
+        console.log(data);
+      }, function (err) {
+        console.log(err);
+      });;
+    }
+
+function articleDetail() {
+  if ($scope.article._id) {
+    ArticleNetwork.articleDetail($scope, { article_id: $scope.article._id }).then(function (data) {
+      console.log(data);
+      if (!data.err) {
+        $scope.article = data;
+      }
+    }, function (err) {
+      console.log(err);
+    });
+  }
+}
+articleDetail();
+  }]);
+
+/**
+ * Created by lance on 2016/11/17.
+ */
+'use strict';
+
+cSite.controller('ArticleListController', [
+    '$rootScope', '$scope', '$state', '$stateParams', 'ArticleNetwork',
+    function ($rootScope, $scope, $state, $stateParams, ArticleNetwork) {
+        $scope.goDetail = function (id) {
+            $state.go('article_detail', { article_id: id || '' });
+        }
+        $scope.article_list = [];
+        $scope.articleList = function (callback) {
+            ArticleNetwork.articleList($scope, {}).then(function (data) {
+                console.log(data);
+                if (!data.err) {
+                    $scope.article_list = data;
+                }
+                if (callback) {
+                    return callback();
+                }
+            }, function (err) {
+                console.log(err);
+            });
+        };
+
+      
+        $scope.articleList(function () {
+        });
     }]);
 
 /**

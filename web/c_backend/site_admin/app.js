@@ -57,6 +57,16 @@ cSite.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
       templateUrl: '/c_backend/site_admin/templates/product_detail.client.view.html',
       controller: 'ProductDetailController'
     })
+    .state('article_list', {
+      url: '/article_list',
+      templateUrl: '/c_backend/site_admin/templates/article_list.client.view.html',
+      controller: 'ArticleListController'
+    })
+    .state('article_detail', {
+      url: '/article_detail/:article_id',
+      templateUrl: '/c_backend/site_admin/templates/article_detail.client.view.html',
+      controller: 'ArticleDetailController'
+    })
     .state('jietiao_detail', {
       url: '/jietiao_detail/:jietiao_id',
       templateUrl: '/c_backend/site_admin/templates/jietiao_detail.client.view.html',

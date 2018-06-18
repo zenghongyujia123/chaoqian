@@ -1,0 +1,37 @@
+<div class="page-body-view">
+  <div class="page-operation-view" layout="row" layout-align="space-between center">
+    <div layout="row">
+      <p class="title">产品详情</p>
+    </div>
+    <div layout="row">
+      <md-button class="md-primary md-raised md-hue-2" id="qiniu-upload-test-button">上传预览图</md-button>
+      <md-button class="md-primary md-raised md-hue-2" ng-click="updateArticle($event)">保存</md-button>
+    </div>
+  </div>
+
+  <div class="c-article-detail-view">
+    <md-content layout-padding>
+      <div layout-gt-sm="row">
+        <span>
+          <img class="product-detail-logo" ng-src="{{article.image}}"></img>
+        </span>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>标题</label>
+          <input ng-model="article.title" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>描述</label>
+          <input ng-model="article.description" />
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>标签</label>
+          <input ng-model="article.tag_string" />
+        </md-input-container>
+      </div>
+      <md-input-container class="md-block" flex-gt-sm>
+        <div>文章内容</div>
+        <div text-angular ng-model="article.content"></div>
+      </md-input-container>
+    </md-content>
+  </div>
+</div>
