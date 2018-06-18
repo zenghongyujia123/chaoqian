@@ -19,72 +19,34 @@
       <div class="c-area-title">贷款专区</div>
       <div class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</div>
       <div class="c-center-area">
-        <div class="c-credit-content-item-container">
-          <div class="c-credit-content-item origin">
-            <div class="content-title">恒昌-工薪贷</div>
-            <div class="content-number">2.38%</div>
-            <div class="content-descrption">参考月利率</div>
-            <div class="content-remark">无抵押|放贷快|0担保</div>
-            <div class="content-footer">
-              <button class="content-btn">查看详情</button>
-            </div>
-          </div>
-        </div>
-        <div class="c-credit-content-item-container">
-            <div class="c-credit-content-item origin">
-              <div class="content-title">恒昌-工薪贷</div>
-              <div class="content-number">2.38%</div>
-              <div class="content-descrption">参考月利率</div>
-              <div class="content-remark">无抵押|放贷快|0担保</div>
-              <div class="content-footer">
-                <button class="content-btn">查看详情</button>
-              </div>
-            </div>
-          </div>
+
+        <% for(var i =0;i<products.length;i++){ %>
           <div class="c-credit-content-item-container">
-              <div class="c-credit-content-item origin">
-                <div class="content-title">恒昌-工薪贷</div>
-                <div class="content-number">2.38%</div>
-                <div class="content-descrption">参考月利率</div>
-                <div class="content-remark">无抵押|放贷快|0担保</div>
-                <div class="content-footer">
-                  <button class="content-btn">查看详情</button>
-                </div>
+            <div class="c-credit-content-item origin">
+              <div class="content-title">
+                <%= products[i].name %>
               </div>
-            </div>
-        <div class="c-credit-content-item-container">
-          <div class="c-credit-content-item origin">
-            <div class="content-title">恒昌-工薪贷</div>
-            <div class="content-number">2.38%</div>
-            <div class="content-descrption">参考月利率</div>
-            <div class="content-remark">无抵押|放贷快|0担保</div>
-            <div class="content-footer">
-              <button class="content-btn">查看详情</button>
-            </div>
-          </div>
-        </div>
-        <div class="c-credit-content-item-container center">
-          <div class="c-credit-content-item red">
-            <div class="content-title">恒昌-工薪贷</div>
-            <div class="content-number">2.38%</div>
-            <div class="content-descrption">参考月利率</div>
-            <div class="content-remark">无抵押|放贷快|0担保</div>
-            <div class="content-footer">
-              <button class="content-btn">查看详情</button>
+              <div class="content-logo">
+                <img src="<%= products[i].logo %>">
+
+
+              </div>
+              <div class="content-descrption">
+                <%= (products[i].str4||'-') %> 利率
+                  <%= (products[i].fee_cost_per_day||'-') %>%</div>
+              <% for(var j =0;j<4;j++){ %>
+                <% if( products[i].str3s[j]){ %>
+                  <span class="content-remark">
+                    <%= products[i].str3s[j] %>
+                  </span>
+                  <% } %>
+                    <% } %>
+                      <div class="content-footer">
+                        <button class="content-btn">产品攻略</button>
+                      </div>
             </div>
           </div>
-        </div>
-        <div class="c-credit-content-item-container">
-          <div class="c-credit-content-item green">
-            <div class="content-title">恒昌-工薪贷</div>
-            <div class="content-number">2.38%</div>
-            <div class="content-descrption">参考月利率</div>
-            <div class="content-remark">无抵押|放贷快|0担保</div>
-            <div class="content-footer">
-              <button class="content-btn">查看详情</button>
-            </div>
-          </div>
-        </div>
+          <% } %>
       </div>
     </div>
 </body>

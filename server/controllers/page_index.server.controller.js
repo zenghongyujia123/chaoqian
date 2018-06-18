@@ -7,11 +7,17 @@ var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
 var cookieLib = require('../../libraries/cookie');
 exports.index = function (req, res, next) {
-  var filepath = path.join(__dirname, '../../web/c_platform/views/home.client.view.html');
   req.cookies.city = req.params.city || req.cookies.city || '';
   cookieLib.setCookie(res, 'city', req.cookies.city);
+  productLogic.productList({}, function (err, products) {
+    var filepath = path.join(__dirname, '../../web/c_platform/views/home.client.view.html');
 
-  return res.render(filepath, { city: req.cookies.city });
+    return res.render(filepath, {
+      city: req.cookies.city || '',
+      products: products || [],
+      device: req.cookies.device || ''
+    });
+  });
 };
 
 exports.product_list = function (req, res, next) {

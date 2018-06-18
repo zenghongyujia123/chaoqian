@@ -16,10 +16,14 @@
   color: #4886ff;
 }
 .c-credit-content-area .c-center-area .c-credit-content-item .content-title {
-  line-height: 80px;
+  line-height: 50px;
 }
 .c-credit-content-area .c-center-area .c-credit-content-item .content-number {
   font-size: 40px;
+}
+.c-credit-content-area .c-center-area .c-credit-content-item .content-logo img {
+  width: 100px;
+  height: 100px;
 }
 .c-credit-content-area .c-center-area .c-credit-content-item .content-descrption {
   line-height: 40px;
