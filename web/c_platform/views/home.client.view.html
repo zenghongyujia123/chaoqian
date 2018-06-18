@@ -32,9 +32,12 @@
                 <span class="shart_url_short" style="display: none">
                   <%= products[i].shart_url_short %>
                 </span>
-                <div class="qrcode"></div>
+                <div class="qrcode">
+                  
+                </div>
                 <img src="<%= products[i].logo %>">
               </div>
+              <div class="qrcode-tip">扫二维码安装</div>
               <div class="content-descrption">
                 <span class="price">
                   <%= (products[i].str4||'-') %>
