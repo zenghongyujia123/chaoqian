@@ -105,6 +105,8 @@
 }
 .c-gonglue-item:hover {
   border: 1px solid #ffb64e;
+  -moz-box-shadow: 0px 0px 20px #999;
+  box-shadow: 0px 0px 20px #999;
 }
 .c-gonglue-item .gonglue-item-left {
   width: 270px;
