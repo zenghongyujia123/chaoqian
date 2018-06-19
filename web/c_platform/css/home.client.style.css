@@ -111,6 +111,7 @@
 }
 .c-gonglue-item .gonglue-item-left {
   width: 270px;
+  flex-shrink: 0;
   height: 160px;
 }
 .c-gonglue-item .gonglue-item-left img {
