@@ -10,6 +10,7 @@ module.exports = function (app) {
   app.route('/page/index/:city').get(index.index);
   app.route('/page/product_list').get(index.product_list);
   app.route('/page/product_detail/:product_id').get(index.product_detail);
+  app.route('/page/article_detail/:article_id').get(index.article_detail);
   app.route('/page/backend_signin').get(index.backend_signin);
 
   app.route('/page/city_select').get(index.city_select);

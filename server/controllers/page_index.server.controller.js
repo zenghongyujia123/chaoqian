@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var productLogic = require('../logics/product');
+var articleLogic = require('../logics/article');
 var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
 var cookieLib = require('../../libraries/cookie');
@@ -11,11 +12,13 @@ exports.index = function (req, res, next) {
   cookieLib.setCookie(res, 'city', req.cookies.city);
   productLogic.productList({}, function (err, products) {
     var filepath = path.join(__dirname, '../../web/c_platform/views/home.client.view.html');
-
-    return res.render(filepath, {
-      city: req.cookies.city || '',
-      products: products || [],
-      device: req.cookies.device || ''
+    articleLogic.articleList({}, function (err, articles) {
+      return res.render(filepath, {
+        city: req.cookies.city || '',
+        articles: articles || [],
+        products: products || [],
+        device: req.cookies.device || ''
+      });
     });
   });
 };
@@ -41,6 +44,13 @@ exports.product_detail = function (req, res, next) {
   productLogic.productDetail(req.params.product_id, function (err, product) {
     var filepath = path.join(__dirname, '../../web/c_platform/views/product_detail.client.view.html');
     return res.render(filepath, { city: req.cookies.city || '', product: product });
+  });
+};
+
+exports.article_detail = function (req, res, next) {
+  articleLogic.articleDetail(req.params.article_id, function (err, article) {
+    var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
+    return res.render(filepath, { city: req.cookies.city || '', article: article });
   });
 };
 
