@@ -3,6 +3,7 @@
   width: 1200px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 .n-center .n-left {
   border: 1px solid #efefef;
@@ -14,7 +15,10 @@
   color: #999;
 }
 .n-center .n-right {
-  width: 30%;
+  width: 28%;
+  border: 1px solid #efefef;
+  margin-top: 20px;
+  padding: 10px 20px;
 }
 .c-header-area .c-center-area {
   padding: 0px;
