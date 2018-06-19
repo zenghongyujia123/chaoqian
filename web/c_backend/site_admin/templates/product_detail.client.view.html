@@ -153,34 +153,23 @@
         <div>产品攻略</div>
         <div text-angular ng-model="product.apply_info"></div>
       </md-input-container>
-      <!-- <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <div>费用说明</div>
-          <div text-angular ng-model="product.fee_info"></div>
-        </md-input-container>
-       
-        <md-input-container class="md-block" flex-gt-sm>
-          <div>其他说明</div>
-          <div text-angular ng-model="product.other_info"></div>
-        </md-input-container>
-      </div>
-      <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <div>申请攻略</div>
-          <div text-angular ng-model="product.apply_strategy"></div>
-        </md-input-container>
-      </div>
-      <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <div>微信产品详情</div>
-          <div text-angular ng-model="product.wechat_detail_info"></div>
-        </md-input-container>
-      </div> -->
 
+    </md-content>
+    <md-content layout-padding>
+      <div>已选文章（点击移除）</div>
+      <div layout="row">
+        <div class="user-detail-product-item" ng-repeat="article in select_article_list" ng-click="removeArticle(article)">
+          <img class="product-photo" ng-src="{{article.image}}" />
+          <div class="product-name">{{$index+1}}--{{article.title}}</div>
+        </div>
+      </div>
+      <div>所有文章（点击添加）</div>
+      <div layout="row">
+        <div class="user-detail-product-item" ng-repeat="article in article_list" ng-click="clickArticle(article)">
+          <img class="product-photo" ng-src="{{article.image}}" />
+          <div class="product-name">{{article.title}}</div>
+        </div>
+      </div>
     </md-content>
   </div>
 </div>
-
-
-
-

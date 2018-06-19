@@ -778,26 +778,6 @@ cSite.factory('QiniuService', [
 
     }]);
 
-'use strict';
-
-cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper', function ($rootScope, GlobalEvent, CommonHelper) {
-  return {
-    restrict: 'E',
-    templateUrl: '/c_backend/site_admin/directive/dialog_loading_box/dialog_loading_box.client.view.html',
-    replace: true,
-    scope: {},
-    controller: function ($scope, $element) {
-      $scope.dialogInfo = {
-        isShow: false
-      };
-
-      $rootScope.$on(GlobalEvent.onShowLoading, function (event, isLoading) {
-        $scope.dialogInfo.isShow = isLoading;
-      });
-    }
-  };
-}]);
-
 /**
  * 货物照片预览
  * author: louisha
@@ -911,6 +891,26 @@ cSite.directive('mPhotoScan', ['$document', function ($document) {
     }
   }
 }]);
+'use strict';
+
+cSite.directive('dialogLoadingBox', ['$rootScope', 'GlobalEvent', 'CommonHelper', function ($rootScope, GlobalEvent, CommonHelper) {
+  return {
+    restrict: 'E',
+    templateUrl: '/c_backend/site_admin/directive/dialog_loading_box/dialog_loading_box.client.view.html',
+    replace: true,
+    scope: {},
+    controller: function ($scope, $element) {
+      $scope.dialogInfo = {
+        isShow: false
+      };
+
+      $rootScope.$on(GlobalEvent.onShowLoading, function (event, isLoading) {
+        $scope.dialogInfo.isShow = isLoading;
+      });
+    }
+  };
+}]);
+
 /**
  * Created by lance on 2016/11/17.
  */
@@ -1848,8 +1848,8 @@ cSite.controller('PostCodeListController', [
 'use strict';
 
 cSite.controller('ProductDetailController', [
-  '$rootScope', '$scope', '$state', '$stateParams', '$timeout', 'QiniuService', 'ProductNetwork', 'CommonHelper',
-  function ($rootScope, $scope, $state, $stateParams, $timeout, QiniuService, ProductNetwork, CommonHelper) {
+  '$rootScope', '$scope', '$state', '$stateParams', '$timeout', 'QiniuService', 'ProductNetwork', 'ArticleNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, $timeout, QiniuService, ProductNetwork, ArticleNetwork, CommonHelper) {
     QiniuService.createUploader('qiniu-upload-test-button', function (info) {
       $timeout(function () {
         $scope.product.logo = QiniuService.getQiniuImageSrc(info.key);
@@ -1864,11 +1864,59 @@ cSite.controller('ProductDetailController', [
       console.log('upload successs : ---- ', info);
     });
 
+    $scope.article_list = [];
+    $scope.select_article_list = [];
+
+    $scope.articleList = function () {
+      ArticleNetwork.articleList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.article_list = data;
+          $scope.product.article_list = $scope.product.article_list || [];
+
+          $scope.product.article_list.forEach(function (pid) {
+            $scope.select_article_list.push($scope.article_list.filter(function (p) {
+              return p._id === pid;
+            })[0]);
+          });
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.clickArticle = function (article) {
+      var index = -1;
+      for (var i = 0; i < $scope.select_article_list.length; i++) {
+        if ($scope.select_article_list[i]._id === article._id) {
+          index = i;
+          break;
+        }
+      }
+      if (index === -1) {
+        $scope.select_article_list.push(article);
+      }
+    }
+
+    $scope.removeArticle = function (article) {
+      var index = -1;
+      for (var i = 0; i < $scope.select_article_list.length; i++) {
+        if ($scope.select_article_list[i]._id === article._id) {
+          index = i;
+          break;
+        }
+      }
+      if (index !== -1) {
+        $scope.select_article_list.splice(index, 1);
+      }
+    }
+
     $scope.product = {
       _id: $stateParams.product_id,
       name: '',
       logo: '',
       description: '',
+      article_list: [],
       min_limit: '',
       max_limit: '',
       refer_cost_per_day: '',
@@ -1885,7 +1933,7 @@ cSite.controller('ProductDetailController', [
       wechat_detail_info: '',
       shart_url_short: '',
       risk_codes: '',
-      gong_lue_img:'',
+      gong_lue_img: '',
       str1: '',
       str2: '',
       str3: '',
@@ -1907,6 +1955,12 @@ cSite.controller('ProductDetailController', [
     };
 
     $scope.updateProduct = function (event) {
+
+      var article_list = $scope.select_article_list.map(function (item) {
+        return item._id;
+      });
+      $scope.product.article_list = article_list;
+
       ProductNetwork.updateProduct($scope, { product_info: $scope.product }).then(function (data) {
         if (!data.err) {
           CommonHelper.showConfirm($scope, null, '操作成功', function () {
@@ -2221,27 +2275,6 @@ cSite.controller('UserDetailController', [
     //     $state.go('product_detail', { product_id: id||'' });
     // }
 
-    function syntaxHighlight(json) {
-      if (typeof json != 'string') {
-        json = JSON.stringify(json, undefined, 2);
-      }
-      json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-        var cls = 'number';
-        if (/^"/.test(match)) {
-          if (/:$/.test(match)) {
-            cls = 'key';
-          } else {
-            cls = 'string';
-          }
-        } else if (/true|false/.test(match)) {
-          cls = 'boolean';
-        } else if (/null/.test(match)) {
-          cls = 'null';
-        }
-        return '<span class="' + cls + '">' + match + '</span>';
-      });
-    }
     $scope.product_list = [];
     $scope.select_product_list = [];
     $scope.card_list = [];
@@ -2356,14 +2389,6 @@ cSite.controller('UserDetailController', [
     }
     $scope.goReport = function () {
       $state.go('user_vip_report', { user_id: $stateParams.user_id }, { reload: true });
-    }
-
-    $scope.goCarrier = function () {
-      $state.go('user_carrier_detail', { user_id: $stateParams.user_id }, { reload: true });
-    }
-
-    $scope.goPbc = function () {
-      $state.go('user_pbc_detail', { user_id: $stateParams.user_id }, { reload: true });
     }
 
     $scope.clickProduct = function (product) {

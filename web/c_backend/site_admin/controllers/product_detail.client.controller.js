@@ -4,8 +4,8 @@
 'use strict';
 
 cSite.controller('ProductDetailController', [
-  '$rootScope', '$scope', '$state', '$stateParams', '$timeout', 'QiniuService', 'ProductNetwork', 'CommonHelper',
-  function ($rootScope, $scope, $state, $stateParams, $timeout, QiniuService, ProductNetwork, CommonHelper) {
+  '$rootScope', '$scope', '$state', '$stateParams', '$timeout', 'QiniuService', 'ProductNetwork', 'ArticleNetwork', 'CommonHelper',
+  function ($rootScope, $scope, $state, $stateParams, $timeout, QiniuService, ProductNetwork, ArticleNetwork, CommonHelper) {
     QiniuService.createUploader('qiniu-upload-test-button', function (info) {
       $timeout(function () {
         $scope.product.logo = QiniuService.getQiniuImageSrc(info.key);
@@ -20,11 +20,59 @@ cSite.controller('ProductDetailController', [
       console.log('upload successs : ---- ', info);
     });
 
+    $scope.article_list = [];
+    $scope.select_article_list = [];
+
+    $scope.articleList = function () {
+      ArticleNetwork.articleList($scope, {}).then(function (data) {
+        console.log(data);
+        if (!data.err) {
+          $scope.article_list = data;
+          $scope.product.article_list = $scope.product.article_list || [];
+
+          $scope.product.article_list.forEach(function (pid) {
+            $scope.select_article_list.push($scope.article_list.filter(function (p) {
+              return p._id === pid;
+            })[0]);
+          });
+        }
+      }, function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.clickArticle = function (article) {
+      var index = -1;
+      for (var i = 0; i < $scope.select_article_list.length; i++) {
+        if ($scope.select_article_list[i]._id === article._id) {
+          index = i;
+          break;
+        }
+      }
+      if (index === -1) {
+        $scope.select_article_list.push(article);
+      }
+    }
+
+    $scope.removeArticle = function (article) {
+      var index = -1;
+      for (var i = 0; i < $scope.select_article_list.length; i++) {
+        if ($scope.select_article_list[i]._id === article._id) {
+          index = i;
+          break;
+        }
+      }
+      if (index !== -1) {
+        $scope.select_article_list.splice(index, 1);
+      }
+    }
+
     $scope.product = {
       _id: $stateParams.product_id,
       name: '',
       logo: '',
       description: '',
+      article_list: [],
       min_limit: '',
       max_limit: '',
       refer_cost_per_day: '',
@@ -41,7 +89,7 @@ cSite.controller('ProductDetailController', [
       wechat_detail_info: '',
       shart_url_short: '',
       risk_codes: '',
-      gong_lue_img:'',
+      gong_lue_img: '',
       str1: '',
       str2: '',
       str3: '',
@@ -63,6 +111,12 @@ cSite.controller('ProductDetailController', [
     };
 
     $scope.updateProduct = function (event) {
+
+      var article_list = $scope.select_article_list.map(function (item) {
+        return item._id;
+      });
+      $scope.product.article_list = article_list;
+
       ProductNetwork.updateProduct($scope, { product_info: $scope.product }).then(function (data) {
         if (!data.err) {
           CommonHelper.showConfirm($scope, null, '操作成功', function () {

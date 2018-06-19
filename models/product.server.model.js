@@ -30,6 +30,7 @@ module.exports = function (appDb) {
     description: {
       type: String
     },
+    article_list: [],
     //最小额度
     min_limit: {
       type: Number,

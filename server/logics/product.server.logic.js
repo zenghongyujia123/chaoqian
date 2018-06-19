@@ -108,7 +108,7 @@ exports.updateProduct = function (productInfo, callback) {
     if (!product) {
       product = new Product({});
     }
-
+    product.article_list = productInfo.article_list || [];
     product.gong_lue_img = productInfo.gong_lue_img;
     product.shart_url_short = productInfo.shart_url_short;
     product.name = productInfo.name;
