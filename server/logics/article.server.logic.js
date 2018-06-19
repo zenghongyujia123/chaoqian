@@ -64,12 +64,12 @@ exports.articleDetail = function (articleId, callback) {
 };
 
 
-// exports.articleListByIds = function (ids, callback) {
-//   ids = ids || [];
-//   article.find({ _id: { $in: ids } }, function (err, articles) {
-//     if (err) {
-//       return callback({ err: sysErr.database_query_error });
-//     }
-//     return callback(null, articles);
-//   });
-// };
+exports.articleListByIds = function (ids, callback) {
+  ids = ids || [];
+  Article.find({ _id: { $in: ids } }).exec(function (err, articles) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, articles);
+  });
+};

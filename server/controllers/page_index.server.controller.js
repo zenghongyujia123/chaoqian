@@ -42,8 +42,17 @@ exports.city_select = function (req, res, next) {
 
 exports.product_detail = function (req, res, next) {
   productLogic.productDetail(req.params.product_id, function (err, product) {
-    var filepath = path.join(__dirname, '../../web/c_platform/views/product_detail.client.view.html');
-    return res.render(filepath, { city: req.cookies.city || '', product: product });
+    if (product.article_list && product.article_list.length > 0) {
+      articleLogic.articleListByIds(product.article_list, function (err, article_list) {
+        var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
+        return res.render(filepath, { city: req.cookies.city || '', article: article_list[0] });
+      });
+    }
+    else {
+      var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
+      return res.render(filepath, { city: req.cookies.city || '', article: {} });
+    }
+
   });
 };
 

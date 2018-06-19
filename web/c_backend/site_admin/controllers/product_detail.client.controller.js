@@ -137,6 +137,8 @@ cSite.controller('ProductDetailController', [
           console.log(data);
           if (!data.err) {
             $scope.product = data;
+
+            $scope.articleList();
           }
         }, function (err) {
           console.log(err);

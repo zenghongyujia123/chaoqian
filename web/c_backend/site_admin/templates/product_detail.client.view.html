@@ -158,14 +158,14 @@
     <md-content layout-padding>
       <div>已选文章（点击移除）</div>
       <div layout="row">
-        <div class="user-detail-product-item" ng-repeat="article in select_article_list" ng-click="removeArticle(article)">
+        <div class="user-detail-product-item" style="height: auto;" ng-repeat="article in select_article_list" ng-click="removeArticle(article)">
           <img class="product-photo" ng-src="{{article.image}}" />
           <div class="product-name">{{$index+1}}--{{article.title}}</div>
         </div>
       </div>
       <div>所有文章（点击添加）</div>
       <div layout="row">
-        <div class="user-detail-product-item" ng-repeat="article in article_list" ng-click="clickArticle(article)">
+        <div class="user-detail-product-item" style="height: auto;" ng-repeat="article in article_list" ng-click="clickArticle(article)">
           <img class="product-photo" ng-src="{{article.image}}" />
           <div class="product-name">{{article.title}}</div>
         </div>
