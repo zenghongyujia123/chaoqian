@@ -19,8 +19,11 @@
 
     <div class="c-credit-content-area">
       <div class="c-center-area">
-        <div class="c-area-title">贷款专区
-          <span class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</span>
+        <div class="c-area-title">
+          <span>贷款专区
+            <span class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</span>
+          </span>
+          <span class="c-area-sub-title">更多...</span>
         </div>
 
 
@@ -63,8 +66,11 @@
     </div>
     <div class="c-credit-content-area">
       <div class="c-center-area">
-        <div class="c-area-title">攻略专区
-          <span class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</span>
+        <div class="c-area-title">
+          <span>攻略专区
+            <span class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</span>
+          </span>
+          <span class="c-area-sub-title">更多...</span>
         </div>
 
         <% for(var i = 0;i<articles.length;i++){ %>
@@ -80,7 +86,10 @@
                 <%= articles[i].description %>
               </div>
               <div class="right-item-footer">
-                <%= articles[i].tag_string %> <span>发布日期： <%= moment( articles[i].create_time).format('YYYY-MM-DD HH:mm') %> </span>
+                <%= articles[i].tag_string %>
+                  <span>发布日期：
+                    <%= moment( articles[i].create_time).format('YYYY-MM-DD HH:mm') %>
+                  </span>
               </div>
             </div>
           </a>
