@@ -70,7 +70,7 @@
         <% for(var i = 0;i<articles.length;i++){ %>
           <a href="/page/article_detail/<%= articles[i]._id %>" class="c-gonglue-item">
             <div class="gonglue-item-left">
-              <img src="../c_platform/images/logo.png">
+              <img src="<%= articles[i].image %>">
             </div>
             <div class="gonglue-item-right">
               <h4 class="right-item-title">
