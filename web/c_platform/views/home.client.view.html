@@ -80,7 +80,7 @@
                 <%= articles[i].description %>
               </div>
               <div class="right-item-footer">
-                <%= articles[i].tag_string %>
+                <%= articles[i].tag_string %> <span>发布日期： <%= moment( articles[i].create_time).format('YYYY-MM-DD HH:mm') %> </span>
               </div>
             </div>
           </a>

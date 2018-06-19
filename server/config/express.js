@@ -12,6 +12,7 @@ var express = require('express'),
   config = require('./config'),
   path = require('path'),
   ejs = require('ejs'),
+  moment = require('moment'),
   async = require('async'),
   mongoose = require('mongoose');
 
@@ -39,6 +40,8 @@ module.exports = function () {
       next();
     });
   });
+
+  app.locals.moment = moment;
 
   // Should be placed before express.static
   app.use(compress({
