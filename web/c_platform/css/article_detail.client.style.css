@@ -15,10 +15,21 @@
   color: #999;
 }
 .n-center .n-right {
+  font-size: 12px;
   width: 28%;
+}
+.n-center .n-right .right-item {
   border: 1px solid #efefef;
   margin-top: 20px;
   padding: 10px 20px;
+}
+.n-center .n-right .right-item h4 {
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 10px;
+}
+.n-center .n-right .right-item a {
+  color: #666;
+  line-height: 30px;
 }
 .c-header-area .c-center-area {
   padding: 0px;
