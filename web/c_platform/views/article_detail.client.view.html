@@ -35,9 +35,15 @@
           <% article_single_list.forEach(function(item){ %>
             <a href="/page/article_detail/<%= item._id %>" class="a-item">
               <img src="<%= item.image %>">
-              <p>
-                <%= item.title %>
-              </p>
+              <div class="a-content">
+                <div class="a-title">
+                  <%= item.title %>
+                </div>
+                <!-- <div class="a-footer">
+                  <%= item.read_count %> |
+                    <%= moment( item.create_time).format('YYYY-MM-DD') %>
+                </div> -->
+              </div>
             </a>
             <% }) %>
 
