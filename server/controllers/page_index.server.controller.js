@@ -44,13 +44,15 @@ exports.product_detail = function (req, res, next) {
   productLogic.productDetail(req.params.product_id, function (err, product) {
     if (product.article_list && product.article_list.length > 0) {
       articleLogic.articleListByIds(product.article_list, function (err, article_list) {
-        var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
-        return res.render(filepath, { city: req.cookies.city || '', article: article_list[0] });
+        articleLogic.articleSingleList({}, function (err, article_single_list) {
+          var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
+          return res.render(filepath, { city: req.cookies.city || '', article: article_list[0], article_single_list: article_single_list });
+        })
       });
     }
     else {
       var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
-      return res.render(filepath, { city: req.cookies.city || '', article: {} });
+      return res.render(filepath, { city: req.cookies.city || '', article: {}, article_single_list: [] });
     }
 
   });
@@ -58,8 +60,10 @@ exports.product_detail = function (req, res, next) {
 
 exports.article_detail = function (req, res, next) {
   articleLogic.articleDetail(req.params.article_id, function (err, article) {
-    var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
-    return res.render(filepath, { city: req.cookies.city || '', article: article });
+    articleLogic.articleSingleList({}, function (err, article_single_list) {
+      var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
+      return res.render(filepath, { city: req.cookies.city || '', article: article, article_single_list: article_single_list });
+    });
   });
 };
 

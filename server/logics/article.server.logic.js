@@ -54,6 +54,17 @@ exports.articleList = function (info, callback) {
   });
 };
 
+
+exports.articleSingleList = function (info, callback) {
+  var query = {}
+  Article.find(query).select('-content').sort({ create_time: -1 }).exec(function (err, articles) {
+    if (err) {
+      return callback({ err: sysErr.database_query_error });
+    }
+    return callback(null, articles);
+  });
+};
+
 exports.articleDetail = function (articleId, callback) {
   Article.findOne({ _id: articleId }, function (err, article) {
     if (err) {
