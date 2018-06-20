@@ -33,14 +33,12 @@
             热门攻略
           </h4>
           <% article_single_list.forEach(function(item){ %>
-            <div class="a-item">
+            <a href="/page/article_detail/<%= item._id %>" class="a-item">
               <img src="<%= item.image %>">
-              <a href="/page/article_detail/<%= item._id %>" style="display: block">
-                <p>
-                  <%= item.title %>
-                </p>
-              </a>
-            </div>
+              <p>
+                <%= item.title %>
+              </p>
+            </a>
             <% }) %>
 
         </div>
