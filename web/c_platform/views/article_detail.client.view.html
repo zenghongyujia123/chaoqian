@@ -33,10 +33,14 @@
             热门攻略
           </h4>
           <% article_single_list.forEach(function(item){ %>
-
-            <a href="/page/article_detail/<%= item._id %>" style="display: block">
-              <%= item.title %>
-            </a>
+            <div class="a-item">
+              <img src="<%= item.image %>">
+              <a href="/page/article_detail/<%= item._id %>" style="display: block">
+                <p>
+                  <%= item.title %>
+                </p>
+              </a>
+            </div>
             <% }) %>
 
         </div>
@@ -45,9 +49,12 @@
             热门文章
           </h4>
           <% article_single_list.forEach(function(item){ %>
-            <a href="/page/article_detail/<%= item._id %>" style="display: block">
-              <%= item.title %>
-            </a>
+            <div class="a-item">
+              <a href="/page/article_detail/<%= item._id %>" style="display: block">
+                <%= item.title %>
+              </a>
+            </div>
+
             <% }) %>
         </div>
       </div>

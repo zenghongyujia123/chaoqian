@@ -1,5 +1,4 @@
-body {
-}
+body {}
 
 .n-center {
   margin: auto;
@@ -17,19 +16,29 @@ body {
     }
   }
   .n-right {
-    font-size: 12px;
+    font-size: 14px;
     width: 28%;
     .right-item {
       border: 1px solid #efefef;
       margin-top: 20px;
       padding: 10px 20px;
+      .a-item {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        img {
+          width:100px;
+          height: 60px;
+          margin-right: 10px;
+        }
+        a {
+          width: 100%;
+          color: #666;
+        }
+      }
       h4 {
         border-bottom: 1px solid #efefef;
         padding-bottom: 10px;
-      }
-      a {
-        color: #666;
-        line-height: 30px;
       }
     }
   }
