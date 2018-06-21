@@ -23,6 +23,22 @@ exports.index = function (req, res, next) {
   });
 };
 
+exports.home_mip = function (req, res, next) {
+  req.cookies.city = req.params.city || req.cookies.city || '';
+  cookieLib.setCookie(res, 'city', req.cookies.city);
+  productLogic.productList({}, function (err, products) {
+    var filepath = path.join(__dirname, '../../web/c_platform/views/home.client.view.html');
+    articleLogic.articleList({}, function (err, articles) {
+      return res.render(filepath, {
+        city: req.cookies.city || '',
+        articles: articles || [],
+        products: products || [],
+        device: req.cookies.device || ''
+      });
+    });
+  });
+};
+
 exports.product_list = function (req, res, next) {
   productFilterloigc.getFilter(function (err, filters) {
     if (err) {
