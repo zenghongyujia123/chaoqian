@@ -8,7 +8,8 @@ var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
 var cookieLib = require('../../libraries/cookie');
 exports.index = function (req, res, next) {
-  req.cookies.city = req.params.city || req.cookies.city || '';
+  console.log(req.headers.host);
+  creq.cookies.city = req.params.city || req.cookies.city || '';
   cookieLib.setCookie(res, 'city', req.cookies.city);
   productLogic.productList({}, function (err, products) {
     var filepath = path.join(__dirname, '../../web/c_platform/views/home.client.view.html');
