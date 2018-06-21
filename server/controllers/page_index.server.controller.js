@@ -15,7 +15,7 @@ exports.index = function (req, res, next) {
   }
   req.cookies.city = req.params.city || req.cookies.city || '';
   cookieLib.setCookie(res, 'city', req.cookies.city);
-  productLogic.productList({}, function (err, products) {
+  productLogic.productList({sort_key:'update_time',sort_value:-1}, function (err, products) {
     var filepath = path.join(__dirname, '../../web/c_platform/views/home.client.view.html');
     articleLogic.articleList({}, function (err, articles) {
       return res.render(filepath, {
