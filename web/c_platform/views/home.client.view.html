@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>【全国贷款】全国贷款公司_全国银行贷款_全国个人贷款-潮钱网</title>
-  <meta name="keywords" content="全国贷款,全国贷款公司,全国个人贷款,全国银行贷款">
+  <meta name="keywords" content="贷款,全国贷款,全国贷款公司,全国个人贷款,全国银行贷款">
   <meta name="description" content="潮钱网提供专业的全国贷款，全国个人贷款,全国银行贷款等贷款服务。找全国贷款，全国贷款公司，全国个人贷款、全国银行贷款信息就到潮钱网。">
   <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../c_platform/css/index.client.style.css" />
@@ -20,7 +20,7 @@
     <div class="c-credit-content-area">
       <div class="c-center-area">
         <div class="c-area-title">
-          <span>贷款专区
+          <span title="潮钱网-贷款-贷款专区">贷款专区
             <span class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</span>
           </span>
           <span class="c-area-sub-title">更多...</span>
@@ -30,7 +30,7 @@
         <% for(var i =0;i<products.length;i++){ %>
           <div class="c-credit-content-item-container">
             <div class="c-credit-content-item blue">
-              <h4 class="content-title">
+              <h4 class="content-title" title="贷款-贷款产品-<%= products[i].name %>-潮钱网">
                 <%= products[i].name %>
               </h4>
               <div class="content-logo">
@@ -67,7 +67,7 @@
     <div class="c-credit-content-area">
       <div class="c-center-area">
         <div class="c-area-title">
-          <span>攻略专区
+          <span title="潮钱网-贷款攻略-攻略专区">攻略专区
             <span class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</span>
           </span>
           <span class="c-area-sub-title">更多...</span>
@@ -79,7 +79,7 @@
               <img src="<%= articles[i].image %>">
             </div>
             <div class="gonglue-item-right">
-              <h4 class="right-item-title">
+              <h4 class="right-item-title" title="贷款-贷款文章-贷款攻略-<%= articles[i].title %>-潮钱网">
                 <%= articles[i].title %>
               </h4>
               <div class="right-item-content">

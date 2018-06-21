@@ -18,9 +18,8 @@
   <% include ../../c_platform/views/header.client.view.html %>
     <div class="n-center">
       <div class="n-left">
-        <h3>
+        <h3 title="<%= article.title||'' %>">
           <%= article.title||'' %>
-
         </h3>
         <h5 class="n-description">
           <%= article.description||'' %>
