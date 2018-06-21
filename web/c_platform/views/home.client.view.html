@@ -56,7 +56,7 @@
                   <% } %>
                     <% } %>
                       <div class="content-footer">
-                        <a class="content-btn" href="/page/product_detail/<%= (products[i]._id) %>">查看攻略</a>
+                        <a class="content-btn" href="/page/product_detail/<%= (products[i]._id) %>" title="贷款-贷款产品-<%= products[i].name %>-潮钱网">查看攻略</a>
                         <!-- <button class="content-btn red">查看攻略</button> -->
                       </div>
             </div>
@@ -74,7 +74,7 @@
         </div>
 
         <% for(var i = 0;i<articles.length;i++){ %>
-          <a href="/page/article_detail/<%= articles[i]._id %>" class="c-gonglue-item">
+          <a href="/page/article_detail/<%= articles[i]._id %>" class="c-gonglue-item" o-title="贷款-贷款文章-贷款攻略-<%= articles[i].title %>-潮钱网">
             <div class="gonglue-item-left">
               <img src="<%= articles[i].image %>">
             </div>
