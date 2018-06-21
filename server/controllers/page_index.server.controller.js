@@ -9,6 +9,10 @@ var provinces = require('../constants/city');
 var cookieLib = require('../../libraries/cookie');
 exports.index = function (req, res, next) {
   console.log(req.headers.host);
+
+  if(req.headers.host==='m.chaoqianwang.com'){
+    return res.redirect('/mip');
+  }
   req.cookies.city = req.params.city || req.cookies.city || '';
   cookieLib.setCookie(res, 'city', req.cookies.city);
   productLogic.productList({}, function (err, products) {
