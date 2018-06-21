@@ -6,12 +6,16 @@
   <title>【全国贷款】全国贷款公司_全国银行贷款_全国个人贷款-潮钱网</title>
   <meta name="keywords" content="贷款,全国贷款,全国贷款公司,全国个人贷款,全国银行贷款">
   <meta name="description" content="潮钱网提供专业的全国贷款，全国个人贷款,全国银行贷款等贷款服务。找全国贷款，全国贷款公司，全国个人贷款、全国银行贷款信息就到潮钱网。">
-  <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+
+  <!-- canonical 中的链接优先填写对应内容的移动端页面（H5）地址 -->
+  <link rel="canonical" href="https://www.example.com/your/path.html">
+
+  <!-- <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../c_platform/css/index.client.style.css" />
-  <link rel="stylesheet" href="../c_platform/css/home.client.style.css" />
-  <script src="../libs/jquery/dist/jquery.js"></script>
-  <script src="https://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-  <meta name="baidu-site-verification" content="4hPH3hudxx" />
+  <link rel="stylesheet" href="../c_platform/css/home.client.style.css" /> -->
+  <link rel="canonical" href="http://www.chaoqianwang.com/page/home_mip">
 </head>
 
 <body>
@@ -40,7 +44,7 @@
                 <div class="qrcode">
 
                 </div>
-                <img src="<%= products[i].logo %>">
+                <mip-img src="<%= products[i].logo %>">
               </div>
               <div class="qrcode-tip">扫二维码安装</div>
               <div class="content-descrption">
@@ -76,7 +80,7 @@
         <% for(var i = 0;i<articles.length;i++){ %>
           <a href="/page/article_detail/<%= articles[i]._id %>" class="c-gonglue-item" o-title="贷款-贷款文章-贷款攻略-<%= articles[i].title %>-潮钱网">
             <div class="gonglue-item-left">
-              <img src="<%= articles[i].image %>">
+              <mip-img src="<%= articles[i].image %>">
             </div>
             <div class="gonglue-item-right">
               <h4 class="right-item-title" title="贷款-贷款文章-贷款攻略-<%= articles[i].title %>-潮钱网">
@@ -96,30 +100,10 @@
           <% } %>
       </div>
     </div>
+    <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
 </body>
 <script>
-  $(function () {
 
-    $(function () {
-
-      $('.c-credit-content-item').hover(function () {
-        if ($(this).find('.qrcode').attr('has_qrcode') === 'true') {
-          return;
-        }
-
-        $(this).find('.qrcode').qrcode({
-          render: "table",
-          text: $(this).find('.shart_url_short').text(),
-          width: 120,
-          height: 120,
-          foreground: "#C00",
-          background: "#FFF",
-        });
-
-        $(this).find('.qrcode').attr('has_qrcode', 'true');
-      })
-    });
-  })
 </script>
 
 </html>
