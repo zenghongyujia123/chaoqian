@@ -52,8 +52,8 @@ exports.product_history_list_by_name = function (name, callback) {
 
 exports.product_history_list = function (info, callback) {
   var match = {};
-  match.type = info.type || 'product';
-  
+  match.type = info.type || { $or: [{ type: '' }, { type: 'product' }] };
+
   if (info.start_time) {
     if (info.end_time) {
       match.$and = [

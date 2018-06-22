@@ -34,7 +34,7 @@ exports.productDetail = function (req, res, next) {
 exports.product_history_list = function (req, res, next) {
   var today = new Date(new Date().setHours(0, 0, 0, 0));
   var yestoday = new Date(today).setDate(today.getDate() - 1)
-  var type = req.body.type || 'product';
+  var type = req.body.type || '';
 
   productLogic.product_history_list({ type: type }, function (err, total_result) {
     productLogic.product_history_list({ start_time: yestoday, end_time: today, type: type }, function (err, yestoday_result) {
