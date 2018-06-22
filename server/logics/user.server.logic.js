@@ -179,6 +179,9 @@ exports.updateUserWechatInfo = function (user, openid, wechat_info, callback) {
 }
 
 exports.requireByUserId = function (userid, callback) {
+  if (!userid) {
+    userid = mongoose.generateNewObjectId();
+  }
   User.findOne({ _id: userid }, function (err, user) {
     if (err) {
       return callback({ err: sysErr.database_query_error });
