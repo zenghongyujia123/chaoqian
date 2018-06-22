@@ -27,12 +27,13 @@
           <%= (user.wechat_info.openid?user.wechat_info.nickname:'--') %>
         </div>
 
-
+        <div class="vip-tag no">非代理</div>
+<!-- 
         <% if (user.vip_status==='passed') { %>
           <div class="vip-tag">vip会员</div>
           <% } else  {%>
             <div class="vip-tag no">非vip会员</div>
-            <% } %>
+            <% } %> -->
               <div class="vip-tag">
                 <%= user.agent_rate %>
               </div>
