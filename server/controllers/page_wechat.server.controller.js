@@ -240,6 +240,11 @@ exports.me_account = function (req, res, next) {
   });
 };
 
+exports.me_loan = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_wechat/views/me_loan.client.view.html');
+  return res.render(filepath, {});
+};
+
 exports.me_bill = function (req, res, next) {
   var user = req.user;
   var filepath = path.join(__dirname, '../../web/c_wechat/views/me_bill.client.view.html');
@@ -301,7 +306,7 @@ exports.me_achievement = function (req, res, next) {
 
   var filepath = path.join(__dirname, '../../web/c_wechat/views/me_achievement.client.view.html');
   return res.render(filepath, { user: req.user });
-  
+
 
   var as_parent_record_list = [];
   var as_topparent_record_list = [];

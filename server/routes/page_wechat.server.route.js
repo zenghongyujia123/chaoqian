@@ -37,6 +37,8 @@ module.exports = function (app) {
   app.route('/page_wechat/me_query').get(userFilter.requireUser, index.me_query);
 
   app.route('/page_wechat/me_account').get(userFilter.requireUser, index.me_account);
+  app.route('/page_wechat/me_loan').get(userFilter.requireUser, index.me_loan);
+
   app.route('/page_wechat/me_achievement').get(userFilter.requireUser, index.me_achievement);
   app.route('/page_wechat/apply_third').get(userFilter.requireUser, index.apply_third);
 

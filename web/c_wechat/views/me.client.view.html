@@ -50,7 +50,7 @@
       <span class="item-text">我的业绩</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a> -->
-    <a class="list-item" href="javascript:;">
+    <a class="list-item" onclick="goToWindow('/page_wechat/me_account','我的账单')" href="javascript:;">
       <span class="item-text ">我的账单</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
@@ -58,19 +58,19 @@
       <span class="item-text">我的赏金</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a> -->
-    <a class="list-item" onclick="goToWindow('/page_wechat/me_query','查询结果')" >
+    <a class="list-item" onclick="goToWindow('/page_wechat/me_query','查询结果')">
       <span class="item-text">查询结果</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
-    <a class="list-item" onclick="goToWindow('/page_wechat/me_agent','代理业绩')" >
+    <a class="list-item" onclick="goToWindow('/page_wechat/me_agent','代理业绩')">
       <span class="item-text">代理业绩</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
-    <a class="list-item" onclick="goToWindow('/page_wechat/me_account','个人消费')" >
+    <!-- <a class="list-item" onclick="goToWindow('/page_wechat/me_account','个人消费')">
       <span class="item-text">个人消费</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
-    </a>
-    <a class="list-item contacts" href="javascript:;" >
+    </a> -->
+    <a class="list-item contacts" href="javascript:;">
       <span class="item-text">联系我们</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
@@ -93,13 +93,14 @@
 
 </body>
 <script>
-  $(function(){
-    $('.no_open').click(function(){
+  $(function () {
+    $('.no_open').click(function () {
       $.alert("即将开放！");
     });
-    $('.contacts').click(function(){
-      $.alert("<div style='text-align:left'>微信客服：jingbeikefu</div><div style='text-align:left'>商务合作：cwas@jingbeihulian.com</div>",'联系客服');
+    $('.contacts').click(function () {
+      $.alert("<div style='text-align:left'>微信客服：jingbeikefu</div><div style='text-align:left'>商务合作：cwas@jingbeihulian.com</div>", '联系客服');
     });
   });
 </script>
+
 </html>
