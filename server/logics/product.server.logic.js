@@ -54,13 +54,18 @@ exports.product_history_list = function (info, callback) {
   var match = {};
 
   if (info.start_time) {
-    match.$and = [
-      {
-        create_time: { $gte: new Date(info.start_time) }
-      },
-      {
-        create_time: { $lte: new Date(info.end_time) }
-      }];
+    if (info.end_time) {
+      match.$and = [
+        {
+          create_time: { $gte: new Date(info.start_time) }
+        },
+        {
+          create_time: { $lte: new Date(info.end_time) }
+        }];
+    }
+    else {
+      match.create_time = { $gte: new Date(info.start_time) };
+    }
   }
 
   ProductHistory.aggregate([

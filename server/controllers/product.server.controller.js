@@ -32,17 +32,19 @@ exports.productDetail = function (req, res, next) {
 };
 
 exports.product_history_list = function (req, res, next) {
-  var end = new Date(new Date().setHours(0, 0, 0, 0));
-  var start = new Date(end).setDate(end.getDate() - 1)
+  var today = new Date(new Date().setHours(0, 0, 0, 0));
+  var yestoday = new Date(end).setDate(end.getDate() - 1)
   console.log(start);
   console.log(end);
   productLogic.product_history_list({}, function (err, total_result) {
-    productLogic.product_history_list({ start_time: start, end_time: end }, function (err, yestoday_result) {
-      if (err) {
-        return next(err);
-      }
-      req.data = { total_result: total_result, yestoday_result: yestoday_result };
-      return next();
+    productLogic.product_history_list({ start_time: yestoday, end_time: today }, function (err, yestoday_result) {
+      productLogic.product_history_list({ start_time: today }, function (err, today_result) {
+        if (err) {
+          return next(err);
+        }
+        req.data = { total_result: total_result, yestoday_result: yestoday_result, today_result: today_result };
+        return next();
+      });
     })
   });
 };

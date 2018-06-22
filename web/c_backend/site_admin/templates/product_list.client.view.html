@@ -10,10 +10,13 @@
       <div class="column-item" flex="">产品名称</div>
 
       <div class="column-item" flex="">点击ip数</div>
-      <div class="column-item" flex="">点击总数</div>
+      <!-- <div class="column-item" flex="">点击总数</div> -->
       
       <div class="column-item" flex="">昨日点击ip数</div>
-      <div class="column-item" flex="">昨日点击总数</div>
+      <!-- <div class="column-item" flex="">昨日点击总数</div> -->
+      
+      <div class="column-item" flex="">今日点击ip数</div>
+      <!-- <div class="column-item" flex="">今日点击总数</div> -->
       
       <div class="column-item" flex="">批款额度</div>
       <div class="column-item" flex="">下款时间</div>
@@ -27,13 +30,18 @@
         <img ng-src="{{product.logo}}"></img>
       </div>
       <div class="column-item" flex="">{{product.name}}</div>
+
       <div class="column-item" flex="">{{product.ip_count||''}}</div>
-      <div class="column-item" flex="">{{product.click_count||''}}</div>
+      <!-- <div class="column-item" flex="">{{product.click_count||''}}</div> -->
 
       <div class="column-item" flex="">{{product.yestoday_ip_count||''}}</div>
-      <div class="column-item" flex="">{{product.yestoday_click_count||''}}</div>
+      <!-- <div class="column-item" flex="">{{product.yestoday_click_count||''}}</div> -->
 
+      <div class="column-item" flex="">{{product.today_ip_count||''}}</div>
+      <!-- <div class="column-item" flex="">{{product.today_click_count||''}}</div> -->
 
+      
+      
       
 
       <div class="column-item" flex="">{{product.min_limit}}-{{product.max_limit}}</div>
