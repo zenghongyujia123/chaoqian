@@ -95,18 +95,18 @@ exports.product_history_list = function (info, callback) {
   });
 }
 
-exports.update_product_history = function (user_id, name, ip, callback) {
+exports.update_product_history = function (user_id, name, ip,type, callback) {
   new ProductHistory({
     name: name,
     user: user_id,
-    ip: ip
+    ip: ip,
+    type:type
   }).save(function () {
     return callback();
   })
 }
 
 exports.getProductShareUrl = function (productInfo, callback) {
-
   var url = 'http://www.chaoqianwang.com/page_h5/third_page?url=' + encodeURIComponent(productInfo.organization_url) + '&product_name=' + productInfo.name;
   agent.get('http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long=' + encodeURIComponent(url))
     .end(function (err, data) {

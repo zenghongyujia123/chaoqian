@@ -27,6 +27,10 @@ module.exports = function (appDb) {
     url: {
       type: String,
     },
+    shart_url_short: {
+      type: String,
+      default: ''
+    },
     str1: {
       type: String,
       require: true

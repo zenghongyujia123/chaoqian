@@ -226,6 +226,9 @@ module.exports = function (appDb) {
     },
     ip: {
       type: String,
+    },
+    type: {
+      type: String//product,jietiao
     }
   });
 

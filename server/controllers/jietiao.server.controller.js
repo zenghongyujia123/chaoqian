@@ -4,12 +4,15 @@
 var jietiaoLogic = require('./../logics/jietiao');
 
 exports.updateJietiao = function (req, res, next) {
-  jietiaoLogic.updateJietiao(req.body.jietiao_info, function (err, result) {
-    if (err) {
-      return next(err);
-    }
-    req.data = result;
-    return next();
+  jietiaoLogic.getShareUrl(req.body.jietiao_info, function (err, url_info) {
+    req.body.jietiao_info.shart_url_short = url_info[0].url_short;
+    jietiaoLogic.updateJietiao(req.body.jietiao_info, function (err, result) {
+      if (err) {
+        return next(err);
+      }
+      req.data = result;
+      return next();
+    });
   });
 };
 

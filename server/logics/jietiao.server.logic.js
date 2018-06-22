@@ -5,8 +5,18 @@ var mongoose = require('./../../libraries/mongoose');
 var appDb = mongoose.appDb;
 var JieTiao = appDb.model('JieTiao');
 var sysErr = require('./../errors/system');
+var agent = require('superagent').agent();
 
 var that = exports;
+
+exports.getShareUrl = function (info, callback) {
+  var url = 'http://www.chaoqianwang.com/page_h5/third_page?url=' + encodeURIComponent(info.url) + '&product_name=' + info.name + '&type=jietiao';
+  agent.get('http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long=' + encodeURIComponent(url))
+    .end(function (err, data) {
+      return callback(err, data.body);
+    });
+}
+
 
 exports.updateJietiao = function (jietiaoInfo, callback) {
 
@@ -22,7 +32,7 @@ exports.updateJietiao = function (jietiaoInfo, callback) {
     if (!jietiao) {
       jietiao = new JieTiao({});
     }
-
+    jietiao.shart_url_short = jietiaoInfo.shart_url_short;
     jietiao.name = jietiaoInfo.name;
     jietiao.logo = jietiaoInfo.logo;
     jietiao.require = jietiaoInfo.require;

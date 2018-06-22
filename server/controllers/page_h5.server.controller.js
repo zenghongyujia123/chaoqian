@@ -28,7 +28,7 @@ exports.page_list_qq = function (req, res, next) {
 
 exports.third_page = function (req, res, next) {
   var url = req.query.url;
-  productLogic.update_product_history(req.cookies.user_id, req.query.product_name, getClientIp(req), function () {
+  productLogic.update_product_history(req.cookies.user_id, req.query.product_name, getClientIp(req), req.query.type || 'product', function () {
 
   });
   return res.redirect(url);
