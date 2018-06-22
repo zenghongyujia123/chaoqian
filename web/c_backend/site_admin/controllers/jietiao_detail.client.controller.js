@@ -17,6 +17,7 @@ cSite.controller('JietiaoDetailController', [
       _id: $stateParams.jietiao_id,
       logo: '',
       name: '',
+      shart_url_short: '',
       require: '',
       str1: '',
       str2: '',
