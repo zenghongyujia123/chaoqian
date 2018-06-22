@@ -52,7 +52,8 @@ exports.product_history_list_by_name = function (name, callback) {
 
 exports.product_history_list = function (info, callback) {
   var match = {};
-
+  match.type = info.type || 'product';
+  
   if (info.start_time) {
     if (info.end_time) {
       match.$and = [
@@ -95,12 +96,12 @@ exports.product_history_list = function (info, callback) {
   });
 }
 
-exports.update_product_history = function (user_id, name, ip,type, callback) {
+exports.update_product_history = function (user_id, name, ip, type, callback) {
   new ProductHistory({
     name: name,
     user: user_id,
     ip: ip,
-    type:type
+    type: type
   }).save(function () {
     return callback();
   })
