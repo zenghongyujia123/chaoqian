@@ -34,6 +34,8 @@ exports.productDetail = function (req, res, next) {
 exports.product_history_list = function (req, res, next) {
   var end = new Date(new Date().setHours(0, 0, 0, 0));
   var start = end - 86400;//前一天
+  console.log(start);
+  console.log(end);
   productLogic.product_history_list({}, function (err, total_result) {
     productLogic.product_history_list({ start_time: start, end_time: end }, function (err, yestoday_result) {
       if (err) {
