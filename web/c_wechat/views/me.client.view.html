@@ -55,10 +55,15 @@
       <span class="item-text">查询结果</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
-    <a class="list-item" onclick="goToWindow('/page_wechat/me_agent','代理业绩')">
+
+    <a class="list-item no_permission">
       <span class="item-text">代理业绩</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
+    <!-- <a class="list-item no_permission" onclick="goToWindow('/page_wechat/me_agent','代理业绩')">
+      <span class="item-text">代理业绩</span>
+      <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
+    </a> -->
     <!-- <a class="list-item" onclick="goToWindow('/page_wechat/me_account','个人消费')">
       <span class="item-text">个人消费</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
@@ -68,27 +73,14 @@
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a>
   </div>
-
-  <!-- <div class="home-bottom">
-    <a href="https://static.weidai.com.cn/static/common/weiApp/webH5/channelAdd/index.html?channel=28&shopNo=" class="item left">
-      <img src="../c_wechat/images/me/jczx.png" class="icon"></img>
-      <div class="title">以车借贷</div>
-      <div class="description">有车就能下款，700家店面管家式服务满足您</div>
-    </a>
-    <a href="https://m.shebaoonline.com/weixin/getweixin.do?name=index/index&invitCode=ISA3kj" class="item right">
-      <img src="../c_wechat/images/me/sbgjj.png" class="icon"></img>
-      <div class="title">社保公积金</div>
-      <div class="description">全国80个城市,无间断社保公积金精养资质快来看</div>
-    </a>
-  </div> -->
-
-
-
 </body>
 <script>
   $(function () {
     $('.no_open').click(function () {
       $.alert("即将开放！");
+    });
+    $('.no_permission').click(function(){
+      $.alert("抱歉您没有权限，如需开通请联系我们！");
     });
     $('.contacts').click(function () {
       $.alert(
