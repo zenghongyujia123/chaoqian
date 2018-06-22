@@ -35,88 +35,16 @@
         <div class="c-city-container">
           <div class="c-city-row">
             <p class="city-key">
-              <%=provinces[i].name%>
+              <%=provinces[i].name%>贷款
             </p>
             <% for(var j=0; j<provinces[i].citys.length;j++){%>
               <a href="/page/index/<%=provinces[i].citys[j]%>" class="city-value">
-                <%=provinces[i].citys[j]%>
+                <%=provinces[i].citys[j]%>贷款
               </a>
               <%}%>
           </div>
         </div>
       <%}%>
-
-
-          <!-- <div class="c-city-container">
-        <div class="c-city-row">
-          <p class="city-key">热门城市</p>
-          <a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a>
-        </div>
-      </div>
-      <div class="c-city-container">
-        <div class="c-city-row">
-          <p class="city-key">热门城市</p>
-          <a href="上海" class="city-value">上海</a>
-          <a href="上海" class="city-value">重庆</a>
-          <a href="上海" class="city-value">北京</a>
-          <a href="上海" class="city-value">天津</a>
-        </div>
-      </div>
-      <div class="c-city-container">
-        <div class="c-city-row">
-          <p class="city-key">热门城市</p>
-          <a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a><a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a><a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a><a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a><a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a>
-        </div>
-      </div>
-      <div class="c-city-container">
-        <div class="c-city-row">
-          <p class="city-key">热门城市</p>
-          <a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a><a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a><a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a><a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a><a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a><a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a><a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a><a class="city-value">上海</a>
-          <a class="city-value">重庆</a>
-          <a class="city-value">北京</a>
-          <a class="city-value">天津</a>
-        </div>
-      </div> -->
     </div>
 
     <% include ../../c_platform/views/footer.client.view.html %>
