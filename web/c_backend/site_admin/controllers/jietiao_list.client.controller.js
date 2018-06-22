@@ -52,5 +52,7 @@ cSite.controller('JietiaoListController', [
       });
     };
 
-    $scope.jietiaoList();
+    $scope.jietiaoList(function(){
+      $scope.product_history_list();
+    });
   }]);
