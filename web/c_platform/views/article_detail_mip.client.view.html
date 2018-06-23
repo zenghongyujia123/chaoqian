@@ -25,6 +25,8 @@
 }</script>
   <style mip-custom>
     body {
+      height: 100%;
+      position: relative;
       line-height: 1.6;
       font-family: -apple-system-font, Helvetica Neue, sans-serif;
       -webkit-overflow-scrolling: touch;
@@ -37,14 +39,26 @@
     h5 {
       padding: 10px;
     }
-    .content{
-      padding:10px;
+
+    .content {
+      padding: 10px;
+    }
+
+    .download-product {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ff6000;
+      color: white;
+      padding:5px;
+      border-radius: 5px;
     }
   </style>
 </head>
 
 <body>
   <mip-cambrian site-id="1547899268867648"></mip-cambrian>
+  <a class="download-product">申请该产品</a>
   <h3 title="<%= article.title||'' %>">
     <%= article.title||'' %>
   </h3>
