@@ -656,15 +656,14 @@ exports.getParterDatas = function (partner, callback) {
   });
 }
 
-function updateUserTime() {
-  User.find({ create_time_day: { $exists: false } }, function (err, users) {
-    async.eachSeries(users, function (user, eachCallback) {
-      user.save(function (err, savedUser) {
-        console.log('username : ', savedUser.username, 'create_time', savedUser.create_time, 'format', savedUser.create_time_day);
-        return eachCallback();
-      });
-    });
-  });
-}
-updateUserTime();
+// function updateUserTime() {
+//   User.find({ create_time_day: { $exists: false } }, function (err, users) {
+//     async.eachSeries(users, function (user, eachCallback) {
+//       user.save(function (err, savedUser) {
+//         console.log('username : ', savedUser.username, 'create_time', savedUser.create_time, 'format', savedUser.create_time_day);
+//         return eachCallback();
+//       });
+//     });
+//   });
+// }
 
