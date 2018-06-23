@@ -6,7 +6,7 @@ var appDb = mongoose.appDb;
 var Product = appDb.model('Product');
 var ProductHistory = appDb.model('ProductHistory');
 
-
+var moment = require('moment');
 var agent = require('superagent').agent();
 var sysErr = require('./../errors/system');
 
@@ -106,11 +106,29 @@ exports.update_product_history = function (user_id, name, ip, type, callback) {
     name: name,
     user: user_id,
     ip: ip,
-    type: type
+    type: type,
+    create_time_day: moment(new Date()).format('YYYY-MM-DD')
   }).save(function () {
     return callback();
   })
 }
+
+function updateUserTime() {
+  var count = 1;
+  ProductHistory.find({ create_time_day: { $exists: false } }, function (err, historys) {
+    async.eachSeries(historys, function (history, eachCallback) {
+      history.create_time_day = moment(history.create_time).format('YYYY-MM-DD')
+      history.save(function (err, savedUser) {
+        count += 1;
+        console.log('count:' + count);
+        return eachCallback();
+      });
+    });
+  });
+}
+updateUserTime();
+
+
 
 exports.getProductShareUrl = function (productInfo, callback) {
   var url = 'http://www.chaoqianwang.com/page_h5/third_page?url=' + encodeURIComponent(productInfo.organization_url) + '&product_name=' + productInfo.name;

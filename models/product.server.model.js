@@ -227,6 +227,9 @@ module.exports = function (appDb) {
     ip: {
       type: String,
     },
+    create_time_day: {
+      type: String
+    },
     type: {
       type: String//product,jietiao
     }
