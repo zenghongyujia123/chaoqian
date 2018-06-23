@@ -79,7 +79,11 @@
       $.alert("即将开放！");
     });
     $('.no_permission').click(function(){
-      $.alert("抱歉您没有权限，如需开通请联系我们！");
+      if('<%= user.agent_rate %>'==='官方代理商'){
+        $.alert("抱歉您没有权限，如需开通请联系我们！");
+        return ;
+      }
+      goToWindow('/page_wechat/me_agent','代理业绩')
     });
     $('.contacts').click(function () {
       $.alert(
