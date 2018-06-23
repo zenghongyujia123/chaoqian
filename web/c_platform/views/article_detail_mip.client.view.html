@@ -59,20 +59,17 @@
 
 <body>
   <mip-cambrian site-id="1547899268867648"></mip-cambrian>
-  <% if(product){ %>
-    <a href="<%= product.shart_url_short %>" class="download-product">申请该产品</a>
-    <% } %>
-      <h3 title="<%= article.title||'' %>">
-        <%= article.title||'' %>
-      </h3>
-      <h5 class="n-description">
-        <%= article.description||'' %>
-      </h5>
-      <div class="content">
-        <%- article.content||'' %>
-      </div>
-      <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
-      <script src="https://c.mipcdn.com/extensions/platform/v1/mip-cambrian/mip-cambrian.js"></script>
+  <h3 title="<%= article.title||'' %>">
+    <%= article.title||'' %>
+  </h3>
+  <h5 class="n-description">
+    <%= article.description||'' %>
+  </h5>
+  <div class="content">
+    <%- article.content||'' %>
+  </div>
+  <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+  <script src="https://c.mipcdn.com/extensions/platform/v1/mip-cambrian/mip-cambrian.js"></script>
 </body>
 <script>
 </script>
