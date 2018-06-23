@@ -5,7 +5,7 @@ var mongoose = require('./../../libraries/mongoose');
 var appDb = mongoose.appDb;
 var Product = appDb.model('Product');
 var ProductHistory = appDb.model('ProductHistory');
-
+var async = require('async');
 var moment = require('moment');
 var agent = require('superagent').agent();
 var sysErr = require('./../errors/system');
