@@ -84,3 +84,13 @@ exports.articleListByIds = function (ids, callback) {
     return callback(null, articles);
   });
 };
+
+
+exports.increase_read_count = function (articleId, callback) {
+  Article.update({ _id: articleId }, { $inc: { read_count: 1 } }, function (err, result) {
+    if (err) {
+      console.error(err);
+    }
+    return callback();
+  })
+}

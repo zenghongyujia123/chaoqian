@@ -14,9 +14,9 @@ exports.partner_signin = function (req, res, next) {
   return res.render(filepath, {});
 }
 exports.partner_main = function (req, res, next) {
-  userLogic.getParterDatas(req.user.username,function(err,results){
+  userLogic.getParterDatas(req.user.username, function (err, results) {
     var filepath = path.join(__dirname, '../../web/c_platform/views/partner_main.client.view.html');
-    return res.render(filepath, { user: req.user ,results:results});
+    return res.render(filepath, { user: req.user, results: results });
   });
 }
 
@@ -77,12 +77,17 @@ exports.city_select = function (req, res, next) {
 };
 
 exports.product_detail = function (req, res, next) {
+
+
+
   productLogic.productDetail(req.params.product_id, function (err, product) {
     if (product.article_list && product.article_list.length > 0) {
       articleLogic.articleListByIds(product.article_list, function (err, article_list) {
         articleLogic.articleSingleList({}, function (err, article_single_list) {
-          var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
-          return res.render(filepath, { city: req.cookies.city || '', article: article_list[0], article_single_list: article_single_list });
+          articleLogic.increase_read_count(article_list[0]._id, function () {
+            var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
+            return res.render(filepath, { city: req.cookies.city || '', article: article_list[0], article_single_list: article_single_list });
+          });
         })
       });
     }
@@ -95,12 +100,14 @@ exports.product_detail = function (req, res, next) {
 };
 
 exports.article_detail = function (req, res, next) {
-  articleLogic.articleDetail(req.params.article_id, function (err, article) {
-    articleLogic.articleSingleList({}, function (err, article_single_list) {
-      var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
-      return res.render(filepath, { city: req.cookies.city || '', article: article, article_single_list: article_single_list });
+  articleLogic.increase_read_count(req.params.article_id, function () {
+    articleLogic.articleDetail(req.params.article_id, function (err, article) {
+      articleLogic.articleSingleList({}, function (err, article_single_list) {
+        var filepath = path.join(__dirname, '../../web/c_platform/views/article_detail.client.view.html');
+        return res.render(filepath, { city: req.cookies.city || '', article: article, article_single_list: article_single_list });
+      });
     });
-  });
+  })
 };
 
 exports.backend_signin = function (req, res, next) {

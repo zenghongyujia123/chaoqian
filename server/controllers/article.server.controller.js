@@ -35,5 +35,15 @@ exports.articleDetail = function (req, res, next) {
   });
 };
 
+exports.increase_read_count = function (req, res, next) {
+  articleLogic.increase_read_count(req.body.article_id || req.query.article_id, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    req.data = result;
+    return next();
+  });
+}
+
 
 
