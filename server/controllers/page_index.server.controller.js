@@ -86,13 +86,13 @@ exports.product_detail = function (req, res, next) {
       articleLogic.articleListByIds(product.article_list, function (err, article_list) {
         articleLogic.articleSingleList({}, function (err, article_single_list) {
           articleLogic.increase_read_count(article_list[0]._id, function () {
-            return res.render(filepath, { city: req.cookies.city || '', article: article_list[0], article_single_list: article_single_list });
+            return res.render(filepath, { product: product, article: article_list[0], article_single_list: article_single_list });
           });
         })
       });
     }
     else {
-      return res.render(filepath, { city: req.cookies.city || '', article: {}, article_single_list: [] });
+      return res.render(filepath, { product: null, article: {}, article_single_list: [] });
     }
 
   });
@@ -107,7 +107,7 @@ exports.article_detail = function (req, res, next) {
   articleLogic.increase_read_count(req.params.article_id, function () {
     articleLogic.articleDetail(req.params.article_id, function (err, article) {
       articleLogic.articleSingleList({}, function (err, article_single_list) {
-        return res.render(filepath, { city: req.cookies.city || '', article: article, article_single_list: article_single_list });
+        return res.render(filepath, { product: null, article: article, article_single_list: article_single_list });
       });
     });
   })

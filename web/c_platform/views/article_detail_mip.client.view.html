@@ -24,7 +24,8 @@
     "isOriginal": "0"
 }</script>
   <style mip-custom>
-    html,body {
+    html,
+    body {
       height: 100%;
       position: relative;
       line-height: 1.6;
@@ -46,11 +47,11 @@
 
     .download-product {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 10px;
+      right: 10px;
       background-color: #ff6000;
       color: white;
-      padding:5px;
+      padding: 5px;
       border-radius: 5px;
     }
   </style>
@@ -58,18 +59,20 @@
 
 <body>
   <mip-cambrian site-id="1547899268867648"></mip-cambrian>
-  <a class="download-product">申请该产品</a>
-  <h3 title="<%= article.title||'' %>">
-    <%= article.title||'' %>
-  </h3>
-  <h5 class="n-description">
-    <%= article.description||'' %>
-  </h5>
-  <div class="content">
-    <%- article.content||'' %>
-  </div>
-  <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
-  <script src="https://c.mipcdn.com/extensions/platform/v1/mip-cambrian/mip-cambrian.js"></script>
+  <% if(product){ %>
+    <a href="<%= product.shart_url_short %>" class="download-product">申请该产品</a>
+    <% } %>
+      <h3 title="<%= article.title||'' %>">
+        <%= article.title||'' %>
+      </h3>
+      <h5 class="n-description">
+        <%= article.description||'' %>
+      </h5>
+      <div class="content">
+        <%- article.content||'' %>
+      </div>
+      <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+      <script src="https://c.mipcdn.com/extensions/platform/v1/mip-cambrian/mip-cambrian.js"></script>
 </body>
 <script>
 </script>
