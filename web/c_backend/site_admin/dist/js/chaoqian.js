@@ -2373,14 +2373,13 @@ cSite.controller('UserDetailController', [
           $scope.user = data;
           $scope.productList();
           $scope.cardList();
-          $scope.selectedAgent_rate = $scope.user.agent_rate;
         }
       }, function (err) {
         console.log(err);
       });
     };
 
-    $scope.agent_rate = ['一般代理', '晋级代理', 'S级代理'];
+    $scope.agent_rate = ['非代理', '官方代理商', 'S级代理'];
     $scope.vip_rate = ['VIP会员', '非VIP会员'];
 
     $scope.verifyVip = function () {
@@ -2524,7 +2523,9 @@ cSite.controller('UserDetailController', [
           remark1: $scope.user.remark1,
           remark2: $scope.user.remark2,
           remark3: $scope.user.remark3,
-          //          agent_rate: $scope.selectedAgent_rate
+          agent_rate:$scope.user.agent_rate,
+          agent_rate_info:$scope.user.agent_rate_info
+          //          : $scope.selectedAgent_rate
         }
       }).then(function (data) {
         console.log(data);

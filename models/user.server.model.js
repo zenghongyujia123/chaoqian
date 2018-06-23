@@ -168,7 +168,11 @@ module.exports = function (appDb) {
     },
     agent_rate: {
       type: String,
-      default: '一般代理'
+      default: '非代理'
+    },
+    agent_rate_info: {
+      type: String,
+      default: '零成本加入代理商，开启创业赚钱新世界，点击了解'
     },
     credit198_payed: {
       type: Boolean,

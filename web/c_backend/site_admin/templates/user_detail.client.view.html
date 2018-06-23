@@ -45,7 +45,7 @@
       <div class="column-item" flex="">身份证正面</div>
       <div class="column-item" flex="">身份证背面</div>
       <div class="column-item" flex="">手持身份证</div>
-      <div class="column-item" flex=""></div>
+      <div class="column-item" flex="">代理文字通知</div>
       <div class="column-item" flex=""></div>
       <div class="column-item" flex=""></div>
     </div>
@@ -56,9 +56,12 @@
       <div class="column-item" flex="">{{user.id_card}}</div>
       <md-input-container class="md-block" flex-gt-sm>
         代理级别设定
-        <select ng-model="$parent.selectedAgent_rate" ng-options="x for x in agent_rate">
+        <select ng-model="user.agent_rate" ng-options="x for x in agent_rate">
         </select>
       </md-input-container>
+      <div class="column-item" flex="">
+          <input ng-model="user.agent_rate_info" />
+        </div>
       <div class="column-item" flex="">
         <img ng-click="showPhotos(user.id_front)" ng-src="{{user.id_front}}" />
       </div>
@@ -67,8 +70,6 @@
       </div>
       <div class="column-item" flex="">
         <img ng-click="showPhotos(user.id_man)" ng-src="{{user.id_man}}" />
-      </div>
-      <div class="column-item" flex="">
       </div>
       <div class="column-item" flex="">
       </div>

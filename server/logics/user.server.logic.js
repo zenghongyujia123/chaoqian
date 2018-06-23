@@ -508,7 +508,8 @@ exports.updateVipInfo = function (user, vip_info, callback) {
   user.remark2 = vip_info.remark2;
   user.remark3 = vip_info.remark3;
 
-  // user.agent_rate = vip_info.agent_rate;
+  user.agent_rate = vip_info.agent_rate;
+  user.agent_rate_info = vip_info.agent_rate_info;
 
   user.markModified('vip_product_ids');
   user.markModified('vip_card_ids');
