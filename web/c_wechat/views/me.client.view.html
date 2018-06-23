@@ -26,7 +26,7 @@
         <div class="nickname">
           <%= (user.wechat_info.openid?user.wechat_info.nickname:'--') %>
         </div>
-        <div class="vip-tag no"><%= (user.agent_rate) %></div>
+        <div class="vip-tag <%= (user.agent_rate!=='官方代理商'?'no':'') %>"><%= (user.agent_rate) %></div>
       </div>
 
     </div>
