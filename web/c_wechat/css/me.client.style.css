@@ -25,6 +25,9 @@ body {
   border-radius: 90px;
   background-color: white;
 }
+.page-me-header .header-right {
+  padding-top: 25px;
+}
 .page-me-header .header-right .header-name {
   display: flex;
   flex-direction: row;
