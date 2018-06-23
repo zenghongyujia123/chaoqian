@@ -26,13 +26,12 @@
         <div class="nickname">
           <%= (user.wechat_info.openid?user.wechat_info.nickname:'--') %>
         </div>
-
-        <div class="vip-tag no">非代理</div>
-
+        <div class="vip-tag no"><%= (user.agent_rate) %></div>
       </div>
 
     </div>
   </div>
+  <a style="color:red" class="tip" href="/page_wechat/page_image?url=../c_wechat/images/me/代理.jpeg&title=代理">通知：<%= (user.agent_rate_info) %></a>
 
   <div class="page-me-list">
     <a class="list-item" onclick="goToWindow('/page_wechat/me_info','个人资料')">
