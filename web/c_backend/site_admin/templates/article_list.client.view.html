@@ -9,6 +9,7 @@
       <div class="column-item" flex="">序号</div>
       <div class="column-item" flex="">预览图</div>
       <div class="column-item" flex="">标题</div>
+      <div class="column-item" flex="">浏览量</div>
       <div class="column-item" flex="">描述</div>
       <div class="column-item" flex="">标签</div>
       <div class="column-item" flex=""></div>
@@ -21,6 +22,7 @@
         <img ng-src="{{article.image}}"></img>
       </div>
       <div class="column-item" flex="">{{article.title}}</div>
+      <div class="column-item" flex="">{{article.read_count||0}}</div>
       <div class="column-item" flex="">{{article.description}}</div>
       <div class="column-item" flex="">{{article.tag_string}}</div>
       <div class="column-item" flex="" layout="row" layout-align="start start">

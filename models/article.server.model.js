@@ -36,7 +36,8 @@ module.exports = function (appDb) {
       type: []
     },
     read_count: {
-      type: String
+      type: Number,
+      default: 0
     },
     //下款率
     str1: {
