@@ -9,12 +9,8 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <meta name="baidu-site-verification" content="TZH9WptLWb" />
   <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
-
-  <!-- canonical 中的链接优先填写对应内容的移动端页面（H5）地址 -->
-  <!-- <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../c_platform/css/index.client.style.css" />
-  <link rel="stylesheet" href="../c_platform/css/home.client.style.css" /> -->
   <link rel="canonical" href="http://m.chaoqianwang.com/">
+
   <script type="application/ld+json"> {
     "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
     "@id": "http://m.chaoqianwang.com/",
@@ -28,90 +24,43 @@
     "pubDate": "2017-06-06T08:00:01",
     "isOriginal": "0"
 }</script>
+  <style mip-custom>
+    .item {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .item-img {
+      width: 60px;
+      height: 60px;
+    }
+  </style>
 </head>
 
 <body>
   <mip-cambrian site-id="1547899268867648"></mip-cambrian>
-  <% include ../../c_platform/views/header_mip.client.view.html %>
+    <div class="list-item">
+      <% for(var i =0;i<products.length;i++){ %>
 
-    <div class="c-credit-content-area">
-      <div class="c-center-area">
-        <div class="c-area-title">
-          <span title="潮钱网-贷款-贷款专区">贷款专区
-            <span class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</span>
-          </span>
-          <span class="c-area-sub-title">更多...</span>
-        </div>
-
-
-        <% for(var i =0;i<products.length;i++){ %>
-          <div class="c-credit-content-item-container">
-            <div class="c-credit-content-item blue">
-              <h4 class="content-title" title="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">
-                <%= products[i].name %>
-              </h4>
-              <div class="content-logo">
-                <span class="shart_url_short">
-                  <%= products[i].shart_url_short %>
-                </span>
-                <div class="qrcode">
-
-                </div>
-                <mip-img src="<%= products[i].logo %>">
+        <a href="/page/product_detail/<%= (products[i]._id) %>"  class="item" title="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">
+          <mip-img class="item-img" src="<%= products[i].logo %>"></mip-img>
+          <div class="content">
+            <div class="title">
+              <%= products[i].name %>
+            </div>
+            <div class="description">
+              <div>
+                <%= (products[i].str4||'-') %>
               </div>
-              <div class="qrcode-tip">扫二维码安装</div>
-              <div class="content-descrption">
-                <span class="price">
-                  <%= (products[i].str4||'-') %>
-                </span> 利率
-                <%= (products[i].fee_cost_per_day||'-') %>%</div>
-              <% for(var j =0;j<4;j++){ %>
-                <% if( products[i].str3s[j]){ %>
-                  <span class="content-remark">
-                    <%= products[i].str3s[j] %>
-                  </span>
-                  <% } %>
-                    <% } %>
-                      <div class="content-footer">
-                        <a class="content-btn" href="/page/product_detail/<%= (products[i]._id) %>" title="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">查看攻略</a>
-                        <!-- <button class="content-btn red">查看攻略</button> -->
-                      </div>
+              <div>
+                利率
+                <%= (products[i].fee_cost_per_day||'-') %>%
+              </div>
             </div>
           </div>
-          <% } %>
-      </div>
-    </div>
-    <div class="c-credit-content-area">
-      <div class="c-center-area">
-        <div class="c-area-title">
-          <span title="潮钱网-贷款攻略-攻略专区">攻略专区
-            <span class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</span>
-          </span>
-          <span class="c-area-sub-title">更多...</span>
-        </div>
-
-        <% for(var i = 0;i<articles.length;i++){ %>
-          <a href="/page/article_detail/<%= articles[i]._id %>" class="c-gonglue-item" o-title="潮钱网-贷款-贷款文章-贷款攻略-<%= articles[i].title %>-潮钱网">
-            <div class="gonglue-item-left">
-              <mip-img src="<%= articles[i].image %>">
-            </div>
-            <div class="gonglue-item-right">
-              <h4 class="right-item-title" title="潮钱网-贷款-贷款文章-贷款攻略-<%= articles[i].title %>-潮钱网">
-                <%= articles[i].title %>
-              </h4>
-              <div class="right-item-content">
-                <%= articles[i].description %>
-              </div>
-              <div class="right-item-footer">
-                <%= articles[i].tag_string %>
-                  <span>发布日期：
-                    <%= moment( articles[i].create_time).format('YYYY-MM-DD HH:mm') %>
-                  </span>
-              </div>
-            </div>
-          </a>
-          <% } %>
-      </div>
+          <div class="">查看攻略</div>
+        </a>
+        <% }%>
     </div>
     <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
     <script src="https://c.mipcdn.com/extensions/platform/v1/mip-cambrian/mip-cambrian.js"></script>
