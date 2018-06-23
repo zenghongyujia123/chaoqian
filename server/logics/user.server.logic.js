@@ -8,6 +8,7 @@ var User = appDb.model('User');
 var UserPay = appDb.model('UserPay');
 var postcodeLogic = require('../logics/postcode');
 var thirdQueryCtr = require('../controllers/third_query');
+var async = require('async');
 
 var sysErr = require('./../errors/system');
 var agent = require('superagent').agent();
@@ -629,4 +630,41 @@ exports.update_parent_rewards_status = function (info, callback) {
     return callback(null, result);
   });
 }
+
+exports.getParterDatas = function (partner, callback) {
+  User.aggregate([
+    {
+      $match: {
+        parent: partner
+      }
+    },
+    {
+      $group: {
+        _id: '$create_time_day',
+        create_time_day: { $first: '$create_time_day' },
+        count: { $sum: 1 }
+      }
+    },
+    {
+      $sort: { create_time_day: -1 }
+    }
+  ]).exec(function (err, results) {
+    if(err){
+      return callback({ err: sysErr.database_save_error });
+    }
+    return callback(null, results);
+  });
+}
+
+function updateUserTime() {
+  User.find({ create_time_day: { $exists: false } }, function (err, users) {
+    async.eachSeries(users, function (user, eachCallback) {
+      user.save(function (err, savedUser) {
+        console.log('username : ', savedUser.username, 'create_time', savedUser.create_time, 'format', savedUser.create_time_day);
+        return eachCallback();
+      });
+    });
+  });
+}
+updateUserTime();
 

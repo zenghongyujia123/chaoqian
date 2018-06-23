@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   timestamps = require('mongoose-timestamp'),
   cryptoLib = require('../libraries/crypto');
+var moment = require('moment');
 
 module.exports = function (appDb) {
   var UserSchema = new Schema({
@@ -22,6 +23,9 @@ module.exports = function (appDb) {
     top_parent: {
       type: String,
       trim: true
+    },
+    create_time_day: {
+      type: String
     },
     first_child_count: {
       type: Number,
@@ -441,6 +445,23 @@ module.exports = function (appDb) {
       this.parent_reward = result.parent_reward;
       this.top_parent_reward = result.top_parent_reward;
       this.type_text = result.type_text;
+    }
+
+    if (!this.create_time) {
+      this.create_time = new Date();
+    }
+    this.create_time_day = moment(this.create_time).format('YYYY-MM-DD');
+    next();
+  });
+
+
+
+  UserSchema.pre('save', function (next) {
+    if (!this.create_time) {
+      this.create_time = new Date();
+    }
+    if (!this.create_time_day) {
+      this.create_time_day = moment(this.create_time).format('YYYY-MM-DD');
     }
     next();
   });

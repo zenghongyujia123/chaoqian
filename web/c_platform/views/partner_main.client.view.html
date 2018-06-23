@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
+  <meta charset="UTF-8">
+  <meta name="baidu-site-verification" content="Eo8Geaqz5W" />
+  <script type='text/javascript' src="https://dn-agilepops.qbox.me/web_libs/libs/jquery/dist/jquery.min.js"></script>
+  <script type='text/javascript' src="https://dn-agilepops.qbox.me/web_libs/libs/jquery.cookie/jquery.cookie.js"></script>
+  <script type='text/javascript' src="https://dn-agilepops.qbox.me/web_libs/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://dn-agilepops.qbox.me/web_libs/libs/bootstrap/dist/css/bootstrap.min.css">
+
+  <!-- <script type='text/javascript' src="/c_site/controllers/index.client.controller.js"></script> -->
+  <link rel="stylesheet" href="../c_platform/css/partner_signin.client.style.css" />
+  <title>潮钱网合作商</title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="new-index-header china mengniu">
+      <div class="header-mask"></div>
+      <div class="header-content">
+        <div class="logo">
+          潮钱网:
+          <%= user.username %>
+        </div>
+        <div class="split-line"></div>
+      </div>
+    </div>
+  </div>
+  <div style="position: relative;top:100px;padding:20px;">
+    <table class="table table-bordered">
+      <tr>
+        <td>日期</td>
+        <td>个数</td>
+        <td>状态</td>
+      </tr>
+
+      <% results.forEach(function(item){ %>
+        <tr>
+          <td>
+            <%= item.create_time_day %>
+          </td>
+          <td>
+            <%= item.count %>
+          </td>
+          <td>
+            未结算
+          </td>
+        </tr>
+        <% }) %>
+    </table>
+  </div>
+</body>
+
+</html>

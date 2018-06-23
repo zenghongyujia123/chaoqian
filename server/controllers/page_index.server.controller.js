@@ -4,18 +4,33 @@
 var path = require('path');
 var productLogic = require('../logics/product');
 var articleLogic = require('../logics/article');
+var userLogic = require('../logics/user');
 var productFilterloigc = require('../logics/product_filter');
 var provinces = require('../constants/city');
 var cookieLib = require('../../libraries/cookie');
+
+exports.partner_signin = function (req, res, next) {
+  var filepath = path.join(__dirname, '../../web/c_platform/views/partner_signin.client.view.html');
+  return res.render(filepath, {});
+}
+exports.partner_main = function (req, res, next) {
+  userLogic.getParterDatas(req.user.username,function(err,results){
+    var filepath = path.join(__dirname, '../../web/c_platform/views/partner_main.client.view.html');
+    return res.render(filepath, { user: req.user ,results:results});
+  });
+}
+
+
+
 exports.index = function (req, res, next) {
   console.log(req.headers.host);
 
-  if(req.headers.host==='m.chaoqianwang.com'){
+  if (req.headers.host === 'm.chaoqianwang.com') {
     return res.redirect('/mip');
   }
   req.cookies.city = req.params.city || req.cookies.city || '';
   cookieLib.setCookie(res, 'city', req.cookies.city);
-  productLogic.productList({sort_key:'update_time',sort_value:-1}, function (err, products) {
+  productLogic.productList({ sort_key: 'update_time', sort_value: -1 }, function (err, products) {
     var filepath = path.join(__dirname, '../../web/c_platform/views/home.client.view.html');
     articleLogic.articleList({}, function (err, articles) {
       return res.render(filepath, {

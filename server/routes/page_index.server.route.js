@@ -3,6 +3,9 @@
  */
 
 var index = require('../controllers/page_index');
+var partnerFilter = require('../filters/partner');
+
+
 
 
 module.exports = function (app) {
@@ -13,6 +16,9 @@ module.exports = function (app) {
   app.route('/page/product_detail/:product_id').get(index.product_detail);
   app.route('/page/article_detail/:article_id').get(index.article_detail);
   app.route('/page/backend_signin').get(index.backend_signin);
+  app.route('/page/partner_signin').get(index.partner_signin);
+  app.route('/page/partner_main').get(partnerFilter.requireUser, index.partner_main);
+
 
   app.route('/page/city_select').get(index.city_select);
 };
