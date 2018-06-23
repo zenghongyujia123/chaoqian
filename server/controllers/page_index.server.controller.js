@@ -24,15 +24,14 @@ exports.partner_main = function (req, res, next) {
 
 exports.index = function (req, res, next) {
   console.log(req.headers.host);
-
-  if (req.headers.host === 'm.chaoqianwang.com') {
-    return res.redirect('/mip');
-  }
   req.cookies.city = req.params.city || req.cookies.city || '';
   cookieLib.setCookie(res, 'city', req.cookies.city);
   productLogic.productList({ sort_key: 'update_time', sort_value: -1 }, function (err, products) {
     var filepath = path.join(__dirname, '../../web/c_platform/views/home.client.view.html');
     articleLogic.articleList({}, function (err, articles) {
+      if (req.headers.host === 'm.chaoqianwang.com') {
+        filepath = path.join(__dirname, '../../web/c_platform/views/home_mip.client.view.html');
+      }
       return res.render(filepath, {
         city: req.cookies.city || '',
         articles: articles || [],
@@ -77,9 +76,6 @@ exports.city_select = function (req, res, next) {
 };
 
 exports.product_detail = function (req, res, next) {
-
-
-
   productLogic.productDetail(req.params.product_id, function (err, product) {
     if (product.article_list && product.article_list.length > 0) {
       articleLogic.articleListByIds(product.article_list, function (err, article_list) {
