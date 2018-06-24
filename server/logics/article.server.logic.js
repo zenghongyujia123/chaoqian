@@ -4,16 +4,9 @@
 var mongoose = require('./../../libraries/mongoose');
 var appDb = mongoose.appDb;
 var Article = appDb.model('Article');
-
-
-var agent = require('superagent').agent();
 var sysErr = require('./../errors/system');
-
 var that = exports;
 var agent = require('superagent').agent();
-
-
-
 
 function sendArticleToBaidu(article_id) {
   agent.post("http://data.zz.baidu.com/urls?appid=1547899268867648&token=ZPoUz3LNpokfGbYd&type=batch")

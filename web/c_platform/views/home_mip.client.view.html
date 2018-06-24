@@ -71,11 +71,34 @@
     .price {
       color: #ff6000;
     }
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 15px;
+      border-bottom: 1px solid #efefef;
+    }
+
+    .header-item {
+      height: 50px;
+      line-height: 50px;
+      flex-grow: 1;
+      text-align: center;
+    }
+    .header-item.select{
+      color: #ff6000;
+      border-bottom: 2px solid #ff6000;
+    }
   </style>
 </head>
 
 <body>
   <mip-cambrian site-id="1547899268867648"></mip-cambrian>
+  <div class="header">
+    <a class="header-item select">贷款</a>
+    <a class="header-item">借条</a>
+  </div>
   <div class="list-item">
     <% for(var i =0;i<products.length;i++){ %>
       <a href="/page/product_detail/<%= (products[i]._id) %>" class="item" title="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">
