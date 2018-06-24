@@ -82,10 +82,14 @@
       border-bottom: 1px solid #efefef;
     }
 
-    mip-vd-tabs .mip-vd-tabs-nav .mip-vd-tabs-nav-selected {
-      color: #ff6000;
+    mip-vd-tabs .mip-vd-tabs-nav-li {
       line-height: 50px;
       height: 50px;
+
+    }
+
+    mip-vd-tabs .mip-vd-tabs-nav .mip-vd-tabs-nav-selected {
+      color: #ff6000;
       border-bottom: 2px solid #ff6000;
     }
   </style>
@@ -143,7 +147,10 @@
                     <% } %>
                 </div>
                 <div class="price">
-                 <span> <%= jietiaos[i].require_number %></span><span>以上芝麻分</span>
+                  <span>
+                    <%= jietiaos[i].require_number %>
+                  </span>
+                  <span>以上芝麻分</span>
                 </div>
               </div>
             </div>
