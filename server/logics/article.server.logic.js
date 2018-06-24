@@ -34,7 +34,7 @@ function sendArticleToBaidu(article_id) {
 
   agent.post("http://data.zz.baidu.com/urls?site=www.chaoqianwang.com&token=1O5egVZWxqFllSYY")
     .set('Content-Type', 'text/plain')
-    .send('http://m.chaoqianwang.com/page/product_detail/' + article_id)
+    .send('http://www.chaoqianwang.com/page/product_detail/' + article_id)
     .end(function (err, res) {
       console.log('sendArticleToBaidu---->');
       console.log(res.text);
