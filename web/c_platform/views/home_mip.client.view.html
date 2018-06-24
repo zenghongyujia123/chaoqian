@@ -25,7 +25,8 @@
     "isOriginal": "0"
 }</script>
   <style mip-custom>
-    html,body {
+    html,
+    body {
       line-height: 1.6;
       font-family: -apple-system-font, Helvetica Neue, sans-serif;
       -webkit-overflow-scrolling: touch;
@@ -86,7 +87,11 @@
       flex-grow: 1;
       text-align: center;
     }
-    .header-item.select{
+    mip-vd-tabs .mip-vd-tabs-nav{
+      padding:0px;
+    }
+
+    mip-vd-tabs .mip-vd-tabs-nav .mip-vd-tabs-nav-selected{
       color: #ff6000;
       border-bottom: 2px solid #ff6000;
     }
@@ -95,38 +100,67 @@
 
 <body>
   <mip-cambrian site-id="1547899268867648"></mip-cambrian>
-  <div class="header">
-    <a class="header-item select">贷款</a>
-    <a class="header-item">借条</a>
-  </div>
-  <div class="list-item">
-    <% for(var i =0;i<products.length;i++){ %>
-      <a href="/page/product_detail/<%= (products[i]._id) %>" class="item" title="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">
-        <mip-img class="item-img" src="<%= products[i].logo %>"></mip-img>
-        <div class="content">
-          <div class="content-left">
-            <div class="title">
-              <%= products[i].name %>
+  <mip-vd-tabs>
+    <section>
+      <li>贷款</li>
+      <li>借条</li>
+    </section>
+    <div class="list-item">
+      <% for(var i =0;i<products.length;i++){ %>
+        <a data-type="mip" href="/page/product_detail/<%= (products[i]._id) %>" class="item" title="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">
+          <mip-img class="item-img" src="<%= products[i].logo %>"></mip-img>
+          <div class="content">
+            <div class="content-left">
+              <div class="title">
+                <%= products[i].name %>
+              </div>
+              <div class="description">
+                <div>
+                  利率
+                  <%= (products[i].fee_cost_per_day||'-') %>%
+                </div>
+                <div class="price">
+                  <%= (products[i].str4||'-') %>
+                </div>
+              </div>
             </div>
-            <div class="description">
-              <div>
-                利率
-                <%= (products[i].fee_cost_per_day||'-') %>%
-              </div>
-              <div class="price">
-                <%= (products[i].str4||'-') %>
-              </div>
+            <div class="content-right">
+              <div class="" otitle="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">查看攻略</div>
             </div>
           </div>
-          <div class="content-right">
-            <div class="" otitle="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">查看攻略</div>
+        </a>
+        <% }%>
+    </div>
+    <div class="list-item">
+      <% for(var i =0;i<products.length;i++){ %>
+        <a data-type="mip" href="/page/product_detail/<%= (products[i]._id) %>" class="item" title="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">
+          <mip-img class="item-img" src="<%= products[i].logo %>"></mip-img>
+          <div class="content">
+            <div class="content-left">
+              <div class="title">
+                <%= products[i].name %>
+              </div>
+              <div class="description">
+                <div>
+                  利率
+                  <%= (products[i].fee_cost_per_day||'-') %>%
+                </div>
+                <div class="price">
+                  <%= (products[i].str4||'-') %>
+                </div>
+              </div>
+            </div>
+            <div class="content-right">
+              <div class="" otitle="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">查看攻略</div>
+            </div>
           </div>
-        </div>
-      </a>
-      <% }%>
-  </div>
+        </a>
+        <% }%>
+    </div>
+  </mip-vd-tabs>
   <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
   <script src="https://c.mipcdn.com/extensions/platform/v1/mip-cambrian/mip-cambrian.js"></script>
+  <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
 </body>
 
 </html>
