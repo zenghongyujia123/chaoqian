@@ -8,7 +8,7 @@ var sysErr = require('./../errors/system');
 var that = exports;
 var agent = require('superagent').agent();
 
-function sendArticleToBaidu(article_id) {
+function sendMainPageBaidu() {
   agent.post("http://data.zz.baidu.com/update?site=www.chaoqianwang.com&token=1O5egVZWxqFllSYY")
     .set('Content-Type', 'text/plain')
     .send('http://www.chaoqianwang.com/')
@@ -24,8 +24,9 @@ function sendArticleToBaidu(article_id) {
       console.log('sendArticleToBaidu---->');
       console.log(res.text);
     });
+}
 
-
+function sendArticleToBaidu(article_id) {
   agent.post("http://data.zz.baidu.com/urls?appid=1547899268867648&token=ZPoUz3LNpokfGbYd&type=batch")
     .set('Content-Type', 'text/plain')
     .send('http://m.chaoqianwang.com/page/article_detail/' + article_id)
