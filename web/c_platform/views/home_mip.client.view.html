@@ -45,6 +45,7 @@
     .item-img {
       width: 60px;
       height: 60px;
+      flex-shrink: 0;
     }
 
     .content {
@@ -60,15 +61,34 @@
 
     .content-right {
       color: #ff6000;
+      width: 60px;
+      flex-shrink: 0;
     }
 
     .title {
+      overflow: hidden;
+      line-height: 25px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
       font-size: 16px;
     }
 
     .description {
-      color: #999;
       font-size: 12px;
+    }
+
+    .description div {
+      line-height: 19px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      color: #999;
+
+
     }
 
     .price {
@@ -161,7 +181,32 @@
         </a>
         <% }%>
     </div>
-    <div class="list-item"></div>
+    <div class="list-item">
+      <% for(var i =0;i<products.length;i++){ %>
+        <a data-type="mip" href="/page/article_detail/<%= articles[i]._id %>" class="item" title="潮钱网-咨询-贷款咨询-<%= articles[i].name %>-潮钱网">
+          <mip-img class="item-img" src="<%= articles[i].image %>"></mip-img>
+          <div class="content">
+            <div class="content-left">
+              <div class="title">
+                <%= articles[i].title %>
+              </div>
+              <div class="description">
+                <div>
+                  <%= (articles[i].description||'-') %>%
+                </div>
+                <div>
+                  发布日期
+                  <%= moment( articles[i].create_time).format('YYYY-MM-DD HH:mm') %>
+                </div>
+              </div>
+            </div>
+            <div class="content-right">
+              <div class="" otitle="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">查看攻略</div>
+            </div>
+          </div>
+        </a>
+        <% }%>
+    </div>
   </mip-vd-tabs>
   <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
   <script src="https://c.mipcdn.com/extensions/platform/v1/mip-cambrian/mip-cambrian.js"></script>
