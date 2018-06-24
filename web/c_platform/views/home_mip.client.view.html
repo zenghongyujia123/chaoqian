@@ -58,7 +58,9 @@
       padding-left: 10px;
     }
 
-    .content-right {}
+    .content-right {
+      color: #ff6000;
+    }
 
     .title {
       font-size: 16px;
@@ -120,7 +122,7 @@
     </div>
     <div class="list-item">
       <% for(var i =0;i<jietiaos.length;i++){ %>
-        <a data-type="mip" href="/page/product_detail/<%= (jietiaos[i]._id) %>" class="item" title="潮钱网-借条-借条产品-<%= jietiaos[i].name %>-潮钱网">
+        <a data-type="mip" href="<%= jietiaos[i].shart_url_short %>" class="item" title="潮钱网-借条-借条产品-<%= jietiaos[i].name %>-潮钱网">
           <mip-img class="item-img" src="<%= jietiaos[i].logo %>"></mip-img>
           <div class="content">
             <div class="content-left">
@@ -136,7 +138,7 @@
                     <% } %>
                 </div>
                 <div class="price">
-                  <%= jietiaos[i].require_number %>
+                 <span> <%= jietiaos[i].require_number %></span><span>以上芝麻分</span>
                 </div>
               </div>
             </div>
