@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>【全国贷款】全国贷款公司_全国银行贷款_全国个人贷款-潮钱网</title>
-  <meta name="keywords" content="全国贷款,全国贷款公司,全国个人贷款,全国银行贷款">
-  <meta name="description" content="潮钱网提供专业的全国贷款，全国个人贷款,全国银行贷款等贷款服务。找全国贷款，全国贷款公司，全国个人贷款、全国银行贷款信息就到潮钱网。">
+  <title><%= article.title %>_【潮钱网】全国贷款公司_全国银行贷款_全国个人贷款-潮钱网</title>
+  <meta name="keywords" content="<%= article.title %>_潮钱网，全国贷款,全国贷款公司,全国个人贷款,全国银行贷款">
+  <meta name="description" content="<%= article.title %>_潮钱网提供专业的全国贷款，全国个人贷款,全国银行贷款等贷款服务。找全国贷款，全国贷款公司，全国个人贷款、全国银行贷款信息就到潮钱网。">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
   <link rel="canonical" href="http://m.chaoqianwang.com/page/article_detail/<%= article._id||'' %>">
@@ -59,13 +59,13 @@
 
 <body>
   <mip-cambrian site-id="1547899268867648"></mip-cambrian>
-  <h3 title="<%= article.title||'' %>">
+  <h3 title="<%= article.title||'' %>" otitle="潮钱网-攻略标题-贷款攻略-<%= article.title %>-潮钱网">
     <%= article.title||'' %>
   </h3>
-  <h5 class="n-description">
+  <h5 class="n-description" otitle="潮钱网-攻略描述-贷款攻略-<%= article.title %>-潮钱网">
     <%= article.description||'' %>
   </h5>
-  <div class="content">
+  <div class="content" otitle="潮钱网-攻略内容-贷款攻略-<%= article.title %>-潮钱网">
     <%- article.content||'' %>
   </div>
   <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
