@@ -25,7 +25,11 @@
     "isOriginal": "0"
 }</script>
   <style mip-custom>
-    body {
+    html,body {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
       line-height: 1.6;
       font-family: -apple-system-font, Helvetica Neue, sans-serif;
       -webkit-overflow-scrolling: touch;
@@ -85,6 +89,10 @@
       line-height: 50px;
       flex-grow: 1;
       text-align: center;
+      position: absolute;
+      left: 0px;
+      top:0px;
+      width:100%;
     }
     .header-item.select{
       color: #ff6000;
