@@ -73,12 +73,12 @@
       color: #ff6000;
     }
 
-    mip-vd-tabs .mip-vd-tabs-nav{
-      padding:0px;
+    mip-vd-tabs .mip-vd-tabs-nav {
+      padding: 0px;
       border-bottom: 1px solid #efefef;
     }
 
-    mip-vd-tabs .mip-vd-tabs-nav .mip-vd-tabs-nav-selected{
+    mip-vd-tabs .mip-vd-tabs-nav .mip-vd-tabs-nav-selected {
       color: #ff6000;
       border-bottom: 2px solid #ff6000;
     }
@@ -119,26 +119,29 @@
         <% }%>
     </div>
     <div class="list-item">
-      <% for(var i =0;i<products.length;i++){ %>
-        <a data-type="mip" href="/page/product_detail/<%= (products[i]._id) %>" class="item" title="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">
-          <mip-img class="item-img" src="<%= products[i].logo %>"></mip-img>
+      <% for(var i =0;i<jietiaos.length;i++){ %>
+        <a data-type="mip" href="/page/product_detail/<%= (jietiaos[i]._id) %>" class="item" title="潮钱网-借条-借条产品-<%= jietiaos[i].name %>-潮钱网">
+          <mip-img class="item-img" src="<%= jietiaos[i].logo %>"></mip-img>
           <div class="content">
             <div class="content-left">
               <div class="title">
-                <%= products[i].name %>
+                <%= jietiaos[i].name %>
               </div>
               <div class="description">
                 <div>
-                  利率
-                  <%= (products[i].fee_cost_per_day||'-') %>%
+                  <% for(var h=0; h<jietiaos[i].str2s.length; h++) { %>
+                    <span class="red-border">
+                      <%= jietiaos[i].str2s[h] %>
+                    </span>
+                    <% } %>
                 </div>
                 <div class="price">
-                  <%= (products[i].str4||'-') %>
+                  <%= jietiaos[i].require_number %>
                 </div>
               </div>
             </div>
             <div class="content-right">
-              <div class="" otitle="潮钱网-贷款-贷款产品-<%= products[i].name %>-潮钱网">查看攻略</div>
+              <div class="" otitle="潮钱网-借条-借条产品-<%= jietiaos[i].name %>-潮钱网">点击申请</div>
             </div>
           </div>
         </a>
