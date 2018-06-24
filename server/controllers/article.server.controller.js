@@ -3,6 +3,7 @@
  */
 var articleLogic = require('./../logics/article');
 
+
 exports.updateArticle = function (req, res, next) {
   articleLogic.updateArticle(req.body, function (err, result) {
     if (err) {

@@ -10,7 +10,36 @@ var agent = require('superagent').agent();
 var sysErr = require('./../errors/system');
 
 var that = exports;
+var agent = require('superagent').agent();
 
+
+
+
+function sendArticleToBaidu(article_id) {
+  agent.post("http://data.zz.baidu.com/urls?appid=1547899268867648&token=ZPoUz3LNpokfGbYd&type=batch")
+    .set('Content-Type', 'text/plain')
+    .send('http://m.chaoqianwang.com/page/product_detail/' + article_id)
+    .end(function (err, res) {
+      console.log('sendArticleToBaidu---->');
+      console.log(res.text);
+    });
+
+  agent.post("http://data.zz.baidu.com/urls?site=m.chaoqianwang.com&token=1O5egVZWxqFllSYY&type=mip")
+    .set('Content-Type', 'text/plain')
+    .send('http://m.chaoqianwang.com/page/product_detail/' + article_id)
+    .end(function (err, res) {
+      console.log('sendArticleToBaidu---->');
+      console.log(res.text);
+    });
+
+  agent.post("http://data.zz.baidu.com/urls?site=www.chaoqianwang.com&token=1O5egVZWxqFllSYY")
+    .set('Content-Type', 'text/plain')
+    .send('http://m.chaoqianwang.com/page/product_detail/' + article_id)
+    .end(function (err, res) {
+      console.log('sendArticleToBaidu---->');
+      console.log(res.text);
+    });
+}
 exports.updateArticle = function (info, callback) {
 
   if (!info._id) {
@@ -38,6 +67,8 @@ exports.updateArticle = function (info, callback) {
       if (err) {
         return callback({ err: sysErr.database_save_error });
       }
+
+      sendArticleToBaidu(savedarticle._id);
       return callback(null, savedarticle);
     });
   })
