@@ -2379,7 +2379,7 @@ cSite.controller('UserDetailController', [
       });
     };
 
-    $scope.agent_rate = ['非代理', '官方代理商', 'S级代理'];
+    $scope.agent_rate = ['非代理', '官方代理商'];
     $scope.vip_rate = ['VIP会员', '非VIP会员'];
 
     $scope.verifyVip = function () {

@@ -11,20 +11,25 @@
   <link rel="stylesheet" href="../c_h5/css/page_list_qq.css" />
   <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
   <style>
-    .tip{
+    .tip {
       background-color: white;
     }
-    .tip-text{
+
+    .tip-text {
       font-size: 12px;
       font-weight: 400;
-      padding:5px 10px;
+      padding: 5px 10px;
     }
   </style>
 </head>
 
 <body>
-  <div class="tip"><span class="tip-text">请您先了解出借人的条件再点击咨询。</span></div>
-  <div class="tip"><span class="tip-text">咨询前请务必确保您手机安装并登陆了QQ，您才能触发聊天窗口。</span></div>
+  <div class="tip">
+    <span class="tip-text">请您先了解出借人的条件再点击咨询。</span>
+  </div>
+  <div class="tip">
+    <span class="tip-text">咨询前请务必确保您手机安装并登陆了QQ，您才能触发聊天窗口。</span>
+  </div>
 </body>
 <script>
   $(function () {
@@ -63,15 +68,15 @@
 
     function append_item(item) {
       var obj = $(
-        '<div class="weui-panel weui-panel_access">'+
+        '<div class="weui-panel weui-panel_access">' +
         '<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">' +
         '  <div class="weui-media-box__hd">' +
         '    <img class="weui-media-box__thumb" src="/c_h5/images/qq头像.png">' +
         '  </div>' +
         '  <div class="weui-media-box__bd">' +
         '    <div class="weui-media-box__title">' + item.str1 +
-        '      <span class="title-desc">' + item.str3 + '</span>' +
         '    </div>' +
+      '      <div class="title-desc">' + item.str3 + '</div>' +
         '    <div class="title-desc">服务时间：9:00-20:00</div>' +
         '    <span class="bd-tip">' + item.str4 + '</span>' +
         '  </div>' +
