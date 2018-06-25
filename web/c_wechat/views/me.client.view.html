@@ -26,12 +26,16 @@
         <div class="nickname">
           <%= (user.wechat_info.openid?user.wechat_info.nickname:'--') %>
         </div>
-        <div class="vip-tag <%= (user.agent_rate!=='官方代理商'?'no':'') %>"><%= (user.agent_rate) %></div>
+        <div class="vip-tag <%= (user.agent_rate!=='官方代理商'?'no':'') %>">
+          <%= (user.agent_rate) %>
+        </div>
       </div>
 
     </div>
   </div>
-  <a style="color:red" class="tip" href="/page_wechat/page_image?url=../c_wechat/images/me/代理.jpeg&title=代理">通知：<%= (user.agent_rate_info) %></a>
+  <a style="color:red" class="tip" href="/page_wechat/page_image?url=../c_wechat/images/me/代理.jpeg&title=代理">通知：
+    <%= (user.agent_rate_info) %>
+  </a>
 
   <div class="page-me-list">
     <a class="list-item" onclick="goToWindow('/page_wechat/me_info','个人资料')">
@@ -67,6 +71,10 @@
       <span class="item-text">个人消费</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
     </a> -->
+    <a class="list-item qq_dialog" href="javascript:;">
+      <span class="item-text">在线客服</span>
+      <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
+    </a>
     <a class="list-item contacts" href="javascript:;">
       <span class="item-text">联系我们</span>
       <img src="../c_wechat/images/arrow_right.png" class="item-arrow"></img>
@@ -78,13 +86,20 @@
     $('.no_open').click(function () {
       $.alert("即将开放！");
     });
-    $('.no_permission').click(function(){
-      if('<%= user.agent_rate %>'!=='官方代理商'){
+    $('.no_permission').click(function () {
+      if ('<%= user.agent_rate %>' !== '官方代理商') {
         $.alert("抱歉您没有权限，如需开通请联系我们！");
-        return ;
+        return;
       }
-      goToWindow('/page_wechat/me_agent','代理业绩')
+      goToWindow('/page_wechat/me_agent', '代理业绩')
     });
+
+    $('.qq_dialog').click(function () {
+      $.alert(
+        '你需要确保手机安装了QQ，才能触发在线客服沟通窗口。', '在线客服',function(){
+          window.location.href = 'mqqwpa://im/chat?chat_type=wpa&uin=3415265683&version=1&src_type=web&web_src=oicqzone.com';
+        });
+    })
     $('.contacts').click(function () {
       $.alert(
         "<div style='text-align:left;display:flex;flex-direction:row;margin-bottom:5px;'><div style='width:80px;'>公众号：</div>潮钱网</div>" +
