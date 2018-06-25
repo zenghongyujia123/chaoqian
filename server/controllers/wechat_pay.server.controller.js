@@ -88,7 +88,7 @@ exports.get_pre_pay_id = function (req, res, next) {
 
   if (req.body.pay_type === 'vip_pay') {
     // detail.pay_price = 1;
-    detail.pay_price = 17800;
+    detail.pay_price = 19800;
     detail.pay_title = '潮钱网充值中心-会员充值';
     detail.pay_type = 'vip_pay';
   }
