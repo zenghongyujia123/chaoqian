@@ -23,9 +23,20 @@ function sendMainPageBaidu() {
     .set('Content-Type', 'text/plain')
     .send('http://m.chaoqianwang.com/')
     .end(function (err, res) {
-      console.log('sendArticleToBaidu---->');
+      console.log('sendMainPageBaidu---->');
       console.log(res.text);
     });
+}
+
+function sendNewArticleToBaidu(article_id) {
+  agent.post("http://data.zz.baidu.com/urls?appid=1547899268867648&token=ZPoUz3LNpokfGbYd&type=realtime")
+    .set('Content-Type', 'text/plain')
+    .send('http://m.chaoqianwang.com/page/article_detail/' + article_id)
+    .end(function (err, res) {
+      console.log('sendNewArticleToBaidu---->');
+      console.log(res.text);
+    });
+
 }
 
 function sendArticleToBaidu(article_id) {
@@ -54,9 +65,10 @@ function sendArticleToBaidu(article_id) {
     });
 }
 exports.updateArticle = function (info, callback) {
-
+  var isNew = false;
   if (!info._id) {
     info._id = mongoose.generateNewObjectId();
+    isNew = true;
   }
 
   that.articleDetail(info._id, function (err, article) {
@@ -80,8 +92,12 @@ exports.updateArticle = function (info, callback) {
       if (err) {
         return callback({ err: sysErr.database_save_error });
       }
-
-      sendArticleToBaidu(savedarticle._id);
+      if (isNew) {
+        sendNewArticleToBaidu(savedarticle._id)
+      }
+      else {
+        sendArticleToBaidu(savedarticle._id);
+      }
       return callback(null, savedarticle);
     });
   })
