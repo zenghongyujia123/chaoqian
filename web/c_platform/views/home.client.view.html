@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>【潮钱网官网】<%= (city||'全国') %>贷款_全国贷款公司_全国银行贷款_全国个人贷款-潮钱网</title>
+  <title>【潮钱网官网】
+    <%= (city||'全国') %>贷款_全国贷款公司_全国银行贷款_全国个人贷款-潮钱网</title>
   <meta name="keywords" content="<%= (city||'上海') %>贷款,全国贷款,全国贷款公司,全国个人贷款,全国银行贷款">
   <meta name="description" content="潮钱网致力于为企业和个人提供身份证贷款、公积金贷款、抵押贷款、学生贷款、网上贷款、个人贷款、信用贷款、小额贷款、快速贷款、信用卡贷款、房屋抵押贷款等各类贷款业务，立即注册即可享受最快1天放款、最高额度可达2000万、最长期限3年。">
   <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css" />
@@ -17,17 +18,14 @@
 
 <body>
   <% include ../../c_platform/views/header.client.view.html %>
-
     <div class="c-credit-content-area">
       <div class="c-center-area">
         <div class="c-area-title">
           <span title="潮钱网-贷款-贷款专区">贷款专区
-            <span class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</span>
+            <span class="c-area-sub-title">无抵押贷款、无担保贷款、极速放款、借款方式更灵活</span>
           </span>
           <span class="c-area-sub-title">更多...</span>
         </div>
-
-
         <% for(var i =0;i<products.length;i++){ %>
           <div class="c-credit-content-item-container">
             <div class="c-credit-content-item blue">
@@ -69,11 +67,10 @@
       <div class="c-center-area">
         <div class="c-area-title">
           <span title="潮钱网-贷款攻略-攻略专区">攻略专区
-            <span class="c-area-sub-title">无抵押、无担保、极速放款、借款方式更灵活</span>
+            <span class="c-area-sub-title">无抵押贷款、无担保贷款、极速放款、借款方式更灵活</span>
           </span>
           <span class="c-area-sub-title">更多...</span>
         </div>
-
         <% for(var i = 0;i<articles.length;i++){ %>
           <a href="/page/article_detail/<%= articles[i]._id %>" class="c-gonglue-item" o-title="贷款-贷款文章-贷款攻略-<%= articles[i].title %>-潮钱网">
             <div class="gonglue-item-left">
@@ -97,31 +94,50 @@
           <% } %>
       </div>
     </div>
+    <div class="c-credit-content-area">
+      <div class="c-center-area">
+        <div class="c-area-title">
+          <span title="潮钱网-贷款攻略-攻略专区">贷款城市
+            <span class="c-area-sub-title">无抵押贷款、无担保贷款、极速放款、借款方式更灵活</span>
+          </span>
+          <span class="c-area-sub-title">更多...</span>
+        </div>
+        <% for(var i=0;i<provinces.length;i++){%>
+          <div class="c-city-container">
+            <div class="c-city-row">
+              <p class="city-key">
+                <%=provinces[i].name%>贷款
+              </p>
+              <% for(var j=0; j<provinces[i].citys.length;j++){%>
+                <a href="/page/index/<%=provinces[i].citys[j]%>" class="city-value">
+                  <%=provinces[i].citys[j]%>贷款
+                </a>
+                <%}%>
+            </div>
+          </div>
+          <%}%>
+      </div>
+    </div>
     <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
 </body>
 <script>
   $(function () {
+    $('.c-credit-content-item').hover(function () {
+      if ($(this).find('.qrcode').attr('has_qrcode') === 'true') {
+        return;
+      }
+      $(this).find('.qrcode').qrcode({
+        render: "table",
+        text: $(this).find('.shart_url_short').text(),
+        width: 120,
+        height: 120,
+        foreground: "#C00",
+        background: "#FFF",
+      });
 
-    $(function () {
-
-      $('.c-credit-content-item').hover(function () {
-        if ($(this).find('.qrcode').attr('has_qrcode') === 'true') {
-          return;
-        }
-
-        $(this).find('.qrcode').qrcode({
-          render: "table",
-          text: $(this).find('.shart_url_short').text(),
-          width: 120,
-          height: 120,
-          foreground: "#C00",
-          background: "#FFF",
-        });
-
-        $(this).find('.qrcode').attr('has_qrcode', 'true');
-      })
-    });
-  })
+      $(this).find('.qrcode').attr('has_qrcode', 'true');
+    })
+  });
 </script>
 
 </html>

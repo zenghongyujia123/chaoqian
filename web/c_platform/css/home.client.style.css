@@ -133,3 +133,18 @@
   color: #999;
   height: 30px;
 }
+.c-city-row {
+  overflow: hidden;
+  padding: 0px 30px;
+  margin-bottom: 20px;
+}
+.c-city-row .city-key {
+  line-height: 30px;
+  float: left;
+  width: 100px;
+}
+.c-city-row .city-value {
+  line-height: 30px;
+  width: 100px;
+  float: left;
+}

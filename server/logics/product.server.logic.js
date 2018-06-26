@@ -213,7 +213,7 @@ exports.productList = function (info, callback) {
   var query = {};
   var sort = {};
   if (info.sort_key) {
-    sort[info.sort_key] = info.sort_value || 1;
+    sort[info.sort_key] = info.sort_value ;
   }
 
   if (info.query_key) {

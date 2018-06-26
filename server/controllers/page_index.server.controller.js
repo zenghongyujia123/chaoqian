@@ -39,7 +39,8 @@ exports.index = function (req, res, next) {
           articles: articles || [],
           products: products || [],
           jietiaos: jietiaos || [],
-          device: req.cookies.device || ''
+          device: req.cookies.device || '',
+          provinces: provinces.provinces || []
         });
 
       })
