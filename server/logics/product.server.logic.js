@@ -197,6 +197,7 @@ exports.updateProduct = function (productInfo, callback) {
     product.str16 = productInfo.str16;
     product.str17 = productInfo.str17;
     product.str18 = productInfo.str18;
+    product.update_time = new Date();
 
     //   product.ma
     product.save(function (err, savedProduct) {
