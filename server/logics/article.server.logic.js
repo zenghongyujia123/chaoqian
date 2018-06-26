@@ -8,6 +8,8 @@ var sysErr = require('./../errors/system');
 var that = exports;
 var agent = require('superagent').agent();
 
+sendMainPageBaidu();
+
 function sendMainPageBaidu() {
   agent.post("http://data.zz.baidu.com/update?site=www.chaoqianwang.com&token=1O5egVZWxqFllSYY")
     .set('Content-Type', 'text/plain')
