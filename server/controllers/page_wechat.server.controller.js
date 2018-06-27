@@ -469,8 +469,8 @@ exports.self_home = function (req, res, next) {
   var info = {
     query_key: req.query.query_key,
     query_value: req.query.query_value,
-    sort_key: req.query.sort_key,
-    sort_value: req.query.sort_value,
+    sort_key: 'update_time',
+    sort_value: -1,
   };
   productLogic.productList(info, function (err, products) {
     var filepath = path.join(__dirname, '../../web/c_wechat/views/self_home.client.view.html');
