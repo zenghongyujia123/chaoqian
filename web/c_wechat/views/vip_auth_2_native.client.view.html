@@ -12,7 +12,6 @@
   <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
   <script src="../c_wechat/controllers/vip_auth_2.client.controller.js"></script>
-  <script src="../c_wechat/controllers/vip_auth_2.client.controller.js"></script>
   <meta name="baidu-site-verification" content="4hPH3hudxx" />
 </head>
 
@@ -118,9 +117,12 @@
 </body>
 <script>
   $(function () {
-
-    var user = '<%- JSON.stringify(user) %>'
-    user = JSON.parse(user);
+    var user = {
+      jingdong_info: '<%- JSON.stringify(user.jingdong_info) %>',
+      taobao_info: '<%- JSON.stringify(user.taobao_info) %>',
+    };
+    user.jingdong_info = JSON.parse(user.jingdong_info);
+    user.taobao_info = JSON.parse(user.taobao_info);
 
     var id_front,
       id_back,
