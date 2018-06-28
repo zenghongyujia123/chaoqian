@@ -12,14 +12,14 @@ $(function () {
       return alert('请输入真实姓名');
     }
 
-    if (!real_bank_number) {
-      return alert('请输入银行卡号');
-    }
+    // if (!real_bank_number) {
+    //   return alert('请输入银行卡号');
+    // }
 
 
-    if (real_phone.length != 11) {
-      return alert('这个用户手机号不正确！');
-    }
+    // if (real_phone.length != 11) {
+    //   return alert('这个用户手机号不正确！');
+    // }
 
     if (!id_card) {
       return alert('请输入真实身份证号');
