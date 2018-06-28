@@ -136,12 +136,20 @@
     });
 
     $('.vip_notice').click(function () {
+      // if (typeof (api) !== 'undefined') {
+      //   goToWindow('/page_wechat/vip_notice?device=native', 'VIP通道')
+      // }
+      // else {
+      //   goToWindow('/page_wechat/vip_notice', 'VIP通道')
+      // }
+
       if (typeof (api) !== 'undefined') {
-        goToWindow('/page_wechat/vip_notice?device=native', 'VIP通道')
+        goToWindow('/page_wechat/vip_auth_info?device=native', 'VIP通道')
       }
       else {
-        goToWindow('/page_wechat/vip_notice', 'VIP通道')
+        goToWindow('/page_wechat/vip_auth_info', 'VIP通道')
       }
+
     })
 
     // $('.zixun').click(function () {
