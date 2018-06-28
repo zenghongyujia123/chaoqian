@@ -117,12 +117,9 @@
 </body>
 <script>
   $(function () {
-    var user = {
-      jingdong_info: '<%- JSON.stringify(user.jingdong_info) %>',
-      taobao_info: '<%- JSON.stringify(user.taobao_info) %>',
-    };
-    user.jingdong_info = JSON.parse(user.jingdong_info);
-    user.taobao_info = JSON.parse(user.taobao_info);
+
+    var jingdong_task_id = '<%- (user.jingdong_info.task_id) %>';
+    var taobao_task_id = '<%- (user.taobao_info.task_id) %>';
 
     var id_front,
       id_back,
@@ -199,10 +196,10 @@
 
 
     $('.submit-btn').click(function () {
-      if (!user.jingdong_info || !user.jingdong_info.task_id) {
+      if (!jingdong_task_id) {
         return alert('请京东授权');
       }
-      if (!user.taobao_info || !user.taobao_info.task_id) {
+      if (!taobao_task_id) {
         return alert('请淘宝授权');
       }
 
