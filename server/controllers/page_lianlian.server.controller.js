@@ -3,13 +3,8 @@
  */
 var path = require('path');
 var agent = require('superagent').agent();
-var productLogic = require('../logics/product');
 var userLogic = require('../logics/user');
 var soldRecordLogic = require('../logics/sold_record');
-var jietiaoLogic = require('../logics/jietiao');
-var cardLogic = require('../logics/card');
-
-var smsLib = require('../../libraries/sms');
 var cookieLib = require('../../libraries/cookie');
 
 
@@ -24,7 +19,7 @@ function getPayInfoDetailByType(pay_type) {
     detail.pay_type = 'vip_2_pay';
     detail.redirect = 'http://www.chaoqianwang.com/page_wechat/vip_auth_info?device=native'
   }
-  if (pay_type === 'vip_pay') {
+  else if (pay_type === 'vip_pay') {
     // detail.pay_price = 50;//
     detail.pay_price = 0.01;
     detail.pay_title = '潮钱网VIP打款卡验证';
