@@ -47,13 +47,13 @@
         </div>
         <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
       </a>
-      <a href="/shuju_mofang_page_taobao?device=native" class="list-item">
+      <!-- <a href="/shuju_mofang_page_taobao?device=native" class="list-item">
         <div class="title">淘宝认证</div>
         <div class="content">
           <%= ((user.taobao_info&&user.taobao_info.task_id)?'已授权':'授权查询') %>
         </div>
         <img src="../c_wechat/images/arrow_right.png" class="arrow"></img>
-      </a>
+      </a> -->
       <a href="/shuju_mofang_page_jingdong?device=native" class="list-item">
         <div class="title">京东认证</div>
         <div class="content">
@@ -199,9 +199,9 @@
       if (!jingdong_task_id) {
         return alert('请京东授权');
       }
-      if (!taobao_task_id) {
-        return alert('请淘宝授权');
-      }
+      // if (!taobao_task_id) {
+      //   return alert('请淘宝授权');
+      // }
 
 
       if (!id_front) {
