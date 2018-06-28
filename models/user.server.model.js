@@ -195,6 +195,13 @@ module.exports = function (appDb) {
     vip_payed_time: {
       type: Date
     },
+    vip_2_payed: {
+      type: Boolean,
+      default: false
+    },
+    vip_2_payed_time: {
+      type: Date
+    },
     vip_status: {
       type: String,
       enum: ['un_submit', 'submit', 'passed', 'daikuan', 'giveup', 'refuse'],

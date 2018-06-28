@@ -331,7 +331,7 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
       userPay.save(function () {
         console.log(pay_type);
 
-        if (pay_type === 'vip_pay' || pay_type === 'postcode_pay') {
+        if (pay_type === 'vip_pay' || pay_type === 'vip_2_pay' || pay_type === 'postcode_pay') {
           user[pay_type + 'ed'] = true;
           user[pay_type + 'ed_time'] = new Date();
 
@@ -350,7 +350,7 @@ exports.updateVipPayedByOpenid = function (idInfo, info, callback) {
         if (pay_type === 'pos_suixingfu' || pay_type === 'pos_xinguodu') {
           smsLib.sendPostMachinePaySuccess(user.username, function () { });
         }
-        if (pay_type === 'pos_suixingfu' || pay_type === 'pos_xinguodu' || pay_type === 'vip_pay') {
+        if (pay_type === 'pos_suixingfu' || pay_type === 'pos_xinguodu' || pay_type === 'vip_pay' || pay_type === 'vip_2_pay') {
           smsLib.sendPaySuccessInfo(user.username, pay_type, userPay.content.total_fee / 100, function () { });
         }
 
@@ -650,7 +650,7 @@ exports.getParterDatas = function (partner, callback) {
       $sort: { create_time_day: -1 }
     }
   ]).exec(function (err, results) {
-    if(err){
+    if (err) {
       return callback({ err: sysErr.database_save_error });
     }
     return callback(null, results);

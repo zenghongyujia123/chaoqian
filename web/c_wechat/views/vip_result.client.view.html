@@ -107,9 +107,30 @@
   </div>
 
   <div class="footer">
-    <a href="/page_wechat/vip_result_feedback" class="report-btn left">我要借款</a>
+    <a href="#" class="report-btn left">我要借款</a>
     <a href="/page_wechat/vip_result_refuse" class="report-btn right">我不借了</a>
   </div>
 </body>
+<script>
+  $(function () {
+    $('.footer left').click(function () {
+      if ('<%= user.vip_2_payed %>' === 'true') {
+        window.location = '/page_wechat/vip_result_feedback';
+      } else {
+        if (typeof (api) !== 'undefined') {
+          return window.location = '/lianlian_pay/page_lianlian?pay_type=vip_2_pay';
+        } else {
+          get_pre_pay_id('vip_2_pay', function () {
+            window.location = window.location;
+          });
+        }
+      }
+    })
+
+    if ('<%= user.vip_2_payed %>' === 'true') {
+      window.location = '/page_wechat/vip_result_feedback';
+    }
+  })
+</script>
 
 </html>
