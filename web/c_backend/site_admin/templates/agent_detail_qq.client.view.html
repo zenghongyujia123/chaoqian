@@ -31,12 +31,14 @@
   </div>
   <div class="list-header">
       <div class="list-item" layout="row" layout-align="start center">
+        <div class="column-item" flex="">序号</div>
         <div class="column-item" flex="">首次访问时间</div>
         <div class="column-item" flex="">手机号</div>
       </div>
     </div>
     <div class="list-body">
       <div class="list-item" layout="row" layout-align="start center" ng-repeat=" item in history_list">
+        <div class="column-item" flex="">{{$index+1}}</div>
         <div class="column-item" flex="">{{item.create_time| date:"yyyy-MM-dd HH:mm"}}</div>
         <div class="column-item" flex="">{{item.user.username}}</div>
       </div>
