@@ -117,13 +117,7 @@
       if ('<%= user.vip_2_payed %>' === 'true') {
         window.location = '/page_wechat/vip_result_feedback';
       } else {
-        if (typeof (api) !== 'undefined') {
-          return window.location = '/lianlian_pay/page_lianlian?pay_type=vip_2_pay';
-        } else {
-          get_pre_pay_id('vip_2_pay', function () {
-            window.location = window.location;
-          });
-        }
+        window.location = '/page_wechat/vip_2_pay_notice';
       }
     })
 

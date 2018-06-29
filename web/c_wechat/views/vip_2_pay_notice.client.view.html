@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width" />
+
+  <title>审核授信</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+  <link rel="stylesheet" href="../c_wechat/css/index.client.style.css" />
+  <link rel="stylesheet" href="../c_wechat/css/vip_result.client.style.css" />
+  <script src="../libs/jquery/dist/jquery.js"></script>
+  <meta name="baidu-site-verification" content="4hPH3hudxx" />
+</head>
+
+<body>
+  <img src="../c_wechat/images/vip/助贷风控.jpeg" style="width:100%" />
+  <div class="footer">
+    <a href="#" class="report-btn left">立即支付</a>
+    <!-- <a href="/page_wechat/vip_result_refuse" class="report-btn right">我不借了</a> -->
+  </div>
+</body>
+<script>
+  $(function () {
+    $('.footer .left').click(function () {
+      return window.location = '/lianlian_pay/page_lianlian?pay_type=vip_2_pay';
+    });
+  })
+</script>
+
+</html>

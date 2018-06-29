@@ -606,6 +606,11 @@ exports.vip_result_feedback = function (req, res, next) {
   });
 };
 
+exports.vip_2_pay_notice = function (req, res, next) {
+  filepath = path.join(__dirname, '../../web/c_wechat/views/vip_2_pay_notice.client.view.html');
+  return res.render(filepath, {});
+}
+
 exports.vip_result_refuse = function (req, res, next) {
   var user = req.user;
   userLogic.update_vip_status(user, 'giveup', function () {

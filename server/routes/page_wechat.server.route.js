@@ -70,7 +70,9 @@ module.exports = function (app) {
   app.route('/page_wechat/vip_result').get(userFilter.requireUser, index.vip_result);
   app.route('/page_wechat/vip_result_feedback').get(userFilter.requireUser, index.vip_result_feedback);
   app.route('/page_wechat/vip_result_refuse').get(userFilter.requireUser, index.vip_result_refuse);
+  app.route('/page_wechat/vip_2_pay_notice').get(userFilter.requireUser, index.vip_2_pay_notice);
 
+  
   app.route('/page_wechat/invite_notice').get(userFilter.requireUser, index.invite_notice);
   app.route('/page_wechat/page_image').get(index.page_image);
   app.route('/page_wechat/page_images').get(index.page_images);
