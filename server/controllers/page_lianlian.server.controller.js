@@ -14,7 +14,7 @@ function getPayInfoDetailByType(pay_type) {
   var detail = {};
   if (pay_type === 'vip_2_pay') {
     // detail.pay_price = 50;//
-    detail.pay_price = 0.01;
+    detail.pay_price = 18;
     detail.pay_title = '潮钱网VIP充值';
     detail.pay_type = 'vip_2_pay';
     detail.redirect = 'http://www.chaoqianwang.com/page_wechat/vip_auth_info?device=native'
