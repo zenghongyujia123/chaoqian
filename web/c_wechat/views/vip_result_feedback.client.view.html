@@ -19,27 +19,34 @@
     <div class="header-detail">
       <div class="detail-row">
         <div class="row-item">
-          <div class="title"><i style="font-size: 50px;margin-right: 20px;" class="weui-icon-success weui-icon_msg"></i>恭喜您，申请借款成功</div>
+          <div class="title">
+            <i style="font-size: 50px;margin-right: 20px;" class="weui-icon-success weui-icon_msg"></i>恭喜您，申请借款成功</div>
           <div class="value">
-              ¥ <%=( user.str2|| '-') %>
+            ¥
+            <%=( user.str2|| '-') %>
           </div>
         </div>
-       
+
       </div>
       <div class="detail-row">
-          <div class="row-item">
-            <div class="tip">每日上午12点，下午6点两个批次放款，敬请关注银行到账通知短信</div>
-          </div>
+        <div class="row-item">
+          <div class="tip">每日上午12点，下午6点两个批次放款，敬请关注银行到账通知短信</div>
         </div>
+      </div>
     </div>
 
     <div class="panel column">
-      <dic class="report-text">还款日：<%=( user.str8|| '-') %></dic>
-      <dic class="report-text">还款金额：<%=( user.str7|| '-') %></dic>
+      <dic class="report-text">还款日：
+        <%=( user.str8|| '-') %>
+      </dic>
+      <dic class="report-text">还款金额：
+        <%=( user.str7|| '-') %>
+      </dic>
       <div class="report-btn">提前还款</div>
     </div>
-    <a class="panel-title" href="'/page_wechat/me_agent'"><img src="/c_wechat/images/vip/紫色喇叭.png" />转发海报拿佣金，现在了解加入</a>
-    
+    <a class="panel-title self-refund" href="javascript:void(0);">
+      <img src="/c_wechat/images/vip/紫色喇叭.png" />不想借了我要退款</a>
+
     <div class="weui-panel weui-panel_access">
       <div class="page-result-panel">
         <img src="/c_wechat/images/vip/推荐.png" />
@@ -95,11 +102,29 @@
 </body>
 
 <script>
-  $(function(){
-    if('<%= user.str6 %>'==='个人'){
+  $(function () {
+    if ('<%= user.str6 %>' === '个人') {
       $('.report-btn').remove();
       $('.tip').text('基于遵守政策， 放款资金由微信客服（jingbeikefu）添加您好友后，直接关联由个人资金方放款至您的账户内。');
     }
+
+    $('.self-refund').click(function () {
+      $.confirm("您确定要退款处理吗？", function () {
+        $.ajax({
+          method: 'post',
+          url: '/user/rollback_vip_infos',
+          data: { user_id: '<%= user._id %>' },
+          success: function (result) {
+            if (result && !result.err) {
+              window.location = '/page_wechat/home';
+            }
+          }
+        })
+      }, function () {
+        //点击取消后的回调函数
+      });
+    })
   });
 </script>
+
 </html>
