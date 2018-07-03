@@ -15,12 +15,12 @@
 
 <body>
   <img src="/c_wechat/images/vip/被拒页面_上半部分图_750x570.jpg" style="width:100%;" />
-  <div class="panel-title"><img src="/c_wechat/images/vip/紫色喇叭.png" />恭喜您，获得五颗克拉钻石补偿，已到您赏金空间账户</div>
-  
+  <div class="panel-title query-reason">
+    <img src="/c_wechat/images/vip/紫色喇叭.png" />点击查看您被拒绝的原因</div>
+
   <div class="page-result-center">
     <div class="title">
-      <img src="/c_wechat/images/vip/推荐.png" />
-      强烈推荐您以下借款平台
+      <img src="/c_wechat/images/vip/推荐.png" /> 强烈推荐您以下借款平台
     </div>
     <div class="center-list">
       <% for(var i=0; i<products.length; i++) {%>
@@ -44,7 +44,17 @@
 </body>
 <script>
 
-   $(function () {
+  $(function () {
+    $('.query-reason').click(function () {
+      $.confirm({
+        title: '您被拒绝是因为XXXXXXX',
+        text: '您需支付2元钱方能查看内容',
+        onOK: function () { },
+        onCancel: function () { }
+      });
+    });
+
+
     //设置截止时间  
     var endDate = new Date('<%= user.vip_refuse_time  %>');
     endDate.setDate(endDate.getDate() + 7);
@@ -66,7 +76,7 @@
         s = Math.floor(leftTime / 1000 % 60);
         //将倒计时赋值到div中  
         console.log(d, h, m, s);
-        $('.time').text(d+'天'+h + '小时' + m + '分' + s+'秒');
+        $('.time').text(d + '天' + h + '小时' + m + '分' + s + '秒');
         //递归每秒调用countTime方法，显示动态时间效果  
         setTimeout(countTime, 1000);
       }
@@ -75,4 +85,5 @@
 
   });
 </script>
+
 </html>
